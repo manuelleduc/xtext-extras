@@ -1311,7 +1311,7 @@ public class XbaseCompiler extends FeatureCallCompiler {
 				_toJavaIfStatement(casePart, fallThroughCases, expr, then, b, isReferenced, switchResultName, matchedVariable, variableName, state);
 			}
 			ILocationData location = getLocationOfDefault(expr);
-			ITreeAppendable defaultAppendable = location != null ? b.trace(location) : b;
+			ITreeAppendable defaultAppendable = location != null ? b.trace(location, true) : b;
 			boolean needsMatcherIf = isReferenced || !allCasesAreExitedEarly(expr);
 			if(needsMatcherIf) {
 				defaultAppendable.newLine().append("if (!").append(matchedVariable).append(") {");
