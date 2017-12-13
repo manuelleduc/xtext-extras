@@ -38,6 +38,17 @@ public class EclipseJavaCompiler implements IJavaCompiler {
 	private Writer outputWriter;
 	private static final Logger LOG = Logger.getLogger(EclipseJavaCompiler.class);
 
+	private static final boolean isJava9CompilerApiAvailable;
+	static {
+		boolean result = true;
+		try {
+			Class.forName("javax.lang.model.element.ModuleElement");
+		} catch (ClassNotFoundException e) {
+			result = false;
+		}
+		isJava9CompilerApiAvailable = result;
+	}
+
 	@Override
 	public CompilationResult compile(Iterable<String> sourceRoots, File outputClassDirectory) {
 		Iterable<String> validSourceRoots = IterableExtensions.filter(sourceRoots, new EmptyOrMissingFilter());
@@ -57,6 +68,9 @@ public class EclipseJavaCompiler implements IJavaCompiler {
 		commandLine.add("-d \"" + outputClassDirectory.toString() + "\"");
 		commandLine.add("-source " + configuration.getSourceLevel());
 		commandLine.add("-target " + configuration.getTargetLevel());
+		if (!isJava9CompilerApiAvailable) {
+			commandLine.add("-proc:none");
+		}
 		commandLine.add("-proceedOnError");
 		for (String src : validSourceRoots) {
 			commandLine.add("\"" + src + "\"");
