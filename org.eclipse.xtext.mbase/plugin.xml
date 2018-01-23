@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/xtext/mbase/Xtype" 
+       class = "org.eclipse.xtext.xtype.XtypePackage"
+       genModel = "model/mbase.genmodel" /> 
+	
+  </extension>
+
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/xtext/mbase/mbase" 
+       class = "org.eclipse.xtext.mbase.mbasePackage"
+       genModel = "model/mbase.genmodel" /> 
+	
+  </extension>
+  
+  
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/Xtext/mbase/XAnnotations" 
+       class = "org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsPackage"
+       genModel = "model/mbase.genmodel" /> 
+	
+  </extension>
+
+</plugin>

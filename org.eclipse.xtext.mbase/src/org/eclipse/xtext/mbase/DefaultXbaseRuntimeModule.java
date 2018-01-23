@@ -1,0 +1,236 @@
+/*******************************************************************************
+ * Copyright (c) 2015 itemis AG (http://www.itemis.eu) and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.eclipse.xtext.mbase;
+
+import org.eclipse.xtext.common.types.DefaultCommonTypesRuntimeModule;
+import org.eclipse.xtext.conversion.IValueConverterService;
+import org.eclipse.xtext.debug.IStratumBreakpointSupport;
+import org.eclipse.xtext.findReferences.TargetURICollector;
+import org.eclipse.xtext.generator.AbstractFileSystemAccess2;
+import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
+import org.eclipse.xtext.generator.LineSeparatorHarmonizer;
+import org.eclipse.xtext.linking.ILinker;
+import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.nodemodel.impl.NodeModelBuilder;
+import org.eclipse.xtext.parser.antlr.IPartialParsingHelper;
+import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager;
+import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
+import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
+import org.eclipse.xtext.resource.IDerivedStateComputer;
+import org.eclipse.xtext.resource.IResourceDescription;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
+import org.eclipse.xtext.service.SingletonBinding;
+import org.eclipse.xtext.validation.CancelableDiagnostician;
+import org.eclipse.xtext.validation.ConfigurableIssueCodesProvider;
+import org.eclipse.xtext.validation.SeverityConverter;
+import org.eclipse.xtext.workspace.IProjectConfigProvider;
+import org.eclipse.xtext.workspace.ProjectConfigProvider;
+import org.eclipse.xtext.mbase.annotations.validation.UnresolvedFeatureCallTypeAwareMessageProvider;
+import org.eclipse.xtext.mbase.compiler.JvmModelGenerator;
+import org.eclipse.xtext.mbase.compiler.output.TraceAwarePostProcessor;
+import org.eclipse.xtext.mbase.conversion.mbaseValueConverterService;
+import org.eclipse.xtext.mbase.debug.mbaseStratumBreakpointSupport;
+import org.eclipse.xtext.mbase.featurecalls.IdentifiableSimpleNameProvider;
+import org.eclipse.xtext.mbase.interpreter.IEvaluationContext;
+import org.eclipse.xtext.mbase.interpreter.IExpressionInterpreter;
+import org.eclipse.xtext.mbase.interpreter.impl.DefaultEvaluationContext;
+import org.eclipse.xtext.mbase.interpreter.impl.mbaseInterpreter;
+import org.eclipse.xtext.mbase.jvmmodel.JvmModelAssociator;
+import org.eclipse.xtext.mbase.jvmmodel.JvmModelTargetURICollector;
+import org.eclipse.xtext.mbase.linking.BrokenConstructorCallAwareEObjectAtOffsetHelper;
+import org.eclipse.xtext.mbase.linking.mbaseLazyLinker;
+import org.eclipse.xtext.mbase.parser.TokenSequencePreservingPartialParsingHelper;
+import org.eclipse.xtext.mbase.parser.LookAheadPreservingNodeModelBuilder;
+import org.eclipse.xtext.mbase.resource.BatchLinkableResource;
+import org.eclipse.xtext.mbase.resource.mbaseResourceDescriptionStrategy;
+import org.eclipse.xtext.mbase.scoping.mbaseQualifiedNameProvider;
+import org.eclipse.xtext.mbase.scoping.batch.IBatchScopeProvider;
+import org.eclipse.xtext.mbase.serializer.mbaseTransientValueService;
+import org.eclipse.xtext.mbase.validation.JvmTypeReferencesValidator;
+import org.eclipse.xtext.mbase.validation.UniqueClassNameValidator;
+import org.eclipse.xtext.mbase.validation.mbaseConfigurableIssueCodes;
+import org.eclipse.xtext.mbase.validation.mbaseDiagnostician;
+import org.eclipse.xtext.mbase.validation.mbaseSeverityConverter;
+import org.eclipse.xtext.xtype.XtypeFactory;
+
+import com.google.inject.Binder;
+import com.google.inject.name.Names;
+
+/**
+ * @author Sven Efftinge - Initial contribution and API
+ * @since 2.8
+ */
+public class DefaultmbaseRuntimeModule extends DefaultCommonTypesRuntimeModule {
+
+	public Class<? extends IEvaluationContext> bindIEvaluationContext() {
+		return DefaultEvaluationContext.class;
+	}
+
+	public Class<? extends IExpressionInterpreter> bindIExpressionInterpreter() {
+		return mbaseInterpreter.class;
+	}
+
+	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
+		return mbaseQualifiedNameConverter.class;
+	}
+
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return mbaseQualifiedNameProvider.class;
+	}
+
+	@Override
+	public Class<? extends IValueConverterService> bindIValueConverterService() {
+		return mbaseValueConverterService.class;
+	}
+
+	@Override
+	public Class<? extends IScopeProvider> bindIScopeProvider() {
+		return IBatchScopeProvider.class;
+	}
+
+	@Override
+	public void configureLinkingIScopeProvider(com.google.inject.Binder binder) {
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(org.eclipse.xtext.linking.LinkingScopeProviderBinding.class)
+				.to(org.eclipse.xtext.mbase.scoping.batch.IBatchScopeProvider.class);
+	}
+
+	@Override
+	public void configureSerializerIScopeProvider(com.google.inject.Binder binder) {
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding.class)
+				.to(org.eclipse.xtext.mbase.serializer.SerializerScopeProvider.class);
+	}
+
+	@SuppressWarnings("deprecation")
+	public void configureIScopeProviderDelegate(com.google.inject.Binder binder) {
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class)
+				.annotatedWith(Names.named(org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
+				.to(org.eclipse.xtext.mbase.scoping.mbaseImportedNamespaceScopeProvider.class);
+	}
+
+	@Override
+	public Class<? extends ILinker> bindILinker() {
+		return mbaseLazyLinker.class;
+	}
+
+	@Override
+	public Class<? extends XtextResource> bindXtextResource() {
+		return BatchLinkableResource.class;
+	}
+
+	@SingletonBinding(eager = true)
+	public Class<? extends JvmTypeReferencesValidator> bindJvmTypeReferencesValidator() {
+		return JvmTypeReferencesValidator.class;
+	}
+	
+	@SingletonBinding(eager = true)
+	public Class<? extends UniqueClassNameValidator> bindUniqueClassNameValidator() {
+		return UniqueClassNameValidator.class;
+	}
+
+	// obsolete convenience bindings
+	public Class<? extends IdentifiableSimpleNameProvider> bindIdentifiableSimpleNameProvider() {
+		return IdentifiableSimpleNameProvider.class;
+	}
+
+	public Class<? extends IDerivedStateComputer> bindIDerivedStateComputer() {
+		return JvmModelAssociator.class;
+	}
+
+	public Class<? extends IResourceDescription.Manager> bindIResourceDescription$Manager() {
+		return DerivedStateAwareResourceDescriptionManager.class;
+	}
+
+	public Class<? extends IGenerator> bindIGenerator() {
+		return JvmModelGenerator.class;
+	}
+
+	public XtypeFactory bindXtypeFactoryToInstance() {
+		return XtypeFactory.eINSTANCE;
+	}
+
+	public Class<? extends IStratumBreakpointSupport> bindIStratumBreakpointSupport() {
+		return mbaseStratumBreakpointSupport.class;
+	}
+
+	public Class<? extends LineSeparatorHarmonizer> bindLineSeparatorHarmonizer() {
+		return TraceAwarePostProcessor.class;
+	}
+
+	public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+		return mbaseResourceDescriptionStrategy.class;
+	}
+
+	public Class<? extends SeverityConverter> bindSeverityConverter() {
+		return mbaseSeverityConverter.class;
+	}
+
+	public Class<? extends ConfigurableIssueCodesProvider> bindConfigurableIssueCodesProvider() {
+		return mbaseConfigurableIssueCodes.class;
+	}
+
+	public Class<? extends EObjectAtOffsetHelper> bindEObjectAtOffsetHelper() {
+		return BrokenConstructorCallAwareEObjectAtOffsetHelper.class;
+	}
+
+	public Class<? extends CancelableDiagnostician> bindCancelableDiagnostician() {
+		return mbaseDiagnostician.class;
+	}
+
+	@SuppressWarnings("deprecation")
+	public Class<? extends org.eclipse.xtext.mbase.scoping.featurecalls.StaticImplicitMethodsFeatureForTypeProvider.ExtensionClassNameProvider> bindStaticImplicitMethodsFeatureForTypeProvider$ExtensionClassNameProvider() {
+		return org.eclipse.xtext.mbase.scoping.batch.ImplicitlyImportedTypesAdapter.class;
+	}
+	
+	public void configureITransientValueService(Binder binder) {
+		binder.bind(ITransientValueService.class).to(mbaseTransientValueService.class);
+	}
+
+	public Class<? extends AbstractFileSystemAccess2> bindAbstractFileSystemAccess2() {
+		return JavaIoFileSystemAccess.class;
+	}
+	
+	/**
+	 * @since 2.9
+	 */
+	public Class<? extends IProjectConfigProvider> bindProjectConfigProvider() {
+		return ProjectConfigProvider.class;
+	}
+	
+	/**
+	 * @since 2.9
+	 */
+	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
+		return UnresolvedFeatureCallTypeAwareMessageProvider.class;
+	}
+	
+	@Override
+	public Class<? extends IPartialParsingHelper> bindIPartialParserHelper() {
+		return TokenSequencePreservingPartialParsingHelper.class;
+	}
+	
+	/**
+	 * @since 2.9
+	 */
+	public Class<? extends NodeModelBuilder> bindNodeModelBuilder() {
+		return LookAheadPreservingNodeModelBuilder.class;
+	}
+	
+	/**
+	 * @since 2.13
+	 */
+	public Class<? extends TargetURICollector> bindTargetURICollector() {
+		return JvmModelTargetURICollector.class;
+	}
+	
+}

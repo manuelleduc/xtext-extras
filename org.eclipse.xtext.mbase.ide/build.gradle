@@ -1,0 +1,7 @@
+ext.title = 'mbase Generic IDE Services'
+description = 'Platform-independent support for mbase languages.'
+
+dependencies {
+	compile project(':org.eclipse.xtext.mbase')
+//	compile "org.eclipse.xtext:org.eclipse.xtext.ide:$versions.xtext"
+}
