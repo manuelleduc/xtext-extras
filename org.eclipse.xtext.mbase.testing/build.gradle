@@ -1,0 +1,12 @@
+ext.title = 'Xbase Testing Library'
+description = 'Infrastructure for testing Mbase languages.'
+
+dependencies {
+	compile project(':org.eclipse.xtext.mbase')
+	compile "org.eclipse.xtext:org.eclipse.xtext.testing:$versions.xtext"
+	compile "junit:junit:$versions.junit"
+	compile "org.eclipse.jdt:org.eclipse.jdt.core:$versions.jdtCore"
+	compile "org.eclipse.jdt:org.eclipse.jdt.compiler.apt:$versions.jdtCompilerApt"
+}
+
+sourceSets.main.java.srcDir 'testdata'

@@ -3,12 +3,12 @@ Bundle-ManifestVersion: 2
 Bundle-Name: mbase Generic IDE Services
 Bundle-Vendor: Eclipse Xtext
 Bundle-SymbolicName: org.eclipse.xtext.mbase.ide;singleton:=true
-Bundle-Version: 2.14.0.qualifier
+Bundle-Version: 2.15.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.ide,
- org.eclipse.xtext.mbase;visibility:=reexport,
- org.eclipse.xtext.mbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.mbase;bundle-version="2.15.0";visibility:=reexport,
+ org.eclipse.xtext.xbase.lib,
  org.objectweb.asm;bundle-version="[5.0.1,7.0.0)",
  org.antlr.runtime
 Export-Package: org.eclipse.xtext.mbase.annotations.ide.contentassist.antlr;x-friends:="org.eclipse.xtext.mbase.ui",
