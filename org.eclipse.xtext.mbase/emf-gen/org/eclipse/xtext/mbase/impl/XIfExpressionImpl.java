@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XIfExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,7 +84,7 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XIF_EXPRESSION;
+		return MbasePackage.Literals.XIF_EXPRESSION;
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 		if_ = newIf;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XIF_EXPRESSION__IF, oldIf, newIf);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XIF_EXPRESSION__IF, oldIf, newIf);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -125,14 +125,14 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 		{
 			NotificationChain msgs = null;
 			if (if_ != null)
-				msgs = ((InternalEObject)if_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XIF_EXPRESSION__IF, null, msgs);
+				msgs = ((InternalEObject)if_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XIF_EXPRESSION__IF, null, msgs);
 			if (newIf != null)
-				msgs = ((InternalEObject)newIf).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XIF_EXPRESSION__IF, null, msgs);
+				msgs = ((InternalEObject)newIf).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XIF_EXPRESSION__IF, null, msgs);
 			msgs = basicSetIf(newIf, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XIF_EXPRESSION__IF, newIf, newIf));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XIF_EXPRESSION__IF, newIf, newIf));
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 		then = newThen;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XIF_EXPRESSION__THEN, oldThen, newThen);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XIF_EXPRESSION__THEN, oldThen, newThen);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -173,14 +173,14 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 		{
 			NotificationChain msgs = null;
 			if (then != null)
-				msgs = ((InternalEObject)then).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XIF_EXPRESSION__THEN, null, msgs);
+				msgs = ((InternalEObject)then).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XIF_EXPRESSION__THEN, null, msgs);
 			if (newThen != null)
-				msgs = ((InternalEObject)newThen).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XIF_EXPRESSION__THEN, null, msgs);
+				msgs = ((InternalEObject)newThen).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XIF_EXPRESSION__THEN, null, msgs);
 			msgs = basicSetThen(newThen, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XIF_EXPRESSION__THEN, newThen, newThen));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XIF_EXPRESSION__THEN, newThen, newThen));
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 		else_ = newElse;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XIF_EXPRESSION__ELSE, oldElse, newElse);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XIF_EXPRESSION__ELSE, oldElse, newElse);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -221,14 +221,14 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 		{
 			NotificationChain msgs = null;
 			if (else_ != null)
-				msgs = ((InternalEObject)else_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XIF_EXPRESSION__ELSE, null, msgs);
+				msgs = ((InternalEObject)else_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XIF_EXPRESSION__ELSE, null, msgs);
 			if (newElse != null)
-				msgs = ((InternalEObject)newElse).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XIF_EXPRESSION__ELSE, null, msgs);
+				msgs = ((InternalEObject)newElse).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XIF_EXPRESSION__ELSE, null, msgs);
 			msgs = basicSetElse(newElse, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XIF_EXPRESSION__ELSE, newElse, newElse));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XIF_EXPRESSION__ELSE, newElse, newElse));
 	}
 
 	/**
@@ -241,11 +241,11 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XIF_EXPRESSION__IF:
+			case MbasePackage.XIF_EXPRESSION__IF:
 				return basicSetIf(null, msgs);
-			case mbasePackage.XIF_EXPRESSION__THEN:
+			case MbasePackage.XIF_EXPRESSION__THEN:
 				return basicSetThen(null, msgs);
-			case mbasePackage.XIF_EXPRESSION__ELSE:
+			case MbasePackage.XIF_EXPRESSION__ELSE:
 				return basicSetElse(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -261,11 +261,11 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XIF_EXPRESSION__IF:
+			case MbasePackage.XIF_EXPRESSION__IF:
 				return getIf();
-			case mbasePackage.XIF_EXPRESSION__THEN:
+			case MbasePackage.XIF_EXPRESSION__THEN:
 				return getThen();
-			case mbasePackage.XIF_EXPRESSION__ELSE:
+			case MbasePackage.XIF_EXPRESSION__ELSE:
 				return getElse();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -281,13 +281,13 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XIF_EXPRESSION__IF:
+			case MbasePackage.XIF_EXPRESSION__IF:
 				setIf((XExpression)newValue);
 				return;
-			case mbasePackage.XIF_EXPRESSION__THEN:
+			case MbasePackage.XIF_EXPRESSION__THEN:
 				setThen((XExpression)newValue);
 				return;
-			case mbasePackage.XIF_EXPRESSION__ELSE:
+			case MbasePackage.XIF_EXPRESSION__ELSE:
 				setElse((XExpression)newValue);
 				return;
 		}
@@ -304,13 +304,13 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XIF_EXPRESSION__IF:
+			case MbasePackage.XIF_EXPRESSION__IF:
 				setIf((XExpression)null);
 				return;
-			case mbasePackage.XIF_EXPRESSION__THEN:
+			case MbasePackage.XIF_EXPRESSION__THEN:
 				setThen((XExpression)null);
 				return;
-			case mbasePackage.XIF_EXPRESSION__ELSE:
+			case MbasePackage.XIF_EXPRESSION__ELSE:
 				setElse((XExpression)null);
 				return;
 		}
@@ -327,11 +327,11 @@ public class XIfExpressionImpl extends XExpressionImpl implements XIfExpression
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XIF_EXPRESSION__IF:
+			case MbasePackage.XIF_EXPRESSION__IF:
 				return if_ != null;
-			case mbasePackage.XIF_EXPRESSION__THEN:
+			case MbasePackage.XIF_EXPRESSION__THEN:
 				return then != null;
-			case mbasePackage.XIF_EXPRESSION__ELSE:
+			case MbasePackage.XIF_EXPRESSION__ELSE:
 				return else_ != null;
 		}
 		return super.eIsSet(featureID);

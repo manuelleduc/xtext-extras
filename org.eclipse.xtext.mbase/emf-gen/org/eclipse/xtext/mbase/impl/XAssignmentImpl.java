@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XAssignment;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -115,7 +115,7 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XASSIGNMENT;
+		return MbasePackage.Literals.XASSIGNMENT;
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 		assignable = newAssignable;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XASSIGNMENT__ASSIGNABLE, oldAssignable, newAssignable);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XASSIGNMENT__ASSIGNABLE, oldAssignable, newAssignable);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -156,14 +156,14 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 		{
 			NotificationChain msgs = null;
 			if (assignable != null)
-				msgs = ((InternalEObject)assignable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XASSIGNMENT__ASSIGNABLE, null, msgs);
+				msgs = ((InternalEObject)assignable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XASSIGNMENT__ASSIGNABLE, null, msgs);
 			if (newAssignable != null)
-				msgs = ((InternalEObject)newAssignable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XASSIGNMENT__ASSIGNABLE, null, msgs);
+				msgs = ((InternalEObject)newAssignable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XASSIGNMENT__ASSIGNABLE, null, msgs);
 			msgs = basicSetAssignable(newAssignable, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XASSIGNMENT__ASSIGNABLE, newAssignable, newAssignable));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XASSIGNMENT__ASSIGNABLE, newAssignable, newAssignable));
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 		value = newValue;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XASSIGNMENT__VALUE, oldValue, newValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XASSIGNMENT__VALUE, oldValue, newValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -204,14 +204,14 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 		{
 			NotificationChain msgs = null;
 			if (value != null)
-				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XASSIGNMENT__VALUE, null, msgs);
+				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XASSIGNMENT__VALUE, null, msgs);
 			if (newValue != null)
-				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XASSIGNMENT__VALUE, null, msgs);
+				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XASSIGNMENT__VALUE, null, msgs);
 			msgs = basicSetValue(newValue, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XASSIGNMENT__VALUE, newValue, newValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XASSIGNMENT__VALUE, newValue, newValue));
 	}
 
 	/**
@@ -234,7 +234,7 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 		boolean oldExplicitStatic = explicitStatic;
 		explicitStatic = newExplicitStatic;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XASSIGNMENT__EXPLICIT_STATIC, oldExplicitStatic, explicitStatic));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XASSIGNMENT__EXPLICIT_STATIC, oldExplicitStatic, explicitStatic));
 	}
 
 	/**
@@ -257,7 +257,7 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 		boolean oldStaticWithDeclaringType = staticWithDeclaringType;
 		staticWithDeclaringType = newStaticWithDeclaringType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XASSIGNMENT__STATIC_WITH_DECLARING_TYPE, oldStaticWithDeclaringType, staticWithDeclaringType));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XASSIGNMENT__STATIC_WITH_DECLARING_TYPE, oldStaticWithDeclaringType, staticWithDeclaringType));
 	}
 
 	/**
@@ -270,9 +270,9 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XASSIGNMENT__ASSIGNABLE:
+			case MbasePackage.XASSIGNMENT__ASSIGNABLE:
 				return basicSetAssignable(null, msgs);
-			case mbasePackage.XASSIGNMENT__VALUE:
+			case MbasePackage.XASSIGNMENT__VALUE:
 				return basicSetValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -288,13 +288,13 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XASSIGNMENT__ASSIGNABLE:
+			case MbasePackage.XASSIGNMENT__ASSIGNABLE:
 				return getAssignable();
-			case mbasePackage.XASSIGNMENT__VALUE:
+			case MbasePackage.XASSIGNMENT__VALUE:
 				return getValue();
-			case mbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
+			case MbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
 				return isExplicitStatic();
-			case mbasePackage.XASSIGNMENT__STATIC_WITH_DECLARING_TYPE:
+			case MbasePackage.XASSIGNMENT__STATIC_WITH_DECLARING_TYPE:
 				return isStaticWithDeclaringType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -310,16 +310,16 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XASSIGNMENT__ASSIGNABLE:
+			case MbasePackage.XASSIGNMENT__ASSIGNABLE:
 				setAssignable((XExpression)newValue);
 				return;
-			case mbasePackage.XASSIGNMENT__VALUE:
+			case MbasePackage.XASSIGNMENT__VALUE:
 				setValue((XExpression)newValue);
 				return;
-			case mbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
+			case MbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
 				setExplicitStatic((Boolean)newValue);
 				return;
-			case mbasePackage.XASSIGNMENT__STATIC_WITH_DECLARING_TYPE:
+			case MbasePackage.XASSIGNMENT__STATIC_WITH_DECLARING_TYPE:
 				setStaticWithDeclaringType((Boolean)newValue);
 				return;
 		}
@@ -336,16 +336,16 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XASSIGNMENT__ASSIGNABLE:
+			case MbasePackage.XASSIGNMENT__ASSIGNABLE:
 				setAssignable((XExpression)null);
 				return;
-			case mbasePackage.XASSIGNMENT__VALUE:
+			case MbasePackage.XASSIGNMENT__VALUE:
 				setValue((XExpression)null);
 				return;
-			case mbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
+			case MbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
 				setExplicitStatic(EXPLICIT_STATIC_EDEFAULT);
 				return;
-			case mbasePackage.XASSIGNMENT__STATIC_WITH_DECLARING_TYPE:
+			case MbasePackage.XASSIGNMENT__STATIC_WITH_DECLARING_TYPE:
 				setStaticWithDeclaringType(STATIC_WITH_DECLARING_TYPE_EDEFAULT);
 				return;
 		}
@@ -362,13 +362,13 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XASSIGNMENT__ASSIGNABLE:
+			case MbasePackage.XASSIGNMENT__ASSIGNABLE:
 				return assignable != null;
-			case mbasePackage.XASSIGNMENT__VALUE:
+			case MbasePackage.XASSIGNMENT__VALUE:
 				return value != null;
-			case mbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
+			case MbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
 				return explicitStatic != EXPLICIT_STATIC_EDEFAULT;
-			case mbasePackage.XASSIGNMENT__STATIC_WITH_DECLARING_TYPE:
+			case MbasePackage.XASSIGNMENT__STATIC_WITH_DECLARING_TYPE:
 				return staticWithDeclaringType != STATIC_WITH_DECLARING_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

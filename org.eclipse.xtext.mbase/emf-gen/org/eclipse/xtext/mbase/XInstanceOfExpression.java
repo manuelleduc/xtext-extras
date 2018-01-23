@@ -28,7 +28,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.eclipse.xtext.mbase.XInstanceOfExpression#getExpression <em>Expression</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXInstanceOfExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXInstanceOfExpression()
  * @model
  * @generated
  */
@@ -44,7 +44,7 @@ public interface XInstanceOfExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(JvmTypeReference)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXInstanceOfExpression_Type()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXInstanceOfExpression_Type()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
@@ -70,7 +70,7 @@ public interface XInstanceOfExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXInstanceOfExpression_Expression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXInstanceOfExpression_Expression()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */

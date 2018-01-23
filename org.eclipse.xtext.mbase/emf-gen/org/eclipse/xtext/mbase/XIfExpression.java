@@ -28,7 +28,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XIfExpression#getElse <em>Else</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXIfExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXIfExpression()
  * @model
  * @generated
  */
@@ -44,7 +44,7 @@ public interface XIfExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>If</em>' containment reference.
 	 * @see #setIf(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXIfExpression_If()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXIfExpression_If()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -70,7 +70,7 @@ public interface XIfExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Then</em>' containment reference.
 	 * @see #setThen(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXIfExpression_Then()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXIfExpression_Then()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -96,7 +96,7 @@ public interface XIfExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Else</em>' containment reference.
 	 * @see #setElse(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXIfExpression_Else()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXIfExpression_Else()
 	 * @model containment="true"
 	 * @generated
 	 */

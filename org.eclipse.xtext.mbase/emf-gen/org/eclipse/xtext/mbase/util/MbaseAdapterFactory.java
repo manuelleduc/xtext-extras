@@ -23,10 +23,10 @@ import org.eclipse.xtext.mbase.*;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.eclipse.xtext.mbase.mbasePackage
+ * @see org.eclipse.xtext.mbase.MbasePackage
  * @generated
  */
-public class mbaseAdapterFactory extends AdapterFactoryImpl
+public class MbaseAdapterFactory extends AdapterFactoryImpl
 {
 	/**
 	 * The cached model package.
@@ -34,7 +34,7 @@ public class mbaseAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static mbasePackage modelPackage;
+	protected static MbasePackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -42,11 +42,11 @@ public class mbaseAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public mbaseAdapterFactory()
+	public MbaseAdapterFactory()
 	{
 		if (modelPackage == null)
 		{
-			modelPackage = mbasePackage.eINSTANCE;
+			modelPackage = MbasePackage.eINSTANCE;
 		}
 	}
 
@@ -78,8 +78,8 @@ public class mbaseAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected mbaseSwitch<Adapter> modelSwitch =
-		new mbaseSwitch<Adapter>()
+	protected MbaseSwitch<Adapter> modelSwitch =
+		new MbaseSwitch<Adapter>()
 		{
 			@Override
 			public Adapter caseXExpression(XExpression object)
@@ -836,4 +836,4 @@ public class mbaseAdapterFactory extends AdapterFactoryImpl
 		return null;
 	}
 
-} //mbaseAdapterFactory
+} //MbaseAdapterFactory

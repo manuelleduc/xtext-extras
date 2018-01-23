@@ -25,9 +25,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -147,7 +147,7 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XABSTRACT_FEATURE_CALL;
+		return MbasePackage.Literals.XABSTRACT_FEATURE_CALL;
 	}
 
 	/**
@@ -164,7 +164,7 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 			if (feature != oldFeature)
 			{
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, mbasePackage.XABSTRACT_FEATURE_CALL__FEATURE, oldFeature, feature));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MbasePackage.XABSTRACT_FEATURE_CALL__FEATURE, oldFeature, feature));
 			}
 		}
 		return feature;
@@ -190,7 +190,7 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 		JvmIdentifiableElement oldFeature = feature;
 		feature = newFeature;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XABSTRACT_FEATURE_CALL__FEATURE, oldFeature, feature));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XABSTRACT_FEATURE_CALL__FEATURE, oldFeature, feature));
 	}
 
 	/**
@@ -202,7 +202,7 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 	{
 		if (typeArguments == null)
 		{
-			typeArguments = new EObjectContainmentEList<JvmTypeReference>(JvmTypeReference.class, this, mbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS);
+			typeArguments = new EObjectContainmentEList<JvmTypeReference>(JvmTypeReference.class, this, MbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS);
 		}
 		return typeArguments;
 	}
@@ -228,7 +228,7 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 		implicitReceiver = newImplicitReceiver;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER, oldImplicitReceiver, newImplicitReceiver);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER, oldImplicitReceiver, newImplicitReceiver);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -245,14 +245,14 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 		{
 			NotificationChain msgs = null;
 			if (implicitReceiver != null)
-				msgs = ((InternalEObject)implicitReceiver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER, null, msgs);
+				msgs = ((InternalEObject)implicitReceiver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER, null, msgs);
 			if (newImplicitReceiver != null)
-				msgs = ((InternalEObject)newImplicitReceiver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER, null, msgs);
+				msgs = ((InternalEObject)newImplicitReceiver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER, null, msgs);
 			msgs = basicSetImplicitReceiver(newImplicitReceiver, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER, newImplicitReceiver, newImplicitReceiver));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER, newImplicitReceiver, newImplicitReceiver));
 	}
 
 	/**
@@ -275,7 +275,7 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 		String oldInvalidFeatureIssueCode = invalidFeatureIssueCode;
 		invalidFeatureIssueCode = newInvalidFeatureIssueCode;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE, oldInvalidFeatureIssueCode, invalidFeatureIssueCode));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE, oldInvalidFeatureIssueCode, invalidFeatureIssueCode));
 	}
 
 	/**
@@ -309,7 +309,7 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 		implicitFirstArgument = newImplicitFirstArgument;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT, oldImplicitFirstArgument, newImplicitFirstArgument);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT, oldImplicitFirstArgument, newImplicitFirstArgument);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -326,14 +326,14 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 		{
 			NotificationChain msgs = null;
 			if (implicitFirstArgument != null)
-				msgs = ((InternalEObject)implicitFirstArgument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT, null, msgs);
+				msgs = ((InternalEObject)implicitFirstArgument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT, null, msgs);
 			if (newImplicitFirstArgument != null)
-				msgs = ((InternalEObject)newImplicitFirstArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT, null, msgs);
+				msgs = ((InternalEObject)newImplicitFirstArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT, null, msgs);
 			msgs = basicSetImplicitFirstArgument(newImplicitFirstArgument, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT, newImplicitFirstArgument, newImplicitFirstArgument));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT, newImplicitFirstArgument, newImplicitFirstArgument));
 	}
 
 	/**
@@ -466,11 +466,11 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS:
 				return ((InternalEList<?>)getTypeArguments()).basicRemove(otherEnd, msgs);
-			case mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER:
 				return basicSetImplicitReceiver(null, msgs);
-			case mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT:
 				return basicSetImplicitFirstArgument(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -486,18 +486,18 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XABSTRACT_FEATURE_CALL__FEATURE:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__FEATURE:
 				if (resolve) return getFeature();
 				return basicGetFeature();
-			case mbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS:
 				return getTypeArguments();
-			case mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER:
 				return getImplicitReceiver();
-			case mbasePackage.XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE:
 				return getInvalidFeatureIssueCode();
-			case mbasePackage.XABSTRACT_FEATURE_CALL__VALID_FEATURE:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__VALID_FEATURE:
 				return isValidFeature();
-			case mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT:
 				return getImplicitFirstArgument();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -514,20 +514,20 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XABSTRACT_FEATURE_CALL__FEATURE:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__FEATURE:
 				setFeature((JvmIdentifiableElement)newValue);
 				return;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS:
 				getTypeArguments().clear();
 				getTypeArguments().addAll((Collection<? extends JvmTypeReference>)newValue);
 				return;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER:
 				setImplicitReceiver((XExpression)newValue);
 				return;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE:
 				setInvalidFeatureIssueCode((String)newValue);
 				return;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT:
 				setImplicitFirstArgument((XExpression)newValue);
 				return;
 		}
@@ -544,19 +544,19 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XABSTRACT_FEATURE_CALL__FEATURE:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__FEATURE:
 				setFeature((JvmIdentifiableElement)null);
 				return;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS:
 				getTypeArguments().clear();
 				return;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER:
 				setImplicitReceiver((XExpression)null);
 				return;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE:
 				setInvalidFeatureIssueCode(INVALID_FEATURE_ISSUE_CODE_EDEFAULT);
 				return;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT:
 				setImplicitFirstArgument((XExpression)null);
 				return;
 		}
@@ -573,17 +573,17 @@ public abstract class XAbstractFeatureCallImpl extends XExpressionImpl implement
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XABSTRACT_FEATURE_CALL__FEATURE:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__FEATURE:
 				return feature != null;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS:
 				return typeArguments != null && !typeArguments.isEmpty();
-			case mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER:
 				return implicitReceiver != null;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE:
 				return INVALID_FEATURE_ISSUE_CODE_EDEFAULT == null ? invalidFeatureIssueCode != null : !INVALID_FEATURE_ISSUE_CODE_EDEFAULT.equals(invalidFeatureIssueCode);
-			case mbasePackage.XABSTRACT_FEATURE_CALL__VALID_FEATURE:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__VALID_FEATURE:
 				return validFeature != VALID_FEATURE_EDEFAULT;
-			case mbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT:
+			case MbasePackage.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT:
 				return implicitFirstArgument != null;
 		}
 		return super.eIsSet(featureID);

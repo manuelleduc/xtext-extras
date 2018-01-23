@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XUnaryOperation;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,7 +62,7 @@ public class XUnaryOperationImpl extends XAbstractFeatureCallImplCustom implemen
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XUNARY_OPERATION;
+		return MbasePackage.Literals.XUNARY_OPERATION;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class XUnaryOperationImpl extends XAbstractFeatureCallImplCustom implemen
 		operand = newOperand;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XUNARY_OPERATION__OPERAND, oldOperand, newOperand);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XUNARY_OPERATION__OPERAND, oldOperand, newOperand);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -103,14 +103,14 @@ public class XUnaryOperationImpl extends XAbstractFeatureCallImplCustom implemen
 		{
 			NotificationChain msgs = null;
 			if (operand != null)
-				msgs = ((InternalEObject)operand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XUNARY_OPERATION__OPERAND, null, msgs);
+				msgs = ((InternalEObject)operand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XUNARY_OPERATION__OPERAND, null, msgs);
 			if (newOperand != null)
-				msgs = ((InternalEObject)newOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XUNARY_OPERATION__OPERAND, null, msgs);
+				msgs = ((InternalEObject)newOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XUNARY_OPERATION__OPERAND, null, msgs);
 			msgs = basicSetOperand(newOperand, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XUNARY_OPERATION__OPERAND, newOperand, newOperand));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XUNARY_OPERATION__OPERAND, newOperand, newOperand));
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class XUnaryOperationImpl extends XAbstractFeatureCallImplCustom implemen
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XUNARY_OPERATION__OPERAND:
+			case MbasePackage.XUNARY_OPERATION__OPERAND:
 				return basicSetOperand(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -139,7 +139,7 @@ public class XUnaryOperationImpl extends XAbstractFeatureCallImplCustom implemen
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XUNARY_OPERATION__OPERAND:
+			case MbasePackage.XUNARY_OPERATION__OPERAND:
 				return getOperand();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -155,7 +155,7 @@ public class XUnaryOperationImpl extends XAbstractFeatureCallImplCustom implemen
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XUNARY_OPERATION__OPERAND:
+			case MbasePackage.XUNARY_OPERATION__OPERAND:
 				setOperand((XExpression)newValue);
 				return;
 		}
@@ -172,7 +172,7 @@ public class XUnaryOperationImpl extends XAbstractFeatureCallImplCustom implemen
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XUNARY_OPERATION__OPERAND:
+			case MbasePackage.XUNARY_OPERATION__OPERAND:
 				setOperand((XExpression)null);
 				return;
 		}
@@ -189,7 +189,7 @@ public class XUnaryOperationImpl extends XAbstractFeatureCallImplCustom implemen
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XUNARY_OPERATION__OPERAND:
+			case MbasePackage.XUNARY_OPERATION__OPERAND:
 				return operand != null;
 		}
 		return super.eIsSet(featureID);

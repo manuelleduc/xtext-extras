@@ -29,7 +29,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XAssignment#isStaticWithDeclaringType <em>Static With Declaring Type</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXAssignment()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXAssignment()
  * @model
  * @generated
  */
@@ -45,7 +45,7 @@ public interface XAssignment extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assignable</em>' containment reference.
 	 * @see #setAssignable(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAssignment_Assignable()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAssignment_Assignable()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -71,7 +71,7 @@ public interface XAssignment extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAssignment_Value()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAssignment_Value()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -97,7 +97,7 @@ public interface XAssignment extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Explicit Static</em>' attribute.
 	 * @see #setExplicitStatic(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAssignment_ExplicitStatic()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAssignment_ExplicitStatic()
 	 * @model
 	 * @generated
 	 */
@@ -123,7 +123,7 @@ public interface XAssignment extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Static With Declaring Type</em>' attribute.
 	 * @see #setStaticWithDeclaringType(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAssignment_StaticWithDeclaringType()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAssignment_StaticWithDeclaringType()
 	 * @model transient="true" derived="true"
 	 * @generated
 	 */

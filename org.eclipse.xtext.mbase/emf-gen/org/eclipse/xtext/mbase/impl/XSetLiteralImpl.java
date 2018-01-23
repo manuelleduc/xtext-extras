@@ -9,8 +9,8 @@ package org.eclipse.xtext.mbase.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XSetLiteral;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +39,7 @@ public class XSetLiteralImpl extends XCollectionLiteralImpl implements XSetLiter
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XSET_LITERAL;
+		return MbasePackage.Literals.XSET_LITERAL;
 	}
 
 } //XSetLiteralImpl

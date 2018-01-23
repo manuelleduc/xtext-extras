@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -206,7 +206,7 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XMEMBER_FEATURE_CALL;
+		return MbasePackage.Literals.XMEMBER_FEATURE_CALL;
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 		memberCallTarget = newMemberCallTarget;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET, oldMemberCallTarget, newMemberCallTarget);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET, oldMemberCallTarget, newMemberCallTarget);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -247,14 +247,14 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 		{
 			NotificationChain msgs = null;
 			if (memberCallTarget != null)
-				msgs = ((InternalEObject)memberCallTarget).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET, null, msgs);
+				msgs = ((InternalEObject)memberCallTarget).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET, null, msgs);
 			if (newMemberCallTarget != null)
-				msgs = ((InternalEObject)newMemberCallTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET, null, msgs);
+				msgs = ((InternalEObject)newMemberCallTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET, null, msgs);
 			msgs = basicSetMemberCallTarget(newMemberCallTarget, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET, newMemberCallTarget, newMemberCallTarget));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET, newMemberCallTarget, newMemberCallTarget));
 	}
 
 	/**
@@ -266,7 +266,7 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 	{
 		if (memberCallArguments == null)
 		{
-			memberCallArguments = new EObjectContainmentEList<XExpression>(XExpression.class, this, mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS);
+			memberCallArguments = new EObjectContainmentEList<XExpression>(XExpression.class, this, MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS);
 		}
 		return memberCallArguments;
 	}
@@ -291,7 +291,7 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 		boolean oldExplicitOperationCall = explicitOperationCall;
 		explicitOperationCall = newExplicitOperationCall;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_OPERATION_CALL, oldExplicitOperationCall, explicitOperationCall));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_OPERATION_CALL, oldExplicitOperationCall, explicitOperationCall));
 	}
 
 	/**
@@ -314,7 +314,7 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 		boolean oldExplicitStatic = explicitStatic;
 		explicitStatic = newExplicitStatic;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_STATIC, oldExplicitStatic, explicitStatic));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_STATIC, oldExplicitStatic, explicitStatic));
 	}
 
 	/**
@@ -337,7 +337,7 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 		boolean oldNullSafe = nullSafe;
 		nullSafe = newNullSafe;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XMEMBER_FEATURE_CALL__NULL_SAFE, oldNullSafe, nullSafe));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XMEMBER_FEATURE_CALL__NULL_SAFE, oldNullSafe, nullSafe));
 	}
 
 	/**
@@ -360,7 +360,7 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 		boolean oldTypeLiteral = typeLiteral;
 		typeLiteral = newTypeLiteral;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XMEMBER_FEATURE_CALL__TYPE_LITERAL, oldTypeLiteral, typeLiteral));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XMEMBER_FEATURE_CALL__TYPE_LITERAL, oldTypeLiteral, typeLiteral));
 	}
 
 	/**
@@ -383,7 +383,7 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 		boolean oldStaticWithDeclaringType = staticWithDeclaringType;
 		staticWithDeclaringType = newStaticWithDeclaringType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XMEMBER_FEATURE_CALL__STATIC_WITH_DECLARING_TYPE, oldStaticWithDeclaringType, staticWithDeclaringType));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XMEMBER_FEATURE_CALL__STATIC_WITH_DECLARING_TYPE, oldStaticWithDeclaringType, staticWithDeclaringType));
 	}
 
 	/**
@@ -406,7 +406,7 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 		boolean oldPackageFragment = packageFragment;
 		packageFragment = newPackageFragment;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XMEMBER_FEATURE_CALL__PACKAGE_FRAGMENT, oldPackageFragment, packageFragment));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XMEMBER_FEATURE_CALL__PACKAGE_FRAGMENT, oldPackageFragment, packageFragment));
 	}
 
 	/**
@@ -419,9 +419,9 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET:
+			case MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET:
 				return basicSetMemberCallTarget(null, msgs);
-			case mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS:
+			case MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS:
 				return ((InternalEList<?>)getMemberCallArguments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -437,21 +437,21 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET:
+			case MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET:
 				return getMemberCallTarget();
-			case mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS:
+			case MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS:
 				return getMemberCallArguments();
-			case mbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_OPERATION_CALL:
+			case MbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_OPERATION_CALL:
 				return isExplicitOperationCall();
-			case mbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_STATIC:
+			case MbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_STATIC:
 				return isExplicitStatic();
-			case mbasePackage.XMEMBER_FEATURE_CALL__NULL_SAFE:
+			case MbasePackage.XMEMBER_FEATURE_CALL__NULL_SAFE:
 				return isNullSafe();
-			case mbasePackage.XMEMBER_FEATURE_CALL__TYPE_LITERAL:
+			case MbasePackage.XMEMBER_FEATURE_CALL__TYPE_LITERAL:
 				return isTypeLiteral();
-			case mbasePackage.XMEMBER_FEATURE_CALL__STATIC_WITH_DECLARING_TYPE:
+			case MbasePackage.XMEMBER_FEATURE_CALL__STATIC_WITH_DECLARING_TYPE:
 				return isStaticWithDeclaringType();
-			case mbasePackage.XMEMBER_FEATURE_CALL__PACKAGE_FRAGMENT:
+			case MbasePackage.XMEMBER_FEATURE_CALL__PACKAGE_FRAGMENT:
 				return isPackageFragment();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -468,29 +468,29 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET:
+			case MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET:
 				setMemberCallTarget((XExpression)newValue);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS:
+			case MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS:
 				getMemberCallArguments().clear();
 				getMemberCallArguments().addAll((Collection<? extends XExpression>)newValue);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_OPERATION_CALL:
+			case MbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_OPERATION_CALL:
 				setExplicitOperationCall((Boolean)newValue);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_STATIC:
+			case MbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_STATIC:
 				setExplicitStatic((Boolean)newValue);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__NULL_SAFE:
+			case MbasePackage.XMEMBER_FEATURE_CALL__NULL_SAFE:
 				setNullSafe((Boolean)newValue);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__TYPE_LITERAL:
+			case MbasePackage.XMEMBER_FEATURE_CALL__TYPE_LITERAL:
 				setTypeLiteral((Boolean)newValue);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__STATIC_WITH_DECLARING_TYPE:
+			case MbasePackage.XMEMBER_FEATURE_CALL__STATIC_WITH_DECLARING_TYPE:
 				setStaticWithDeclaringType((Boolean)newValue);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__PACKAGE_FRAGMENT:
+			case MbasePackage.XMEMBER_FEATURE_CALL__PACKAGE_FRAGMENT:
 				setPackageFragment((Boolean)newValue);
 				return;
 		}
@@ -507,28 +507,28 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET:
+			case MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET:
 				setMemberCallTarget((XExpression)null);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS:
+			case MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS:
 				getMemberCallArguments().clear();
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_OPERATION_CALL:
+			case MbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_OPERATION_CALL:
 				setExplicitOperationCall(EXPLICIT_OPERATION_CALL_EDEFAULT);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_STATIC:
+			case MbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_STATIC:
 				setExplicitStatic(EXPLICIT_STATIC_EDEFAULT);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__NULL_SAFE:
+			case MbasePackage.XMEMBER_FEATURE_CALL__NULL_SAFE:
 				setNullSafe(NULL_SAFE_EDEFAULT);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__TYPE_LITERAL:
+			case MbasePackage.XMEMBER_FEATURE_CALL__TYPE_LITERAL:
 				setTypeLiteral(TYPE_LITERAL_EDEFAULT);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__STATIC_WITH_DECLARING_TYPE:
+			case MbasePackage.XMEMBER_FEATURE_CALL__STATIC_WITH_DECLARING_TYPE:
 				setStaticWithDeclaringType(STATIC_WITH_DECLARING_TYPE_EDEFAULT);
 				return;
-			case mbasePackage.XMEMBER_FEATURE_CALL__PACKAGE_FRAGMENT:
+			case MbasePackage.XMEMBER_FEATURE_CALL__PACKAGE_FRAGMENT:
 				setPackageFragment(PACKAGE_FRAGMENT_EDEFAULT);
 				return;
 		}
@@ -545,21 +545,21 @@ public class XMemberFeatureCallImpl extends XAbstractFeatureCallImplCustom imple
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET:
+			case MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET:
 				return memberCallTarget != null;
-			case mbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS:
+			case MbasePackage.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS:
 				return memberCallArguments != null && !memberCallArguments.isEmpty();
-			case mbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_OPERATION_CALL:
+			case MbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_OPERATION_CALL:
 				return explicitOperationCall != EXPLICIT_OPERATION_CALL_EDEFAULT;
-			case mbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_STATIC:
+			case MbasePackage.XMEMBER_FEATURE_CALL__EXPLICIT_STATIC:
 				return explicitStatic != EXPLICIT_STATIC_EDEFAULT;
-			case mbasePackage.XMEMBER_FEATURE_CALL__NULL_SAFE:
+			case MbasePackage.XMEMBER_FEATURE_CALL__NULL_SAFE:
 				return nullSafe != NULL_SAFE_EDEFAULT;
-			case mbasePackage.XMEMBER_FEATURE_CALL__TYPE_LITERAL:
+			case MbasePackage.XMEMBER_FEATURE_CALL__TYPE_LITERAL:
 				return typeLiteral != TYPE_LITERAL_EDEFAULT;
-			case mbasePackage.XMEMBER_FEATURE_CALL__STATIC_WITH_DECLARING_TYPE:
+			case MbasePackage.XMEMBER_FEATURE_CALL__STATIC_WITH_DECLARING_TYPE:
 				return staticWithDeclaringType != STATIC_WITH_DECLARING_TYPE_EDEFAULT;
-			case mbasePackage.XMEMBER_FEATURE_CALL__PACKAGE_FRAGMENT:
+			case MbasePackage.XMEMBER_FEATURE_CALL__PACKAGE_FRAGMENT:
 				return packageFragment != PACKAGE_FRAGMENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XCatchClause;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,7 +76,7 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XCATCH_CLAUSE;
+		return MbasePackage.Literals.XCATCH_CLAUSE;
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 		expression = newExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XCATCH_CLAUSE__EXPRESSION, oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XCATCH_CLAUSE__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -117,14 +117,14 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 		{
 			NotificationChain msgs = null;
 			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCATCH_CLAUSE__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCATCH_CLAUSE__EXPRESSION, null, msgs);
 			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCATCH_CLAUSE__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCATCH_CLAUSE__EXPRESSION, null, msgs);
 			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCATCH_CLAUSE__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCATCH_CLAUSE__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 		declaredParam = newDeclaredParam;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XCATCH_CLAUSE__DECLARED_PARAM, oldDeclaredParam, newDeclaredParam);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XCATCH_CLAUSE__DECLARED_PARAM, oldDeclaredParam, newDeclaredParam);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -165,14 +165,14 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 		{
 			NotificationChain msgs = null;
 			if (declaredParam != null)
-				msgs = ((InternalEObject)declaredParam).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCATCH_CLAUSE__DECLARED_PARAM, null, msgs);
+				msgs = ((InternalEObject)declaredParam).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCATCH_CLAUSE__DECLARED_PARAM, null, msgs);
 			if (newDeclaredParam != null)
-				msgs = ((InternalEObject)newDeclaredParam).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCATCH_CLAUSE__DECLARED_PARAM, null, msgs);
+				msgs = ((InternalEObject)newDeclaredParam).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCATCH_CLAUSE__DECLARED_PARAM, null, msgs);
 			msgs = basicSetDeclaredParam(newDeclaredParam, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCATCH_CLAUSE__DECLARED_PARAM, newDeclaredParam, newDeclaredParam));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCATCH_CLAUSE__DECLARED_PARAM, newDeclaredParam, newDeclaredParam));
 	}
 
 	/**
@@ -185,9 +185,9 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCATCH_CLAUSE__EXPRESSION:
+			case MbasePackage.XCATCH_CLAUSE__EXPRESSION:
 				return basicSetExpression(null, msgs);
-			case mbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
+			case MbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				return basicSetDeclaredParam(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -203,9 +203,9 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCATCH_CLAUSE__EXPRESSION:
+			case MbasePackage.XCATCH_CLAUSE__EXPRESSION:
 				return getExpression();
-			case mbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
+			case MbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				return getDeclaredParam();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -221,10 +221,10 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCATCH_CLAUSE__EXPRESSION:
+			case MbasePackage.XCATCH_CLAUSE__EXPRESSION:
 				setExpression((XExpression)newValue);
 				return;
-			case mbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
+			case MbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				setDeclaredParam((JvmFormalParameter)newValue);
 				return;
 		}
@@ -241,10 +241,10 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCATCH_CLAUSE__EXPRESSION:
+			case MbasePackage.XCATCH_CLAUSE__EXPRESSION:
 				setExpression((XExpression)null);
 				return;
-			case mbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
+			case MbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				setDeclaredParam((JvmFormalParameter)null);
 				return;
 		}
@@ -261,9 +261,9 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCATCH_CLAUSE__EXPRESSION:
+			case MbasePackage.XCATCH_CLAUSE__EXPRESSION:
 				return expression != null;
-			case mbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
+			case MbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				return declaredParam != null;
 		}
 		return super.eIsSet(featureID);

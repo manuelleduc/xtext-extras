@@ -30,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.xtext.mbase.XFeatureCall#isPackageFragment <em>Package Fragment</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXFeatureCall()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXFeatureCall()
  * @model
  * @generated
  */
@@ -46,7 +46,7 @@ public interface XFeatureCall extends XAbstractFeatureCall
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Feature Call Arguments</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXFeatureCall_FeatureCallArguments()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXFeatureCall_FeatureCallArguments()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -62,7 +62,7 @@ public interface XFeatureCall extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Explicit Operation Call</em>' attribute.
 	 * @see #setExplicitOperationCall(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXFeatureCall_ExplicitOperationCall()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXFeatureCall_ExplicitOperationCall()
 	 * @model
 	 * @generated
 	 */
@@ -88,7 +88,7 @@ public interface XFeatureCall extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type Literal</em>' attribute.
 	 * @see #setTypeLiteral(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXFeatureCall_TypeLiteral()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXFeatureCall_TypeLiteral()
 	 * @model transient="true" derived="true"
 	 * @generated
 	 */
@@ -114,7 +114,7 @@ public interface XFeatureCall extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Package Fragment</em>' attribute.
 	 * @see #setPackageFragment(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXFeatureCall_PackageFragment()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXFeatureCall_PackageFragment()
 	 * @model transient="true" derived="true"
 	 * @generated
 	 */

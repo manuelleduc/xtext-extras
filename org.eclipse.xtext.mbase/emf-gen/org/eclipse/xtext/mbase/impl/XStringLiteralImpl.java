@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XStringLiteral;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,7 +69,7 @@ public class XStringLiteralImpl extends XExpressionImpl implements XStringLitera
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XSTRING_LITERAL;
+		return MbasePackage.Literals.XSTRING_LITERAL;
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class XStringLiteralImpl extends XExpressionImpl implements XStringLitera
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XSTRING_LITERAL__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XSTRING_LITERAL__VALUE, oldValue, value));
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class XStringLiteralImpl extends XExpressionImpl implements XStringLitera
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSTRING_LITERAL__VALUE:
+			case MbasePackage.XSTRING_LITERAL__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class XStringLiteralImpl extends XExpressionImpl implements XStringLitera
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSTRING_LITERAL__VALUE:
+			case MbasePackage.XSTRING_LITERAL__VALUE:
 				setValue((String)newValue);
 				return;
 		}
@@ -138,7 +138,7 @@ public class XStringLiteralImpl extends XExpressionImpl implements XStringLitera
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSTRING_LITERAL__VALUE:
+			case MbasePackage.XSTRING_LITERAL__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -155,7 +155,7 @@ public class XStringLiteralImpl extends XExpressionImpl implements XStringLitera
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSTRING_LITERAL__VALUE:
+			case MbasePackage.XSTRING_LITERAL__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);

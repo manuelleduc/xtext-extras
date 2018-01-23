@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XBinaryOperation;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -94,7 +94,7 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XBINARY_OPERATION;
+		return MbasePackage.Literals.XBINARY_OPERATION;
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 		leftOperand = newLeftOperand;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XBINARY_OPERATION__LEFT_OPERAND, oldLeftOperand, newLeftOperand);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XBINARY_OPERATION__LEFT_OPERAND, oldLeftOperand, newLeftOperand);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -135,14 +135,14 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 		{
 			NotificationChain msgs = null;
 			if (leftOperand != null)
-				msgs = ((InternalEObject)leftOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XBINARY_OPERATION__LEFT_OPERAND, null, msgs);
+				msgs = ((InternalEObject)leftOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XBINARY_OPERATION__LEFT_OPERAND, null, msgs);
 			if (newLeftOperand != null)
-				msgs = ((InternalEObject)newLeftOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XBINARY_OPERATION__LEFT_OPERAND, null, msgs);
+				msgs = ((InternalEObject)newLeftOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XBINARY_OPERATION__LEFT_OPERAND, null, msgs);
 			msgs = basicSetLeftOperand(newLeftOperand, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XBINARY_OPERATION__LEFT_OPERAND, newLeftOperand, newLeftOperand));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XBINARY_OPERATION__LEFT_OPERAND, newLeftOperand, newLeftOperand));
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 		rightOperand = newRightOperand;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XBINARY_OPERATION__RIGHT_OPERAND, oldRightOperand, newRightOperand);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XBINARY_OPERATION__RIGHT_OPERAND, oldRightOperand, newRightOperand);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -183,14 +183,14 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 		{
 			NotificationChain msgs = null;
 			if (rightOperand != null)
-				msgs = ((InternalEObject)rightOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XBINARY_OPERATION__RIGHT_OPERAND, null, msgs);
+				msgs = ((InternalEObject)rightOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XBINARY_OPERATION__RIGHT_OPERAND, null, msgs);
 			if (newRightOperand != null)
-				msgs = ((InternalEObject)newRightOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XBINARY_OPERATION__RIGHT_OPERAND, null, msgs);
+				msgs = ((InternalEObject)newRightOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XBINARY_OPERATION__RIGHT_OPERAND, null, msgs);
 			msgs = basicSetRightOperand(newRightOperand, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XBINARY_OPERATION__RIGHT_OPERAND, newRightOperand, newRightOperand));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XBINARY_OPERATION__RIGHT_OPERAND, newRightOperand, newRightOperand));
 	}
 
 	/**
@@ -213,7 +213,7 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 		boolean oldReassignFirstArgument = reassignFirstArgument;
 		reassignFirstArgument = newReassignFirstArgument;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT, oldReassignFirstArgument, reassignFirstArgument));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT, oldReassignFirstArgument, reassignFirstArgument));
 	}
 
 	/**
@@ -226,9 +226,9 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBINARY_OPERATION__LEFT_OPERAND:
+			case MbasePackage.XBINARY_OPERATION__LEFT_OPERAND:
 				return basicSetLeftOperand(null, msgs);
-			case mbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
+			case MbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
 				return basicSetRightOperand(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -244,11 +244,11 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBINARY_OPERATION__LEFT_OPERAND:
+			case MbasePackage.XBINARY_OPERATION__LEFT_OPERAND:
 				return getLeftOperand();
-			case mbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
+			case MbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
 				return getRightOperand();
-			case mbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
+			case MbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
 				return isReassignFirstArgument();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -264,13 +264,13 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBINARY_OPERATION__LEFT_OPERAND:
+			case MbasePackage.XBINARY_OPERATION__LEFT_OPERAND:
 				setLeftOperand((XExpression)newValue);
 				return;
-			case mbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
+			case MbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
 				setRightOperand((XExpression)newValue);
 				return;
-			case mbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
+			case MbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
 				setReassignFirstArgument((Boolean)newValue);
 				return;
 		}
@@ -287,13 +287,13 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBINARY_OPERATION__LEFT_OPERAND:
+			case MbasePackage.XBINARY_OPERATION__LEFT_OPERAND:
 				setLeftOperand((XExpression)null);
 				return;
-			case mbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
+			case MbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
 				setRightOperand((XExpression)null);
 				return;
-			case mbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
+			case MbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
 				setReassignFirstArgument(REASSIGN_FIRST_ARGUMENT_EDEFAULT);
 				return;
 		}
@@ -310,11 +310,11 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBINARY_OPERATION__LEFT_OPERAND:
+			case MbasePackage.XBINARY_OPERATION__LEFT_OPERAND:
 				return leftOperand != null;
-			case mbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
+			case MbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
 				return rightOperand != null;
-			case mbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
+			case MbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
 				return reassignFirstArgument != REASSIGN_FIRST_ARGUMENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

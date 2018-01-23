@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.xtext.mbase.XTryCatchFinallyExpression#getCatchClauses <em>Catch Clauses</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXTryCatchFinallyExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXTryCatchFinallyExpression()
  * @model
  * @generated
  */
@@ -45,7 +45,7 @@ public interface XTryCatchFinallyExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXTryCatchFinallyExpression_Expression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXTryCatchFinallyExpression_Expression()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -71,7 +71,7 @@ public interface XTryCatchFinallyExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Finally Expression</em>' containment reference.
 	 * @see #setFinallyExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXTryCatchFinallyExpression_FinallyExpression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXTryCatchFinallyExpression_FinallyExpression()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -97,7 +97,7 @@ public interface XTryCatchFinallyExpression extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Catch Clauses</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXTryCatchFinallyExpression_CatchClauses()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXTryCatchFinallyExpression_CatchClauses()
 	 * @model containment="true"
 	 * @generated
 	 */

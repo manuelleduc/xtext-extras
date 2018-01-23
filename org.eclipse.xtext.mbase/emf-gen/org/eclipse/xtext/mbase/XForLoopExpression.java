@@ -29,7 +29,7 @@ import org.eclipse.xtext.common.types.JvmFormalParameter;
  *   <li>{@link org.eclipse.xtext.mbase.XForLoopExpression#getDeclaredParam <em>Declared Param</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXForLoopExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXForLoopExpression()
  * @model
  * @generated
  */
@@ -45,7 +45,7 @@ public interface XForLoopExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>For Expression</em>' containment reference.
 	 * @see #setForExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXForLoopExpression_ForExpression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXForLoopExpression_ForExpression()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -71,7 +71,7 @@ public interface XForLoopExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Each Expression</em>' containment reference.
 	 * @see #setEachExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXForLoopExpression_EachExpression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXForLoopExpression_EachExpression()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -97,7 +97,7 @@ public interface XForLoopExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Declared Param</em>' containment reference.
 	 * @see #setDeclaredParam(JvmFormalParameter)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXForLoopExpression_DeclaredParam()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXForLoopExpression_DeclaredParam()
 	 * @model containment="true"
 	 * @generated
 	 */

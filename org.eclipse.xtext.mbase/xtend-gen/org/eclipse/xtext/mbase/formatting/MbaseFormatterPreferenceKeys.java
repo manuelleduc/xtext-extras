@@ -13,7 +13,7 @@ import org.eclipse.xtext.mbase.formatting.WhitespaceKey;
  */
 @Deprecated
 @SuppressWarnings("all")
-public class mbaseFormatterPreferenceKeys extends BasicFormatterPreferenceKeys {
+public class MbaseFormatterPreferenceKeys extends BasicFormatterPreferenceKeys {
   public final static IntegerKey preserveBlankLines = new IntegerKey("preserve.blank.lines", Integer.valueOf(1));
   
   public final static BlankLineKey blankLinesAroundExpression = new BlankLineKey("blank.line.around.expressions", Integer.valueOf(0));

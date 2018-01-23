@@ -34,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.xtext.mbase.XMemberFeatureCall#isPackageFragment <em>Package Fragment</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXMemberFeatureCall()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXMemberFeatureCall()
  * @model
  * @generated
  */
@@ -50,7 +50,7 @@ public interface XMemberFeatureCall extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Member Call Target</em>' containment reference.
 	 * @see #setMemberCallTarget(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXMemberFeatureCall_MemberCallTarget()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXMemberFeatureCall_MemberCallTarget()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -76,7 +76,7 @@ public interface XMemberFeatureCall extends XAbstractFeatureCall
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Member Call Arguments</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXMemberFeatureCall_MemberCallArguments()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXMemberFeatureCall_MemberCallArguments()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -92,7 +92,7 @@ public interface XMemberFeatureCall extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Explicit Operation Call</em>' attribute.
 	 * @see #setExplicitOperationCall(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXMemberFeatureCall_ExplicitOperationCall()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXMemberFeatureCall_ExplicitOperationCall()
 	 * @model
 	 * @generated
 	 */
@@ -118,7 +118,7 @@ public interface XMemberFeatureCall extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Explicit Static</em>' attribute.
 	 * @see #setExplicitStatic(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXMemberFeatureCall_ExplicitStatic()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXMemberFeatureCall_ExplicitStatic()
 	 * @model
 	 * @generated
 	 */
@@ -144,7 +144,7 @@ public interface XMemberFeatureCall extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Null Safe</em>' attribute.
 	 * @see #setNullSafe(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXMemberFeatureCall_NullSafe()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXMemberFeatureCall_NullSafe()
 	 * @model
 	 * @generated
 	 */
@@ -170,7 +170,7 @@ public interface XMemberFeatureCall extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type Literal</em>' attribute.
 	 * @see #setTypeLiteral(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXMemberFeatureCall_TypeLiteral()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXMemberFeatureCall_TypeLiteral()
 	 * @model transient="true" derived="true"
 	 * @generated
 	 */
@@ -196,7 +196,7 @@ public interface XMemberFeatureCall extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Static With Declaring Type</em>' attribute.
 	 * @see #setStaticWithDeclaringType(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXMemberFeatureCall_StaticWithDeclaringType()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXMemberFeatureCall_StaticWithDeclaringType()
 	 * @model transient="true" derived="true"
 	 * @generated
 	 */
@@ -222,7 +222,7 @@ public interface XMemberFeatureCall extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Package Fragment</em>' attribute.
 	 * @see #setPackageFragment(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXMemberFeatureCall_PackageFragment()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXMemberFeatureCall_PackageFragment()
 	 * @model transient="true" derived="true"
 	 * @generated
 	 */

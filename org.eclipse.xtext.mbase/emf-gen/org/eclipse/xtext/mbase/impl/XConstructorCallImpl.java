@@ -25,9 +25,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XConstructorCall;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -178,7 +178,7 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XCONSTRUCTOR_CALL;
+		return MbasePackage.Literals.XCONSTRUCTOR_CALL;
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 			if (constructor != oldConstructor)
 			{
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, mbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR, oldConstructor, constructor));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR, oldConstructor, constructor));
 			}
 		}
 		return constructor;
@@ -221,7 +221,7 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 		JvmConstructor oldConstructor = constructor;
 		constructor = newConstructor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR, oldConstructor, constructor));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR, oldConstructor, constructor));
 	}
 
 	/**
@@ -233,7 +233,7 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 	{
 		if (arguments == null)
 		{
-			arguments = new EObjectContainmentEList<XExpression>(XExpression.class, this, mbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS);
+			arguments = new EObjectContainmentEList<XExpression>(XExpression.class, this, MbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS);
 		}
 		return arguments;
 	}
@@ -247,7 +247,7 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 	{
 		if (typeArguments == null)
 		{
-			typeArguments = new EObjectContainmentEList<JvmTypeReference>(JvmTypeReference.class, this, mbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS);
+			typeArguments = new EObjectContainmentEList<JvmTypeReference>(JvmTypeReference.class, this, MbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS);
 		}
 		return typeArguments;
 	}
@@ -272,7 +272,7 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 		String oldInvalidFeatureIssueCode = invalidFeatureIssueCode;
 		invalidFeatureIssueCode = newInvalidFeatureIssueCode;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE, oldInvalidFeatureIssueCode, invalidFeatureIssueCode));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE, oldInvalidFeatureIssueCode, invalidFeatureIssueCode));
 	}
 
 	/**
@@ -305,7 +305,7 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 		boolean oldExplicitConstructorCall = explicitConstructorCall;
 		explicitConstructorCall = newExplicitConstructorCall;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCONSTRUCTOR_CALL__EXPLICIT_CONSTRUCTOR_CALL, oldExplicitConstructorCall, explicitConstructorCall));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCONSTRUCTOR_CALL__EXPLICIT_CONSTRUCTOR_CALL, oldExplicitConstructorCall, explicitConstructorCall));
 	}
 
 	/**
@@ -328,7 +328,7 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 		boolean oldAnonymousClassConstructorCall = anonymousClassConstructorCall;
 		anonymousClassConstructorCall = newAnonymousClassConstructorCall;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCONSTRUCTOR_CALL__ANONYMOUS_CLASS_CONSTRUCTOR_CALL, oldAnonymousClassConstructorCall, anonymousClassConstructorCall));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCONSTRUCTOR_CALL__ANONYMOUS_CLASS_CONSTRUCTOR_CALL, oldAnonymousClassConstructorCall, anonymousClassConstructorCall));
 	}
 
 	/**
@@ -341,9 +341,9 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS:
+			case MbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS:
 				return ((InternalEList<?>)getArguments()).basicRemove(otherEnd, msgs);
-			case mbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS:
+			case MbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS:
 				return ((InternalEList<?>)getTypeArguments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -359,20 +359,20 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR:
+			case MbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR:
 				if (resolve) return getConstructor();
 				return basicGetConstructor();
-			case mbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS:
+			case MbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS:
 				return getArguments();
-			case mbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS:
+			case MbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS:
 				return getTypeArguments();
-			case mbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE:
+			case MbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE:
 				return getInvalidFeatureIssueCode();
-			case mbasePackage.XCONSTRUCTOR_CALL__VALID_FEATURE:
+			case MbasePackage.XCONSTRUCTOR_CALL__VALID_FEATURE:
 				return isValidFeature();
-			case mbasePackage.XCONSTRUCTOR_CALL__EXPLICIT_CONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL__EXPLICIT_CONSTRUCTOR_CALL:
 				return isExplicitConstructorCall();
-			case mbasePackage.XCONSTRUCTOR_CALL__ANONYMOUS_CLASS_CONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL__ANONYMOUS_CLASS_CONSTRUCTOR_CALL:
 				return isAnonymousClassConstructorCall();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -389,24 +389,24 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR:
+			case MbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR:
 				setConstructor((JvmConstructor)newValue);
 				return;
-			case mbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS:
+			case MbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS:
 				getArguments().clear();
 				getArguments().addAll((Collection<? extends XExpression>)newValue);
 				return;
-			case mbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS:
+			case MbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS:
 				getTypeArguments().clear();
 				getTypeArguments().addAll((Collection<? extends JvmTypeReference>)newValue);
 				return;
-			case mbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE:
+			case MbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE:
 				setInvalidFeatureIssueCode((String)newValue);
 				return;
-			case mbasePackage.XCONSTRUCTOR_CALL__EXPLICIT_CONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL__EXPLICIT_CONSTRUCTOR_CALL:
 				setExplicitConstructorCall((Boolean)newValue);
 				return;
-			case mbasePackage.XCONSTRUCTOR_CALL__ANONYMOUS_CLASS_CONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL__ANONYMOUS_CLASS_CONSTRUCTOR_CALL:
 				setAnonymousClassConstructorCall((Boolean)newValue);
 				return;
 		}
@@ -423,22 +423,22 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR:
+			case MbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR:
 				setConstructor((JvmConstructor)null);
 				return;
-			case mbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS:
+			case MbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS:
 				getArguments().clear();
 				return;
-			case mbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS:
+			case MbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS:
 				getTypeArguments().clear();
 				return;
-			case mbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE:
+			case MbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE:
 				setInvalidFeatureIssueCode(INVALID_FEATURE_ISSUE_CODE_EDEFAULT);
 				return;
-			case mbasePackage.XCONSTRUCTOR_CALL__EXPLICIT_CONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL__EXPLICIT_CONSTRUCTOR_CALL:
 				setExplicitConstructorCall(EXPLICIT_CONSTRUCTOR_CALL_EDEFAULT);
 				return;
-			case mbasePackage.XCONSTRUCTOR_CALL__ANONYMOUS_CLASS_CONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL__ANONYMOUS_CLASS_CONSTRUCTOR_CALL:
 				setAnonymousClassConstructorCall(ANONYMOUS_CLASS_CONSTRUCTOR_CALL_EDEFAULT);
 				return;
 		}
@@ -455,19 +455,19 @@ public class XConstructorCallImpl extends XExpressionImpl implements XConstructo
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR:
+			case MbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR:
 				return constructor != null;
-			case mbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS:
+			case MbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS:
 				return arguments != null && !arguments.isEmpty();
-			case mbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS:
+			case MbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS:
 				return typeArguments != null && !typeArguments.isEmpty();
-			case mbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE:
+			case MbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE:
 				return INVALID_FEATURE_ISSUE_CODE_EDEFAULT == null ? invalidFeatureIssueCode != null : !INVALID_FEATURE_ISSUE_CODE_EDEFAULT.equals(invalidFeatureIssueCode);
-			case mbasePackage.XCONSTRUCTOR_CALL__VALID_FEATURE:
+			case MbasePackage.XCONSTRUCTOR_CALL__VALID_FEATURE:
 				return validFeature != VALID_FEATURE_EDEFAULT;
-			case mbasePackage.XCONSTRUCTOR_CALL__EXPLICIT_CONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL__EXPLICIT_CONSTRUCTOR_CALL:
 				return explicitConstructorCall != EXPLICIT_CONSTRUCTOR_CALL_EDEFAULT;
-			case mbasePackage.XCONSTRUCTOR_CALL__ANONYMOUS_CLASS_CONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL__ANONYMOUS_CLASS_CONSTRUCTOR_CALL:
 				return anonymousClassConstructorCall != ANONYMOUS_CLASS_CONSTRUCTOR_CALL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

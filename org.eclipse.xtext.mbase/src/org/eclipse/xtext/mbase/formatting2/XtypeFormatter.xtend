@@ -16,7 +16,7 @@ import org.eclipse.xtext.xtype.XFunctionTypeRef
 import org.eclipse.xtext.xtype.XImportDeclaration
 import org.eclipse.xtext.xtype.XImportSection
 
-import static org.eclipse.xtext.mbase.formatting2.mbaseFormatterPreferenceKeys.*
+import static org.eclipse.xtext.mbase.formatting2.MbaseFormatterPreferenceKeys.*
 import static org.eclipse.xtext.xtype.XtypePackage.Literals.*
 
 /**

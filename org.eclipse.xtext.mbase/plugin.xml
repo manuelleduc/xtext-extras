@@ -11,10 +11,18 @@
 	
   </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Mbase -->
+      <package
+            uri="http://www.eclipse.org/xtext/mbase/Mbase"
+            class="org.eclipse.xtext.mbase.MbasePackage"
+            genModel="model/Mbase.genmodel"/>
+   </extension>
+
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http://www.eclipse.org/xtext/mbase/mbase" 
+       uri = "http://www.eclipse.org/xtext/mbase/Mbase" 
        class = "org.eclipse.xtext.mbase.mbasePackage"
        genModel = "model/mbase.genmodel" /> 
 	

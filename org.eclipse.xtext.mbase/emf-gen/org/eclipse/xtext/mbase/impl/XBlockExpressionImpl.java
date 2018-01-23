@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XBlockExpression;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -66,7 +66,7 @@ public class XBlockExpressionImpl extends XExpressionImpl implements XBlockExpre
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XBLOCK_EXPRESSION;
+		return MbasePackage.Literals.XBLOCK_EXPRESSION;
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class XBlockExpressionImpl extends XExpressionImpl implements XBlockExpre
 	{
 		if (expressions == null)
 		{
-			expressions = new EObjectContainmentEList<XExpression>(XExpression.class, this, mbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS);
+			expressions = new EObjectContainmentEList<XExpression>(XExpression.class, this, MbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS);
 		}
 		return expressions;
 	}
@@ -93,7 +93,7 @@ public class XBlockExpressionImpl extends XExpressionImpl implements XBlockExpre
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS:
+			case MbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS:
 				return ((InternalEList<?>)getExpressions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -109,7 +109,7 @@ public class XBlockExpressionImpl extends XExpressionImpl implements XBlockExpre
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS:
+			case MbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS:
 				return getExpressions();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -126,7 +126,7 @@ public class XBlockExpressionImpl extends XExpressionImpl implements XBlockExpre
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS:
+			case MbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS:
 				getExpressions().clear();
 				getExpressions().addAll((Collection<? extends XExpression>)newValue);
 				return;
@@ -144,7 +144,7 @@ public class XBlockExpressionImpl extends XExpressionImpl implements XBlockExpre
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS:
+			case MbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS:
 				getExpressions().clear();
 				return;
 		}
@@ -161,7 +161,7 @@ public class XBlockExpressionImpl extends XExpressionImpl implements XBlockExpre
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS:
+			case MbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS:
 				return expressions != null && !expressions.isEmpty();
 		}
 		return super.eIsSet(featureID);

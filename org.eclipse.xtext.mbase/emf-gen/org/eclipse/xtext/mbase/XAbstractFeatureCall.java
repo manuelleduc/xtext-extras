@@ -35,7 +35,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.eclipse.xtext.mbase.XAbstractFeatureCall#getImplicitFirstArgument <em>Implicit First Argument</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXAbstractFeatureCall()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXAbstractFeatureCall()
  * @model abstract="true"
  * @generated
  */
@@ -51,7 +51,7 @@ public interface XAbstractFeatureCall extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Feature</em>' reference.
 	 * @see #setFeature(JvmIdentifiableElement)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAbstractFeatureCall_Feature()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAbstractFeatureCall_Feature()
 	 * @model
 	 * @generated
 	 */
@@ -77,7 +77,7 @@ public interface XAbstractFeatureCall extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type Arguments</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAbstractFeatureCall_TypeArguments()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAbstractFeatureCall_TypeArguments()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -93,7 +93,7 @@ public interface XAbstractFeatureCall extends XExpression
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Implicit Receiver</em>' containment reference.
 	 * @see #setImplicitReceiver(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAbstractFeatureCall_ImplicitReceiver()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAbstractFeatureCall_ImplicitReceiver()
 	 * @model containment="true" transient="true" derived="true"
 	 * @generated
 	 */
@@ -118,7 +118,7 @@ public interface XAbstractFeatureCall extends XExpression
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Invalid Feature Issue Code</em>' attribute.
 	 * @see #setInvalidFeatureIssueCode(String)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAbstractFeatureCall_InvalidFeatureIssueCode()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAbstractFeatureCall_InvalidFeatureIssueCode()
 	 * @model transient="true"
 	 * @generated
 	 */
@@ -142,7 +142,7 @@ public interface XAbstractFeatureCall extends XExpression
 	 * @deprecated Will be removed shortly
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Valid Feature</em>' attribute.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAbstractFeatureCall_ValidFeature()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAbstractFeatureCall_ValidFeature()
 	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
@@ -158,7 +158,7 @@ public interface XAbstractFeatureCall extends XExpression
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Implicit First Argument</em>' containment reference.
 	 * @see #setImplicitFirstArgument(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAbstractFeatureCall_ImplicitFirstArgument()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAbstractFeatureCall_ImplicitFirstArgument()
 	 * @model containment="true" transient="true" derived="true"
 	 * @generated
 	 */

@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XAbstractWhileExpression;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,7 +73,7 @@ public abstract class XAbstractWhileExpressionImpl extends XExpressionImpl imple
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION;
+		return MbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION;
 	}
 
 	/**
@@ -97,7 +97,7 @@ public abstract class XAbstractWhileExpressionImpl extends XExpressionImpl imple
 		predicate = newPredicate;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE, oldPredicate, newPredicate);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE, oldPredicate, newPredicate);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -114,14 +114,14 @@ public abstract class XAbstractWhileExpressionImpl extends XExpressionImpl imple
 		{
 			NotificationChain msgs = null;
 			if (predicate != null)
-				msgs = ((InternalEObject)predicate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE, null, msgs);
+				msgs = ((InternalEObject)predicate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE, null, msgs);
 			if (newPredicate != null)
-				msgs = ((InternalEObject)newPredicate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE, null, msgs);
+				msgs = ((InternalEObject)newPredicate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE, null, msgs);
 			msgs = basicSetPredicate(newPredicate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE, newPredicate, newPredicate));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE, newPredicate, newPredicate));
 	}
 
 	/**
@@ -145,7 +145,7 @@ public abstract class XAbstractWhileExpressionImpl extends XExpressionImpl imple
 		body = newBody;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY, oldBody, newBody);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY, oldBody, newBody);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -162,14 +162,14 @@ public abstract class XAbstractWhileExpressionImpl extends XExpressionImpl imple
 		{
 			NotificationChain msgs = null;
 			if (body != null)
-				msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY, null, msgs);
+				msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY, null, msgs);
 			if (newBody != null)
-				msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY, null, msgs);
+				msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY, null, msgs);
 			msgs = basicSetBody(newBody, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY, newBody, newBody));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY, newBody, newBody));
 	}
 
 	/**
@@ -182,9 +182,9 @@ public abstract class XAbstractWhileExpressionImpl extends XExpressionImpl imple
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE:
 				return basicSetPredicate(null, msgs);
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY:
 				return basicSetBody(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -200,9 +200,9 @@ public abstract class XAbstractWhileExpressionImpl extends XExpressionImpl imple
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE:
 				return getPredicate();
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY:
 				return getBody();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -218,10 +218,10 @@ public abstract class XAbstractWhileExpressionImpl extends XExpressionImpl imple
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE:
 				setPredicate((XExpression)newValue);
 				return;
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY:
 				setBody((XExpression)newValue);
 				return;
 		}
@@ -238,10 +238,10 @@ public abstract class XAbstractWhileExpressionImpl extends XExpressionImpl imple
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE:
 				setPredicate((XExpression)null);
 				return;
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY:
 				setBody((XExpression)null);
 				return;
 		}
@@ -258,9 +258,9 @@ public abstract class XAbstractWhileExpressionImpl extends XExpressionImpl imple
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION__PREDICATE:
 				return predicate != null;
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION__BODY:
 				return body != null;
 		}
 		return super.eIsSet(featureID);

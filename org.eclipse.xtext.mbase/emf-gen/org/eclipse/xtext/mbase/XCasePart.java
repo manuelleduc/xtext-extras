@@ -32,7 +32,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.eclipse.xtext.mbase.XCasePart#isFallThrough <em>Fall Through</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXCasePart()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXCasePart()
  * @model
  * @generated
  */
@@ -48,7 +48,7 @@ public interface XCasePart extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Case</em>' containment reference.
 	 * @see #setCase(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXCasePart_Case()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXCasePart_Case()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -74,7 +74,7 @@ public interface XCasePart extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Then</em>' containment reference.
 	 * @see #setThen(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXCasePart_Then()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXCasePart_Then()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -100,7 +100,7 @@ public interface XCasePart extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type Guard</em>' containment reference.
 	 * @see #setTypeGuard(JvmTypeReference)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXCasePart_TypeGuard()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXCasePart_TypeGuard()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -126,7 +126,7 @@ public interface XCasePart extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fall Through</em>' attribute.
 	 * @see #setFallThrough(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXCasePart_FallThrough()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXCasePart_FallThrough()
 	 * @model
 	 * @generated
 	 */

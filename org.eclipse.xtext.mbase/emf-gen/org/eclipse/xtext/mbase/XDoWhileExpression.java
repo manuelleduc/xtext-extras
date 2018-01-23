@@ -20,7 +20,7 @@ package org.eclipse.xtext.mbase;
  * <!-- end-model-doc -->
  *
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXDoWhileExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXDoWhileExpression()
  * @model
  * @generated
  */

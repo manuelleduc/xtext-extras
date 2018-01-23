@@ -9,8 +9,8 @@ package org.eclipse.xtext.mbase.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XListLiteral;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +39,7 @@ public class XListLiteralImpl extends XCollectionLiteralImpl implements XListLit
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XLIST_LITERAL;
+		return MbasePackage.Literals.XLIST_LITERAL;
 	}
 
 } //XListLiteralImpl

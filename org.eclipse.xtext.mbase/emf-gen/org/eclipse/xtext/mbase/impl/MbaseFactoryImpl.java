@@ -23,7 +23,7 @@ import org.eclipse.xtext.mbase.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class mbaseFactoryImpl extends EFactoryImpl implements mbaseFactory
+public class MbaseFactoryImpl extends EFactoryImpl implements MbaseFactory
 {
 	/**
 	 * Creates the default factory implementation.
@@ -31,21 +31,21 @@ public class mbaseFactoryImpl extends EFactoryImpl implements mbaseFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static mbaseFactory init()
+	public static MbaseFactory init()
 	{
 		try
 		{
-			mbaseFactory thembaseFactory = (mbaseFactory)EPackage.Registry.INSTANCE.getEFactory(mbasePackage.eNS_URI);
-			if (thembaseFactory != null)
+			MbaseFactory theMbaseFactory = (MbaseFactory)EPackage.Registry.INSTANCE.getEFactory(MbasePackage.eNS_URI);
+			if (theMbaseFactory != null)
 			{
-				return thembaseFactory;
+				return theMbaseFactory;
 			}
 		}
 		catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new mbaseFactoryImpl();
+		return new MbaseFactoryImpl();
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class mbaseFactoryImpl extends EFactoryImpl implements mbaseFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public mbaseFactoryImpl()
+	public MbaseFactoryImpl()
 	{
 		super();
 	}
@@ -69,37 +69,37 @@ public class mbaseFactoryImpl extends EFactoryImpl implements mbaseFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case mbasePackage.XIF_EXPRESSION: return createXIfExpression();
-			case mbasePackage.XSWITCH_EXPRESSION: return createXSwitchExpression();
-			case mbasePackage.XCASE_PART: return createXCasePart();
-			case mbasePackage.XBLOCK_EXPRESSION: return createXBlockExpression();
-			case mbasePackage.XVARIABLE_DECLARATION: return createXVariableDeclaration();
-			case mbasePackage.XMEMBER_FEATURE_CALL: return createXMemberFeatureCall();
-			case mbasePackage.XFEATURE_CALL: return createXFeatureCall();
-			case mbasePackage.XCONSTRUCTOR_CALL: return createXConstructorCall();
-			case mbasePackage.XBOOLEAN_LITERAL: return createXBooleanLiteral();
-			case mbasePackage.XNULL_LITERAL: return createXNullLiteral();
-			case mbasePackage.XNUMBER_LITERAL: return createXNumberLiteral();
-			case mbasePackage.XSTRING_LITERAL: return createXStringLiteral();
-			case mbasePackage.XLIST_LITERAL: return createXListLiteral();
-			case mbasePackage.XSET_LITERAL: return createXSetLiteral();
-			case mbasePackage.XCLOSURE: return createXClosure();
-			case mbasePackage.XCASTED_EXPRESSION: return createXCastedExpression();
-			case mbasePackage.XBINARY_OPERATION: return createXBinaryOperation();
-			case mbasePackage.XUNARY_OPERATION: return createXUnaryOperation();
-			case mbasePackage.XPOSTFIX_OPERATION: return createXPostfixOperation();
-			case mbasePackage.XFOR_LOOP_EXPRESSION: return createXForLoopExpression();
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION: return createXBasicForLoopExpression();
-			case mbasePackage.XDO_WHILE_EXPRESSION: return createXDoWhileExpression();
-			case mbasePackage.XWHILE_EXPRESSION: return createXWhileExpression();
-			case mbasePackage.XTYPE_LITERAL: return createXTypeLiteral();
-			case mbasePackage.XINSTANCE_OF_EXPRESSION: return createXInstanceOfExpression();
-			case mbasePackage.XTHROW_EXPRESSION: return createXThrowExpression();
-			case mbasePackage.XTRY_CATCH_FINALLY_EXPRESSION: return createXTryCatchFinallyExpression();
-			case mbasePackage.XCATCH_CLAUSE: return createXCatchClause();
-			case mbasePackage.XASSIGNMENT: return createXAssignment();
-			case mbasePackage.XRETURN_EXPRESSION: return createXReturnExpression();
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION: return createXSynchronizedExpression();
+			case MbasePackage.XIF_EXPRESSION: return createXIfExpression();
+			case MbasePackage.XSWITCH_EXPRESSION: return createXSwitchExpression();
+			case MbasePackage.XCASE_PART: return createXCasePart();
+			case MbasePackage.XBLOCK_EXPRESSION: return createXBlockExpression();
+			case MbasePackage.XVARIABLE_DECLARATION: return createXVariableDeclaration();
+			case MbasePackage.XMEMBER_FEATURE_CALL: return createXMemberFeatureCall();
+			case MbasePackage.XFEATURE_CALL: return createXFeatureCall();
+			case MbasePackage.XCONSTRUCTOR_CALL: return createXConstructorCall();
+			case MbasePackage.XBOOLEAN_LITERAL: return createXBooleanLiteral();
+			case MbasePackage.XNULL_LITERAL: return createXNullLiteral();
+			case MbasePackage.XNUMBER_LITERAL: return createXNumberLiteral();
+			case MbasePackage.XSTRING_LITERAL: return createXStringLiteral();
+			case MbasePackage.XLIST_LITERAL: return createXListLiteral();
+			case MbasePackage.XSET_LITERAL: return createXSetLiteral();
+			case MbasePackage.XCLOSURE: return createXClosure();
+			case MbasePackage.XCASTED_EXPRESSION: return createXCastedExpression();
+			case MbasePackage.XBINARY_OPERATION: return createXBinaryOperation();
+			case MbasePackage.XUNARY_OPERATION: return createXUnaryOperation();
+			case MbasePackage.XPOSTFIX_OPERATION: return createXPostfixOperation();
+			case MbasePackage.XFOR_LOOP_EXPRESSION: return createXForLoopExpression();
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION: return createXBasicForLoopExpression();
+			case MbasePackage.XDO_WHILE_EXPRESSION: return createXDoWhileExpression();
+			case MbasePackage.XWHILE_EXPRESSION: return createXWhileExpression();
+			case MbasePackage.XTYPE_LITERAL: return createXTypeLiteral();
+			case MbasePackage.XINSTANCE_OF_EXPRESSION: return createXInstanceOfExpression();
+			case MbasePackage.XTHROW_EXPRESSION: return createXThrowExpression();
+			case MbasePackage.XTRY_CATCH_FINALLY_EXPRESSION: return createXTryCatchFinallyExpression();
+			case MbasePackage.XCATCH_CLAUSE: return createXCatchClause();
+			case MbasePackage.XASSIGNMENT: return createXAssignment();
+			case MbasePackage.XRETURN_EXPRESSION: return createXReturnExpression();
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION: return createXSynchronizedExpression();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -451,9 +451,9 @@ public class mbaseFactoryImpl extends EFactoryImpl implements mbaseFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public mbasePackage getmbasePackage()
+	public MbasePackage getMbasePackage()
 	{
-		return (mbasePackage)getEPackage();
+		return (MbasePackage)getEPackage();
 	}
 
 	/**
@@ -463,9 +463,9 @@ public class mbaseFactoryImpl extends EFactoryImpl implements mbaseFactory
 	 * @generated
 	 */
 	@Deprecated
-	public static mbasePackage getPackage()
+	public static MbasePackage getPackage()
 	{
-		return mbasePackage.eINSTANCE;
+		return MbasePackage.eINSTANCE;
 	}
 
-} //mbaseFactoryImpl
+} //MbaseFactoryImpl

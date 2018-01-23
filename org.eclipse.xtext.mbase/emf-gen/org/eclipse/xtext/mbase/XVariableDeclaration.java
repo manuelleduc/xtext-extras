@@ -31,7 +31,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.eclipse.xtext.mbase.XVariableDeclaration#isWriteable <em>Writeable</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXVariableDeclaration()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXVariableDeclaration()
  * @model
  * @generated
  */
@@ -47,7 +47,7 @@ public interface XVariableDeclaration extends XExpression, JvmIdentifiableElemen
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(JvmTypeReference)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXVariableDeclaration_Type()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXVariableDeclaration_Type()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -73,7 +73,7 @@ public interface XVariableDeclaration extends XExpression, JvmIdentifiableElemen
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXVariableDeclaration_Name()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXVariableDeclaration_Name()
 	 * @model
 	 * @generated
 	 */
@@ -99,7 +99,7 @@ public interface XVariableDeclaration extends XExpression, JvmIdentifiableElemen
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Right</em>' containment reference.
 	 * @see #setRight(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXVariableDeclaration_Right()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXVariableDeclaration_Right()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -125,7 +125,7 @@ public interface XVariableDeclaration extends XExpression, JvmIdentifiableElemen
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Writeable</em>' attribute.
 	 * @see #setWriteable(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXVariableDeclaration_Writeable()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXVariableDeclaration_Writeable()
 	 * @model
 	 * @generated
 	 */

@@ -17,7 +17,7 @@ public abstract class AbstractMbaseValidator extends AbstractDeclarativeValidato
 	@Override
 	protected List<EPackage> getEPackages() {
 		List<EPackage> result = new ArrayList<EPackage>();
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/mbase/mbase"));
+		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/mbase/Mbase"));
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/common/JavaVMTypes"));
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/mbase/Xtype"));
 		return result;

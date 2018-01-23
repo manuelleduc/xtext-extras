@@ -6,7 +6,7 @@ import org.eclipse.xtext.nodemodel.INode
 import org.eclipse.xtext.preferences.PreferenceKey
 import org.eclipse.xtext.xbase.lib.util.ToStringBuilder
 
-import static org.eclipse.xtext.mbase.formatting.mbaseFormatterPreferenceKeys.*
+import static org.eclipse.xtext.mbase.formatting.MbaseFormatterPreferenceKeys.*
 
 /**
  * @deprecated use {@link IHiddenRegionFormatter}

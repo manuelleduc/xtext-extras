@@ -66,11 +66,11 @@ import org.eclipse.xtext.mbase.XVariableDeclaration;
 import org.eclipse.xtext.mbase.XWhileExpression;
 import org.eclipse.xtext.mbase.formatting2.ArrayBracketsFormattingReplacer;
 import org.eclipse.xtext.mbase.formatting2.IndentOnceAutowrapFormatter;
+import org.eclipse.xtext.mbase.formatting2.MbaseFormatterPreferenceKeys;
 import org.eclipse.xtext.mbase.formatting2.ObjectEntry;
 import org.eclipse.xtext.mbase.formatting2.SeparatorEntry;
 import org.eclipse.xtext.mbase.formatting2.SeparatorRegions;
 import org.eclipse.xtext.mbase.formatting2.XtypeFormatter;
-import org.eclipse.xtext.mbase.formatting2.mbaseFormatterPreferenceKeys;
 import org.eclipse.xtext.mbase.services.MbaseGrammarAccess;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -595,9 +595,9 @@ public class MbaseFormatter extends XtypeFormatter {
     };
     format.<XExpression>surround(expr.getParam(), _function_1);
     if (((expr.getExpression() instanceof XBlockExpression) || multiline)) {
-      format.append(this.textRegionExtensions.regionFor(expr).keyword("synchronized"), mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
+      format.append(this.textRegionExtensions.regionFor(expr).keyword("synchronized"), MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
     } else {
-      format.append(this.textRegionExtensions.regionFor(expr).keyword("synchronized"), mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisSL);
+      format.append(this.textRegionExtensions.regionFor(expr).keyword("synchronized"), MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisSL);
     }
     format.<XExpression>format(expr.getParam());
     this.formatBody(expr.getExpression(), false, format);
@@ -617,9 +617,9 @@ public class MbaseFormatter extends XtypeFormatter {
     };
     format.<XExpression>surround(expr.getIf(), _function_1);
     if (((expr.getThen() instanceof XBlockExpression) || multiline)) {
-      format.append(this.textRegionExtensions.regionFor(expr).keyword("if"), mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
+      format.append(this.textRegionExtensions.regionFor(expr).keyword("if"), MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
     } else {
-      format.append(this.textRegionExtensions.regionFor(expr).keyword("if"), mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisSL);
+      format.append(this.textRegionExtensions.regionFor(expr).keyword("if"), MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisSL);
     }
     format.<XExpression>format(expr.getIf());
     XExpression _else = expr.getElse();
@@ -717,7 +717,7 @@ public class MbaseFormatter extends XtypeFormatter {
   }
   
   protected void _format(final XWhileExpression expr, @Extension final IFormattableDocument format) {
-    format.append(this.textRegionExtensions.regionFor(expr).keyword("while"), mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
+    format.append(this.textRegionExtensions.regionFor(expr).keyword("while"), MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
@@ -729,7 +729,7 @@ public class MbaseFormatter extends XtypeFormatter {
   }
   
   protected void _format(final XDoWhileExpression expr, @Extension final IFormattableDocument format) {
-    format.append(this.textRegionExtensions.regionFor(expr).keyword("while"), mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
+    format.append(this.textRegionExtensions.regionFor(expr).keyword("while"), MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
@@ -824,7 +824,7 @@ public class MbaseFormatter extends XtypeFormatter {
     EList<XCatchClause> _catchClauses = expr.getCatchClauses();
     for (final XCatchClause cc : _catchClauses) {
       {
-        format.append(this.textRegionExtensions.regionFor(cc).keyword("catch"), mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
+        format.append(this.textRegionExtensions.regionFor(cc).keyword("catch"), MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
         final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
           it.noSpace();
         };
@@ -927,7 +927,7 @@ public class MbaseFormatter extends XtypeFormatter {
       }
     } else {
       if (caseSL) {
-        format.prepend(open, mbaseFormatterPreferenceKeys.bracesInNewLine);
+        format.prepend(open, MbaseFormatterPreferenceKeys.bracesInNewLine);
         boolean _isEmpty = expr.getCases().isEmpty();
         boolean _not = (!_isEmpty);
         if (_not) {
@@ -982,7 +982,7 @@ public class MbaseFormatter extends XtypeFormatter {
         final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
           it.newLine();
         };
-        format.append(format.prepend(open, mbaseFormatterPreferenceKeys.bracesInNewLine), _function_12);
+        format.append(format.prepend(open, MbaseFormatterPreferenceKeys.bracesInNewLine), _function_12);
         if (((!expr.getCases().isEmpty()) || (expr.getDefault() != null))) {
           final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
             it.indent();
@@ -1211,7 +1211,7 @@ public class MbaseFormatter extends XtypeFormatter {
       return;
     }
     if ((expr instanceof XBlockExpression)) {
-      doc.<XBlockExpression>prepend(((XBlockExpression)expr), mbaseFormatterPreferenceKeys.bracesInNewLine);
+      doc.<XBlockExpression>prepend(((XBlockExpression)expr), MbaseFormatterPreferenceKeys.bracesInNewLine);
     } else {
       if ((forceMultiline || this.textRegionExtensions.previousHiddenRegion(expr).isMultiline())) {
         final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
@@ -1236,7 +1236,7 @@ public class MbaseFormatter extends XtypeFormatter {
       return;
     }
     if ((expr instanceof XBlockExpression)) {
-      doc.<XBlockExpression>append(doc.<XBlockExpression>prepend(((XBlockExpression)expr), mbaseFormatterPreferenceKeys.bracesInNewLine), mbaseFormatterPreferenceKeys.bracesInNewLine);
+      doc.<XBlockExpression>append(doc.<XBlockExpression>prepend(((XBlockExpression)expr), MbaseFormatterPreferenceKeys.bracesInNewLine), MbaseFormatterPreferenceKeys.bracesInNewLine);
     } else {
       if ((forceMultiline || this.textRegionExtensions.previousHiddenRegion(expr).isMultiline())) {
         final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
@@ -1267,7 +1267,7 @@ public class MbaseFormatter extends XtypeFormatter {
       final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
         it.newLine();
       };
-      doc.<XBlockExpression>append(doc.<XBlockExpression>prepend(((XBlockExpression)expr), mbaseFormatterPreferenceKeys.bracesInNewLine), _function);
+      doc.<XBlockExpression>append(doc.<XBlockExpression>prepend(((XBlockExpression)expr), MbaseFormatterPreferenceKeys.bracesInNewLine), _function);
     } else {
       final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
         it.newLine();
@@ -1321,7 +1321,7 @@ public class MbaseFormatter extends XtypeFormatter {
       };
       format.append(open, _function_1);
     } else {
-      format.append(open, mbaseFormatterPreferenceKeys.blankLinesAroundExpression);
+      format.append(open, MbaseFormatterPreferenceKeys.blankLinesAroundExpression);
       for (final XExpression child : expressions) {
         {
           format.<XExpression>format(child);
@@ -1330,9 +1330,9 @@ public class MbaseFormatter extends XtypeFormatter {
             final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
               it.noSpace();
             };
-            format.append(format.prepend(sem, _function_2), mbaseFormatterPreferenceKeys.blankLinesAroundExpression);
+            format.append(format.prepend(sem, _function_2), MbaseFormatterPreferenceKeys.blankLinesAroundExpression);
           } else {
-            format.<XExpression>append(child, mbaseFormatterPreferenceKeys.blankLinesAroundExpression);
+            format.<XExpression>append(child, MbaseFormatterPreferenceKeys.blankLinesAroundExpression);
           }
         }
       }

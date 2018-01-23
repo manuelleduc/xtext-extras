@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XCastedExpression;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,7 +75,7 @@ public class XCastedExpressionImpl extends XExpressionImpl implements XCastedExp
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XCASTED_EXPRESSION;
+		return MbasePackage.Literals.XCASTED_EXPRESSION;
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class XCastedExpressionImpl extends XExpressionImpl implements XCastedExp
 		type = newType;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XCASTED_EXPRESSION__TYPE, oldType, newType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XCASTED_EXPRESSION__TYPE, oldType, newType);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -116,14 +116,14 @@ public class XCastedExpressionImpl extends XExpressionImpl implements XCastedExp
 		{
 			NotificationChain msgs = null;
 			if (type != null)
-				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCASTED_EXPRESSION__TYPE, null, msgs);
+				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCASTED_EXPRESSION__TYPE, null, msgs);
 			if (newType != null)
-				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCASTED_EXPRESSION__TYPE, null, msgs);
+				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCASTED_EXPRESSION__TYPE, null, msgs);
 			msgs = basicSetType(newType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCASTED_EXPRESSION__TYPE, newType, newType));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCASTED_EXPRESSION__TYPE, newType, newType));
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class XCastedExpressionImpl extends XExpressionImpl implements XCastedExp
 		target = newTarget;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XCASTED_EXPRESSION__TARGET, oldTarget, newTarget);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XCASTED_EXPRESSION__TARGET, oldTarget, newTarget);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -164,14 +164,14 @@ public class XCastedExpressionImpl extends XExpressionImpl implements XCastedExp
 		{
 			NotificationChain msgs = null;
 			if (target != null)
-				msgs = ((InternalEObject)target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCASTED_EXPRESSION__TARGET, null, msgs);
+				msgs = ((InternalEObject)target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCASTED_EXPRESSION__TARGET, null, msgs);
 			if (newTarget != null)
-				msgs = ((InternalEObject)newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCASTED_EXPRESSION__TARGET, null, msgs);
+				msgs = ((InternalEObject)newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCASTED_EXPRESSION__TARGET, null, msgs);
 			msgs = basicSetTarget(newTarget, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCASTED_EXPRESSION__TARGET, newTarget, newTarget));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCASTED_EXPRESSION__TARGET, newTarget, newTarget));
 	}
 
 	/**
@@ -184,9 +184,9 @@ public class XCastedExpressionImpl extends XExpressionImpl implements XCastedExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCASTED_EXPRESSION__TYPE:
+			case MbasePackage.XCASTED_EXPRESSION__TYPE:
 				return basicSetType(null, msgs);
-			case mbasePackage.XCASTED_EXPRESSION__TARGET:
+			case MbasePackage.XCASTED_EXPRESSION__TARGET:
 				return basicSetTarget(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -202,9 +202,9 @@ public class XCastedExpressionImpl extends XExpressionImpl implements XCastedExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCASTED_EXPRESSION__TYPE:
+			case MbasePackage.XCASTED_EXPRESSION__TYPE:
 				return getType();
-			case mbasePackage.XCASTED_EXPRESSION__TARGET:
+			case MbasePackage.XCASTED_EXPRESSION__TARGET:
 				return getTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -220,10 +220,10 @@ public class XCastedExpressionImpl extends XExpressionImpl implements XCastedExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCASTED_EXPRESSION__TYPE:
+			case MbasePackage.XCASTED_EXPRESSION__TYPE:
 				setType((JvmTypeReference)newValue);
 				return;
-			case mbasePackage.XCASTED_EXPRESSION__TARGET:
+			case MbasePackage.XCASTED_EXPRESSION__TARGET:
 				setTarget((XExpression)newValue);
 				return;
 		}
@@ -240,10 +240,10 @@ public class XCastedExpressionImpl extends XExpressionImpl implements XCastedExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCASTED_EXPRESSION__TYPE:
+			case MbasePackage.XCASTED_EXPRESSION__TYPE:
 				setType((JvmTypeReference)null);
 				return;
-			case mbasePackage.XCASTED_EXPRESSION__TARGET:
+			case MbasePackage.XCASTED_EXPRESSION__TARGET:
 				setTarget((XExpression)null);
 				return;
 		}
@@ -260,9 +260,9 @@ public class XCastedExpressionImpl extends XExpressionImpl implements XCastedExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCASTED_EXPRESSION__TYPE:
+			case MbasePackage.XCASTED_EXPRESSION__TYPE:
 				return type != null;
-			case mbasePackage.XCASTED_EXPRESSION__TARGET:
+			case MbasePackage.XCASTED_EXPRESSION__TARGET:
 				return target != null;
 		}
 		return super.eIsSet(featureID);

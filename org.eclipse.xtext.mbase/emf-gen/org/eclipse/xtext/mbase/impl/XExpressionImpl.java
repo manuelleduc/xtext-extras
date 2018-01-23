@@ -11,8 +11,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +41,7 @@ public abstract class XExpressionImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XEXPRESSION;
+		return MbasePackage.Literals.XEXPRESSION;
 	}
 
 } //XExpressionImpl

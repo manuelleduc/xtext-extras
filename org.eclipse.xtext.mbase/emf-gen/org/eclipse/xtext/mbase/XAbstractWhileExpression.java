@@ -27,7 +27,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XAbstractWhileExpression#getBody <em>Body</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXAbstractWhileExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXAbstractWhileExpression()
  * @model abstract="true"
  * @generated
  */
@@ -43,7 +43,7 @@ public interface XAbstractWhileExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Predicate</em>' containment reference.
 	 * @see #setPredicate(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAbstractWhileExpression_Predicate()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAbstractWhileExpression_Predicate()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -69,7 +69,7 @@ public interface XAbstractWhileExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Body</em>' containment reference.
 	 * @see #setBody(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXAbstractWhileExpression_Body()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXAbstractWhileExpression_Body()
 	 * @model containment="true"
 	 * @generated
 	 */

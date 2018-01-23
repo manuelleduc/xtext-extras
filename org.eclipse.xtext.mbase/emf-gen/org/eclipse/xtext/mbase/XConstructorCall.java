@@ -36,7 +36,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.eclipse.xtext.mbase.XConstructorCall#isAnonymousClassConstructorCall <em>Anonymous Class Constructor Call</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXConstructorCall()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXConstructorCall()
  * @model
  * @generated
  */
@@ -52,7 +52,7 @@ public interface XConstructorCall extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Constructor</em>' reference.
 	 * @see #setConstructor(JvmConstructor)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXConstructorCall_Constructor()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXConstructorCall_Constructor()
 	 * @model
 	 * @generated
 	 */
@@ -78,7 +78,7 @@ public interface XConstructorCall extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Arguments</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXConstructorCall_Arguments()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXConstructorCall_Arguments()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -94,7 +94,7 @@ public interface XConstructorCall extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type Arguments</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXConstructorCall_TypeArguments()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXConstructorCall_TypeArguments()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -110,7 +110,7 @@ public interface XConstructorCall extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Invalid Feature Issue Code</em>' attribute.
 	 * @see #setInvalidFeatureIssueCode(String)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXConstructorCall_InvalidFeatureIssueCode()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXConstructorCall_InvalidFeatureIssueCode()
 	 * @model transient="true"
 	 * @generated
 	 */
@@ -135,7 +135,7 @@ public interface XConstructorCall extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Valid Feature</em>' attribute.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXConstructorCall_ValidFeature()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXConstructorCall_ValidFeature()
 	 * @model transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
@@ -151,7 +151,7 @@ public interface XConstructorCall extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Explicit Constructor Call</em>' attribute.
 	 * @see #setExplicitConstructorCall(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXConstructorCall_ExplicitConstructorCall()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXConstructorCall_ExplicitConstructorCall()
 	 * @model
 	 * @generated
 	 */
@@ -177,7 +177,7 @@ public interface XConstructorCall extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Anonymous Class Constructor Call</em>' attribute.
 	 * @see #setAnonymousClassConstructorCall(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXConstructorCall_AnonymousClassConstructorCall()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXConstructorCall_AnonymousClassConstructorCall()
 	 * @model transient="true"
 	 * @generated
 	 */

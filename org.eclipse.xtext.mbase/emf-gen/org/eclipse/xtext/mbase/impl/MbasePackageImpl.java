@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.common.types.TypesPackage;
 
+import org.eclipse.xtext.mbase.MbaseFactory;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XAbstractWhileExpression;
 import org.eclipse.xtext.mbase.XAssignment;
@@ -56,9 +58,6 @@ import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsPackage;
 
 import org.eclipse.xtext.mbase.annotations.xAnnotations.impl.XAnnotationsPackageImpl;
 
-import org.eclipse.xtext.mbase.mbaseFactory;
-import org.eclipse.xtext.mbase.mbasePackage;
-
 import org.eclipse.xtext.xtype.XtypePackage;
 
 import org.eclipse.xtext.xtype.impl.XtypePackageImpl;
@@ -69,7 +68,7 @@ import org.eclipse.xtext.xtype.impl.XtypePackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class mbasePackageImpl extends EPackageImpl implements mbasePackage
+public class MbasePackageImpl extends EPackageImpl implements MbasePackage
 {
 	/**
 	 * <!-- begin-user-doc -->
@@ -327,13 +326,13 @@ public class mbasePackageImpl extends EPackageImpl implements mbasePackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.eclipse.xtext.mbase.mbasePackage#eNS_URI
+	 * @see org.eclipse.xtext.mbase.MbasePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private mbasePackageImpl()
+	private MbasePackageImpl()
 	{
-		super(eNS_URI, mbaseFactory.eINSTANCE);
+		super(eNS_URI, MbaseFactory.eINSTANCE);
 	}
 
 	/**
@@ -346,7 +345,7 @@ public class mbasePackageImpl extends EPackageImpl implements mbasePackage
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link mbasePackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link MbasePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -355,12 +354,12 @@ public class mbasePackageImpl extends EPackageImpl implements mbasePackage
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static mbasePackage init()
+	public static MbasePackage init()
 	{
-		if (isInited) return (mbasePackage)EPackage.Registry.INSTANCE.getEPackage(mbasePackage.eNS_URI);
+		if (isInited) return (MbasePackage)EPackage.Registry.INSTANCE.getEPackage(MbasePackage.eNS_URI);
 
 		// Obtain or create and register package
-		mbasePackageImpl thembasePackage = (mbasePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof mbasePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new mbasePackageImpl());
+		MbasePackageImpl theMbasePackage = (MbasePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MbasePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MbasePackageImpl());
 
 		isInited = true;
 
@@ -372,22 +371,22 @@ public class mbasePackageImpl extends EPackageImpl implements mbasePackage
 		XtypePackageImpl theXtypePackage = (XtypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) instanceof XtypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) : XtypePackage.eINSTANCE);
 
 		// Create package meta-data objects
-		thembasePackage.createPackageContents();
+		theMbasePackage.createPackageContents();
 		theXAnnotationsPackage.createPackageContents();
 		theXtypePackage.createPackageContents();
 
 		// Initialize created meta-data
-		thembasePackage.initializePackageContents();
+		theMbasePackage.initializePackageContents();
 		theXAnnotationsPackage.initializePackageContents();
 		theXtypePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		thembasePackage.freeze();
+		theMbasePackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(mbasePackage.eNS_URI, thembasePackage);
-		return thembasePackage;
+		EPackage.Registry.INSTANCE.put(MbasePackage.eNS_URI, theMbasePackage);
+		return theMbasePackage;
 	}
 
 	/**
@@ -1565,9 +1564,9 @@ public class mbasePackageImpl extends EPackageImpl implements mbasePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public mbaseFactory getmbaseFactory()
+	public MbaseFactory getMbaseFactory()
 	{
-		return (mbaseFactory)getEFactoryInstance();
+		return (MbaseFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -1988,4 +1987,4 @@ public class mbasePackageImpl extends EPackageImpl implements mbasePackage
 		createResource(eNS_URI);
 	}
 
-} //mbasePackageImpl
+} //MbasePackageImpl

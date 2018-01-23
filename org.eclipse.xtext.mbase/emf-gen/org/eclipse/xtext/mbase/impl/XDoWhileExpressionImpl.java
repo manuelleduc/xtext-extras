@@ -9,8 +9,8 @@ package org.eclipse.xtext.mbase.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XDoWhileExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +39,7 @@ public class XDoWhileExpressionImpl extends XAbstractWhileExpressionImpl impleme
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XDO_WHILE_EXPRESSION;
+		return MbasePackage.Literals.XDO_WHILE_EXPRESSION;
 	}
 
 } //XDoWhileExpressionImpl

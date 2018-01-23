@@ -7,7 +7,7 @@
  *******************************************************************************/
 grammar org.eclipse.xtext.mbase.annotations.MbaseWithAnnotations with org.eclipse.xtext.mbase.Mbase
 
-import "http://www.eclipse.org/xtext/mbase/mbase" as mbase
+import "http://www.eclipse.org/xtext/mbase/Mbase" as mbase
 import "http://www.eclipse.org/xtext/mbase/Xtype" as xtype
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 import "http://www.eclipse.org/Xtext/mbase/XAnnotations"

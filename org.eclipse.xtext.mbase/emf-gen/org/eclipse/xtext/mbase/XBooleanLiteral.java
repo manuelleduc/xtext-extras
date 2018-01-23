@@ -26,7 +26,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XBooleanLiteral#isIsTrue <em>Is True</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXBooleanLiteral()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXBooleanLiteral()
  * @model
  * @generated
  */
@@ -42,7 +42,7 @@ public interface XBooleanLiteral extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Is True</em>' attribute.
 	 * @see #setIsTrue(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXBooleanLiteral_IsTrue()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXBooleanLiteral_IsTrue()
 	 * @model
 	 * @generated
 	 */

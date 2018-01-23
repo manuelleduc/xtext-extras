@@ -46,7 +46,7 @@ import org.eclipse.xtext.xtype.XFunctionTypeRef
 
 import static org.eclipse.xtext.common.types.TypesPackage.Literals.*
 import static org.eclipse.xtext.mbase.MbasePackage.Literals.*
-import static org.eclipse.xtext.mbase.formatting.mbaseFormatterPreferenceKeys.*
+import static org.eclipse.xtext.mbase.formatting.MbaseFormatterPreferenceKeys.*
 
 /**
  * @deprecated use {@link mbaseFormatter}

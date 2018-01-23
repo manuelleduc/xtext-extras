@@ -52,7 +52,7 @@ import org.eclipse.xtext.mbase.XWhileExpression
 import org.eclipse.xtext.mbase.services.MbaseGrammarAccess
 
 import static org.eclipse.xtext.mbase.MbasePackage.Literals.*
-import static org.eclipse.xtext.mbase.formatting2.mbaseFormatterPreferenceKeys.*
+import static org.eclipse.xtext.mbase.formatting2.MbaseFormatterPreferenceKeys.*
 
 /**
  * @author Moritz Eysholdt - Initial implementation and API

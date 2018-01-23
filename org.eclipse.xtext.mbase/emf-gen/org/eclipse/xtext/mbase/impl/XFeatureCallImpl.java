@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XFeatureCall;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -132,7 +132,7 @@ public class XFeatureCallImpl extends XAbstractFeatureCallImplCustom implements 
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XFEATURE_CALL;
+		return MbasePackage.Literals.XFEATURE_CALL;
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class XFeatureCallImpl extends XAbstractFeatureCallImplCustom implements 
 	{
 		if (featureCallArguments == null)
 		{
-			featureCallArguments = new EObjectContainmentEList<XExpression>(XExpression.class, this, mbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS);
+			featureCallArguments = new EObjectContainmentEList<XExpression>(XExpression.class, this, MbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS);
 		}
 		return featureCallArguments;
 	}
@@ -169,7 +169,7 @@ public class XFeatureCallImpl extends XAbstractFeatureCallImplCustom implements 
 		boolean oldExplicitOperationCall = explicitOperationCall;
 		explicitOperationCall = newExplicitOperationCall;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL, oldExplicitOperationCall, explicitOperationCall));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL, oldExplicitOperationCall, explicitOperationCall));
 	}
 
 	/**
@@ -192,7 +192,7 @@ public class XFeatureCallImpl extends XAbstractFeatureCallImplCustom implements 
 		boolean oldTypeLiteral = typeLiteral;
 		typeLiteral = newTypeLiteral;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XFEATURE_CALL__TYPE_LITERAL, oldTypeLiteral, typeLiteral));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XFEATURE_CALL__TYPE_LITERAL, oldTypeLiteral, typeLiteral));
 	}
 
 	/**
@@ -215,7 +215,7 @@ public class XFeatureCallImpl extends XAbstractFeatureCallImplCustom implements 
 		boolean oldPackageFragment = packageFragment;
 		packageFragment = newPackageFragment;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XFEATURE_CALL__PACKAGE_FRAGMENT, oldPackageFragment, packageFragment));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XFEATURE_CALL__PACKAGE_FRAGMENT, oldPackageFragment, packageFragment));
 	}
 
 	/**
@@ -228,7 +228,7 @@ public class XFeatureCallImpl extends XAbstractFeatureCallImplCustom implements 
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS:
+			case MbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS:
 				return ((InternalEList<?>)getFeatureCallArguments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -244,13 +244,13 @@ public class XFeatureCallImpl extends XAbstractFeatureCallImplCustom implements 
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS:
+			case MbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS:
 				return getFeatureCallArguments();
-			case mbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL:
+			case MbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL:
 				return isExplicitOperationCall();
-			case mbasePackage.XFEATURE_CALL__TYPE_LITERAL:
+			case MbasePackage.XFEATURE_CALL__TYPE_LITERAL:
 				return isTypeLiteral();
-			case mbasePackage.XFEATURE_CALL__PACKAGE_FRAGMENT:
+			case MbasePackage.XFEATURE_CALL__PACKAGE_FRAGMENT:
 				return isPackageFragment();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -267,17 +267,17 @@ public class XFeatureCallImpl extends XAbstractFeatureCallImplCustom implements 
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS:
+			case MbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS:
 				getFeatureCallArguments().clear();
 				getFeatureCallArguments().addAll((Collection<? extends XExpression>)newValue);
 				return;
-			case mbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL:
+			case MbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL:
 				setExplicitOperationCall((Boolean)newValue);
 				return;
-			case mbasePackage.XFEATURE_CALL__TYPE_LITERAL:
+			case MbasePackage.XFEATURE_CALL__TYPE_LITERAL:
 				setTypeLiteral((Boolean)newValue);
 				return;
-			case mbasePackage.XFEATURE_CALL__PACKAGE_FRAGMENT:
+			case MbasePackage.XFEATURE_CALL__PACKAGE_FRAGMENT:
 				setPackageFragment((Boolean)newValue);
 				return;
 		}
@@ -294,16 +294,16 @@ public class XFeatureCallImpl extends XAbstractFeatureCallImplCustom implements 
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS:
+			case MbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS:
 				getFeatureCallArguments().clear();
 				return;
-			case mbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL:
+			case MbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL:
 				setExplicitOperationCall(EXPLICIT_OPERATION_CALL_EDEFAULT);
 				return;
-			case mbasePackage.XFEATURE_CALL__TYPE_LITERAL:
+			case MbasePackage.XFEATURE_CALL__TYPE_LITERAL:
 				setTypeLiteral(TYPE_LITERAL_EDEFAULT);
 				return;
-			case mbasePackage.XFEATURE_CALL__PACKAGE_FRAGMENT:
+			case MbasePackage.XFEATURE_CALL__PACKAGE_FRAGMENT:
 				setPackageFragment(PACKAGE_FRAGMENT_EDEFAULT);
 				return;
 		}
@@ -320,13 +320,13 @@ public class XFeatureCallImpl extends XAbstractFeatureCallImplCustom implements 
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS:
+			case MbasePackage.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS:
 				return featureCallArguments != null && !featureCallArguments.isEmpty();
-			case mbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL:
+			case MbasePackage.XFEATURE_CALL__EXPLICIT_OPERATION_CALL:
 				return explicitOperationCall != EXPLICIT_OPERATION_CALL_EDEFAULT;
-			case mbasePackage.XFEATURE_CALL__TYPE_LITERAL:
+			case MbasePackage.XFEATURE_CALL__TYPE_LITERAL:
 				return typeLiteral != TYPE_LITERAL_EDEFAULT;
-			case mbasePackage.XFEATURE_CALL__PACKAGE_FRAGMENT:
+			case MbasePackage.XFEATURE_CALL__PACKAGE_FRAGMENT:
 				return packageFragment != PACKAGE_FRAGMENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

@@ -32,7 +32,7 @@ import org.eclipse.xtext.common.types.JvmFormalParameter;
  *   <li>{@link org.eclipse.xtext.mbase.XSwitchExpression#getDeclaredParam <em>Declared Param</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXSwitchExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXSwitchExpression()
  * @model
  * @generated
  */
@@ -48,7 +48,7 @@ public interface XSwitchExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Switch</em>' containment reference.
 	 * @see #setSwitch(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXSwitchExpression_Switch()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXSwitchExpression_Switch()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -74,7 +74,7 @@ public interface XSwitchExpression extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cases</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXSwitchExpression_Cases()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXSwitchExpression_Cases()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -90,7 +90,7 @@ public interface XSwitchExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default</em>' containment reference.
 	 * @see #setDefault(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXSwitchExpression_Default()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXSwitchExpression_Default()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -116,7 +116,7 @@ public interface XSwitchExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Declared Param</em>' containment reference.
 	 * @see #setDeclaredParam(JvmFormalParameter)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXSwitchExpression_DeclaredParam()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXSwitchExpression_DeclaredParam()
 	 * @model containment="true"
 	 * @generated
 	 */

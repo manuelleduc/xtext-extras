@@ -18,7 +18,7 @@ public abstract class AbstractMbaseWithAnnotationsValidator extends MbaseValidat
 	protected List<EPackage> getEPackages() {
 		List<EPackage> result = new ArrayList<EPackage>(super.getEPackages());
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/Xtext/mbase/XAnnotations"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/mbase/mbase"));
+		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/mbase/Mbase"));
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/common/JavaVMTypes"));
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/xtext/mbase/Xtype"));
 		return result;

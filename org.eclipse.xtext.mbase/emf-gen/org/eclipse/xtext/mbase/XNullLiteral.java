@@ -20,7 +20,7 @@ package org.eclipse.xtext.mbase;
  * <!-- end-model-doc -->
  *
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXNullLiteral()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXNullLiteral()
  * @model
  * @generated
  */

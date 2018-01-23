@@ -26,7 +26,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XThrowExpression#getExpression <em>Expression</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXThrowExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXThrowExpression()
  * @model
  * @generated
  */
@@ -42,7 +42,7 @@ public interface XThrowExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXThrowExpression_Expression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXThrowExpression_Expression()
 	 * @model containment="true"
 	 * @generated
 	 */

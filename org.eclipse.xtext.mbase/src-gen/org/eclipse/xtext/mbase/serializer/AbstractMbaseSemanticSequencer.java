@@ -23,6 +23,7 @@ import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmUpperBound;
 import org.eclipse.xtext.common.types.JvmWildcardTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XAssignment;
 import org.eclipse.xtext.mbase.XBasicForLoopExpression;
 import org.eclipse.xtext.mbase.XBinaryOperation;
@@ -54,7 +55,6 @@ import org.eclipse.xtext.mbase.XTypeLiteral;
 import org.eclipse.xtext.mbase.XUnaryOperation;
 import org.eclipse.xtext.mbase.XVariableDeclaration;
 import org.eclipse.xtext.mbase.XWhileExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 import org.eclipse.xtext.mbase.services.MbaseGrammarAccess;
 import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
@@ -76,18 +76,18 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 		ParserRule rule = context.getParserRule();
 		Action action = context.getAssignedAction();
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
-		if (epackage == mbasePackage.eINSTANCE)
+		if (epackage == MbasePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case mbasePackage.XASSIGNMENT:
+			case MbasePackage.XASSIGNMENT:
 				sequence_XAssignment_XMemberFeatureCall(context, (XAssignment) semanticObject); 
 				return; 
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION:
 				sequence_XBasicForLoopExpression(context, (XBasicForLoopExpression) semanticObject); 
 				return; 
-			case mbasePackage.XBINARY_OPERATION:
+			case MbasePackage.XBINARY_OPERATION:
 				sequence_XAdditiveExpression_XAndExpression_XAssignment_XEqualityExpression_XMultiplicativeExpression_XOrExpression_XOtherOperatorExpression_XRelationalExpression(context, (XBinaryOperation) semanticObject); 
 				return; 
-			case mbasePackage.XBLOCK_EXPRESSION:
+			case MbasePackage.XBLOCK_EXPRESSION:
 				if (rule == grammarAccess.getXExpressionRule()
 						|| rule == grammarAccess.getXAssignmentRule()
 						|| action == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0()
@@ -126,19 +126,19 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 					return; 
 				}
 				else break;
-			case mbasePackage.XBOOLEAN_LITERAL:
+			case MbasePackage.XBOOLEAN_LITERAL:
 				sequence_XBooleanLiteral(context, (XBooleanLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XCASE_PART:
+			case MbasePackage.XCASE_PART:
 				sequence_XCasePart(context, (XCasePart) semanticObject); 
 				return; 
-			case mbasePackage.XCASTED_EXPRESSION:
+			case MbasePackage.XCASTED_EXPRESSION:
 				sequence_XCastedExpression(context, (XCastedExpression) semanticObject); 
 				return; 
-			case mbasePackage.XCATCH_CLAUSE:
+			case MbasePackage.XCATCH_CLAUSE:
 				sequence_XCatchClause(context, (XCatchClause) semanticObject); 
 				return; 
-			case mbasePackage.XCLOSURE:
+			case MbasePackage.XCLOSURE:
 				if (rule == grammarAccess.getXExpressionRule()
 						|| rule == grammarAccess.getXAssignmentRule()
 						|| action == grammarAccess.getXAssignmentAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0()
@@ -178,70 +178,70 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 					return; 
 				}
 				else break;
-			case mbasePackage.XCONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL:
 				sequence_XConstructorCall(context, (XConstructorCall) semanticObject); 
 				return; 
-			case mbasePackage.XDO_WHILE_EXPRESSION:
+			case MbasePackage.XDO_WHILE_EXPRESSION:
 				sequence_XDoWhileExpression(context, (XDoWhileExpression) semanticObject); 
 				return; 
-			case mbasePackage.XFEATURE_CALL:
+			case MbasePackage.XFEATURE_CALL:
 				sequence_XFeatureCall(context, (XFeatureCall) semanticObject); 
 				return; 
-			case mbasePackage.XFOR_LOOP_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION:
 				sequence_XForLoopExpression(context, (XForLoopExpression) semanticObject); 
 				return; 
-			case mbasePackage.XIF_EXPRESSION:
+			case MbasePackage.XIF_EXPRESSION:
 				sequence_XIfExpression(context, (XIfExpression) semanticObject); 
 				return; 
-			case mbasePackage.XINSTANCE_OF_EXPRESSION:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION:
 				sequence_XRelationalExpression(context, (XInstanceOfExpression) semanticObject); 
 				return; 
-			case mbasePackage.XLIST_LITERAL:
+			case MbasePackage.XLIST_LITERAL:
 				sequence_XListLiteral(context, (XListLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XMEMBER_FEATURE_CALL:
+			case MbasePackage.XMEMBER_FEATURE_CALL:
 				sequence_XMemberFeatureCall(context, (XMemberFeatureCall) semanticObject); 
 				return; 
-			case mbasePackage.XNULL_LITERAL:
+			case MbasePackage.XNULL_LITERAL:
 				sequence_XNullLiteral(context, (XNullLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XNUMBER_LITERAL:
+			case MbasePackage.XNUMBER_LITERAL:
 				sequence_XNumberLiteral(context, (XNumberLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XPOSTFIX_OPERATION:
+			case MbasePackage.XPOSTFIX_OPERATION:
 				sequence_XPostfixOperation(context, (XPostfixOperation) semanticObject); 
 				return; 
-			case mbasePackage.XRETURN_EXPRESSION:
+			case MbasePackage.XRETURN_EXPRESSION:
 				sequence_XReturnExpression(context, (XReturnExpression) semanticObject); 
 				return; 
-			case mbasePackage.XSET_LITERAL:
+			case MbasePackage.XSET_LITERAL:
 				sequence_XSetLiteral(context, (XSetLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XSTRING_LITERAL:
+			case MbasePackage.XSTRING_LITERAL:
 				sequence_XStringLiteral(context, (XStringLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XSWITCH_EXPRESSION:
+			case MbasePackage.XSWITCH_EXPRESSION:
 				sequence_XSwitchExpression(context, (XSwitchExpression) semanticObject); 
 				return; 
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION:
 				sequence_XSynchronizedExpression(context, (XSynchronizedExpression) semanticObject); 
 				return; 
-			case mbasePackage.XTHROW_EXPRESSION:
+			case MbasePackage.XTHROW_EXPRESSION:
 				sequence_XThrowExpression(context, (XThrowExpression) semanticObject); 
 				return; 
-			case mbasePackage.XTRY_CATCH_FINALLY_EXPRESSION:
+			case MbasePackage.XTRY_CATCH_FINALLY_EXPRESSION:
 				sequence_XTryCatchFinallyExpression(context, (XTryCatchFinallyExpression) semanticObject); 
 				return; 
-			case mbasePackage.XTYPE_LITERAL:
+			case MbasePackage.XTYPE_LITERAL:
 				sequence_XTypeLiteral(context, (XTypeLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XUNARY_OPERATION:
+			case MbasePackage.XUNARY_OPERATION:
 				sequence_XUnaryOperation(context, (XUnaryOperation) semanticObject); 
 				return; 
-			case mbasePackage.XVARIABLE_DECLARATION:
+			case MbasePackage.XVARIABLE_DECLARATION:
 				sequence_XVariableDeclaration(context, (XVariableDeclaration) semanticObject); 
 				return; 
-			case mbasePackage.XWHILE_EXPRESSION:
+			case MbasePackage.XWHILE_EXPRESSION:
 				sequence_XWhileExpression(context, (XWhileExpression) semanticObject); 
 				return; 
 			}
@@ -654,10 +654,10 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XCastedExpression(ISerializationContext context, XCastedExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XCASTED_EXPRESSION__TARGET) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XCASTED_EXPRESSION__TARGET));
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XCASTED_EXPRESSION__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XCASTED_EXPRESSION__TYPE));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XCASTED_EXPRESSION__TARGET) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XCASTED_EXPRESSION__TARGET));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XCASTED_EXPRESSION__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XCASTED_EXPRESSION__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXCastedExpressionAccess().getXCastedExpressionTargetAction_1_0_0_0(), semanticObject.getTarget());
@@ -679,10 +679,10 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XCatchClause(ISerializationContext context, XCatchClause semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XCATCH_CLAUSE__DECLARED_PARAM) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XCATCH_CLAUSE__DECLARED_PARAM));
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XCATCH_CLAUSE__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XCATCH_CLAUSE__EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XCATCH_CLAUSE__DECLARED_PARAM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XCATCH_CLAUSE__DECLARED_PARAM));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XCATCH_CLAUSE__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XCATCH_CLAUSE__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXCatchClauseAccess().getDeclaredParamFullJvmFormalParameterParserRuleCall_2_0(), semanticObject.getDeclaredParam());
@@ -832,10 +832,10 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XDoWhileExpression(ISerializationContext context, XDoWhileExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__BODY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__BODY));
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__PREDICATE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__PREDICATE));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__BODY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__BODY));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__PREDICATE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__PREDICATE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXDoWhileExpressionAccess().getBodyXExpressionParserRuleCall_2_0(), semanticObject.getBody());
@@ -952,12 +952,12 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XForLoopExpression(ISerializationContext context, XForLoopExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XFOR_LOOP_EXPRESSION__DECLARED_PARAM) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XFOR_LOOP_EXPRESSION__DECLARED_PARAM));
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION));
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XFOR_LOOP_EXPRESSION__DECLARED_PARAM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XFOR_LOOP_EXPRESSION__DECLARED_PARAM));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXForLoopExpressionAccess().getDeclaredParamJvmFormalParameterParserRuleCall_0_0_3_0(), semanticObject.getDeclaredParam());
@@ -1199,8 +1199,8 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XNumberLiteral(ISerializationContext context, XNumberLiteral semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XNUMBER_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XNUMBER_LITERAL__VALUE));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XNUMBER_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XNUMBER_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXNumberLiteralAccess().getValueNumberParserRuleCall_1_0(), semanticObject.getValue());
@@ -1249,14 +1249,14 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XPostfixOperation(ISerializationContext context, XPostfixOperation semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XPOSTFIX_OPERATION__OPERAND) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XPOSTFIX_OPERATION__OPERAND));
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XPOSTFIX_OPERATION__OPERAND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XPOSTFIX_OPERATION__OPERAND));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXPostfixOperationAccess().getXPostfixOperationOperandAction_1_0_0(), semanticObject.getOperand());
-		feeder.accept(grammarAccess.getXPostfixOperationAccess().getFeatureJvmIdentifiableElementOpPostfixParserRuleCall_1_0_1_0_1(), semanticObject.eGet(mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false));
+		feeder.accept(grammarAccess.getXPostfixOperationAccess().getFeatureJvmIdentifiableElementOpPostfixParserRuleCall_1_0_1_0_1(), semanticObject.eGet(MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false));
 		feeder.finish();
 	}
 	
@@ -1302,10 +1302,10 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XRelationalExpression(ISerializationContext context, XInstanceOfExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XINSTANCE_OF_EXPRESSION__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XINSTANCE_OF_EXPRESSION__EXPRESSION));
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XINSTANCE_OF_EXPRESSION__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XINSTANCE_OF_EXPRESSION__TYPE));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XINSTANCE_OF_EXPRESSION__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XINSTANCE_OF_EXPRESSION__EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XINSTANCE_OF_EXPRESSION__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XINSTANCE_OF_EXPRESSION__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0(), semanticObject.getExpression());
@@ -1465,8 +1465,8 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XStringLiteral(ISerializationContext context, XStringLiteral semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XSTRING_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XSTRING_LITERAL__VALUE));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XSTRING_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XSTRING_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
@@ -1565,10 +1565,10 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XSynchronizedExpression(ISerializationContext context, XSynchronizedExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XSYNCHRONIZED_EXPRESSION__PARAM) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XSYNCHRONIZED_EXPRESSION__PARAM));
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XSYNCHRONIZED_EXPRESSION__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XSYNCHRONIZED_EXPRESSION__EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XSYNCHRONIZED_EXPRESSION__PARAM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XSYNCHRONIZED_EXPRESSION__PARAM));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XSYNCHRONIZED_EXPRESSION__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XSYNCHRONIZED_EXPRESSION__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXSynchronizedExpressionAccess().getParamXExpressionParserRuleCall_1_0(), semanticObject.getParam());
@@ -1619,8 +1619,8 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XThrowExpression(ISerializationContext context, XThrowExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XTHROW_EXPRESSION__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XTHROW_EXPRESSION__EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XTHROW_EXPRESSION__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XTHROW_EXPRESSION__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXThrowExpressionAccess().getExpressionXExpressionParserRuleCall_2_0(), semanticObject.getExpression());
@@ -1760,13 +1760,13 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XUnaryOperation(ISerializationContext context, XUnaryOperation semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE));
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XUNARY_OPERATION__OPERAND) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XUNARY_OPERATION__OPERAND));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XUNARY_OPERATION__OPERAND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XUNARY_OPERATION__OPERAND));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXUnaryOperationAccess().getFeatureJvmIdentifiableElementOpUnaryParserRuleCall_0_1_0_1(), semanticObject.eGet(mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false));
+		feeder.accept(grammarAccess.getXUnaryOperationAccess().getFeatureJvmIdentifiableElementOpUnaryParserRuleCall_0_1_0_1(), semanticObject.eGet(MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false));
 		feeder.accept(grammarAccess.getXUnaryOperationAccess().getOperandXUnaryOperationParserRuleCall_0_2_0(), semanticObject.getOperand());
 		feeder.finish();
 	}
@@ -1831,10 +1831,10 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 	 */
 	protected void sequence_XWhileExpression(ISerializationContext context, XWhileExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__PREDICATE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__PREDICATE));
-			if (transientValues.isValueTransient(semanticObject, mbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__BODY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, mbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__BODY));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__PREDICATE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__PREDICATE));
+			if (transientValues.isValueTransient(semanticObject, MbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__BODY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__BODY));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXWhileExpressionAccess().getPredicateXExpressionParserRuleCall_3_0(), semanticObject.getPredicate());

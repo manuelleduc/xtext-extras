@@ -21,7 +21,7 @@ import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
 import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
 import org.eclipse.xtext.formatting2.regionaccess.ISemanticRegion;
-import org.eclipse.xtext.mbase.formatting2.mbaseFormatterPreferenceKeys;
+import org.eclipse.xtext.mbase.formatting2.MbaseFormatterPreferenceKeys;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -136,9 +136,9 @@ public class XtypeFormatter extends AbstractFormatter2 {
         XImportDeclaration _last = IterableExtensions.<XImportDeclaration>last(section.getImportDeclarations());
         boolean _notEquals = (!Objects.equal(imp, _last));
         if (_notEquals) {
-          format.<XImportDeclaration>append(imp, mbaseFormatterPreferenceKeys.blankLinesBetweenImports);
+          format.<XImportDeclaration>append(imp, MbaseFormatterPreferenceKeys.blankLinesBetweenImports);
         } else {
-          format.<XImportDeclaration>append(imp, mbaseFormatterPreferenceKeys.blankLinesAfterImports);
+          format.<XImportDeclaration>append(imp, MbaseFormatterPreferenceKeys.blankLinesAfterImports);
         }
       }
     }

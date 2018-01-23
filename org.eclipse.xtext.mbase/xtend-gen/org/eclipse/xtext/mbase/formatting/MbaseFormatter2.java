@@ -56,8 +56,8 @@ import org.eclipse.xtext.mbase.formatting.FormattingDataFactory;
 import org.eclipse.xtext.mbase.formatting.FormattingDataInit;
 import org.eclipse.xtext.mbase.formatting.HiddenLeafAccess;
 import org.eclipse.xtext.mbase.formatting.HiddenLeafs;
+import org.eclipse.xtext.mbase.formatting.MbaseFormatterPreferenceKeys;
 import org.eclipse.xtext.mbase.formatting.NodeModelAccess;
-import org.eclipse.xtext.mbase.formatting.mbaseFormatterPreferenceKeys;
 import org.eclipse.xtext.mbase.services.MbaseGrammarAccess;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
@@ -1281,13 +1281,13 @@ public class MbaseFormatter2 extends AbstractFormatter {
     format.operator_add(_surround);
     if (((expr.getExpression() instanceof XBlockExpression) || multiline)) {
       final Procedure1<FormattingDataInit> _function_3 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
+        it.cfg(MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append_2 = this._formattingDataFactory.append(this._nodeModelAccess.nodeForKeyword(expr, "synchronized"), _function_3);
       format.operator_add(_append_2);
     } else {
       final Procedure1<FormattingDataInit> _function_4 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisSL);
+        it.cfg(MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisSL);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append_3 = this._formattingDataFactory.append(this._nodeModelAccess.nodeForKeyword(expr, "synchronized"), _function_4);
       format.operator_add(_append_3);
@@ -1295,7 +1295,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
     XExpression _expression = expr.getExpression();
     if ((_expression instanceof XBlockExpression)) {
       final Procedure1<FormattingDataInit> _function_5 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend = this._formattingDataFactory.prepend(expressionnode, _function_5);
       format.operator_add(_prepend);
@@ -1398,13 +1398,13 @@ public class MbaseFormatter2 extends AbstractFormatter {
     format.operator_add(_surround);
     if (((expr.getThen() instanceof XBlockExpression) || multiline)) {
       final Procedure1<FormattingDataInit> _function_3 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
+        it.cfg(MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append_2 = this._formattingDataFactory.append(this._nodeModelAccess.nodeForKeyword(expr, "if"), _function_3);
       format.operator_add(_append_2);
     } else {
       final Procedure1<FormattingDataInit> _function_4 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisSL);
+        it.cfg(MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisSL);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append_3 = this._formattingDataFactory.append(this._nodeModelAccess.nodeForKeyword(expr, "if"), _function_4);
       format.operator_add(_append_3);
@@ -1412,7 +1412,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
     XExpression _then = expr.getThen();
     if ((_then instanceof XBlockExpression)) {
       final Procedure1<FormattingDataInit> _function_5 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend = this._formattingDataFactory.prepend(thennode, _function_5);
       format.operator_add(_prepend);
@@ -1420,7 +1420,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
       boolean _tripleNotEquals = (_else_1 != null);
       if (_tripleNotEquals) {
         final Procedure1<FormattingDataInit> _function_6 = (FormattingDataInit it) -> {
-          it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+          it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
         };
         Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append_4 = this._formattingDataFactory.append(thennode, _function_6);
         format.operator_add(_append_4);
@@ -1469,7 +1469,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
     XExpression _else_4 = expr.getElse();
     if ((_else_4 instanceof XBlockExpression)) {
       final Procedure1<FormattingDataInit> _function_12 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend_3 = this._formattingDataFactory.prepend(elsenode, _function_12);
       format.operator_add(_prepend_3);
@@ -1545,7 +1545,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
     XExpression _eachExpression = expr.getEachExpression();
     if ((_eachExpression instanceof XBlockExpression)) {
       final Procedure1<FormattingDataInit> _function_3 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend = this._formattingDataFactory.prepend(each, _function_3);
       format.operator_add(_prepend);
@@ -1702,7 +1702,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
     XExpression _eachExpression = expr.getEachExpression();
     if ((_eachExpression instanceof XBlockExpression)) {
       final Procedure1<FormattingDataInit> _function_5 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend = this._formattingDataFactory.prepend(each, _function_5);
       format.operator_add(_prepend);
@@ -1724,7 +1724,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
   
   protected void _format(final XWhileExpression expr, final FormattableDocument format) {
     final Procedure1<FormattingDataInit> _function = (FormattingDataInit it) -> {
-      it.cfg(mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
+      it.cfg(MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
     };
     Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append = this._formattingDataFactory.append(this._nodeModelAccess.nodeForKeyword(expr, "while"), _function);
     format.operator_add(_append);
@@ -1740,7 +1740,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
     XExpression _body = expr.getBody();
     if ((_body instanceof XBlockExpression)) {
       final Procedure1<FormattingDataInit> _function_3 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend = this._formattingDataFactory.prepend(body, _function_3);
       format.operator_add(_prepend);
@@ -1763,7 +1763,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
   
   protected void _format(final XDoWhileExpression expr, final FormattableDocument format) {
     final Procedure1<FormattingDataInit> _function = (FormattingDataInit it) -> {
-      it.cfg(mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
+      it.cfg(MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
     };
     Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append = this._formattingDataFactory.append(this._nodeModelAccess.nodeForKeyword(expr, "while"), _function);
     format.operator_add(_append);
@@ -1779,12 +1779,12 @@ public class MbaseFormatter2 extends AbstractFormatter {
     XExpression _body = expr.getBody();
     if ((_body instanceof XBlockExpression)) {
       final Procedure1<FormattingDataInit> _function_3 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend = this._formattingDataFactory.prepend(body, _function_3);
       format.operator_add(_prepend);
       final Procedure1<FormattingDataInit> _function_4 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append_1 = this._formattingDataFactory.append(body, _function_4);
       format.operator_add(_append_1);
@@ -1854,7 +1854,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
       } else {
         if (multiLine) {
           final Procedure1<FormattingDataInit> _function_4 = (FormattingDataInit it) -> {
-            it.cfg(mbaseFormatterPreferenceKeys.blankLinesAroundExpression);
+            it.cfg(MbaseFormatterPreferenceKeys.blankLinesAroundExpression);
             it.increaseIndentation();
           };
           Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append_3 = this._formattingDataFactory.append(open, _function_4);
@@ -1881,7 +1881,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
                 format.operator_add(_prepend_1);
                 final Procedure1<FormattingDataInit> _function_7 = (FormattingDataInit it) -> {
                   if (multiLine) {
-                    it.cfg(mbaseFormatterPreferenceKeys.blankLinesAroundExpression);
+                    it.cfg(MbaseFormatterPreferenceKeys.blankLinesAroundExpression);
                   } else {
                     it.oneSpace();
                   }
@@ -1891,7 +1891,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
               } else {
                 final Procedure1<FormattingDataInit> _function_8 = (FormattingDataInit it) -> {
                   if (multiLine) {
-                    it.cfg(mbaseFormatterPreferenceKeys.blankLinesAroundExpression);
+                    it.cfg(MbaseFormatterPreferenceKeys.blankLinesAroundExpression);
                   } else {
                     it.oneSpace();
                   }
@@ -1980,12 +1980,12 @@ public class MbaseFormatter2 extends AbstractFormatter {
     XExpression _expression = expr.getExpression();
     if ((_expression instanceof XBlockExpression)) {
       final Procedure1<FormattingDataInit> _function = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend = this._formattingDataFactory.prepend(body, _function);
       format.operator_add(_prepend);
       final Procedure1<FormattingDataInit> _function_1 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append = this._formattingDataFactory.append(body, _function_1);
       format.operator_add(_append);
@@ -2012,7 +2012,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
           XExpression _expression_1 = cc.getExpression();
           if ((_expression_1 instanceof XBlockExpression)) {
             final Procedure1<FormattingDataInit> _function_4 = (FormattingDataInit it) -> {
-              it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+              it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
             };
             Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append_2 = this._formattingDataFactory.append(this._nodeModelAccess.nodeForEObject(cc), _function_4);
             format.operator_add(_append_2);
@@ -2033,7 +2033,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
       XExpression _finallyExpression_1 = expr.getFinallyExpression();
       if ((_finallyExpression_1 instanceof XBlockExpression)) {
         final Procedure1<FormattingDataInit> _function_4 = (FormattingDataInit it) -> {
-          it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+          it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
         };
         Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend_2 = this._formattingDataFactory.prepend(fin, _function_4);
         format.operator_add(_prepend_2);
@@ -2056,7 +2056,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
   
   protected void _format(final XCatchClause expr, final FormattableDocument format) {
     final Procedure1<FormattingDataInit> _function = (FormattingDataInit it) -> {
-      it.cfg(mbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
+      it.cfg(MbaseFormatterPreferenceKeys.whitespaceBetweenKeywordAndParenthesisML);
     };
     Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _append = this._formattingDataFactory.append(this._nodeModelAccess.nodeForKeyword(expr, "catch"), _function);
     format.operator_add(_append);
@@ -2078,7 +2078,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
     XExpression _expression = expr.getExpression();
     if ((_expression instanceof XBlockExpression)) {
       final Procedure1<FormattingDataInit> _function_2 = (FormattingDataInit it) -> {
-        it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+        it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
       };
       Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend = this._formattingDataFactory.prepend(body, _function_2);
       format.operator_add(_prepend);
@@ -2212,7 +2212,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
     } else {
       if (caseSL) {
         final Procedure1<FormattingDataInit> _function_9 = (FormattingDataInit it) -> {
-          it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+          it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
         };
         Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend_2 = this._formattingDataFactory.prepend(open, _function_9);
         format.operator_add(_prepend_2);
@@ -2274,7 +2274,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
         format.operator_add(_prepend_4);
       } else {
         final Procedure1<FormattingDataInit> _function_16 = (FormattingDataInit it) -> {
-          it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+          it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
         };
         Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend_5 = this._formattingDataFactory.prepend(open, _function_16);
         format.operator_add(_prepend_5);
@@ -2305,7 +2305,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
             XExpression _then_1 = c_2.getThen();
             if ((_then_1 instanceof XBlockExpression)) {
               final Procedure1<FormattingDataInit> _function_19 = (FormattingDataInit it) -> {
-                it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+                it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
               };
               Function1<? super FormattableDocument, ? extends Iterable<FormattingData>> _prepend_6 = this._formattingDataFactory.prepend(cnode_1, _function_19);
               format.operator_add(_prepend_6);
@@ -2368,7 +2368,7 @@ public class MbaseFormatter2 extends AbstractFormatter {
           XExpression _default_4 = expr.getDefault();
           if ((_default_4 instanceof XBlockExpression)) {
             final Procedure1<FormattingDataInit> _function_20 = (FormattingDataInit it) -> {
-              it.cfg(mbaseFormatterPreferenceKeys.bracesInNewLine);
+              it.cfg(MbaseFormatterPreferenceKeys.bracesInNewLine);
             };
             final Procedure1<FormattingDataInit> _function_21 = (FormattingDataInit it) -> {
               it.newLine();

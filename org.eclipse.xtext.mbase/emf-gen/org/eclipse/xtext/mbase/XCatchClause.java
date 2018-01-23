@@ -30,7 +30,7 @@ import org.eclipse.xtext.common.types.JvmFormalParameter;
  *   <li>{@link org.eclipse.xtext.mbase.XCatchClause#getDeclaredParam <em>Declared Param</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXCatchClause()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXCatchClause()
  * @model
  * @generated
  */
@@ -46,7 +46,7 @@ public interface XCatchClause extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXCatchClause_Expression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXCatchClause_Expression()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -72,7 +72,7 @@ public interface XCatchClause extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Declared Param</em>' containment reference.
 	 * @see #setDeclaredParam(JvmFormalParameter)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXCatchClause_DeclaredParam()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXCatchClause_DeclaredParam()
 	 * @model containment="true"
 	 * @generated
 	 */

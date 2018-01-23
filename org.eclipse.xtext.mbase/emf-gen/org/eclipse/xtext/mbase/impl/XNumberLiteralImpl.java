@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XNumberLiteral;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,7 +69,7 @@ public class XNumberLiteralImpl extends XExpressionImpl implements XNumberLitera
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XNUMBER_LITERAL;
+		return MbasePackage.Literals.XNUMBER_LITERAL;
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class XNumberLiteralImpl extends XExpressionImpl implements XNumberLitera
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XNUMBER_LITERAL__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XNUMBER_LITERAL__VALUE, oldValue, value));
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class XNumberLiteralImpl extends XExpressionImpl implements XNumberLitera
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XNUMBER_LITERAL__VALUE:
+			case MbasePackage.XNUMBER_LITERAL__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class XNumberLiteralImpl extends XExpressionImpl implements XNumberLitera
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XNUMBER_LITERAL__VALUE:
+			case MbasePackage.XNUMBER_LITERAL__VALUE:
 				setValue((String)newValue);
 				return;
 		}
@@ -138,7 +138,7 @@ public class XNumberLiteralImpl extends XExpressionImpl implements XNumberLitera
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XNUMBER_LITERAL__VALUE:
+			case MbasePackage.XNUMBER_LITERAL__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -155,7 +155,7 @@ public class XNumberLiteralImpl extends XExpressionImpl implements XNumberLitera
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XNUMBER_LITERAL__VALUE:
+			case MbasePackage.XNUMBER_LITERAL__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);

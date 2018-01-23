@@ -28,7 +28,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XBinaryOperation#isReassignFirstArgument <em>Reassign First Argument</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXBinaryOperation()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXBinaryOperation()
  * @model
  * @generated
  */
@@ -44,7 +44,7 @@ public interface XBinaryOperation extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Left Operand</em>' containment reference.
 	 * @see #setLeftOperand(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXBinaryOperation_LeftOperand()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXBinaryOperation_LeftOperand()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -70,7 +70,7 @@ public interface XBinaryOperation extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Right Operand</em>' containment reference.
 	 * @see #setRightOperand(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXBinaryOperation_RightOperand()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXBinaryOperation_RightOperand()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -96,7 +96,7 @@ public interface XBinaryOperation extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reassign First Argument</em>' attribute.
 	 * @see #setReassignFirstArgument(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXBinaryOperation_ReassignFirstArgument()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXBinaryOperation_ReassignFirstArgument()
 	 * @model
 	 * @generated
 	 */

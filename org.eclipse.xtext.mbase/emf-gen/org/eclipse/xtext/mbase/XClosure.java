@@ -32,7 +32,7 @@ import org.eclipse.xtext.common.types.JvmFormalParameter;
  *   <li>{@link org.eclipse.xtext.mbase.XClosure#getImplicitFormalParameters <em>Implicit Formal Parameters</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXClosure()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXClosure()
  * @model
  * @generated
  */
@@ -48,7 +48,7 @@ public interface XClosure extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Declared Formal Parameters</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXClosure_DeclaredFormalParameters()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXClosure_DeclaredFormalParameters()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -64,7 +64,7 @@ public interface XClosure extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXClosure_Expression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXClosure_Expression()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -90,7 +90,7 @@ public interface XClosure extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Explicit Syntax</em>' attribute.
 	 * @see #setExplicitSyntax(boolean)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXClosure_ExplicitSyntax()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXClosure_ExplicitSyntax()
 	 * @model
 	 * @generated
 	 */
@@ -116,7 +116,7 @@ public interface XClosure extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Implicit Formal Parameters</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXClosure_ImplicitFormalParameters()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXClosure_ImplicitFormalParameters()
 	 * @model containment="true" transient="true" derived="true"
 	 * @generated
 	 */

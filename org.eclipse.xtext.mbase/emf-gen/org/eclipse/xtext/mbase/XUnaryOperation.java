@@ -26,7 +26,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XUnaryOperation#getOperand <em>Operand</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXUnaryOperation()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXUnaryOperation()
  * @model
  * @generated
  */
@@ -42,7 +42,7 @@ public interface XUnaryOperation extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operand</em>' containment reference.
 	 * @see #setOperand(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXUnaryOperation_Operand()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXUnaryOperation_Operand()
 	 * @model containment="true"
 	 * @generated
 	 */

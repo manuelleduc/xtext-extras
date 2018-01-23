@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XCollectionLiteral;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -66,7 +66,7 @@ public abstract class XCollectionLiteralImpl extends XExpressionImpl implements 
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XCOLLECTION_LITERAL;
+		return MbasePackage.Literals.XCOLLECTION_LITERAL;
 	}
 
 	/**
@@ -78,7 +78,7 @@ public abstract class XCollectionLiteralImpl extends XExpressionImpl implements 
 	{
 		if (elements == null)
 		{
-			elements = new EObjectContainmentEList<XExpression>(XExpression.class, this, mbasePackage.XCOLLECTION_LITERAL__ELEMENTS);
+			elements = new EObjectContainmentEList<XExpression>(XExpression.class, this, MbasePackage.XCOLLECTION_LITERAL__ELEMENTS);
 		}
 		return elements;
 	}
@@ -93,7 +93,7 @@ public abstract class XCollectionLiteralImpl extends XExpressionImpl implements 
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCOLLECTION_LITERAL__ELEMENTS:
+			case MbasePackage.XCOLLECTION_LITERAL__ELEMENTS:
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -109,7 +109,7 @@ public abstract class XCollectionLiteralImpl extends XExpressionImpl implements 
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCOLLECTION_LITERAL__ELEMENTS:
+			case MbasePackage.XCOLLECTION_LITERAL__ELEMENTS:
 				return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -126,7 +126,7 @@ public abstract class XCollectionLiteralImpl extends XExpressionImpl implements 
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCOLLECTION_LITERAL__ELEMENTS:
+			case MbasePackage.XCOLLECTION_LITERAL__ELEMENTS:
 				getElements().clear();
 				getElements().addAll((Collection<? extends XExpression>)newValue);
 				return;
@@ -144,7 +144,7 @@ public abstract class XCollectionLiteralImpl extends XExpressionImpl implements 
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCOLLECTION_LITERAL__ELEMENTS:
+			case MbasePackage.XCOLLECTION_LITERAL__ELEMENTS:
 				getElements().clear();
 				return;
 		}
@@ -161,7 +161,7 @@ public abstract class XCollectionLiteralImpl extends XExpressionImpl implements 
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCOLLECTION_LITERAL__ELEMENTS:
+			case MbasePackage.XCOLLECTION_LITERAL__ELEMENTS:
 				return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);

@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XReturnExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,7 +62,7 @@ public class XReturnExpressionImpl extends XExpressionImpl implements XReturnExp
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XRETURN_EXPRESSION;
+		return MbasePackage.Literals.XRETURN_EXPRESSION;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class XReturnExpressionImpl extends XExpressionImpl implements XReturnExp
 		expression = newExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XRETURN_EXPRESSION__EXPRESSION, oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XRETURN_EXPRESSION__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -103,14 +103,14 @@ public class XReturnExpressionImpl extends XExpressionImpl implements XReturnExp
 		{
 			NotificationChain msgs = null;
 			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XRETURN_EXPRESSION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XRETURN_EXPRESSION__EXPRESSION, null, msgs);
 			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XRETURN_EXPRESSION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XRETURN_EXPRESSION__EXPRESSION, null, msgs);
 			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XRETURN_EXPRESSION__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XRETURN_EXPRESSION__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class XReturnExpressionImpl extends XExpressionImpl implements XReturnExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XRETURN_EXPRESSION__EXPRESSION:
+			case MbasePackage.XRETURN_EXPRESSION__EXPRESSION:
 				return basicSetExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -139,7 +139,7 @@ public class XReturnExpressionImpl extends XExpressionImpl implements XReturnExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XRETURN_EXPRESSION__EXPRESSION:
+			case MbasePackage.XRETURN_EXPRESSION__EXPRESSION:
 				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -155,7 +155,7 @@ public class XReturnExpressionImpl extends XExpressionImpl implements XReturnExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XRETURN_EXPRESSION__EXPRESSION:
+			case MbasePackage.XRETURN_EXPRESSION__EXPRESSION:
 				setExpression((XExpression)newValue);
 				return;
 		}
@@ -172,7 +172,7 @@ public class XReturnExpressionImpl extends XExpressionImpl implements XReturnExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XRETURN_EXPRESSION__EXPRESSION:
+			case MbasePackage.XRETURN_EXPRESSION__EXPRESSION:
 				setExpression((XExpression)null);
 				return;
 		}
@@ -189,7 +189,7 @@ public class XReturnExpressionImpl extends XExpressionImpl implements XReturnExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XRETURN_EXPRESSION__EXPRESSION:
+			case MbasePackage.XRETURN_EXPRESSION__EXPRESSION:
 				return expression != null;
 		}
 		return super.eIsSet(featureID);

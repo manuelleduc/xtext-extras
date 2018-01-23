@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.eclipse.xtext.mbase.mbasePackage
+ * @see org.eclipse.xtext.mbase.MbasePackage
  * @generated
  */
-public interface mbaseFactory extends EFactory
+public interface MbaseFactory extends EFactory
 {
 	/**
 	 * The singleton instance of the factory.
@@ -25,7 +25,7 @@ public interface mbaseFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	mbaseFactory eINSTANCE = org.eclipse.xtext.mbase.impl.mbaseFactoryImpl.init();
+	MbaseFactory eINSTANCE = org.eclipse.xtext.mbase.impl.MbaseFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>XIf Expression</em>'.
@@ -313,6 +313,6 @@ public interface mbaseFactory extends EFactory
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	mbasePackage getmbasePackage();
+	MbasePackage getMbasePackage();
 
-} //mbaseFactory
+} //MbaseFactory

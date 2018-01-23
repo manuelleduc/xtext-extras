@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XInstanceOfExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,7 +75,7 @@ public class XInstanceOfExpressionImpl extends XExpressionImpl implements XInsta
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XINSTANCE_OF_EXPRESSION;
+		return MbasePackage.Literals.XINSTANCE_OF_EXPRESSION;
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class XInstanceOfExpressionImpl extends XExpressionImpl implements XInsta
 		type = newType;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XINSTANCE_OF_EXPRESSION__TYPE, oldType, newType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XINSTANCE_OF_EXPRESSION__TYPE, oldType, newType);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -116,14 +116,14 @@ public class XInstanceOfExpressionImpl extends XExpressionImpl implements XInsta
 		{
 			NotificationChain msgs = null;
 			if (type != null)
-				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XINSTANCE_OF_EXPRESSION__TYPE, null, msgs);
+				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XINSTANCE_OF_EXPRESSION__TYPE, null, msgs);
 			if (newType != null)
-				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XINSTANCE_OF_EXPRESSION__TYPE, null, msgs);
+				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XINSTANCE_OF_EXPRESSION__TYPE, null, msgs);
 			msgs = basicSetType(newType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XINSTANCE_OF_EXPRESSION__TYPE, newType, newType));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XINSTANCE_OF_EXPRESSION__TYPE, newType, newType));
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class XInstanceOfExpressionImpl extends XExpressionImpl implements XInsta
 		expression = newExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION, oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -164,14 +164,14 @@ public class XInstanceOfExpressionImpl extends XExpressionImpl implements XInsta
 		{
 			NotificationChain msgs = null;
 			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION, null, msgs);
 			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION, null, msgs);
 			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
@@ -184,9 +184,9 @@ public class XInstanceOfExpressionImpl extends XExpressionImpl implements XInsta
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XINSTANCE_OF_EXPRESSION__TYPE:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION__TYPE:
 				return basicSetType(null, msgs);
-			case mbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION:
 				return basicSetExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -202,9 +202,9 @@ public class XInstanceOfExpressionImpl extends XExpressionImpl implements XInsta
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XINSTANCE_OF_EXPRESSION__TYPE:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION__TYPE:
 				return getType();
-			case mbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION:
 				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -220,10 +220,10 @@ public class XInstanceOfExpressionImpl extends XExpressionImpl implements XInsta
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XINSTANCE_OF_EXPRESSION__TYPE:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION__TYPE:
 				setType((JvmTypeReference)newValue);
 				return;
-			case mbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION:
 				setExpression((XExpression)newValue);
 				return;
 		}
@@ -240,10 +240,10 @@ public class XInstanceOfExpressionImpl extends XExpressionImpl implements XInsta
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XINSTANCE_OF_EXPRESSION__TYPE:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION__TYPE:
 				setType((JvmTypeReference)null);
 				return;
-			case mbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION:
 				setExpression((XExpression)null);
 				return;
 		}
@@ -260,9 +260,9 @@ public class XInstanceOfExpressionImpl extends XExpressionImpl implements XInsta
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XINSTANCE_OF_EXPRESSION__TYPE:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION__TYPE:
 				return type != null;
-			case mbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION__EXPRESSION:
 				return expression != null;
 		}
 		return super.eIsSet(featureID);

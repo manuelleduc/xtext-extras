@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XForLoopExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -86,7 +86,7 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XFOR_LOOP_EXPRESSION;
+		return MbasePackage.Literals.XFOR_LOOP_EXPRESSION;
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 		forExpression = newForExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION, oldForExpression, newForExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION, oldForExpression, newForExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -127,14 +127,14 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 		{
 			NotificationChain msgs = null;
 			if (forExpression != null)
-				msgs = ((InternalEObject)forExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)forExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION, null, msgs);
 			if (newForExpression != null)
-				msgs = ((InternalEObject)newForExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newForExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION, null, msgs);
 			msgs = basicSetForExpression(newForExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION, newForExpression, newForExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION, newForExpression, newForExpression));
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 		eachExpression = newEachExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION, oldEachExpression, newEachExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION, oldEachExpression, newEachExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -175,14 +175,14 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 		{
 			NotificationChain msgs = null;
 			if (eachExpression != null)
-				msgs = ((InternalEObject)eachExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)eachExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION, null, msgs);
 			if (newEachExpression != null)
-				msgs = ((InternalEObject)newEachExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newEachExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION, null, msgs);
 			msgs = basicSetEachExpression(newEachExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION, newEachExpression, newEachExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION, newEachExpression, newEachExpression));
 	}
 
 	/**
@@ -206,7 +206,7 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 		declaredParam = newDeclaredParam;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM, oldDeclaredParam, newDeclaredParam);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM, oldDeclaredParam, newDeclaredParam);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -223,14 +223,14 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 		{
 			NotificationChain msgs = null;
 			if (declaredParam != null)
-				msgs = ((InternalEObject)declaredParam).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM, null, msgs);
+				msgs = ((InternalEObject)declaredParam).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM, null, msgs);
 			if (newDeclaredParam != null)
-				msgs = ((InternalEObject)newDeclaredParam).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM, null, msgs);
+				msgs = ((InternalEObject)newDeclaredParam).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM, null, msgs);
 			msgs = basicSetDeclaredParam(newDeclaredParam, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM, newDeclaredParam, newDeclaredParam));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM, newDeclaredParam, newDeclaredParam));
 	}
 
 	/**
@@ -243,11 +243,11 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION:
 				return basicSetForExpression(null, msgs);
-			case mbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION:
 				return basicSetEachExpression(null, msgs);
-			case mbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM:
 				return basicSetDeclaredParam(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -263,11 +263,11 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION:
 				return getForExpression();
-			case mbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION:
 				return getEachExpression();
-			case mbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM:
 				return getDeclaredParam();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -283,13 +283,13 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION:
 				setForExpression((XExpression)newValue);
 				return;
-			case mbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION:
 				setEachExpression((XExpression)newValue);
 				return;
-			case mbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM:
 				setDeclaredParam((JvmFormalParameter)newValue);
 				return;
 		}
@@ -306,13 +306,13 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION:
 				setForExpression((XExpression)null);
 				return;
-			case mbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION:
 				setEachExpression((XExpression)null);
 				return;
-			case mbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM:
 				setDeclaredParam((JvmFormalParameter)null);
 				return;
 		}
@@ -329,11 +329,11 @@ public class XForLoopExpressionImpl extends XExpressionImpl implements XForLoopE
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__FOR_EXPRESSION:
 				return forExpression != null;
-			case mbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION:
 				return eachExpression != null;
-			case mbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM:
+			case MbasePackage.XFOR_LOOP_EXPRESSION__DECLARED_PARAM:
 				return declaredParam != null;
 		}
 		return super.eIsSet(featureID);

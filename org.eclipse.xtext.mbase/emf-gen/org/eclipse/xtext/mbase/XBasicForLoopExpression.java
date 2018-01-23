@@ -30,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.xtext.mbase.XBasicForLoopExpression#getUpdateExpressions <em>Update Expressions</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXBasicForLoopExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXBasicForLoopExpression()
  * @model
  * @generated
  */
@@ -46,7 +46,7 @@ public interface XBasicForLoopExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXBasicForLoopExpression_Expression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXBasicForLoopExpression_Expression()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -72,7 +72,7 @@ public interface XBasicForLoopExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Each Expression</em>' containment reference.
 	 * @see #setEachExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXBasicForLoopExpression_EachExpression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXBasicForLoopExpression_EachExpression()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -98,7 +98,7 @@ public interface XBasicForLoopExpression extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Init Expressions</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXBasicForLoopExpression_InitExpressions()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXBasicForLoopExpression_InitExpressions()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -114,7 +114,7 @@ public interface XBasicForLoopExpression extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Update Expressions</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXBasicForLoopExpression_UpdateExpressions()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXBasicForLoopExpression_UpdateExpressions()
 	 * @model containment="true"
 	 * @generated
 	 */

@@ -11,7 +11,7 @@ import org.eclipse.xtext.formatting2.IHiddenRegionFormatter
 import org.eclipse.xtext.preferences.BooleanKey
 import org.eclipse.xtext.preferences.IntegerKey
 
-import static org.eclipse.xtext.mbase.formatting2.mbaseFormatterPreferenceKeys.*
+import static org.eclipse.xtext.mbase.formatting2.MbaseFormatterPreferenceKeys.*
 
 /**
  * @author Moritz Eysholdt - Initial contribution and API

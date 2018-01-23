@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.xtext.mbase.XBlockExpression#getExpressions <em>Expressions</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXBlockExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXBlockExpression()
  * @model
  * @generated
  */
@@ -43,7 +43,7 @@ public interface XBlockExpression extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expressions</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXBlockExpression_Expressions()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXBlockExpression_Expressions()
 	 * @model containment="true"
 	 * @generated
 	 */

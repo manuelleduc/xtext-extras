@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,7 +84,7 @@ public interface XAnnotationsPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int XANNOTATION__ELEMENT_VALUE_PAIRS = mbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
+	int XANNOTATION__ELEMENT_VALUE_PAIRS = MbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Annotation Type</b></em>' reference.
@@ -93,7 +93,7 @@ public interface XAnnotationsPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int XANNOTATION__ANNOTATION_TYPE = mbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
+	int XANNOTATION__ANNOTATION_TYPE = MbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -102,7 +102,7 @@ public interface XAnnotationsPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int XANNOTATION__VALUE = mbasePackage.XEXPRESSION_FEATURE_COUNT + 2;
+	int XANNOTATION__VALUE = MbasePackage.XEXPRESSION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>XAnnotation</em>' class.
@@ -111,7 +111,7 @@ public interface XAnnotationsPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int XANNOTATION_FEATURE_COUNT = mbasePackage.XEXPRESSION_FEATURE_COUNT + 3;
+	int XANNOTATION_FEATURE_COUNT = MbasePackage.XEXPRESSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.xtext.mbase.annotations.xAnnotations.impl.XAnnotationElementValuePairImpl <em>XAnnotation Element Value Pair</em>}' class.

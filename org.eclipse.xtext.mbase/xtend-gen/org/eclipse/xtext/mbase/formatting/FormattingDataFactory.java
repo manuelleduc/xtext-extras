@@ -15,13 +15,13 @@ import org.eclipse.xtext.mbase.formatting.FormattingDataInit;
 import org.eclipse.xtext.mbase.formatting.HiddenLeafAccess;
 import org.eclipse.xtext.mbase.formatting.HiddenLeafs;
 import org.eclipse.xtext.mbase.formatting.LeafInfo;
+import org.eclipse.xtext.mbase.formatting.MbaseFormatterPreferenceKeys;
 import org.eclipse.xtext.mbase.formatting.NewLineData;
 import org.eclipse.xtext.mbase.formatting.NewLineKey;
 import org.eclipse.xtext.mbase.formatting.NewLineOrPreserveKey;
 import org.eclipse.xtext.mbase.formatting.WhitespaceData;
 import org.eclipse.xtext.mbase.formatting.WhitespaceInfo;
 import org.eclipse.xtext.mbase.formatting.WhitespaceKey;
-import org.eclipse.xtext.mbase.formatting.mbaseFormatterPreferenceKeys;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.preferences.PreferenceKey;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -73,7 +73,7 @@ public class FormattingDataFactory {
       Iterable<FormattingData> _xblockexpression = null;
       {
         final int blankline = doc.getCfg().get(key);
-        final int preserve = doc.getCfg().get(mbaseFormatterPreferenceKeys.preserveBlankLines);
+        final int preserve = doc.getCfg().get(MbaseFormatterPreferenceKeys.preserveBlankLines);
         final int min = (blankline + 1);
         final int max = Math.max((preserve + 1), min);
         _xblockexpression = this.newNewLineData(leafs, min, max, it.increaseIndentationChange, it.decreaseIndentationChange, doc.isDebugConflicts());
@@ -88,7 +88,7 @@ public class FormattingDataFactory {
       Iterable<FormattingData> _xblockexpression = null;
       {
         final boolean newLine = doc.getCfg().get(key);
-        final boolean preserve = doc.getCfg().get(mbaseFormatterPreferenceKeys.preserveNewLines);
+        final boolean preserve = doc.getCfg().get(MbaseFormatterPreferenceKeys.preserveNewLines);
         int _xifexpression = (int) 0;
         if (newLine) {
           _xifexpression = 1;

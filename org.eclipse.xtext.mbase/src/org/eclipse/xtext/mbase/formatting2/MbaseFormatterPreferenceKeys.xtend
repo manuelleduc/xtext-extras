@@ -1,9 +1,20 @@
-package org.eclipse.xtext.mbase.formatting
+/*******************************************************************************
+ * Copyright (c) 2014 itemis AG (http://www.itemis.eu) and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+package org.eclipse.xtext.mbase.formatting2
+
+import org.eclipse.xtext.formatting2.FormatterPreferenceKeys
+import org.eclipse.xtext.preferences.BooleanKey
+import org.eclipse.xtext.preferences.IntegerKey
 
 /**
- * @deprecated use {@link org.eclipse.xtext.mbase.formatting2.mbaseFormatterPreferenceKeys}
+ * @author Moritz Eysholdt - Initial implementation and API
  */
-@Deprecated class mbaseFormatterPreferenceKeys extends BasicFormatterPreferenceKeys {
+class MbaseFormatterPreferenceKeys extends FormatterPreferenceKeys {
 	public static val preserveBlankLines = new IntegerKey("preserve.blank.lines", 1)
 	public static val blankLinesAroundExpression = new BlankLineKey("blank.line.around.expressions", 0)
 
@@ -16,8 +27,9 @@ package org.eclipse.xtext.mbase.formatting
 
 	public static val whitespaceBetweenKeywordAndParenthesisSL = new WhitespaceKey("whitespace.between.keyword.and.parenthesis", false)
 	public static val whitespaceBetweenKeywordAndParenthesisML = new WhitespaceKey("whitespace.between.keyword.and.parenthesis", true)
+	
+	public static val blankLinesBetweenImports = new BlankLineKey("blank.lines.between.imports", 0)
+	public static val blankLinesAfterImports = new BlankLineKey("blank.lines.after.imports", 1)
 
 	public static val bracesInNewLine = new NewLineKey("braces.in.new.line", false)
 }
-
-

@@ -19,7 +19,7 @@ import org.eclipse.xtext.preferences.IntegerKey;
  * @author Moritz Eysholdt - Initial implementation and API
  */
 @SuppressWarnings("all")
-public class mbaseFormatterPreferenceKeys extends FormatterPreferenceKeys {
+public class MbaseFormatterPreferenceKeys extends FormatterPreferenceKeys {
   public final static IntegerKey preserveBlankLines = new IntegerKey("preserve.blank.lines", Integer.valueOf(1));
   
   public final static BlankLineKey blankLinesAroundExpression = new BlankLineKey("blank.line.around.expressions", Integer.valueOf(0));

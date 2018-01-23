@@ -28,7 +28,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.eclipse.xtext.mbase.XCastedExpression#getTarget <em>Target</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXCastedExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXCastedExpression()
  * @model
  * @generated
  */
@@ -44,7 +44,7 @@ public interface XCastedExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(JvmTypeReference)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXCastedExpression_Type()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXCastedExpression_Type()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -70,7 +70,7 @@ public interface XCastedExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXCastedExpression_Target()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXCastedExpression_Target()
 	 * @model containment="true"
 	 * @generated
 	 */

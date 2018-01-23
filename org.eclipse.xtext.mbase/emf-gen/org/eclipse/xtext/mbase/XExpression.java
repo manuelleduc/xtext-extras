@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-model-doc -->
  *
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXExpression()
  * @model abstract="true"
  * @generated
  */

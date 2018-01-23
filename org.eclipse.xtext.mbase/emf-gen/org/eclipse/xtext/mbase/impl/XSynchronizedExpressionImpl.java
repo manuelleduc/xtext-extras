@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XSynchronizedExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,7 +73,7 @@ public class XSynchronizedExpressionImpl extends XExpressionImpl implements XSyn
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XSYNCHRONIZED_EXPRESSION;
+		return MbasePackage.Literals.XSYNCHRONIZED_EXPRESSION;
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class XSynchronizedExpressionImpl extends XExpressionImpl implements XSyn
 		param = newParam;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM, oldParam, newParam);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM, oldParam, newParam);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -114,14 +114,14 @@ public class XSynchronizedExpressionImpl extends XExpressionImpl implements XSyn
 		{
 			NotificationChain msgs = null;
 			if (param != null)
-				msgs = ((InternalEObject)param).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM, null, msgs);
+				msgs = ((InternalEObject)param).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM, null, msgs);
 			if (newParam != null)
-				msgs = ((InternalEObject)newParam).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM, null, msgs);
+				msgs = ((InternalEObject)newParam).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM, null, msgs);
 			msgs = basicSetParam(newParam, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM, newParam, newParam));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM, newParam, newParam));
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class XSynchronizedExpressionImpl extends XExpressionImpl implements XSyn
 		expression = newExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION, oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -162,14 +162,14 @@ public class XSynchronizedExpressionImpl extends XExpressionImpl implements XSyn
 		{
 			NotificationChain msgs = null;
 			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION, null, msgs);
 			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION, null, msgs);
 			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
@@ -182,9 +182,9 @@ public class XSynchronizedExpressionImpl extends XExpressionImpl implements XSyn
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM:
 				return basicSetParam(null, msgs);
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION:
 				return basicSetExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -200,9 +200,9 @@ public class XSynchronizedExpressionImpl extends XExpressionImpl implements XSyn
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM:
 				return getParam();
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION:
 				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -218,10 +218,10 @@ public class XSynchronizedExpressionImpl extends XExpressionImpl implements XSyn
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM:
 				setParam((XExpression)newValue);
 				return;
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION:
 				setExpression((XExpression)newValue);
 				return;
 		}
@@ -238,10 +238,10 @@ public class XSynchronizedExpressionImpl extends XExpressionImpl implements XSyn
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM:
 				setParam((XExpression)null);
 				return;
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION:
 				setExpression((XExpression)null);
 				return;
 		}
@@ -258,9 +258,9 @@ public class XSynchronizedExpressionImpl extends XExpressionImpl implements XSyn
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION__PARAM:
 				return param != null;
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION__EXPRESSION:
 				return expression != null;
 		}
 		return super.eIsSet(featureID);

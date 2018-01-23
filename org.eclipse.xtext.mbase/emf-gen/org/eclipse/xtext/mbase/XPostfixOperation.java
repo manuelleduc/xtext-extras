@@ -26,7 +26,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XPostfixOperation#getOperand <em>Operand</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXPostfixOperation()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXPostfixOperation()
  * @model
  * @generated
  */
@@ -42,7 +42,7 @@ public interface XPostfixOperation extends XAbstractFeatureCall
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operand</em>' containment reference.
 	 * @see #setOperand(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXPostfixOperation_Operand()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXPostfixOperation_Operand()
 	 * @model containment="true"
 	 * @generated
 	 */

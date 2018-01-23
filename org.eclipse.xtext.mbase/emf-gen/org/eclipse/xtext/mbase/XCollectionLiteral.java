@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.xtext.mbase.XCollectionLiteral#getElements <em>Elements</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXCollectionLiteral()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXCollectionLiteral()
  * @model abstract="true"
  * @generated
  */
@@ -43,7 +43,7 @@ public interface XCollectionLiteral extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXCollectionLiteral_Elements()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXCollectionLiteral_Elements()
 	 * @model containment="true"
 	 * @generated
 	 */

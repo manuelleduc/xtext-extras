@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XVariableDeclaration;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -117,7 +117,7 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XVARIABLE_DECLARATION;
+		return MbasePackage.Literals.XVARIABLE_DECLARATION;
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 		type = newType;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XVARIABLE_DECLARATION__TYPE, oldType, newType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XVARIABLE_DECLARATION__TYPE, oldType, newType);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -158,14 +158,14 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 		{
 			NotificationChain msgs = null;
 			if (type != null)
-				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XVARIABLE_DECLARATION__TYPE, null, msgs);
+				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XVARIABLE_DECLARATION__TYPE, null, msgs);
 			if (newType != null)
-				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XVARIABLE_DECLARATION__TYPE, null, msgs);
+				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XVARIABLE_DECLARATION__TYPE, null, msgs);
 			msgs = basicSetType(newType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XVARIABLE_DECLARATION__TYPE, newType, newType));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XVARIABLE_DECLARATION__TYPE, newType, newType));
 	}
 
 	/**
@@ -188,7 +188,7 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XVARIABLE_DECLARATION__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XVARIABLE_DECLARATION__NAME, oldName, name));
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 		right = newRight;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XVARIABLE_DECLARATION__RIGHT, oldRight, newRight);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XVARIABLE_DECLARATION__RIGHT, oldRight, newRight);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -229,14 +229,14 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 		{
 			NotificationChain msgs = null;
 			if (right != null)
-				msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XVARIABLE_DECLARATION__RIGHT, null, msgs);
+				msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XVARIABLE_DECLARATION__RIGHT, null, msgs);
 			if (newRight != null)
-				msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XVARIABLE_DECLARATION__RIGHT, null, msgs);
+				msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XVARIABLE_DECLARATION__RIGHT, null, msgs);
 			msgs = basicSetRight(newRight, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XVARIABLE_DECLARATION__RIGHT, newRight, newRight));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XVARIABLE_DECLARATION__RIGHT, newRight, newRight));
 	}
 
 	/**
@@ -259,7 +259,7 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 		boolean oldWriteable = writeable;
 		writeable = newWriteable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XVARIABLE_DECLARATION__WRITEABLE, oldWriteable, writeable));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XVARIABLE_DECLARATION__WRITEABLE, oldWriteable, writeable));
 	}
 
 	/**
@@ -320,9 +320,9 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XVARIABLE_DECLARATION__TYPE:
+			case MbasePackage.XVARIABLE_DECLARATION__TYPE:
 				return basicSetType(null, msgs);
-			case mbasePackage.XVARIABLE_DECLARATION__RIGHT:
+			case MbasePackage.XVARIABLE_DECLARATION__RIGHT:
 				return basicSetRight(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -338,13 +338,13 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XVARIABLE_DECLARATION__TYPE:
+			case MbasePackage.XVARIABLE_DECLARATION__TYPE:
 				return getType();
-			case mbasePackage.XVARIABLE_DECLARATION__NAME:
+			case MbasePackage.XVARIABLE_DECLARATION__NAME:
 				return getName();
-			case mbasePackage.XVARIABLE_DECLARATION__RIGHT:
+			case MbasePackage.XVARIABLE_DECLARATION__RIGHT:
 				return getRight();
-			case mbasePackage.XVARIABLE_DECLARATION__WRITEABLE:
+			case MbasePackage.XVARIABLE_DECLARATION__WRITEABLE:
 				return isWriteable();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -360,16 +360,16 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XVARIABLE_DECLARATION__TYPE:
+			case MbasePackage.XVARIABLE_DECLARATION__TYPE:
 				setType((JvmTypeReference)newValue);
 				return;
-			case mbasePackage.XVARIABLE_DECLARATION__NAME:
+			case MbasePackage.XVARIABLE_DECLARATION__NAME:
 				setName((String)newValue);
 				return;
-			case mbasePackage.XVARIABLE_DECLARATION__RIGHT:
+			case MbasePackage.XVARIABLE_DECLARATION__RIGHT:
 				setRight((XExpression)newValue);
 				return;
-			case mbasePackage.XVARIABLE_DECLARATION__WRITEABLE:
+			case MbasePackage.XVARIABLE_DECLARATION__WRITEABLE:
 				setWriteable((Boolean)newValue);
 				return;
 		}
@@ -386,16 +386,16 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XVARIABLE_DECLARATION__TYPE:
+			case MbasePackage.XVARIABLE_DECLARATION__TYPE:
 				setType((JvmTypeReference)null);
 				return;
-			case mbasePackage.XVARIABLE_DECLARATION__NAME:
+			case MbasePackage.XVARIABLE_DECLARATION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case mbasePackage.XVARIABLE_DECLARATION__RIGHT:
+			case MbasePackage.XVARIABLE_DECLARATION__RIGHT:
 				setRight((XExpression)null);
 				return;
-			case mbasePackage.XVARIABLE_DECLARATION__WRITEABLE:
+			case MbasePackage.XVARIABLE_DECLARATION__WRITEABLE:
 				setWriteable(WRITEABLE_EDEFAULT);
 				return;
 		}
@@ -412,13 +412,13 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XVARIABLE_DECLARATION__TYPE:
+			case MbasePackage.XVARIABLE_DECLARATION__TYPE:
 				return type != null;
-			case mbasePackage.XVARIABLE_DECLARATION__NAME:
+			case MbasePackage.XVARIABLE_DECLARATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case mbasePackage.XVARIABLE_DECLARATION__RIGHT:
+			case MbasePackage.XVARIABLE_DECLARATION__RIGHT:
 				return right != null;
-			case mbasePackage.XVARIABLE_DECLARATION__WRITEABLE:
+			case MbasePackage.XVARIABLE_DECLARATION__WRITEABLE:
 				return writeable != WRITEABLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

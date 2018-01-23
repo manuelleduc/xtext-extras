@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XCasePart;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,7 +108,7 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XCASE_PART;
+		return MbasePackage.Literals.XCASE_PART;
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 		case_ = newCase;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XCASE_PART__CASE, oldCase, newCase);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XCASE_PART__CASE, oldCase, newCase);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -149,14 +149,14 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 		{
 			NotificationChain msgs = null;
 			if (case_ != null)
-				msgs = ((InternalEObject)case_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCASE_PART__CASE, null, msgs);
+				msgs = ((InternalEObject)case_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCASE_PART__CASE, null, msgs);
 			if (newCase != null)
-				msgs = ((InternalEObject)newCase).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCASE_PART__CASE, null, msgs);
+				msgs = ((InternalEObject)newCase).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCASE_PART__CASE, null, msgs);
 			msgs = basicSetCase(newCase, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCASE_PART__CASE, newCase, newCase));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCASE_PART__CASE, newCase, newCase));
 	}
 
 	/**
@@ -180,7 +180,7 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 		then = newThen;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XCASE_PART__THEN, oldThen, newThen);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XCASE_PART__THEN, oldThen, newThen);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -197,14 +197,14 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 		{
 			NotificationChain msgs = null;
 			if (then != null)
-				msgs = ((InternalEObject)then).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCASE_PART__THEN, null, msgs);
+				msgs = ((InternalEObject)then).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCASE_PART__THEN, null, msgs);
 			if (newThen != null)
-				msgs = ((InternalEObject)newThen).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCASE_PART__THEN, null, msgs);
+				msgs = ((InternalEObject)newThen).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCASE_PART__THEN, null, msgs);
 			msgs = basicSetThen(newThen, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCASE_PART__THEN, newThen, newThen));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCASE_PART__THEN, newThen, newThen));
 	}
 
 	/**
@@ -228,7 +228,7 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 		typeGuard = newTypeGuard;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XCASE_PART__TYPE_GUARD, oldTypeGuard, newTypeGuard);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XCASE_PART__TYPE_GUARD, oldTypeGuard, newTypeGuard);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -245,14 +245,14 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 		{
 			NotificationChain msgs = null;
 			if (typeGuard != null)
-				msgs = ((InternalEObject)typeGuard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCASE_PART__TYPE_GUARD, null, msgs);
+				msgs = ((InternalEObject)typeGuard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCASE_PART__TYPE_GUARD, null, msgs);
 			if (newTypeGuard != null)
-				msgs = ((InternalEObject)newTypeGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCASE_PART__TYPE_GUARD, null, msgs);
+				msgs = ((InternalEObject)newTypeGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCASE_PART__TYPE_GUARD, null, msgs);
 			msgs = basicSetTypeGuard(newTypeGuard, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCASE_PART__TYPE_GUARD, newTypeGuard, newTypeGuard));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCASE_PART__TYPE_GUARD, newTypeGuard, newTypeGuard));
 	}
 
 	/**
@@ -275,7 +275,7 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 		boolean oldFallThrough = fallThrough;
 		fallThrough = newFallThrough;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCASE_PART__FALL_THROUGH, oldFallThrough, fallThrough));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCASE_PART__FALL_THROUGH, oldFallThrough, fallThrough));
 	}
 
 	/**
@@ -288,11 +288,11 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCASE_PART__CASE:
+			case MbasePackage.XCASE_PART__CASE:
 				return basicSetCase(null, msgs);
-			case mbasePackage.XCASE_PART__THEN:
+			case MbasePackage.XCASE_PART__THEN:
 				return basicSetThen(null, msgs);
-			case mbasePackage.XCASE_PART__TYPE_GUARD:
+			case MbasePackage.XCASE_PART__TYPE_GUARD:
 				return basicSetTypeGuard(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -308,13 +308,13 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCASE_PART__CASE:
+			case MbasePackage.XCASE_PART__CASE:
 				return getCase();
-			case mbasePackage.XCASE_PART__THEN:
+			case MbasePackage.XCASE_PART__THEN:
 				return getThen();
-			case mbasePackage.XCASE_PART__TYPE_GUARD:
+			case MbasePackage.XCASE_PART__TYPE_GUARD:
 				return getTypeGuard();
-			case mbasePackage.XCASE_PART__FALL_THROUGH:
+			case MbasePackage.XCASE_PART__FALL_THROUGH:
 				return isFallThrough();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -330,16 +330,16 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCASE_PART__CASE:
+			case MbasePackage.XCASE_PART__CASE:
 				setCase((XExpression)newValue);
 				return;
-			case mbasePackage.XCASE_PART__THEN:
+			case MbasePackage.XCASE_PART__THEN:
 				setThen((XExpression)newValue);
 				return;
-			case mbasePackage.XCASE_PART__TYPE_GUARD:
+			case MbasePackage.XCASE_PART__TYPE_GUARD:
 				setTypeGuard((JvmTypeReference)newValue);
 				return;
-			case mbasePackage.XCASE_PART__FALL_THROUGH:
+			case MbasePackage.XCASE_PART__FALL_THROUGH:
 				setFallThrough((Boolean)newValue);
 				return;
 		}
@@ -356,16 +356,16 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCASE_PART__CASE:
+			case MbasePackage.XCASE_PART__CASE:
 				setCase((XExpression)null);
 				return;
-			case mbasePackage.XCASE_PART__THEN:
+			case MbasePackage.XCASE_PART__THEN:
 				setThen((XExpression)null);
 				return;
-			case mbasePackage.XCASE_PART__TYPE_GUARD:
+			case MbasePackage.XCASE_PART__TYPE_GUARD:
 				setTypeGuard((JvmTypeReference)null);
 				return;
-			case mbasePackage.XCASE_PART__FALL_THROUGH:
+			case MbasePackage.XCASE_PART__FALL_THROUGH:
 				setFallThrough(FALL_THROUGH_EDEFAULT);
 				return;
 		}
@@ -382,13 +382,13 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCASE_PART__CASE:
+			case MbasePackage.XCASE_PART__CASE:
 				return case_ != null;
-			case mbasePackage.XCASE_PART__THEN:
+			case MbasePackage.XCASE_PART__THEN:
 				return then != null;
-			case mbasePackage.XCASE_PART__TYPE_GUARD:
+			case MbasePackage.XCASE_PART__TYPE_GUARD:
 				return typeGuard != null;
-			case mbasePackage.XCASE_PART__FALL_THROUGH:
+			case MbasePackage.XCASE_PART__FALL_THROUGH:
 				return fallThrough != FALL_THROUGH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

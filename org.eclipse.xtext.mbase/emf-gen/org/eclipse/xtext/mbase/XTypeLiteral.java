@@ -30,7 +30,7 @@ import org.eclipse.xtext.common.types.JvmType;
  *   <li>{@link org.eclipse.xtext.mbase.XTypeLiteral#getArrayDimensions <em>Array Dimensions</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXTypeLiteral()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXTypeLiteral()
  * @model
  * @generated
  */
@@ -46,7 +46,7 @@ public interface XTypeLiteral extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(JvmType)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXTypeLiteral_Type()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXTypeLiteral_Type()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -72,7 +72,7 @@ public interface XTypeLiteral extends XExpression
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Array Dimensions</em>' attribute list.
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXTypeLiteral_ArrayDimensions()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXTypeLiteral_ArrayDimensions()
 	 * @model unique="false"
 	 * @generated
 	 */

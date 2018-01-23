@@ -27,7 +27,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XSynchronizedExpression#getExpression <em>Expression</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXSynchronizedExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXSynchronizedExpression()
  * @model
  * @generated
  */
@@ -43,7 +43,7 @@ public interface XSynchronizedExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Param</em>' containment reference.
 	 * @see #setParam(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXSynchronizedExpression_Param()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXSynchronizedExpression_Param()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -69,7 +69,7 @@ public interface XSynchronizedExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXSynchronizedExpression_Expression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXSynchronizedExpression_Expression()
 	 * @model containment="true"
 	 * @generated
 	 */

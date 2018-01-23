@@ -23,6 +23,7 @@ import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.common.types.JvmUpperBound;
 import org.eclipse.xtext.common.types.JvmWildcardTypeReference;
 import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XAssignment;
 import org.eclipse.xtext.mbase.XBasicForLoopExpression;
 import org.eclipse.xtext.mbase.XBinaryOperation;
@@ -58,7 +59,6 @@ import org.eclipse.xtext.mbase.annotations.services.MbaseWithAnnotationsGrammarA
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationElementValuePair;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsPackage;
-import org.eclipse.xtext.mbase.mbasePackage;
 import org.eclipse.xtext.mbase.serializer.MbaseSemanticSequencer;
 import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
@@ -80,18 +80,18 @@ public abstract class AbstractMbaseWithAnnotationsSemanticSequencer extends Mbas
 		ParserRule rule = context.getParserRule();
 		Action action = context.getAssignedAction();
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
-		if (epackage == mbasePackage.eINSTANCE)
+		if (epackage == MbasePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case mbasePackage.XASSIGNMENT:
+			case MbasePackage.XASSIGNMENT:
 				sequence_XAssignment_XMemberFeatureCall(context, (XAssignment) semanticObject); 
 				return; 
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION:
 				sequence_XBasicForLoopExpression(context, (XBasicForLoopExpression) semanticObject); 
 				return; 
-			case mbasePackage.XBINARY_OPERATION:
+			case MbasePackage.XBINARY_OPERATION:
 				sequence_XAdditiveExpression_XAndExpression_XAssignment_XEqualityExpression_XMultiplicativeExpression_XOrExpression_XOtherOperatorExpression_XRelationalExpression(context, (XBinaryOperation) semanticObject); 
 				return; 
-			case mbasePackage.XBLOCK_EXPRESSION:
+			case MbasePackage.XBLOCK_EXPRESSION:
 				if (rule == grammarAccess.getXAnnotationElementValueOrCommaListRule()
 						|| action == grammarAccess.getXAnnotationElementValueOrCommaListAccess().getXListLiteralElementsAction_1_1_0()
 						|| rule == grammarAccess.getXAnnotationElementValueRule()
@@ -134,19 +134,19 @@ public abstract class AbstractMbaseWithAnnotationsSemanticSequencer extends Mbas
 					return; 
 				}
 				else break;
-			case mbasePackage.XBOOLEAN_LITERAL:
+			case MbasePackage.XBOOLEAN_LITERAL:
 				sequence_XBooleanLiteral(context, (XBooleanLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XCASE_PART:
+			case MbasePackage.XCASE_PART:
 				sequence_XCasePart(context, (XCasePart) semanticObject); 
 				return; 
-			case mbasePackage.XCASTED_EXPRESSION:
+			case MbasePackage.XCASTED_EXPRESSION:
 				sequence_XCastedExpression(context, (XCastedExpression) semanticObject); 
 				return; 
-			case mbasePackage.XCATCH_CLAUSE:
+			case MbasePackage.XCATCH_CLAUSE:
 				sequence_XCatchClause(context, (XCatchClause) semanticObject); 
 				return; 
-			case mbasePackage.XCLOSURE:
+			case MbasePackage.XCLOSURE:
 				if (rule == grammarAccess.getXAnnotationElementValueOrCommaListRule()
 						|| action == grammarAccess.getXAnnotationElementValueOrCommaListAccess().getXListLiteralElementsAction_1_1_0()
 						|| rule == grammarAccess.getXAnnotationElementValueRule()
@@ -190,25 +190,25 @@ public abstract class AbstractMbaseWithAnnotationsSemanticSequencer extends Mbas
 					return; 
 				}
 				else break;
-			case mbasePackage.XCONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL:
 				sequence_XConstructorCall(context, (XConstructorCall) semanticObject); 
 				return; 
-			case mbasePackage.XDO_WHILE_EXPRESSION:
+			case MbasePackage.XDO_WHILE_EXPRESSION:
 				sequence_XDoWhileExpression(context, (XDoWhileExpression) semanticObject); 
 				return; 
-			case mbasePackage.XFEATURE_CALL:
+			case MbasePackage.XFEATURE_CALL:
 				sequence_XFeatureCall(context, (XFeatureCall) semanticObject); 
 				return; 
-			case mbasePackage.XFOR_LOOP_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION:
 				sequence_XForLoopExpression(context, (XForLoopExpression) semanticObject); 
 				return; 
-			case mbasePackage.XIF_EXPRESSION:
+			case MbasePackage.XIF_EXPRESSION:
 				sequence_XIfExpression(context, (XIfExpression) semanticObject); 
 				return; 
-			case mbasePackage.XINSTANCE_OF_EXPRESSION:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION:
 				sequence_XRelationalExpression(context, (XInstanceOfExpression) semanticObject); 
 				return; 
-			case mbasePackage.XLIST_LITERAL:
+			case MbasePackage.XLIST_LITERAL:
 				if (rule == grammarAccess.getXAnnotationElementValueOrCommaListRule()) {
 					sequence_XAnnotationElementValueOrCommaList_XListLiteral(context, (XListLiteral) semanticObject); 
 					return; 
@@ -255,49 +255,49 @@ public abstract class AbstractMbaseWithAnnotationsSemanticSequencer extends Mbas
 					return; 
 				}
 				else break;
-			case mbasePackage.XMEMBER_FEATURE_CALL:
+			case MbasePackage.XMEMBER_FEATURE_CALL:
 				sequence_XMemberFeatureCall(context, (XMemberFeatureCall) semanticObject); 
 				return; 
-			case mbasePackage.XNULL_LITERAL:
+			case MbasePackage.XNULL_LITERAL:
 				sequence_XNullLiteral(context, (XNullLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XNUMBER_LITERAL:
+			case MbasePackage.XNUMBER_LITERAL:
 				sequence_XNumberLiteral(context, (XNumberLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XPOSTFIX_OPERATION:
+			case MbasePackage.XPOSTFIX_OPERATION:
 				sequence_XPostfixOperation(context, (XPostfixOperation) semanticObject); 
 				return; 
-			case mbasePackage.XRETURN_EXPRESSION:
+			case MbasePackage.XRETURN_EXPRESSION:
 				sequence_XReturnExpression(context, (XReturnExpression) semanticObject); 
 				return; 
-			case mbasePackage.XSET_LITERAL:
+			case MbasePackage.XSET_LITERAL:
 				sequence_XSetLiteral(context, (XSetLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XSTRING_LITERAL:
+			case MbasePackage.XSTRING_LITERAL:
 				sequence_XStringLiteral(context, (XStringLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XSWITCH_EXPRESSION:
+			case MbasePackage.XSWITCH_EXPRESSION:
 				sequence_XSwitchExpression(context, (XSwitchExpression) semanticObject); 
 				return; 
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION:
 				sequence_XSynchronizedExpression(context, (XSynchronizedExpression) semanticObject); 
 				return; 
-			case mbasePackage.XTHROW_EXPRESSION:
+			case MbasePackage.XTHROW_EXPRESSION:
 				sequence_XThrowExpression(context, (XThrowExpression) semanticObject); 
 				return; 
-			case mbasePackage.XTRY_CATCH_FINALLY_EXPRESSION:
+			case MbasePackage.XTRY_CATCH_FINALLY_EXPRESSION:
 				sequence_XTryCatchFinallyExpression(context, (XTryCatchFinallyExpression) semanticObject); 
 				return; 
-			case mbasePackage.XTYPE_LITERAL:
+			case MbasePackage.XTYPE_LITERAL:
 				sequence_XTypeLiteral(context, (XTypeLiteral) semanticObject); 
 				return; 
-			case mbasePackage.XUNARY_OPERATION:
+			case MbasePackage.XUNARY_OPERATION:
 				sequence_XUnaryOperation(context, (XUnaryOperation) semanticObject); 
 				return; 
-			case mbasePackage.XVARIABLE_DECLARATION:
+			case MbasePackage.XVARIABLE_DECLARATION:
 				sequence_XVariableDeclaration(context, (XVariableDeclaration) semanticObject); 
 				return; 
-			case mbasePackage.XWHILE_EXPRESSION:
+			case MbasePackage.XWHILE_EXPRESSION:
 				sequence_XWhileExpression(context, (XWhileExpression) semanticObject); 
 				return; 
 			}

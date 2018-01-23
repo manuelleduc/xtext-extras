@@ -26,10 +26,10 @@ import org.eclipse.xtext.mbase.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.eclipse.xtext.mbase.mbasePackage
+ * @see org.eclipse.xtext.mbase.MbasePackage
  * @generated
  */
-public class mbaseSwitch<T> extends Switch<T>
+public class MbaseSwitch<T> extends Switch<T>
 {
 	/**
 	 * The cached model package
@@ -37,7 +37,7 @@ public class mbaseSwitch<T> extends Switch<T>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static mbasePackage modelPackage;
+	protected static MbasePackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -45,11 +45,11 @@ public class mbaseSwitch<T> extends Switch<T>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public mbaseSwitch()
+	public MbaseSwitch()
 	{
 		if (modelPackage == null)
 		{
-			modelPackage = mbasePackage.eINSTANCE;
+			modelPackage = MbasePackage.eINSTANCE;
 		}
 	}
 
@@ -79,14 +79,14 @@ public class mbaseSwitch<T> extends Switch<T>
 	{
 		switch (classifierID)
 		{
-			case mbasePackage.XEXPRESSION:
+			case MbasePackage.XEXPRESSION:
 			{
 				XExpression xExpression = (XExpression)theEObject;
 				T result = caseXExpression(xExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XIF_EXPRESSION:
+			case MbasePackage.XIF_EXPRESSION:
 			{
 				XIfExpression xIfExpression = (XIfExpression)theEObject;
 				T result = caseXIfExpression(xIfExpression);
@@ -94,7 +94,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XSWITCH_EXPRESSION:
+			case MbasePackage.XSWITCH_EXPRESSION:
 			{
 				XSwitchExpression xSwitchExpression = (XSwitchExpression)theEObject;
 				T result = caseXSwitchExpression(xSwitchExpression);
@@ -102,14 +102,14 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XCASE_PART:
+			case MbasePackage.XCASE_PART:
 			{
 				XCasePart xCasePart = (XCasePart)theEObject;
 				T result = caseXCasePart(xCasePart);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XBLOCK_EXPRESSION:
+			case MbasePackage.XBLOCK_EXPRESSION:
 			{
 				XBlockExpression xBlockExpression = (XBlockExpression)theEObject;
 				T result = caseXBlockExpression(xBlockExpression);
@@ -117,7 +117,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XVARIABLE_DECLARATION:
+			case MbasePackage.XVARIABLE_DECLARATION:
 			{
 				XVariableDeclaration xVariableDeclaration = (XVariableDeclaration)theEObject;
 				T result = caseXVariableDeclaration(xVariableDeclaration);
@@ -126,7 +126,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XABSTRACT_FEATURE_CALL:
+			case MbasePackage.XABSTRACT_FEATURE_CALL:
 			{
 				XAbstractFeatureCall xAbstractFeatureCall = (XAbstractFeatureCall)theEObject;
 				T result = caseXAbstractFeatureCall(xAbstractFeatureCall);
@@ -134,7 +134,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XMEMBER_FEATURE_CALL:
+			case MbasePackage.XMEMBER_FEATURE_CALL:
 			{
 				XMemberFeatureCall xMemberFeatureCall = (XMemberFeatureCall)theEObject;
 				T result = caseXMemberFeatureCall(xMemberFeatureCall);
@@ -143,7 +143,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XFEATURE_CALL:
+			case MbasePackage.XFEATURE_CALL:
 			{
 				XFeatureCall xFeatureCall = (XFeatureCall)theEObject;
 				T result = caseXFeatureCall(xFeatureCall);
@@ -152,7 +152,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XCONSTRUCTOR_CALL:
+			case MbasePackage.XCONSTRUCTOR_CALL:
 			{
 				XConstructorCall xConstructorCall = (XConstructorCall)theEObject;
 				T result = caseXConstructorCall(xConstructorCall);
@@ -160,7 +160,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XBOOLEAN_LITERAL:
+			case MbasePackage.XBOOLEAN_LITERAL:
 			{
 				XBooleanLiteral xBooleanLiteral = (XBooleanLiteral)theEObject;
 				T result = caseXBooleanLiteral(xBooleanLiteral);
@@ -168,7 +168,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XNULL_LITERAL:
+			case MbasePackage.XNULL_LITERAL:
 			{
 				XNullLiteral xNullLiteral = (XNullLiteral)theEObject;
 				T result = caseXNullLiteral(xNullLiteral);
@@ -176,7 +176,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XNUMBER_LITERAL:
+			case MbasePackage.XNUMBER_LITERAL:
 			{
 				XNumberLiteral xNumberLiteral = (XNumberLiteral)theEObject;
 				T result = caseXNumberLiteral(xNumberLiteral);
@@ -184,7 +184,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XSTRING_LITERAL:
+			case MbasePackage.XSTRING_LITERAL:
 			{
 				XStringLiteral xStringLiteral = (XStringLiteral)theEObject;
 				T result = caseXStringLiteral(xStringLiteral);
@@ -192,7 +192,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XCOLLECTION_LITERAL:
+			case MbasePackage.XCOLLECTION_LITERAL:
 			{
 				XCollectionLiteral xCollectionLiteral = (XCollectionLiteral)theEObject;
 				T result = caseXCollectionLiteral(xCollectionLiteral);
@@ -200,7 +200,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XLIST_LITERAL:
+			case MbasePackage.XLIST_LITERAL:
 			{
 				XListLiteral xListLiteral = (XListLiteral)theEObject;
 				T result = caseXListLiteral(xListLiteral);
@@ -209,7 +209,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XSET_LITERAL:
+			case MbasePackage.XSET_LITERAL:
 			{
 				XSetLiteral xSetLiteral = (XSetLiteral)theEObject;
 				T result = caseXSetLiteral(xSetLiteral);
@@ -218,7 +218,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XCLOSURE:
+			case MbasePackage.XCLOSURE:
 			{
 				XClosure xClosure = (XClosure)theEObject;
 				T result = caseXClosure(xClosure);
@@ -226,7 +226,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XCASTED_EXPRESSION:
+			case MbasePackage.XCASTED_EXPRESSION:
 			{
 				XCastedExpression xCastedExpression = (XCastedExpression)theEObject;
 				T result = caseXCastedExpression(xCastedExpression);
@@ -234,7 +234,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XBINARY_OPERATION:
+			case MbasePackage.XBINARY_OPERATION:
 			{
 				XBinaryOperation xBinaryOperation = (XBinaryOperation)theEObject;
 				T result = caseXBinaryOperation(xBinaryOperation);
@@ -243,7 +243,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XUNARY_OPERATION:
+			case MbasePackage.XUNARY_OPERATION:
 			{
 				XUnaryOperation xUnaryOperation = (XUnaryOperation)theEObject;
 				T result = caseXUnaryOperation(xUnaryOperation);
@@ -252,7 +252,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XPOSTFIX_OPERATION:
+			case MbasePackage.XPOSTFIX_OPERATION:
 			{
 				XPostfixOperation xPostfixOperation = (XPostfixOperation)theEObject;
 				T result = caseXPostfixOperation(xPostfixOperation);
@@ -261,7 +261,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XFOR_LOOP_EXPRESSION:
+			case MbasePackage.XFOR_LOOP_EXPRESSION:
 			{
 				XForLoopExpression xForLoopExpression = (XForLoopExpression)theEObject;
 				T result = caseXForLoopExpression(xForLoopExpression);
@@ -269,7 +269,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION:
 			{
 				XBasicForLoopExpression xBasicForLoopExpression = (XBasicForLoopExpression)theEObject;
 				T result = caseXBasicForLoopExpression(xBasicForLoopExpression);
@@ -277,7 +277,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XABSTRACT_WHILE_EXPRESSION:
+			case MbasePackage.XABSTRACT_WHILE_EXPRESSION:
 			{
 				XAbstractWhileExpression xAbstractWhileExpression = (XAbstractWhileExpression)theEObject;
 				T result = caseXAbstractWhileExpression(xAbstractWhileExpression);
@@ -285,7 +285,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XDO_WHILE_EXPRESSION:
+			case MbasePackage.XDO_WHILE_EXPRESSION:
 			{
 				XDoWhileExpression xDoWhileExpression = (XDoWhileExpression)theEObject;
 				T result = caseXDoWhileExpression(xDoWhileExpression);
@@ -294,7 +294,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XWHILE_EXPRESSION:
+			case MbasePackage.XWHILE_EXPRESSION:
 			{
 				XWhileExpression xWhileExpression = (XWhileExpression)theEObject;
 				T result = caseXWhileExpression(xWhileExpression);
@@ -303,7 +303,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XTYPE_LITERAL:
+			case MbasePackage.XTYPE_LITERAL:
 			{
 				XTypeLiteral xTypeLiteral = (XTypeLiteral)theEObject;
 				T result = caseXTypeLiteral(xTypeLiteral);
@@ -311,7 +311,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XINSTANCE_OF_EXPRESSION:
+			case MbasePackage.XINSTANCE_OF_EXPRESSION:
 			{
 				XInstanceOfExpression xInstanceOfExpression = (XInstanceOfExpression)theEObject;
 				T result = caseXInstanceOfExpression(xInstanceOfExpression);
@@ -319,7 +319,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XTHROW_EXPRESSION:
+			case MbasePackage.XTHROW_EXPRESSION:
 			{
 				XThrowExpression xThrowExpression = (XThrowExpression)theEObject;
 				T result = caseXThrowExpression(xThrowExpression);
@@ -327,7 +327,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XTRY_CATCH_FINALLY_EXPRESSION:
+			case MbasePackage.XTRY_CATCH_FINALLY_EXPRESSION:
 			{
 				XTryCatchFinallyExpression xTryCatchFinallyExpression = (XTryCatchFinallyExpression)theEObject;
 				T result = caseXTryCatchFinallyExpression(xTryCatchFinallyExpression);
@@ -335,14 +335,14 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XCATCH_CLAUSE:
+			case MbasePackage.XCATCH_CLAUSE:
 			{
 				XCatchClause xCatchClause = (XCatchClause)theEObject;
 				T result = caseXCatchClause(xCatchClause);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XASSIGNMENT:
+			case MbasePackage.XASSIGNMENT:
 			{
 				XAssignment xAssignment = (XAssignment)theEObject;
 				T result = caseXAssignment(xAssignment);
@@ -351,7 +351,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XRETURN_EXPRESSION:
+			case MbasePackage.XRETURN_EXPRESSION:
 			{
 				XReturnExpression xReturnExpression = (XReturnExpression)theEObject;
 				T result = caseXReturnExpression(xReturnExpression);
@@ -359,7 +359,7 @@ public class mbaseSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case mbasePackage.XSYNCHRONIZED_EXPRESSION:
+			case MbasePackage.XSYNCHRONIZED_EXPRESSION:
 			{
 				XSynchronizedExpression xSynchronizedExpression = (XSynchronizedExpression)theEObject;
 				T result = caseXSynchronizedExpression(xSynchronizedExpression);
@@ -964,4 +964,4 @@ public class mbaseSwitch<T> extends Switch<T>
 		return null;
 	}
 
-} //mbaseSwitch
+} //MbaseSwitch

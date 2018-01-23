@@ -28,11 +28,11 @@ import org.eclipse.emf.ecore.EReference;
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
  * <!-- end-model-doc -->
- * @see org.eclipse.xtext.mbase.mbaseFactory
+ * @see org.eclipse.xtext.mbase.MbaseFactory
  * @model kind="package"
  * @generated
  */
-public interface mbasePackage extends EPackage
+public interface MbasePackage extends EPackage
 {
 	/**
 	 * The package name.
@@ -48,7 +48,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/xtext/mbase/mbase";
+	String eNS_URI = "http://www.eclipse.org/xtext/mbase/Mbase";
 
 	/**
 	 * The package namespace name.
@@ -64,14 +64,14 @@ public interface mbasePackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	mbasePackage eINSTANCE = org.eclipse.xtext.mbase.impl.mbasePackageImpl.init();
+	MbasePackage eINSTANCE = org.eclipse.xtext.mbase.impl.MbasePackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.xtext.mbase.impl.XExpressionImpl <em>XExpression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXExpression()
 	 * @generated
 	 */
 	int XEXPRESSION = 0;
@@ -90,7 +90,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XIfExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXIfExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXIfExpression()
 	 * @generated
 	 */
 	int XIF_EXPRESSION = 1;
@@ -136,7 +136,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XSwitchExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXSwitchExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXSwitchExpression()
 	 * @generated
 	 */
 	int XSWITCH_EXPRESSION = 2;
@@ -191,7 +191,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XCasePartImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXCasePart()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXCasePart()
 	 * @generated
 	 */
 	int XCASE_PART = 3;
@@ -246,7 +246,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XBlockExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXBlockExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXBlockExpression()
 	 * @generated
 	 */
 	int XBLOCK_EXPRESSION = 4;
@@ -274,7 +274,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XVariableDeclarationImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXVariableDeclaration()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXVariableDeclaration()
 	 * @generated
 	 */
 	int XVARIABLE_DECLARATION = 5;
@@ -329,7 +329,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XAbstractFeatureCallImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXAbstractFeatureCall()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXAbstractFeatureCall()
 	 * @generated
 	 */
 	int XABSTRACT_FEATURE_CALL = 6;
@@ -402,7 +402,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XMemberFeatureCallImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXMemberFeatureCall()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXMemberFeatureCall()
 	 * @generated
 	 */
 	int XMEMBER_FEATURE_CALL = 7;
@@ -547,7 +547,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XFeatureCallImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXFeatureCall()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXFeatureCall()
 	 * @generated
 	 */
 	int XFEATURE_CALL = 8;
@@ -656,7 +656,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XConstructorCallImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXConstructorCall()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXConstructorCall()
 	 * @generated
 	 */
 	int XCONSTRUCTOR_CALL = 9;
@@ -738,7 +738,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XBooleanLiteralImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXBooleanLiteral()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXBooleanLiteral()
 	 * @generated
 	 */
 	int XBOOLEAN_LITERAL = 10;
@@ -766,7 +766,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XNullLiteralImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXNullLiteral()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXNullLiteral()
 	 * @generated
 	 */
 	int XNULL_LITERAL = 11;
@@ -785,7 +785,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XNumberLiteralImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXNumberLiteral()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXNumberLiteral()
 	 * @generated
 	 */
 	int XNUMBER_LITERAL = 12;
@@ -813,7 +813,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XStringLiteralImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXStringLiteral()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXStringLiteral()
 	 * @generated
 	 */
 	int XSTRING_LITERAL = 13;
@@ -841,7 +841,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XCollectionLiteralImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXCollectionLiteral()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXCollectionLiteral()
 	 * @generated
 	 */
 	int XCOLLECTION_LITERAL = 14;
@@ -869,7 +869,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XListLiteralImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXListLiteral()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXListLiteral()
 	 * @generated
 	 */
 	int XLIST_LITERAL = 15;
@@ -897,7 +897,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XSetLiteralImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXSetLiteral()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXSetLiteral()
 	 * @generated
 	 */
 	int XSET_LITERAL = 16;
@@ -925,7 +925,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XClosureImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXClosure()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXClosure()
 	 * @generated
 	 */
 	int XCLOSURE = 17;
@@ -980,7 +980,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XCastedExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXCastedExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXCastedExpression()
 	 * @generated
 	 */
 	int XCASTED_EXPRESSION = 18;
@@ -1017,7 +1017,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XBinaryOperationImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXBinaryOperation()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXBinaryOperation()
 	 * @generated
 	 */
 	int XBINARY_OPERATION = 19;
@@ -1117,7 +1117,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XUnaryOperationImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXUnaryOperation()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXUnaryOperation()
 	 * @generated
 	 */
 	int XUNARY_OPERATION = 20;
@@ -1199,7 +1199,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XPostfixOperationImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXPostfixOperation()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXPostfixOperation()
 	 * @generated
 	 */
 	int XPOSTFIX_OPERATION = 21;
@@ -1281,7 +1281,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XForLoopExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXForLoopExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXForLoopExpression()
 	 * @generated
 	 */
 	int XFOR_LOOP_EXPRESSION = 22;
@@ -1327,7 +1327,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XBasicForLoopExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXBasicForLoopExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXBasicForLoopExpression()
 	 * @generated
 	 */
 	int XBASIC_FOR_LOOP_EXPRESSION = 23;
@@ -1382,7 +1382,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XAbstractWhileExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXAbstractWhileExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXAbstractWhileExpression()
 	 * @generated
 	 */
 	int XABSTRACT_WHILE_EXPRESSION = 24;
@@ -1419,7 +1419,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XDoWhileExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXDoWhileExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXDoWhileExpression()
 	 * @generated
 	 */
 	int XDO_WHILE_EXPRESSION = 25;
@@ -1456,7 +1456,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XWhileExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXWhileExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXWhileExpression()
 	 * @generated
 	 */
 	int XWHILE_EXPRESSION = 26;
@@ -1493,7 +1493,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XTypeLiteralImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXTypeLiteral()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXTypeLiteral()
 	 * @generated
 	 */
 	int XTYPE_LITERAL = 27;
@@ -1530,7 +1530,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XInstanceOfExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXInstanceOfExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXInstanceOfExpression()
 	 * @generated
 	 */
 	int XINSTANCE_OF_EXPRESSION = 28;
@@ -1567,7 +1567,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XThrowExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXThrowExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXThrowExpression()
 	 * @generated
 	 */
 	int XTHROW_EXPRESSION = 29;
@@ -1595,7 +1595,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XTryCatchFinallyExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXTryCatchFinallyExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXTryCatchFinallyExpression()
 	 * @generated
 	 */
 	int XTRY_CATCH_FINALLY_EXPRESSION = 30;
@@ -1641,7 +1641,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XCatchClauseImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXCatchClause()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXCatchClause()
 	 * @generated
 	 */
 	int XCATCH_CLAUSE = 31;
@@ -1678,7 +1678,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XAssignmentImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXAssignment()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXAssignment()
 	 * @generated
 	 */
 	int XASSIGNMENT = 32;
@@ -1787,7 +1787,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XReturnExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXReturnExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXReturnExpression()
 	 * @generated
 	 */
 	int XRETURN_EXPRESSION = 33;
@@ -1815,7 +1815,7 @@ public interface mbasePackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.xtext.mbase.impl.XSynchronizedExpressionImpl
-	 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXSynchronizedExpression()
+	 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXSynchronizedExpression()
 	 * @generated
 	 */
 	int XSYNCHRONIZED_EXPRESSION = 34;
@@ -3107,7 +3107,7 @@ public interface mbasePackage extends EPackage
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	mbaseFactory getmbaseFactory();
+	MbaseFactory getMbaseFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3128,7 +3128,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXExpression()
 		 * @generated
 		 */
 		EClass XEXPRESSION = eINSTANCE.getXExpression();
@@ -3138,7 +3138,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XIfExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXIfExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXIfExpression()
 		 * @generated
 		 */
 		EClass XIF_EXPRESSION = eINSTANCE.getXIfExpression();
@@ -3172,7 +3172,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XSwitchExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXSwitchExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXSwitchExpression()
 		 * @generated
 		 */
 		EClass XSWITCH_EXPRESSION = eINSTANCE.getXSwitchExpression();
@@ -3214,7 +3214,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XCasePartImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXCasePart()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXCasePart()
 		 * @generated
 		 */
 		EClass XCASE_PART = eINSTANCE.getXCasePart();
@@ -3256,7 +3256,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XBlockExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXBlockExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXBlockExpression()
 		 * @generated
 		 */
 		EClass XBLOCK_EXPRESSION = eINSTANCE.getXBlockExpression();
@@ -3274,7 +3274,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XVariableDeclarationImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXVariableDeclaration()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXVariableDeclaration()
 		 * @generated
 		 */
 		EClass XVARIABLE_DECLARATION = eINSTANCE.getXVariableDeclaration();
@@ -3316,7 +3316,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XAbstractFeatureCallImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXAbstractFeatureCall()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXAbstractFeatureCall()
 		 * @generated
 		 */
 		EClass XABSTRACT_FEATURE_CALL = eINSTANCE.getXAbstractFeatureCall();
@@ -3374,7 +3374,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XMemberFeatureCallImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXMemberFeatureCall()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXMemberFeatureCall()
 		 * @generated
 		 */
 		EClass XMEMBER_FEATURE_CALL = eINSTANCE.getXMemberFeatureCall();
@@ -3448,7 +3448,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XFeatureCallImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXFeatureCall()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXFeatureCall()
 		 * @generated
 		 */
 		EClass XFEATURE_CALL = eINSTANCE.getXFeatureCall();
@@ -3490,7 +3490,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XConstructorCallImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXConstructorCall()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXConstructorCall()
 		 * @generated
 		 */
 		EClass XCONSTRUCTOR_CALL = eINSTANCE.getXConstructorCall();
@@ -3556,7 +3556,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XBooleanLiteralImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXBooleanLiteral()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXBooleanLiteral()
 		 * @generated
 		 */
 		EClass XBOOLEAN_LITERAL = eINSTANCE.getXBooleanLiteral();
@@ -3574,7 +3574,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XNullLiteralImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXNullLiteral()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXNullLiteral()
 		 * @generated
 		 */
 		EClass XNULL_LITERAL = eINSTANCE.getXNullLiteral();
@@ -3584,7 +3584,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XNumberLiteralImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXNumberLiteral()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXNumberLiteral()
 		 * @generated
 		 */
 		EClass XNUMBER_LITERAL = eINSTANCE.getXNumberLiteral();
@@ -3602,7 +3602,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XStringLiteralImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXStringLiteral()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXStringLiteral()
 		 * @generated
 		 */
 		EClass XSTRING_LITERAL = eINSTANCE.getXStringLiteral();
@@ -3620,7 +3620,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XCollectionLiteralImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXCollectionLiteral()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXCollectionLiteral()
 		 * @generated
 		 */
 		EClass XCOLLECTION_LITERAL = eINSTANCE.getXCollectionLiteral();
@@ -3638,7 +3638,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XListLiteralImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXListLiteral()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXListLiteral()
 		 * @generated
 		 */
 		EClass XLIST_LITERAL = eINSTANCE.getXListLiteral();
@@ -3648,7 +3648,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XSetLiteralImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXSetLiteral()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXSetLiteral()
 		 * @generated
 		 */
 		EClass XSET_LITERAL = eINSTANCE.getXSetLiteral();
@@ -3658,7 +3658,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XClosureImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXClosure()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXClosure()
 		 * @generated
 		 */
 		EClass XCLOSURE = eINSTANCE.getXClosure();
@@ -3700,7 +3700,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XCastedExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXCastedExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXCastedExpression()
 		 * @generated
 		 */
 		EClass XCASTED_EXPRESSION = eINSTANCE.getXCastedExpression();
@@ -3726,7 +3726,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XBinaryOperationImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXBinaryOperation()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXBinaryOperation()
 		 * @generated
 		 */
 		EClass XBINARY_OPERATION = eINSTANCE.getXBinaryOperation();
@@ -3760,7 +3760,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XUnaryOperationImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXUnaryOperation()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXUnaryOperation()
 		 * @generated
 		 */
 		EClass XUNARY_OPERATION = eINSTANCE.getXUnaryOperation();
@@ -3778,7 +3778,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XPostfixOperationImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXPostfixOperation()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXPostfixOperation()
 		 * @generated
 		 */
 		EClass XPOSTFIX_OPERATION = eINSTANCE.getXPostfixOperation();
@@ -3796,7 +3796,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XForLoopExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXForLoopExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXForLoopExpression()
 		 * @generated
 		 */
 		EClass XFOR_LOOP_EXPRESSION = eINSTANCE.getXForLoopExpression();
@@ -3830,7 +3830,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XBasicForLoopExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXBasicForLoopExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXBasicForLoopExpression()
 		 * @generated
 		 */
 		EClass XBASIC_FOR_LOOP_EXPRESSION = eINSTANCE.getXBasicForLoopExpression();
@@ -3872,7 +3872,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XAbstractWhileExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXAbstractWhileExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXAbstractWhileExpression()
 		 * @generated
 		 */
 		EClass XABSTRACT_WHILE_EXPRESSION = eINSTANCE.getXAbstractWhileExpression();
@@ -3898,7 +3898,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XDoWhileExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXDoWhileExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXDoWhileExpression()
 		 * @generated
 		 */
 		EClass XDO_WHILE_EXPRESSION = eINSTANCE.getXDoWhileExpression();
@@ -3908,7 +3908,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XWhileExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXWhileExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXWhileExpression()
 		 * @generated
 		 */
 		EClass XWHILE_EXPRESSION = eINSTANCE.getXWhileExpression();
@@ -3918,7 +3918,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XTypeLiteralImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXTypeLiteral()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXTypeLiteral()
 		 * @generated
 		 */
 		EClass XTYPE_LITERAL = eINSTANCE.getXTypeLiteral();
@@ -3944,7 +3944,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XInstanceOfExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXInstanceOfExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXInstanceOfExpression()
 		 * @generated
 		 */
 		EClass XINSTANCE_OF_EXPRESSION = eINSTANCE.getXInstanceOfExpression();
@@ -3970,7 +3970,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XThrowExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXThrowExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXThrowExpression()
 		 * @generated
 		 */
 		EClass XTHROW_EXPRESSION = eINSTANCE.getXThrowExpression();
@@ -3988,7 +3988,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XTryCatchFinallyExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXTryCatchFinallyExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXTryCatchFinallyExpression()
 		 * @generated
 		 */
 		EClass XTRY_CATCH_FINALLY_EXPRESSION = eINSTANCE.getXTryCatchFinallyExpression();
@@ -4022,7 +4022,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XCatchClauseImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXCatchClause()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXCatchClause()
 		 * @generated
 		 */
 		EClass XCATCH_CLAUSE = eINSTANCE.getXCatchClause();
@@ -4048,7 +4048,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XAssignmentImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXAssignment()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXAssignment()
 		 * @generated
 		 */
 		EClass XASSIGNMENT = eINSTANCE.getXAssignment();
@@ -4090,7 +4090,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XReturnExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXReturnExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXReturnExpression()
 		 * @generated
 		 */
 		EClass XRETURN_EXPRESSION = eINSTANCE.getXReturnExpression();
@@ -4108,7 +4108,7 @@ public interface mbasePackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.xtext.mbase.impl.XSynchronizedExpressionImpl
-		 * @see org.eclipse.xtext.mbase.impl.mbasePackageImpl#getXSynchronizedExpression()
+		 * @see org.eclipse.xtext.mbase.impl.MbasePackageImpl#getXSynchronizedExpression()
 		 * @generated
 		 */
 		EClass XSYNCHRONIZED_EXPRESSION = eINSTANCE.getXSynchronizedExpression();
@@ -4131,4 +4131,4 @@ public interface mbasePackage extends EPackage
 
 	}
 
-} //mbasePackage
+} //MbasePackage

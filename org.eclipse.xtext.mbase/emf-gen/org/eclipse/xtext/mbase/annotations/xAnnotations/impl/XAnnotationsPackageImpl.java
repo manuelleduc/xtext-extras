@@ -15,14 +15,14 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.common.types.TypesPackage;
 
+import org.eclipse.xtext.mbase.MbasePackage;
+
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationElementValuePair;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsFactory;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsPackage;
 
-import org.eclipse.xtext.mbase.impl.mbasePackageImpl;
-
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.impl.MbasePackageImpl;
 
 import org.eclipse.xtext.xtype.XtypePackage;
 
@@ -103,17 +103,17 @@ public class XAnnotationsPackageImpl extends EPackageImpl implements XAnnotation
 
 		// Obtain or create and register interdependencies
 		XtypePackageImpl theXtypePackage = (XtypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) instanceof XtypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) : XtypePackage.eINSTANCE);
-		mbasePackageImpl thembasePackage = (mbasePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(mbasePackage.eNS_URI) instanceof mbasePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(mbasePackage.eNS_URI) : mbasePackage.eINSTANCE);
+		MbasePackageImpl theMbasePackage = (MbasePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MbasePackage.eNS_URI) instanceof MbasePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MbasePackage.eNS_URI) : MbasePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theXAnnotationsPackage.createPackageContents();
 		theXtypePackage.createPackageContents();
-		thembasePackage.createPackageContents();
+		theMbasePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theXAnnotationsPackage.initializePackageContents();
 		theXtypePackage.initializePackageContents();
-		thembasePackage.initializePackageContents();
+		theMbasePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theXAnnotationsPackage.freeze();
@@ -259,7 +259,7 @@ public class XAnnotationsPackageImpl extends EPackageImpl implements XAnnotation
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		mbasePackage thembasePackage = (mbasePackage)EPackage.Registry.INSTANCE.getEPackage(mbasePackage.eNS_URI);
+		MbasePackage theMbasePackage = (MbasePackage)EPackage.Registry.INSTANCE.getEPackage(MbasePackage.eNS_URI);
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 
 		// Create type parameters
@@ -267,16 +267,16 @@ public class XAnnotationsPackageImpl extends EPackageImpl implements XAnnotation
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		xAnnotationEClass.getESuperTypes().add(thembasePackage.getXExpression());
+		xAnnotationEClass.getESuperTypes().add(theMbasePackage.getXExpression());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(xAnnotationEClass, XAnnotation.class, "XAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXAnnotation_ElementValuePairs(), this.getXAnnotationElementValuePair(), null, "elementValuePairs", null, 0, -1, XAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXAnnotation_AnnotationType(), theTypesPackage.getJvmType(), null, "annotationType", null, 0, 1, XAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXAnnotation_Value(), thembasePackage.getXExpression(), null, "value", null, 0, 1, XAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXAnnotation_Value(), theMbasePackage.getXExpression(), null, "value", null, 0, 1, XAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xAnnotationElementValuePairEClass, XAnnotationElementValuePair.class, "XAnnotationElementValuePair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getXAnnotationElementValuePair_Value(), thembasePackage.getXExpression(), null, "value", null, 0, 1, XAnnotationElementValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXAnnotationElementValuePair_Value(), theMbasePackage.getXExpression(), null, "value", null, 0, 1, XAnnotationElementValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXAnnotationElementValuePair_Element(), theTypesPackage.getJvmOperation(), null, "element", null, 0, 1, XAnnotationElementValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource

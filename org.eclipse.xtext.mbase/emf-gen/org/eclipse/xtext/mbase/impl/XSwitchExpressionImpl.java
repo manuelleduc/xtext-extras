@@ -24,10 +24,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XCasePart;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XSwitchExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -105,7 +105,7 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XSWITCH_EXPRESSION;
+		return MbasePackage.Literals.XSWITCH_EXPRESSION;
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 		switch_ = newSwitch;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XSWITCH_EXPRESSION__SWITCH, oldSwitch, newSwitch);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XSWITCH_EXPRESSION__SWITCH, oldSwitch, newSwitch);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -146,14 +146,14 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 		{
 			NotificationChain msgs = null;
 			if (switch_ != null)
-				msgs = ((InternalEObject)switch_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XSWITCH_EXPRESSION__SWITCH, null, msgs);
+				msgs = ((InternalEObject)switch_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XSWITCH_EXPRESSION__SWITCH, null, msgs);
 			if (newSwitch != null)
-				msgs = ((InternalEObject)newSwitch).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XSWITCH_EXPRESSION__SWITCH, null, msgs);
+				msgs = ((InternalEObject)newSwitch).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XSWITCH_EXPRESSION__SWITCH, null, msgs);
 			msgs = basicSetSwitch(newSwitch, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XSWITCH_EXPRESSION__SWITCH, newSwitch, newSwitch));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XSWITCH_EXPRESSION__SWITCH, newSwitch, newSwitch));
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 	{
 		if (cases == null)
 		{
-			cases = new EObjectContainmentEList<XCasePart>(XCasePart.class, this, mbasePackage.XSWITCH_EXPRESSION__CASES);
+			cases = new EObjectContainmentEList<XCasePart>(XCasePart.class, this, MbasePackage.XSWITCH_EXPRESSION__CASES);
 		}
 		return cases;
 	}
@@ -191,7 +191,7 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 		default_ = newDefault;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XSWITCH_EXPRESSION__DEFAULT, oldDefault, newDefault);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XSWITCH_EXPRESSION__DEFAULT, oldDefault, newDefault);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -208,14 +208,14 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 		{
 			NotificationChain msgs = null;
 			if (default_ != null)
-				msgs = ((InternalEObject)default_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XSWITCH_EXPRESSION__DEFAULT, null, msgs);
+				msgs = ((InternalEObject)default_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XSWITCH_EXPRESSION__DEFAULT, null, msgs);
 			if (newDefault != null)
-				msgs = ((InternalEObject)newDefault).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XSWITCH_EXPRESSION__DEFAULT, null, msgs);
+				msgs = ((InternalEObject)newDefault).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XSWITCH_EXPRESSION__DEFAULT, null, msgs);
 			msgs = basicSetDefault(newDefault, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XSWITCH_EXPRESSION__DEFAULT, newDefault, newDefault));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XSWITCH_EXPRESSION__DEFAULT, newDefault, newDefault));
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 		declaredParam = newDeclaredParam;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM, oldDeclaredParam, newDeclaredParam);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM, oldDeclaredParam, newDeclaredParam);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -256,14 +256,14 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 		{
 			NotificationChain msgs = null;
 			if (declaredParam != null)
-				msgs = ((InternalEObject)declaredParam).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM, null, msgs);
+				msgs = ((InternalEObject)declaredParam).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM, null, msgs);
 			if (newDeclaredParam != null)
-				msgs = ((InternalEObject)newDeclaredParam).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM, null, msgs);
+				msgs = ((InternalEObject)newDeclaredParam).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM, null, msgs);
 			msgs = basicSetDeclaredParam(newDeclaredParam, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM, newDeclaredParam, newDeclaredParam));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM, newDeclaredParam, newDeclaredParam));
 	}
 
 	/**
@@ -276,13 +276,13 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSWITCH_EXPRESSION__SWITCH:
+			case MbasePackage.XSWITCH_EXPRESSION__SWITCH:
 				return basicSetSwitch(null, msgs);
-			case mbasePackage.XSWITCH_EXPRESSION__CASES:
+			case MbasePackage.XSWITCH_EXPRESSION__CASES:
 				return ((InternalEList<?>)getCases()).basicRemove(otherEnd, msgs);
-			case mbasePackage.XSWITCH_EXPRESSION__DEFAULT:
+			case MbasePackage.XSWITCH_EXPRESSION__DEFAULT:
 				return basicSetDefault(null, msgs);
-			case mbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM:
+			case MbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM:
 				return basicSetDeclaredParam(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -298,13 +298,13 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSWITCH_EXPRESSION__SWITCH:
+			case MbasePackage.XSWITCH_EXPRESSION__SWITCH:
 				return getSwitch();
-			case mbasePackage.XSWITCH_EXPRESSION__CASES:
+			case MbasePackage.XSWITCH_EXPRESSION__CASES:
 				return getCases();
-			case mbasePackage.XSWITCH_EXPRESSION__DEFAULT:
+			case MbasePackage.XSWITCH_EXPRESSION__DEFAULT:
 				return getDefault();
-			case mbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM:
+			case MbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM:
 				return getDeclaredParam();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -321,17 +321,17 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSWITCH_EXPRESSION__SWITCH:
+			case MbasePackage.XSWITCH_EXPRESSION__SWITCH:
 				setSwitch((XExpression)newValue);
 				return;
-			case mbasePackage.XSWITCH_EXPRESSION__CASES:
+			case MbasePackage.XSWITCH_EXPRESSION__CASES:
 				getCases().clear();
 				getCases().addAll((Collection<? extends XCasePart>)newValue);
 				return;
-			case mbasePackage.XSWITCH_EXPRESSION__DEFAULT:
+			case MbasePackage.XSWITCH_EXPRESSION__DEFAULT:
 				setDefault((XExpression)newValue);
 				return;
-			case mbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM:
+			case MbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM:
 				setDeclaredParam((JvmFormalParameter)newValue);
 				return;
 		}
@@ -348,16 +348,16 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSWITCH_EXPRESSION__SWITCH:
+			case MbasePackage.XSWITCH_EXPRESSION__SWITCH:
 				setSwitch((XExpression)null);
 				return;
-			case mbasePackage.XSWITCH_EXPRESSION__CASES:
+			case MbasePackage.XSWITCH_EXPRESSION__CASES:
 				getCases().clear();
 				return;
-			case mbasePackage.XSWITCH_EXPRESSION__DEFAULT:
+			case MbasePackage.XSWITCH_EXPRESSION__DEFAULT:
 				setDefault((XExpression)null);
 				return;
-			case mbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM:
+			case MbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM:
 				setDeclaredParam((JvmFormalParameter)null);
 				return;
 		}
@@ -374,13 +374,13 @@ public class XSwitchExpressionImpl extends XExpressionImpl implements XSwitchExp
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XSWITCH_EXPRESSION__SWITCH:
+			case MbasePackage.XSWITCH_EXPRESSION__SWITCH:
 				return switch_ != null;
-			case mbasePackage.XSWITCH_EXPRESSION__CASES:
+			case MbasePackage.XSWITCH_EXPRESSION__CASES:
 				return cases != null && !cases.isEmpty();
-			case mbasePackage.XSWITCH_EXPRESSION__DEFAULT:
+			case MbasePackage.XSWITCH_EXPRESSION__DEFAULT:
 				return default_ != null;
-			case mbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM:
+			case MbasePackage.XSWITCH_EXPRESSION__DECLARED_PARAM:
 				return declaredParam != null;
 		}
 		return super.eIsSet(featureID);

@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 import org.eclipse.xtext.common.types.JvmType;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XTypeLiteral;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,7 +79,7 @@ public class XTypeLiteralImpl extends XExpressionImpl implements XTypeLiteral
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XTYPE_LITERAL;
+		return MbasePackage.Literals.XTYPE_LITERAL;
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class XTypeLiteralImpl extends XExpressionImpl implements XTypeLiteral
 			if (type != oldType)
 			{
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, mbasePackage.XTYPE_LITERAL__TYPE, oldType, type));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MbasePackage.XTYPE_LITERAL__TYPE, oldType, type));
 			}
 		}
 		return type;
@@ -122,7 +122,7 @@ public class XTypeLiteralImpl extends XExpressionImpl implements XTypeLiteral
 		JvmType oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XTYPE_LITERAL__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XTYPE_LITERAL__TYPE, oldType, type));
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class XTypeLiteralImpl extends XExpressionImpl implements XTypeLiteral
 	{
 		if (arrayDimensions == null)
 		{
-			arrayDimensions = new EDataTypeEList<String>(String.class, this, mbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS);
+			arrayDimensions = new EDataTypeEList<String>(String.class, this, MbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS);
 		}
 		return arrayDimensions;
 	}
@@ -149,10 +149,10 @@ public class XTypeLiteralImpl extends XExpressionImpl implements XTypeLiteral
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XTYPE_LITERAL__TYPE:
+			case MbasePackage.XTYPE_LITERAL__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
-			case mbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS:
+			case MbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS:
 				return getArrayDimensions();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -169,10 +169,10 @@ public class XTypeLiteralImpl extends XExpressionImpl implements XTypeLiteral
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XTYPE_LITERAL__TYPE:
+			case MbasePackage.XTYPE_LITERAL__TYPE:
 				setType((JvmType)newValue);
 				return;
-			case mbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS:
+			case MbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS:
 				getArrayDimensions().clear();
 				getArrayDimensions().addAll((Collection<? extends String>)newValue);
 				return;
@@ -190,10 +190,10 @@ public class XTypeLiteralImpl extends XExpressionImpl implements XTypeLiteral
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XTYPE_LITERAL__TYPE:
+			case MbasePackage.XTYPE_LITERAL__TYPE:
 				setType((JvmType)null);
 				return;
-			case mbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS:
+			case MbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS:
 				getArrayDimensions().clear();
 				return;
 		}
@@ -210,9 +210,9 @@ public class XTypeLiteralImpl extends XExpressionImpl implements XTypeLiteral
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XTYPE_LITERAL__TYPE:
+			case MbasePackage.XTYPE_LITERAL__TYPE:
 				return type != null;
-			case mbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS:
+			case MbasePackage.XTYPE_LITERAL__ARRAY_DIMENSIONS:
 				return arrayDimensions != null && !arrayDimensions.isEmpty();
 		}
 		return super.eIsSet(featureID);

@@ -26,7 +26,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XReturnExpression#getExpression <em>Expression</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXReturnExpression()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXReturnExpression()
  * @model
  * @generated
  */
@@ -42,7 +42,7 @@ public interface XReturnExpression extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(XExpression)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXReturnExpression_Expression()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXReturnExpression_Expression()
 	 * @model containment="true"
 	 * @generated
 	 */

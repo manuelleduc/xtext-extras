@@ -26,7 +26,7 @@ package org.eclipse.xtext.mbase;
  *   <li>{@link org.eclipse.xtext.mbase.XNumberLiteral#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see org.eclipse.xtext.mbase.mbasePackage#getXNumberLiteral()
+ * @see org.eclipse.xtext.mbase.MbasePackage#getXNumberLiteral()
  * @model
  * @generated
  */
@@ -42,7 +42,7 @@ public interface XNumberLiteral extends XExpression
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
-	 * @see org.eclipse.xtext.mbase.mbasePackage#getXNumberLiteral_Value()
+	 * @see org.eclipse.xtext.mbase.MbasePackage#getXNumberLiteral_Value()
 	 * @model
 	 * @generated
 	 */

@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XBooleanLiteral;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,7 +69,7 @@ public class XBooleanLiteralImpl extends XExpressionImpl implements XBooleanLite
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XBOOLEAN_LITERAL;
+		return MbasePackage.Literals.XBOOLEAN_LITERAL;
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class XBooleanLiteralImpl extends XExpressionImpl implements XBooleanLite
 		boolean oldIsTrue = isTrue;
 		isTrue = newIsTrue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XBOOLEAN_LITERAL__IS_TRUE, oldIsTrue, isTrue));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XBOOLEAN_LITERAL__IS_TRUE, oldIsTrue, isTrue));
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class XBooleanLiteralImpl extends XExpressionImpl implements XBooleanLite
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBOOLEAN_LITERAL__IS_TRUE:
+			case MbasePackage.XBOOLEAN_LITERAL__IS_TRUE:
 				return isIsTrue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class XBooleanLiteralImpl extends XExpressionImpl implements XBooleanLite
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBOOLEAN_LITERAL__IS_TRUE:
+			case MbasePackage.XBOOLEAN_LITERAL__IS_TRUE:
 				setIsTrue((Boolean)newValue);
 				return;
 		}
@@ -138,7 +138,7 @@ public class XBooleanLiteralImpl extends XExpressionImpl implements XBooleanLite
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBOOLEAN_LITERAL__IS_TRUE:
+			case MbasePackage.XBOOLEAN_LITERAL__IS_TRUE:
 				setIsTrue(IS_TRUE_EDEFAULT);
 				return;
 		}
@@ -155,7 +155,7 @@ public class XBooleanLiteralImpl extends XExpressionImpl implements XBooleanLite
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBOOLEAN_LITERAL__IS_TRUE:
+			case MbasePackage.XBOOLEAN_LITERAL__IS_TRUE:
 				return isTrue != IS_TRUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

@@ -17,13 +17,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.common.types.TypesPackage;
 
+import org.eclipse.xtext.mbase.MbasePackage;
+
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsPackage;
 
 import org.eclipse.xtext.mbase.annotations.xAnnotations.impl.XAnnotationsPackageImpl;
 
-import org.eclipse.xtext.mbase.impl.mbasePackageImpl;
-
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.impl.MbasePackageImpl;
 
 import org.eclipse.xtext.mbase.typing.IJvmTypeReferenceProvider;
 
@@ -130,17 +130,17 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage
 
 		// Obtain or create and register interdependencies
 		XAnnotationsPackageImpl theXAnnotationsPackage = (XAnnotationsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XAnnotationsPackage.eNS_URI) instanceof XAnnotationsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XAnnotationsPackage.eNS_URI) : XAnnotationsPackage.eINSTANCE);
-		mbasePackageImpl thembasePackage = (mbasePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(mbasePackage.eNS_URI) instanceof mbasePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(mbasePackage.eNS_URI) : mbasePackage.eINSTANCE);
+		MbasePackageImpl theMbasePackage = (MbasePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MbasePackage.eNS_URI) instanceof MbasePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MbasePackage.eNS_URI) : MbasePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theXtypePackage.createPackageContents();
 		theXAnnotationsPackage.createPackageContents();
-		thembasePackage.createPackageContents();
+		theMbasePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theXtypePackage.initializePackageContents();
 		theXAnnotationsPackage.initializePackageContents();
-		thembasePackage.initializePackageContents();
+		theMbasePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theXtypePackage.freeze();

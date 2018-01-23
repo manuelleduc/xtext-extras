@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XBasicForLoopExpression;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,7 +102,7 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XBASIC_FOR_LOOP_EXPRESSION;
+		return MbasePackage.Literals.XBASIC_FOR_LOOP_EXPRESSION;
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 		expression = newExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION, oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -143,14 +143,14 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 		{
 			NotificationChain msgs = null;
 			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION, null, msgs);
 			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION, null, msgs);
 			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 		eachExpression = newEachExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION, oldEachExpression, newEachExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION, oldEachExpression, newEachExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -191,14 +191,14 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 		{
 			NotificationChain msgs = null;
 			if (eachExpression != null)
-				msgs = ((InternalEObject)eachExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)eachExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION, null, msgs);
 			if (newEachExpression != null)
-				msgs = ((InternalEObject)newEachExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newEachExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION, null, msgs);
 			msgs = basicSetEachExpression(newEachExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION, newEachExpression, newEachExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION, newEachExpression, newEachExpression));
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 	{
 		if (initExpressions == null)
 		{
-			initExpressions = new EObjectContainmentEList<XExpression>(XExpression.class, this, mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS);
+			initExpressions = new EObjectContainmentEList<XExpression>(XExpression.class, this, MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS);
 		}
 		return initExpressions;
 	}
@@ -224,7 +224,7 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 	{
 		if (updateExpressions == null)
 		{
-			updateExpressions = new EObjectContainmentEList<XExpression>(XExpression.class, this, mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS);
+			updateExpressions = new EObjectContainmentEList<XExpression>(XExpression.class, this, MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS);
 		}
 		return updateExpressions;
 	}
@@ -239,13 +239,13 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION:
 				return basicSetExpression(null, msgs);
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION:
 				return basicSetEachExpression(null, msgs);
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS:
 				return ((InternalEList<?>)getInitExpressions()).basicRemove(otherEnd, msgs);
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS:
 				return ((InternalEList<?>)getUpdateExpressions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -261,13 +261,13 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION:
 				return getExpression();
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION:
 				return getEachExpression();
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS:
 				return getInitExpressions();
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS:
 				return getUpdateExpressions();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -284,17 +284,17 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION:
 				setExpression((XExpression)newValue);
 				return;
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION:
 				setEachExpression((XExpression)newValue);
 				return;
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS:
 				getInitExpressions().clear();
 				getInitExpressions().addAll((Collection<? extends XExpression>)newValue);
 				return;
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS:
 				getUpdateExpressions().clear();
 				getUpdateExpressions().addAll((Collection<? extends XExpression>)newValue);
 				return;
@@ -312,16 +312,16 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION:
 				setExpression((XExpression)null);
 				return;
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION:
 				setEachExpression((XExpression)null);
 				return;
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS:
 				getInitExpressions().clear();
 				return;
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS:
 				getUpdateExpressions().clear();
 				return;
 		}
@@ -338,13 +338,13 @@ public class XBasicForLoopExpressionImpl extends XExpressionImpl implements XBas
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EXPRESSION:
 				return expression != null;
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__EACH_EXPRESSION:
 				return eachExpression != null;
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__INIT_EXPRESSIONS:
 				return initExpressions != null && !initExpressions.isEmpty();
-			case mbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS:
+			case MbasePackage.XBASIC_FOR_LOOP_EXPRESSION__UPDATE_EXPRESSIONS:
 				return updateExpressions != null && !updateExpressions.isEmpty();
 		}
 		return super.eIsSet(featureID);

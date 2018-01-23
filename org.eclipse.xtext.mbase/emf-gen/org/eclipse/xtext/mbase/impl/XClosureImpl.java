@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XClosure;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -114,7 +114,7 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 	@Override
 	protected EClass eStaticClass()
 	{
-		return mbasePackage.Literals.XCLOSURE;
+		return MbasePackage.Literals.XCLOSURE;
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 	{
 		if (declaredFormalParameters == null)
 		{
-			declaredFormalParameters = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, mbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS);
+			declaredFormalParameters = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, MbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS);
 		}
 		return declaredFormalParameters;
 	}
@@ -152,7 +152,7 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 		expression = newExpression;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, mbasePackage.XCLOSURE__EXPRESSION, oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MbasePackage.XCLOSURE__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -169,14 +169,14 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 		{
 			NotificationChain msgs = null;
 			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCLOSURE__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCLOSURE__EXPRESSION, null, msgs);
 			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - mbasePackage.XCLOSURE__EXPRESSION, null, msgs);
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MbasePackage.XCLOSURE__EXPRESSION, null, msgs);
 			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCLOSURE__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCLOSURE__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 		boolean oldExplicitSyntax = explicitSyntax;
 		explicitSyntax = newExplicitSyntax;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, mbasePackage.XCLOSURE__EXPLICIT_SYNTAX, oldExplicitSyntax, explicitSyntax));
+			eNotify(new ENotificationImpl(this, Notification.SET, MbasePackage.XCLOSURE__EXPLICIT_SYNTAX, oldExplicitSyntax, explicitSyntax));
 	}
 
 	/**
@@ -211,7 +211,7 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 	{
 		if (implicitFormalParameters == null)
 		{
-			implicitFormalParameters = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, mbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS);
+			implicitFormalParameters = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, MbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS);
 		}
 		return implicitFormalParameters;
 	}
@@ -238,11 +238,11 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
 				return ((InternalEList<?>)getDeclaredFormalParameters()).basicRemove(otherEnd, msgs);
-			case mbasePackage.XCLOSURE__EXPRESSION:
+			case MbasePackage.XCLOSURE__EXPRESSION:
 				return basicSetExpression(null, msgs);
-			case mbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS:
 				return ((InternalEList<?>)getImplicitFormalParameters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -258,13 +258,13 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
 				return getDeclaredFormalParameters();
-			case mbasePackage.XCLOSURE__EXPRESSION:
+			case MbasePackage.XCLOSURE__EXPRESSION:
 				return getExpression();
-			case mbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
+			case MbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
 				return isExplicitSyntax();
-			case mbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS:
 				return getImplicitFormalParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -281,17 +281,17 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
 				getDeclaredFormalParameters().clear();
 				getDeclaredFormalParameters().addAll((Collection<? extends JvmFormalParameter>)newValue);
 				return;
-			case mbasePackage.XCLOSURE__EXPRESSION:
+			case MbasePackage.XCLOSURE__EXPRESSION:
 				setExpression((XExpression)newValue);
 				return;
-			case mbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
+			case MbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
 				setExplicitSyntax((Boolean)newValue);
 				return;
-			case mbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS:
 				getImplicitFormalParameters().clear();
 				getImplicitFormalParameters().addAll((Collection<? extends JvmFormalParameter>)newValue);
 				return;
@@ -309,16 +309,16 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
 				getDeclaredFormalParameters().clear();
 				return;
-			case mbasePackage.XCLOSURE__EXPRESSION:
+			case MbasePackage.XCLOSURE__EXPRESSION:
 				setExpression((XExpression)null);
 				return;
-			case mbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
+			case MbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
 				setExplicitSyntax(EXPLICIT_SYNTAX_EDEFAULT);
 				return;
-			case mbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS:
 				getImplicitFormalParameters().clear();
 				return;
 		}
@@ -335,13 +335,13 @@ public class XClosureImpl extends XExpressionImpl implements XClosure
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
 				return declaredFormalParameters != null && !declaredFormalParameters.isEmpty();
-			case mbasePackage.XCLOSURE__EXPRESSION:
+			case MbasePackage.XCLOSURE__EXPRESSION:
 				return expression != null;
-			case mbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
+			case MbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
 				return explicitSyntax != EXPLICIT_SYNTAX_EDEFAULT;
-			case mbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__IMPLICIT_FORMAL_PARAMETERS:
 				return implicitFormalParameters != null && !implicitFormalParameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
