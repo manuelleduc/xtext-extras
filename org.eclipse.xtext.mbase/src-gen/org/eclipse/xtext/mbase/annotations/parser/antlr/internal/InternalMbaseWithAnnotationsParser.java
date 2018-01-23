@@ -1664,11 +1664,11 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                 {
                 int LA14_2 = input.LA(2);
 
-                if ( (LA14_2==17) ) {
-                    alt14=1;
-                }
-                else if ( (LA14_2==EOF||(LA14_2>=RULE_STRING && LA14_2<=RULE_ID)||(LA14_2>=14 && LA14_2<=16)||(LA14_2>=18 && LA14_2<=56)||(LA14_2>=58 && LA14_2<=85)) ) {
+                if ( (LA14_2==EOF||(LA14_2>=RULE_STRING && LA14_2<=RULE_ID)||(LA14_2>=14 && LA14_2<=16)||(LA14_2>=18 && LA14_2<=56)||(LA14_2>=58 && LA14_2<=85)) ) {
                     alt14=2;
+                }
+                else if ( (LA14_2==17) ) {
+                    alt14=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -1721,11 +1721,11 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                 {
                 int LA14_5 = input.LA(2);
 
-                if ( (LA14_5==17) ) {
-                    alt14=1;
-                }
-                else if ( (LA14_5==EOF||(LA14_5>=RULE_STRING && LA14_5<=RULE_ID)||(LA14_5>=14 && LA14_5<=16)||(LA14_5>=18 && LA14_5<=56)||(LA14_5>=58 && LA14_5<=85)) ) {
+                if ( (LA14_5==EOF||(LA14_5>=RULE_STRING && LA14_5<=RULE_ID)||(LA14_5>=14 && LA14_5<=16)||(LA14_5>=18 && LA14_5<=56)||(LA14_5>=58 && LA14_5<=85)) ) {
                     alt14=2;
+                }
+                else if ( (LA14_5==17) ) {
+                    alt14=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -7918,11 +7918,11 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
             if ( (LA47_0==18) ) {
                 int LA47_1 = input.LA(2);
 
-                if ( (LA47_1==19) ) {
-                    alt47=2;
-                }
-                else if ( (LA47_1==55) ) {
+                if ( (LA47_1==55) ) {
                     alt47=1;
+                }
+                else if ( (LA47_1==19) ) {
+                    alt47=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -18192,125 +18192,8 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
     // $ANTLR end "ruleJvmLowerBoundAnded"
 
 
-    // $ANTLR start "entryRuleQualifiedNameWithWildcard"
-    // InternalMbaseWithAnnotations.g:6603:1: entryRuleQualifiedNameWithWildcard returns [String current=null] : iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF ;
-    public final String entryRuleQualifiedNameWithWildcard() throws RecognitionException {
-        String current = null;
-
-        AntlrDatatypeRuleToken iv_ruleQualifiedNameWithWildcard = null;
-
-
-        try {
-            // InternalMbaseWithAnnotations.g:6603:65: (iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF )
-            // InternalMbaseWithAnnotations.g:6604:2: iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF
-            {
-            if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getQualifiedNameWithWildcardRule()); 
-            }
-            pushFollow(FOLLOW_1);
-            iv_ruleQualifiedNameWithWildcard=ruleQualifiedNameWithWildcard();
-
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-               current =iv_ruleQualifiedNameWithWildcard.getText(); 
-            }
-            match(input,EOF,FOLLOW_2); if (state.failed) return current;
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleQualifiedNameWithWildcard"
-
-
-    // $ANTLR start "ruleQualifiedNameWithWildcard"
-    // InternalMbaseWithAnnotations.g:6610:1: ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' ) ;
-    public final AntlrDatatypeRuleToken ruleQualifiedNameWithWildcard() throws RecognitionException {
-        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
-
-        Token kw=null;
-        AntlrDatatypeRuleToken this_QualifiedName_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalMbaseWithAnnotations.g:6616:2: ( (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' ) )
-            // InternalMbaseWithAnnotations.g:6617:2: (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' )
-            {
-            // InternalMbaseWithAnnotations.g:6617:2: (this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*' )
-            // InternalMbaseWithAnnotations.g:6618:3: this_QualifiedName_0= ruleQualifiedName kw= '.' kw= '*'
-            {
-            if ( state.backtracking==0 ) {
-
-              			newCompositeNode(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0());
-              		
-            }
-            pushFollow(FOLLOW_80);
-            this_QualifiedName_0=ruleQualifiedName();
-
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-              			current.merge(this_QualifiedName_0);
-              		
-            }
-            if ( state.backtracking==0 ) {
-
-              			afterParserOrEnumRuleCall();
-              		
-            }
-            kw=(Token)match(input,52,FOLLOW_81); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-              			current.merge(kw);
-              			newLeafNode(kw, grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopKeyword_1());
-              		
-            }
-            kw=(Token)match(input,44,FOLLOW_2); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-              			current.merge(kw);
-              			newLeafNode(kw, grammarAccess.getQualifiedNameWithWildcardAccess().getAsteriskKeyword_2());
-              		
-            }
-
-            }
-
-
-            }
-
-            if ( state.backtracking==0 ) {
-
-              	leaveRule();
-
-            }
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleQualifiedNameWithWildcard"
-
-
     // $ANTLR start "entryRuleValidID"
-    // InternalMbaseWithAnnotations.g:6642:1: entryRuleValidID returns [String current=null] : iv_ruleValidID= ruleValidID EOF ;
+    // InternalMbaseWithAnnotations.g:6603:1: entryRuleValidID returns [String current=null] : iv_ruleValidID= ruleValidID EOF ;
     public final String entryRuleValidID() throws RecognitionException {
         String current = null;
 
@@ -18318,8 +18201,8 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
 
 
         try {
-            // InternalMbaseWithAnnotations.g:6642:47: (iv_ruleValidID= ruleValidID EOF )
-            // InternalMbaseWithAnnotations.g:6643:2: iv_ruleValidID= ruleValidID EOF
+            // InternalMbaseWithAnnotations.g:6603:47: (iv_ruleValidID= ruleValidID EOF )
+            // InternalMbaseWithAnnotations.g:6604:2: iv_ruleValidID= ruleValidID EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValidIDRule()); 
@@ -18350,7 +18233,7 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
 
 
     // $ANTLR start "ruleValidID"
-    // InternalMbaseWithAnnotations.g:6649:1: ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_ID_0= RULE_ID ;
+    // InternalMbaseWithAnnotations.g:6610:1: ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_ID_0= RULE_ID ;
     public final AntlrDatatypeRuleToken ruleValidID() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -18360,8 +18243,8 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
         	enterRule();
 
         try {
-            // InternalMbaseWithAnnotations.g:6655:2: (this_ID_0= RULE_ID )
-            // InternalMbaseWithAnnotations.g:6656:2: this_ID_0= RULE_ID
+            // InternalMbaseWithAnnotations.g:6616:2: (this_ID_0= RULE_ID )
+            // InternalMbaseWithAnnotations.g:6617:2: this_ID_0= RULE_ID
             {
             this_ID_0=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -18393,555 +18276,6 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
         return current;
     }
     // $ANTLR end "ruleValidID"
-
-
-    // $ANTLR start "entryRuleXImportDeclaration"
-    // InternalMbaseWithAnnotations.g:6666:1: entryRuleXImportDeclaration returns [EObject current=null] : iv_ruleXImportDeclaration= ruleXImportDeclaration EOF ;
-    public final EObject entryRuleXImportDeclaration() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleXImportDeclaration = null;
-
-
-        try {
-            // InternalMbaseWithAnnotations.g:6666:59: (iv_ruleXImportDeclaration= ruleXImportDeclaration EOF )
-            // InternalMbaseWithAnnotations.g:6667:2: iv_ruleXImportDeclaration= ruleXImportDeclaration EOF
-            {
-            if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getXImportDeclarationRule()); 
-            }
-            pushFollow(FOLLOW_1);
-            iv_ruleXImportDeclaration=ruleXImportDeclaration();
-
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-               current =iv_ruleXImportDeclaration; 
-            }
-            match(input,EOF,FOLLOW_2); if (state.failed) return current;
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleXImportDeclaration"
-
-
-    // $ANTLR start "ruleXImportDeclaration"
-    // InternalMbaseWithAnnotations.g:6673:1: ruleXImportDeclaration returns [EObject current=null] : (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? ) ;
-    public final EObject ruleXImportDeclaration() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_0=null;
-        Token lv_static_1_0=null;
-        Token lv_extension_2_0=null;
-        Token lv_wildcard_4_0=null;
-        Token otherlv_8=null;
-        AntlrDatatypeRuleToken lv_memberName_5_0 = null;
-
-        AntlrDatatypeRuleToken lv_importedNamespace_7_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalMbaseWithAnnotations.g:6679:2: ( (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? ) )
-            // InternalMbaseWithAnnotations.g:6680:2: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
-            {
-            // InternalMbaseWithAnnotations.g:6680:2: (otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )? )
-            // InternalMbaseWithAnnotations.g:6681:3: otherlv_0= 'import' ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) ) (otherlv_8= ';' )?
-            {
-            otherlv_0=(Token)match(input,72,FOLLOW_82); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-              			newLeafNode(otherlv_0, grammarAccess.getXImportDeclarationAccess().getImportKeyword_0());
-              		
-            }
-            // InternalMbaseWithAnnotations.g:6685:3: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )
-            int alt120=3;
-            alt120 = dfa120.predict(input);
-            switch (alt120) {
-                case 1 :
-                    // InternalMbaseWithAnnotations.g:6686:4: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
-                    {
-                    // InternalMbaseWithAnnotations.g:6686:4: ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) )
-                    // InternalMbaseWithAnnotations.g:6687:5: ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
-                    {
-                    // InternalMbaseWithAnnotations.g:6687:5: ( (lv_static_1_0= 'static' ) )
-                    // InternalMbaseWithAnnotations.g:6688:6: (lv_static_1_0= 'static' )
-                    {
-                    // InternalMbaseWithAnnotations.g:6688:6: (lv_static_1_0= 'static' )
-                    // InternalMbaseWithAnnotations.g:6689:7: lv_static_1_0= 'static'
-                    {
-                    lv_static_1_0=(Token)match(input,71,FOLLOW_83); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      							newLeafNode(lv_static_1_0, grammarAccess.getXImportDeclarationAccess().getStaticStaticKeyword_1_0_0_0());
-                      						
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      							if (current==null) {
-                      								current = createModelElement(grammarAccess.getXImportDeclarationRule());
-                      							}
-                      							setWithLastConsumed(current, "static", true, "static");
-                      						
-                    }
-
-                    }
-
-
-                    }
-
-                    // InternalMbaseWithAnnotations.g:6701:5: ( (lv_extension_2_0= 'extension' ) )?
-                    int alt118=2;
-                    int LA118_0 = input.LA(1);
-
-                    if ( (LA118_0==73) ) {
-                        alt118=1;
-                    }
-                    switch (alt118) {
-                        case 1 :
-                            // InternalMbaseWithAnnotations.g:6702:6: (lv_extension_2_0= 'extension' )
-                            {
-                            // InternalMbaseWithAnnotations.g:6702:6: (lv_extension_2_0= 'extension' )
-                            // InternalMbaseWithAnnotations.g:6703:7: lv_extension_2_0= 'extension'
-                            {
-                            lv_extension_2_0=(Token)match(input,73,FOLLOW_83); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              							newLeafNode(lv_extension_2_0, grammarAccess.getXImportDeclarationAccess().getExtensionExtensionKeyword_1_0_1_0());
-                              						
-                            }
-                            if ( state.backtracking==0 ) {
-
-                              							if (current==null) {
-                              								current = createModelElement(grammarAccess.getXImportDeclarationRule());
-                              							}
-                              							setWithLastConsumed(current, "extension", true, "extension");
-                              						
-                            }
-
-                            }
-
-
-                            }
-                            break;
-
-                    }
-
-                    // InternalMbaseWithAnnotations.g:6715:5: ( ( ruleQualifiedNameInStaticImport ) )
-                    // InternalMbaseWithAnnotations.g:6716:6: ( ruleQualifiedNameInStaticImport )
-                    {
-                    // InternalMbaseWithAnnotations.g:6716:6: ( ruleQualifiedNameInStaticImport )
-                    // InternalMbaseWithAnnotations.g:6717:7: ruleQualifiedNameInStaticImport
-                    {
-                    if ( state.backtracking==0 ) {
-
-                      							if (current==null) {
-                      								current = createModelElement(grammarAccess.getXImportDeclarationRule());
-                      							}
-                      						
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      							newCompositeNode(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeCrossReference_1_0_2_0());
-                      						
-                    }
-                    pushFollow(FOLLOW_84);
-                    ruleQualifiedNameInStaticImport();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      							afterParserOrEnumRuleCall();
-                      						
-                    }
-
-                    }
-
-
-                    }
-
-                    // InternalMbaseWithAnnotations.g:6731:5: ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) )
-                    int alt119=2;
-                    int LA119_0 = input.LA(1);
-
-                    if ( (LA119_0==44) ) {
-                        alt119=1;
-                    }
-                    else if ( (LA119_0==RULE_ID) ) {
-                        alt119=2;
-                    }
-                    else {
-                        if (state.backtracking>0) {state.failed=true; return current;}
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 119, 0, input);
-
-                        throw nvae;
-                    }
-                    switch (alt119) {
-                        case 1 :
-                            // InternalMbaseWithAnnotations.g:6732:6: ( (lv_wildcard_4_0= '*' ) )
-                            {
-                            // InternalMbaseWithAnnotations.g:6732:6: ( (lv_wildcard_4_0= '*' ) )
-                            // InternalMbaseWithAnnotations.g:6733:7: (lv_wildcard_4_0= '*' )
-                            {
-                            // InternalMbaseWithAnnotations.g:6733:7: (lv_wildcard_4_0= '*' )
-                            // InternalMbaseWithAnnotations.g:6734:8: lv_wildcard_4_0= '*'
-                            {
-                            lv_wildcard_4_0=(Token)match(input,44,FOLLOW_85); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              								newLeafNode(lv_wildcard_4_0, grammarAccess.getXImportDeclarationAccess().getWildcardAsteriskKeyword_1_0_3_0_0());
-                              							
-                            }
-                            if ( state.backtracking==0 ) {
-
-                              								if (current==null) {
-                              									current = createModelElement(grammarAccess.getXImportDeclarationRule());
-                              								}
-                              								setWithLastConsumed(current, "wildcard", true, "*");
-                              							
-                            }
-
-                            }
-
-
-                            }
-
-
-                            }
-                            break;
-                        case 2 :
-                            // InternalMbaseWithAnnotations.g:6747:6: ( (lv_memberName_5_0= ruleValidID ) )
-                            {
-                            // InternalMbaseWithAnnotations.g:6747:6: ( (lv_memberName_5_0= ruleValidID ) )
-                            // InternalMbaseWithAnnotations.g:6748:7: (lv_memberName_5_0= ruleValidID )
-                            {
-                            // InternalMbaseWithAnnotations.g:6748:7: (lv_memberName_5_0= ruleValidID )
-                            // InternalMbaseWithAnnotations.g:6749:8: lv_memberName_5_0= ruleValidID
-                            {
-                            if ( state.backtracking==0 ) {
-
-                              								newCompositeNode(grammarAccess.getXImportDeclarationAccess().getMemberNameValidIDParserRuleCall_1_0_3_1_0());
-                              							
-                            }
-                            pushFollow(FOLLOW_85);
-                            lv_memberName_5_0=ruleValidID();
-
-                            state._fsp--;
-                            if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              								if (current==null) {
-                              									current = createModelElementForParent(grammarAccess.getXImportDeclarationRule());
-                              								}
-                              								set(
-                              									current,
-                              									"memberName",
-                              									lv_memberName_5_0,
-                              									"org.eclipse.xtext.mbase.Xtype.ValidID");
-                              								afterParserOrEnumRuleCall();
-                              							
-                            }
-
-                            }
-
-
-                            }
-
-
-                            }
-                            break;
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalMbaseWithAnnotations.g:6769:4: ( ( ruleQualifiedName ) )
-                    {
-                    // InternalMbaseWithAnnotations.g:6769:4: ( ( ruleQualifiedName ) )
-                    // InternalMbaseWithAnnotations.g:6770:5: ( ruleQualifiedName )
-                    {
-                    // InternalMbaseWithAnnotations.g:6770:5: ( ruleQualifiedName )
-                    // InternalMbaseWithAnnotations.g:6771:6: ruleQualifiedName
-                    {
-                    if ( state.backtracking==0 ) {
-
-                      						if (current==null) {
-                      							current = createModelElement(grammarAccess.getXImportDeclarationRule());
-                      						}
-                      					
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      						newCompositeNode(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeCrossReference_1_1_0());
-                      					
-                    }
-                    pushFollow(FOLLOW_85);
-                    ruleQualifiedName();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						afterParserOrEnumRuleCall();
-                      					
-                    }
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // InternalMbaseWithAnnotations.g:6786:4: ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) )
-                    {
-                    // InternalMbaseWithAnnotations.g:6786:4: ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) )
-                    // InternalMbaseWithAnnotations.g:6787:5: (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard )
-                    {
-                    // InternalMbaseWithAnnotations.g:6787:5: (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard )
-                    // InternalMbaseWithAnnotations.g:6788:6: lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard
-                    {
-                    if ( state.backtracking==0 ) {
-
-                      						newCompositeNode(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_2_0());
-                      					
-                    }
-                    pushFollow(FOLLOW_85);
-                    lv_importedNamespace_7_0=ruleQualifiedNameWithWildcard();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						if (current==null) {
-                      							current = createModelElementForParent(grammarAccess.getXImportDeclarationRule());
-                      						}
-                      						set(
-                      							current,
-                      							"importedNamespace",
-                      							lv_importedNamespace_7_0,
-                      							"org.eclipse.xtext.mbase.Xtype.QualifiedNameWithWildcard");
-                      						afterParserOrEnumRuleCall();
-                      					
-                    }
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-            // InternalMbaseWithAnnotations.g:6806:3: (otherlv_8= ';' )?
-            int alt121=2;
-            int LA121_0 = input.LA(1);
-
-            if ( (LA121_0==58) ) {
-                alt121=1;
-            }
-            switch (alt121) {
-                case 1 :
-                    // InternalMbaseWithAnnotations.g:6807:4: otherlv_8= ';'
-                    {
-                    otherlv_8=(Token)match(input,58,FOLLOW_2); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      				newLeafNode(otherlv_8, grammarAccess.getXImportDeclarationAccess().getSemicolonKeyword_2());
-                      			
-                    }
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-
-            }
-
-            if ( state.backtracking==0 ) {
-
-              	leaveRule();
-
-            }
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleXImportDeclaration"
-
-
-    // $ANTLR start "entryRuleQualifiedNameInStaticImport"
-    // InternalMbaseWithAnnotations.g:6816:1: entryRuleQualifiedNameInStaticImport returns [String current=null] : iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF ;
-    public final String entryRuleQualifiedNameInStaticImport() throws RecognitionException {
-        String current = null;
-
-        AntlrDatatypeRuleToken iv_ruleQualifiedNameInStaticImport = null;
-
-
-        try {
-            // InternalMbaseWithAnnotations.g:6816:67: (iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF )
-            // InternalMbaseWithAnnotations.g:6817:2: iv_ruleQualifiedNameInStaticImport= ruleQualifiedNameInStaticImport EOF
-            {
-            if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getQualifiedNameInStaticImportRule()); 
-            }
-            pushFollow(FOLLOW_1);
-            iv_ruleQualifiedNameInStaticImport=ruleQualifiedNameInStaticImport();
-
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-               current =iv_ruleQualifiedNameInStaticImport.getText(); 
-            }
-            match(input,EOF,FOLLOW_2); if (state.failed) return current;
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleQualifiedNameInStaticImport"
-
-
-    // $ANTLR start "ruleQualifiedNameInStaticImport"
-    // InternalMbaseWithAnnotations.g:6823:1: ruleQualifiedNameInStaticImport returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID kw= '.' )+ ;
-    public final AntlrDatatypeRuleToken ruleQualifiedNameInStaticImport() throws RecognitionException {
-        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
-
-        Token kw=null;
-        AntlrDatatypeRuleToken this_ValidID_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalMbaseWithAnnotations.g:6829:2: ( (this_ValidID_0= ruleValidID kw= '.' )+ )
-            // InternalMbaseWithAnnotations.g:6830:2: (this_ValidID_0= ruleValidID kw= '.' )+
-            {
-            // InternalMbaseWithAnnotations.g:6830:2: (this_ValidID_0= ruleValidID kw= '.' )+
-            int cnt122=0;
-            loop122:
-            do {
-                int alt122=2;
-                int LA122_0 = input.LA(1);
-
-                if ( (LA122_0==RULE_ID) ) {
-                    int LA122_2 = input.LA(2);
-
-                    if ( (LA122_2==52) ) {
-                        alt122=1;
-                    }
-
-
-                }
-
-
-                switch (alt122) {
-            	case 1 :
-            	    // InternalMbaseWithAnnotations.g:6831:3: this_ValidID_0= ruleValidID kw= '.'
-            	    {
-            	    if ( state.backtracking==0 ) {
-
-            	      			newCompositeNode(grammarAccess.getQualifiedNameInStaticImportAccess().getValidIDParserRuleCall_0());
-            	      		
-            	    }
-            	    pushFollow(FOLLOW_80);
-            	    this_ValidID_0=ruleValidID();
-
-            	    state._fsp--;
-            	    if (state.failed) return current;
-            	    if ( state.backtracking==0 ) {
-
-            	      			current.merge(this_ValidID_0);
-            	      		
-            	    }
-            	    if ( state.backtracking==0 ) {
-
-            	      			afterParserOrEnumRuleCall();
-            	      		
-            	    }
-            	    kw=(Token)match(input,52,FOLLOW_86); if (state.failed) return current;
-            	    if ( state.backtracking==0 ) {
-
-            	      			current.merge(kw);
-            	      			newLeafNode(kw, grammarAccess.getQualifiedNameInStaticImportAccess().getFullStopKeyword_1());
-            	      		
-            	    }
-
-            	    }
-            	    break;
-
-            	default :
-            	    if ( cnt122 >= 1 ) break loop122;
-            	    if (state.backtracking>0) {state.failed=true; return current;}
-                        EarlyExitException eee =
-                            new EarlyExitException(122, input);
-                        throw eee;
-                }
-                cnt122++;
-            } while (true);
-
-
-            }
-
-            if ( state.backtracking==0 ) {
-
-              	leaveRule();
-
-            }
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleQualifiedNameInStaticImport"
 
     // $ANTLR start synpred1_InternalMbaseWithAnnotations
     public final void synpred1_InternalMbaseWithAnnotations_fragment() throws RecognitionException {   
@@ -19470,23 +18804,23 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
         }
 
         // InternalMbaseWithAnnotations.g:2130:7: ( '.' | ( ( '::' ) ) )
-        int alt123=2;
-        int LA123_0 = input.LA(1);
+        int alt118=2;
+        int LA118_0 = input.LA(1);
 
-        if ( (LA123_0==52) ) {
-            alt123=1;
+        if ( (LA118_0==52) ) {
+            alt118=1;
         }
-        else if ( (LA123_0==53) ) {
-            alt123=2;
+        else if ( (LA118_0==53) ) {
+            alt118=2;
         }
         else {
             if (state.backtracking>0) {state.failed=true; return ;}
             NoViableAltException nvae =
-                new NoViableAltException("", 123, 0, input);
+                new NoViableAltException("", 118, 0, input);
 
             throw nvae;
         }
-        switch (alt123) {
+        switch (alt118) {
             case 1 :
                 // InternalMbaseWithAnnotations.g:2131:8: '.'
                 {
@@ -19560,32 +18894,32 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
         }
 
         // InternalMbaseWithAnnotations.g:2227:7: ( '.' | ( ( '?.' ) ) | ( ( '::' ) ) )
-        int alt124=3;
+        int alt119=3;
         switch ( input.LA(1) ) {
         case 52:
             {
-            alt124=1;
+            alt119=1;
             }
             break;
         case 54:
             {
-            alt124=2;
+            alt119=2;
             }
             break;
         case 53:
             {
-            alt124=3;
+            alt119=3;
             }
             break;
         default:
             if (state.backtracking>0) {state.failed=true; return ;}
             NoViableAltException nvae =
-                new NoViableAltException("", 124, 0, input);
+                new NoViableAltException("", 119, 0, input);
 
             throw nvae;
         }
 
-        switch (alt124) {
+        switch (alt119) {
             case 1 :
                 // InternalMbaseWithAnnotations.g:2228:8: '.'
                 {
@@ -19673,13 +19007,13 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
         }
 
         // InternalMbaseWithAnnotations.g:2384:9: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt126=2;
-        int LA126_0 = input.LA(1);
+        int alt121=2;
+        int LA121_0 = input.LA(1);
 
-        if ( (LA126_0==RULE_ID||LA126_0==14||LA126_0==39) ) {
-            alt126=1;
+        if ( (LA121_0==RULE_ID||LA121_0==14||LA121_0==39) ) {
+            alt121=1;
         }
-        switch (alt126) {
+        switch (alt121) {
             case 1 :
                 // InternalMbaseWithAnnotations.g:2385:10: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -19701,17 +19035,17 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                 }
 
                 // InternalMbaseWithAnnotations.g:2390:10: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop125:
+                loop120:
                 do {
-                    int alt125=2;
-                    int LA125_0 = input.LA(1);
+                    int alt120=2;
+                    int LA120_0 = input.LA(1);
 
-                    if ( (LA125_0==15) ) {
-                        alt125=1;
+                    if ( (LA120_0==15) ) {
+                        alt120=1;
                     }
 
 
-                    switch (alt125) {
+                    switch (alt120) {
                 	case 1 :
                 	    // InternalMbaseWithAnnotations.g:2391:11: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
@@ -19738,7 +19072,7 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                 	    break;
 
                 	default :
-                	    break loop125;
+                	    break loop120;
                     }
                 } while (true);
 
@@ -19886,13 +19220,13 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
         // InternalMbaseWithAnnotations.g:3016:5: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )? ( ( '|' ) )
         {
         // InternalMbaseWithAnnotations.g:3016:5: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt128=2;
-        int LA128_0 = input.LA(1);
+        int alt123=2;
+        int LA123_0 = input.LA(1);
 
-        if ( (LA128_0==RULE_ID||LA128_0==14||LA128_0==39) ) {
-            alt128=1;
+        if ( (LA123_0==RULE_ID||LA123_0==14||LA123_0==39) ) {
+            alt123=1;
         }
-        switch (alt128) {
+        switch (alt123) {
             case 1 :
                 // InternalMbaseWithAnnotations.g:3017:6: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -19914,17 +19248,17 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                 }
 
                 // InternalMbaseWithAnnotations.g:3022:6: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop127:
+                loop122:
                 do {
-                    int alt127=2;
-                    int LA127_0 = input.LA(1);
+                    int alt122=2;
+                    int LA122_0 = input.LA(1);
 
-                    if ( (LA127_0==15) ) {
-                        alt127=1;
+                    if ( (LA122_0==15) ) {
+                        alt122=1;
                     }
 
 
-                    switch (alt127) {
+                    switch (alt122) {
                 	case 1 :
                 	    // InternalMbaseWithAnnotations.g:3023:7: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
@@ -19951,7 +19285,7 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                 	    break;
 
                 	default :
-                	    break loop127;
+                	    break loop122;
                     }
                 } while (true);
 
@@ -20143,13 +19477,13 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
         }
 
         // InternalMbaseWithAnnotations.g:4702:7: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt132=2;
-        int LA132_0 = input.LA(1);
+        int alt127=2;
+        int LA127_0 = input.LA(1);
 
-        if ( (LA132_0==RULE_ID||LA132_0==14||LA132_0==39) ) {
-            alt132=1;
+        if ( (LA127_0==RULE_ID||LA127_0==14||LA127_0==39) ) {
+            alt127=1;
         }
-        switch (alt132) {
+        switch (alt127) {
             case 1 :
                 // InternalMbaseWithAnnotations.g:4703:8: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -20171,17 +19505,17 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                 }
 
                 // InternalMbaseWithAnnotations.g:4708:8: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop131:
+                loop126:
                 do {
-                    int alt131=2;
-                    int LA131_0 = input.LA(1);
+                    int alt126=2;
+                    int LA126_0 = input.LA(1);
 
-                    if ( (LA131_0==15) ) {
-                        alt131=1;
+                    if ( (LA126_0==15) ) {
+                        alt126=1;
                     }
 
 
-                    switch (alt131) {
+                    switch (alt126) {
                 	case 1 :
                 	    // InternalMbaseWithAnnotations.g:4709:9: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
@@ -20208,7 +19542,7 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                 	    break;
 
                 	default :
-                	    break loop131;
+                	    break loop126;
                     }
                 } while (true);
 
@@ -20303,13 +19637,13 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
         }
 
         // InternalMbaseWithAnnotations.g:5035:7: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt134=2;
-        int LA134_0 = input.LA(1);
+        int alt129=2;
+        int LA129_0 = input.LA(1);
 
-        if ( (LA134_0==RULE_ID||LA134_0==14||LA134_0==39) ) {
-            alt134=1;
+        if ( (LA129_0==RULE_ID||LA129_0==14||LA129_0==39) ) {
+            alt129=1;
         }
-        switch (alt134) {
+        switch (alt129) {
             case 1 :
                 // InternalMbaseWithAnnotations.g:5036:8: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -20331,17 +19665,17 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                 }
 
                 // InternalMbaseWithAnnotations.g:5041:8: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop133:
+                loop128:
                 do {
-                    int alt133=2;
-                    int LA133_0 = input.LA(1);
+                    int alt128=2;
+                    int LA128_0 = input.LA(1);
 
-                    if ( (LA133_0==15) ) {
-                        alt133=1;
+                    if ( (LA128_0==15) ) {
+                        alt128=1;
                     }
 
 
-                    switch (alt133) {
+                    switch (alt128) {
                 	case 1 :
                 	    // InternalMbaseWithAnnotations.g:5042:9: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
@@ -20368,7 +19702,7 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                 	    break;
 
                 	default :
-                	    break loop133;
+                	    break loop128;
                     }
                 } while (true);
 
@@ -21201,7 +20535,6 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
     protected DFA95 dfa95 = new DFA95(this);
     protected DFA113 dfa113 = new DFA113(this);
     protected DFA111 dfa111 = new DFA111(this);
-    protected DFA120 dfa120 = new DFA120(this);
     static final String dfa_1s = "\44\uffff";
     static final String dfa_2s = "\1\4\1\0\42\uffff";
     static final String dfa_3s = "\1\124\1\0\42\uffff";
@@ -21598,7 +20931,7 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
     static final String dfa_22s = "\1\4\1\uffff\10\0\1\uffff";
     static final String dfa_23s = "\1\125\1\uffff\10\0\1\uffff";
     static final String dfa_24s = "\1\uffff\1\2\10\uffff\1\1";
-    static final String dfa_25s = "\2\uffff\1\3\1\0\1\1\1\2\1\4\1\5\1\6\1\7\1\uffff}>";
+    static final String dfa_25s = "\2\uffff\1\5\1\0\1\6\1\7\1\1\1\4\1\2\1\3\1\uffff}>";
     static final String[] dfa_26s = {
             "\5\1\5\uffff\3\1\1\uffff\10\1\1\2\1\3\10\1\1\4\1\5\1\6\1\7\1\10\1\11\17\1\1\uffff\34\1",
             "",
@@ -21657,51 +20990,6 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA23_4 = input.LA(1);
-
-                         
-                        int index23_4 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred13_InternalMbaseWithAnnotations()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index23_4);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA23_5 = input.LA(1);
-
-                         
-                        int index23_5 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred13_InternalMbaseWithAnnotations()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index23_5);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA23_2 = input.LA(1);
-
-                         
-                        int index23_2 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred13_InternalMbaseWithAnnotations()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index23_2);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
                         int LA23_6 = input.LA(1);
 
                          
@@ -21716,22 +21004,7 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                         input.seek(index23_6);
                         if ( s>=0 ) return s;
                         break;
-                    case 5 : 
-                        int LA23_7 = input.LA(1);
-
-                         
-                        int index23_7 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred13_InternalMbaseWithAnnotations()) ) {s = 10;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index23_7);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 6 : 
+                    case 2 : 
                         int LA23_8 = input.LA(1);
 
                          
@@ -21746,7 +21019,7 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
                         input.seek(index23_8);
                         if ( s>=0 ) return s;
                         break;
-                    case 7 : 
+                    case 3 : 
                         int LA23_9 = input.LA(1);
 
                          
@@ -21759,6 +21032,66 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
 
                          
                         input.seek(index23_9);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA23_7 = input.LA(1);
+
+                         
+                        int index23_7 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred13_InternalMbaseWithAnnotations()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index23_7);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA23_2 = input.LA(1);
+
+                         
+                        int index23_2 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred13_InternalMbaseWithAnnotations()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index23_2);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA23_4 = input.LA(1);
+
+                         
+                        int index23_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred13_InternalMbaseWithAnnotations()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index23_4);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA23_5 = input.LA(1);
+
+                         
+                        int index23_5 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred13_InternalMbaseWithAnnotations()) ) {s = 10;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index23_5);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -23918,47 +23251,6 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
             throw nvae;
         }
     }
-    static final String dfa_78s = "\7\uffff";
-    static final String dfa_79s = "\2\uffff\1\4\2\uffff\1\4\1\uffff";
-    static final String dfa_80s = "\1\10\1\uffff\1\64\1\10\1\uffff\1\64\1\uffff";
-    static final String dfa_81s = "\1\107\1\uffff\1\72\1\54\1\uffff\1\72\1\uffff";
-    static final String dfa_82s = "\1\uffff\1\1\2\uffff\1\2\1\uffff\1\3";
-    static final String dfa_83s = "\7\uffff}>";
-    static final String[] dfa_84s = {
-            "\1\2\76\uffff\1\1",
-            "",
-            "\1\3\5\uffff\1\4",
-            "\1\5\43\uffff\1\6",
-            "",
-            "\1\3\5\uffff\1\4",
-            ""
-    };
-
-    static final short[] dfa_78 = DFA.unpackEncodedString(dfa_78s);
-    static final short[] dfa_79 = DFA.unpackEncodedString(dfa_79s);
-    static final char[] dfa_80 = DFA.unpackEncodedStringToUnsignedChars(dfa_80s);
-    static final char[] dfa_81 = DFA.unpackEncodedStringToUnsignedChars(dfa_81s);
-    static final short[] dfa_82 = DFA.unpackEncodedString(dfa_82s);
-    static final short[] dfa_83 = DFA.unpackEncodedString(dfa_83s);
-    static final short[][] dfa_84 = unpackEncodedStringArray(dfa_84s);
-
-    class DFA120 extends DFA {
-
-        public DFA120(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 120;
-            this.eot = dfa_78;
-            this.eof = dfa_79;
-            this.min = dfa_80;
-            this.max = dfa_81;
-            this.accept = dfa_82;
-            this.special = dfa_83;
-            this.transition = dfa_84;
-        }
-        public String getDescription() {
-            return "6685:3: ( ( ( (lv_static_1_0= 'static' ) ) ( (lv_extension_2_0= 'extension' ) )? ( ( ruleQualifiedNameInStaticImport ) ) ( ( (lv_wildcard_4_0= '*' ) ) | ( (lv_memberName_5_0= ruleValidID ) ) ) ) | ( ( ruleQualifiedName ) ) | ( (lv_importedNamespace_7_0= ruleQualifiedNameWithWildcard ) ) )";
-        }
-    }
  
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
@@ -24040,12 +23332,5 @@ public class InternalMbaseWithAnnotationsParser extends AbstractInternalAntlrPar
     public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x0010000004000002L});
     public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000440L});
     public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800000L});
-    public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_81 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_82 = new BitSet(new long[]{0x0000000000000100L,0x0000000000000080L});
-    public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0000000000000100L,0x0000000000000200L});
-    public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x0000100000000100L});
-    public static final BitSet FOLLOW_85 = new BitSet(new long[]{0x0400000000000002L});
-    public static final BitSet FOLLOW_86 = new BitSet(new long[]{0x0000000000000102L});
 
 }

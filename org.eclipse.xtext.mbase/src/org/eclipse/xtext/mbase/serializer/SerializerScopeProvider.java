@@ -47,8 +47,6 @@ import org.eclipse.xtext.mbase.scoping.batch.IBatchScopeProvider;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureNames;
 import org.eclipse.xtext.mbase.scoping.featurecalls.OperatorMapping;
 import org.eclipse.xtext.mbase.typesystem.util.IVisibilityHelper;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -245,33 +243,6 @@ public class SerializerScopeProvider implements IScopeProvider, IFeatureNames {
 			if (type instanceof JvmDeclaredType && ((JvmDeclaredType) type).getDeclaringType() != null) {
 				Resource resource = call.eResource();
 				if (resource instanceof XtextResource) {
-					XImportSection importSection = importsConfiguration.getImportSection((XtextResource) resource);
-					if (importSection != null) {
-						List<XImportDeclaration> importDeclarations = importSection.getImportDeclarations();
-						List<IEObjectDescription> descriptions = Lists.newArrayList();
-						for(XImportDeclaration importDeclaration: importDeclarations) {
-							if (!importDeclaration.isStatic() && !importDeclaration.isWildcard() && !importDeclaration.isExtension()) {
-								JvmDeclaredType importedType = importDeclaration.getImportedType();
-								if (importedType == type) {
-									String syntax = importsConfiguration.getLegacyImportSyntax(importDeclaration);
-									if (syntax != null /* no node model attached */ && syntax.equals(type.getQualifiedName())) {
-										String packageName = importedType.getPackageName();
-										descriptions.add(EObjectDescription.create(syntax.substring(packageName.length() + 1), type));
-									}
-								}
-								if (EcoreUtil.isAncestor(importedType, type)) {
-									String name = type.getSimpleName();
-									JvmType worker = type;
-									while(worker != importedType) {
-										worker = (JvmType) worker.eContainer();
-										name = worker.getSimpleName() + "$" + name;
-									}
-									descriptions.add(EObjectDescription.create(name, type));
-								}
-							}
-						}
-						return new SimpleScope(descriptions);
-					}
 				}
 				return new SingletonScope(EObjectDescription.create(type.getSimpleName(), type), IScope.NULLSCOPE);
 			} else {

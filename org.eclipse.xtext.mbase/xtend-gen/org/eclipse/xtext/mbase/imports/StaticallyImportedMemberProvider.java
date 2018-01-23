@@ -20,7 +20,6 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xtype.XImportDeclaration;
 
 /**
  * @author Anton Kosyakov - Initial contribution and API
@@ -37,27 +36,6 @@ public class StaticallyImportedMemberProvider {
   
   @Inject
   private IVisibilityHelper visibilityHelper;
-  
-  public Iterable<JvmFeature> findAllFeatures(final XImportDeclaration it) {
-    Iterable<JvmFeature> _xblockexpression = null;
-    {
-      final JvmDeclaredType importedType = it.getImportedType();
-      if (((!it.isStatic()) || (importedType == null))) {
-        return CollectionLiterals.<JvmFeature>emptyList();
-      }
-      final IVisibilityHelper visibilityHelper = this.getVisibilityHelper(it.eResource());
-      final IResolvedFeatures resolvedFeatures = this._provider.getResolvedFeatures(importedType);
-      final Function1<JvmFeature, Boolean> _function = (JvmFeature feature) -> {
-        return Boolean.valueOf(((feature.isStatic() && visibilityHelper.isVisible(feature)) && ((it.getMemberName() == null) || feature.getSimpleName().startsWith(it.getMemberName()))));
-      };
-      _xblockexpression = IterableExtensions.<JvmFeature>filter(resolvedFeatures.getAllFeatures(), _function);
-    }
-    return _xblockexpression;
-  }
-  
-  public Iterable<JvmFeature> getAllFeatures(final XImportDeclaration it) {
-    return this.getAllFeatures(it.eResource(), it.getImportedType(), it.isStatic(), it.isExtension(), it.getMemberName());
-  }
   
   public Iterable<JvmFeature> getAllFeatures(final Resource resource, final JvmDeclaredType importedType, final boolean static_, final boolean extension, final String memberName) {
     Iterable<JvmFeature> _xblockexpression = null;

@@ -7,9 +7,7 @@
  */
 package org.eclipse.xtext.mbase.formatting2;
 
-import com.google.common.base.Objects;
 import java.util.Arrays;
-import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
@@ -20,16 +18,10 @@ import org.eclipse.xtext.common.types.JvmWildcardTypeReference;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
 import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
-import org.eclipse.xtext.formatting2.regionaccess.ISemanticRegion;
-import org.eclipse.xtext.mbase.formatting2.MbaseFormatterPreferenceKeys;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
-import org.eclipse.xtext.xtype.XtypePackage;
 
 /**
  * @author Moritz Eysholdt - Initial implementation and API
@@ -128,48 +120,6 @@ public class XtypeFormatter extends AbstractFormatter2 {
     }
   }
   
-  protected void _format(final XImportSection section, @Extension final IFormattableDocument format) {
-    EList<XImportDeclaration> _importDeclarations = section.getImportDeclarations();
-    for (final XImportDeclaration imp : _importDeclarations) {
-      {
-        format.<XImportDeclaration>format(imp);
-        XImportDeclaration _last = IterableExtensions.<XImportDeclaration>last(section.getImportDeclarations());
-        boolean _notEquals = (!Objects.equal(imp, _last));
-        if (_notEquals) {
-          format.<XImportDeclaration>append(imp, MbaseFormatterPreferenceKeys.blankLinesBetweenImports);
-        } else {
-          format.<XImportDeclaration>append(imp, MbaseFormatterPreferenceKeys.blankLinesAfterImports);
-        }
-      }
-    }
-  }
-  
-  protected void _format(final XImportDeclaration imp, @Extension final IFormattableDocument document) {
-    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(this.textRegionExtensions.regionFor(imp).keyword("import"), _function);
-    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(this.textRegionExtensions.regionFor(imp).feature(XtypePackage.Literals.XIMPORT_DECLARATION__STATIC), _function_1);
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(this.textRegionExtensions.regionFor(imp).feature(XtypePackage.Literals.XIMPORT_DECLARATION__EXTENSION), _function_2);
-    List<ISemanticRegion> _keywords = this.textRegionExtensions.regionFor(imp).keywords(".");
-    for (final ISemanticRegion node : _keywords) {
-      final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-        it.noSpace();
-      };
-      document.surround(node, _function_3);
-    }
-    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
-    };
-    document.prepend(this.textRegionExtensions.regionFor(imp).keyword(";"), _function_4);
-  }
-  
   public void format(final Object ref, final IFormattableDocument document) {
     if (ref instanceof JvmTypeParameter) {
       _format((JvmTypeParameter)ref, document);
@@ -185,12 +135,6 @@ public class XtypeFormatter extends AbstractFormatter2 {
       return;
     } else if (ref instanceof JvmWildcardTypeReference) {
       _format((JvmWildcardTypeReference)ref, document);
-      return;
-    } else if (ref instanceof XImportDeclaration) {
-      _format((XImportDeclaration)ref, document);
-      return;
-    } else if (ref instanceof XImportSection) {
-      _format((XImportSection)ref, document);
       return;
     } else if (ref instanceof EObject) {
       _format((EObject)ref, document);

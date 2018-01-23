@@ -44,8 +44,6 @@ import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.util.Tuples;
 import org.eclipse.xtext.mbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.mbase.jvmmodel.IJvmModelAssociations;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -90,9 +88,6 @@ public class XImportSectionNamespaceScopeProvider extends AbstractGlobalScopeDel
 	}
 	
 	protected IScope internalGetScope(IScope parent, IScope globalScope, EObject context, EReference reference) {
-		if(context instanceof XImportDeclaration) {
-			return globalScope;
-		}
 		IScope result = parent;
 		if (context.eContainer() == null) {
 			if (parent != globalScope)
@@ -204,31 +199,11 @@ public class XImportSectionNamespaceScopeProvider extends AbstractGlobalScopeDel
 	protected List<ImportNormalizer> internalGetImportedNamespaceResolvers(EObject context, boolean ignoreCase) {
 		if(EcoreUtil.getRootContainer(context) != context) 
 			return Collections.emptyList();
-		XImportSection importSection = importsConfiguration.getImportSection((XtextResource) context.eResource());
-		if(importSection != null) {
-			return getImportedNamespaceResolvers(importSection, ignoreCase);
-		}
 		return Collections.emptyList();
 	}
 	
 	protected IImportsConfiguration getImportsConfiguration() {
 		return importsConfiguration;
-	}
-
-	protected List<ImportNormalizer> getImportedNamespaceResolvers(XImportSection importSection, boolean ignoreCase) {
-		List<XImportDeclaration> importDeclarations = importSection.getImportDeclarations();
-		List<ImportNormalizer> result = Lists.newArrayListWithExpectedSize(importDeclarations.size());
-		for (XImportDeclaration imp: importDeclarations) {
-			if (!imp.isStatic()) {
-				String value = imp.getImportedNamespace();
-				if(value == null)
-					value = imp.getImportedTypeName();
-				ImportNormalizer resolver = createImportedNamespaceResolver(value, ignoreCase);
-				if (resolver != null)
-					result.add(resolver);
-			}
-		}
-		return result;
 	}
 
 

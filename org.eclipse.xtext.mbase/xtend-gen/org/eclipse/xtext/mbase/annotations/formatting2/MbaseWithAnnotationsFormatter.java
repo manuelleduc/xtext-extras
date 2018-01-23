@@ -49,8 +49,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
 
 /**
  * @author Moritz Eysholdt - Initial implementation and API
@@ -202,12 +200,6 @@ public class MbaseWithAnnotationsFormatter extends MbaseFormatter {
       return;
     } else if (ann instanceof XExpression) {
       _format((XExpression)ann, document);
-      return;
-    } else if (ann instanceof XImportDeclaration) {
-      _format((XImportDeclaration)ann, document);
-      return;
-    } else if (ann instanceof XImportSection) {
-      _format((XImportSection)ann, document);
       return;
     } else if (ann instanceof EObject) {
       _format((EObject)ann, document);

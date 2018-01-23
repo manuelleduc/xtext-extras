@@ -56,7 +56,6 @@ import org.eclipse.xtext.service.OperationCanceledManager;
 import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xtype.XImportDeclaration;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -216,11 +215,7 @@ public class MbaseHighlightingCalculator extends DefaultSemanticHighlightingCalc
 			highlightFeature(acceptor, referencer, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, TYPE_ARGUMENT);
 			
 		} else if (resolvedReferencedObject instanceof JvmDeclaredType) {
-			if (referencer instanceof XImportDeclaration) {
-				// don't highlight import statements
-				return;
-				
-			} else if (resolvedReferencedObject instanceof JvmEnumerationType) {
+			if (resolvedReferencedObject instanceof JvmEnumerationType) {
 				highlightFeature(acceptor, referencer, reference, ENUM);
 				
 			} else if (resolvedReferencedObject instanceof JvmGenericType) {

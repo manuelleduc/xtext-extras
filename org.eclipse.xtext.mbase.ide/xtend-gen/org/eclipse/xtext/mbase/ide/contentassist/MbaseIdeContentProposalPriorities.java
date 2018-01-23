@@ -20,7 +20,7 @@ import org.eclipse.xtext.mbase.scoping.batch.StaticFeatureDescriptionWithTypeLit
 import org.eclipse.xtext.resource.IEObjectDescription;
 
 @SuppressWarnings("all")
-public class mbaseIdeContentProposalPriorities extends IdeContentProposalPriorities {
+public class MbaseIdeContentProposalPriorities extends IdeContentProposalPriorities {
   @Override
   public int getCrossRefPriority(final IEObjectDescription objectDesc, final ContentAssistEntry entry) {
     if ((entry != null)) {

@@ -12,8 +12,6 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
 
 import com.google.inject.ImplementedBy;
 
@@ -25,8 +23,6 @@ import com.google.inject.ImplementedBy;
 @ImplementedBy(DefaultImportsConfiguration.class)
 public interface IImportsConfiguration {
 
-	XImportSection getImportSection(XtextResource resource);
-
 	int getImportSectionOffset(XtextResource resource);
 
 	Set<String> getImplicitlyImportedPackages(XtextResource resource);
@@ -34,13 +30,6 @@ public interface IImportsConfiguration {
 	Iterable<JvmDeclaredType> getLocallyDefinedTypes(XtextResource resource);
 	
 	JvmDeclaredType getContextJvmDeclaredType(EObject model);
-	
-	/**
-	 * Returns the syntax that was used in the import declaration if (and only if) it uses
-	 * the legacy notation with a '$' as the delimiter for nested types. Otherwise the result 
-	 * is null. Also returns null, if no node model is attached. 
-	 */
-	String getLegacyImportSyntax(XImportDeclaration importDeclaration);
 
 	String getPackageName(XtextResource xtextResource);
 }

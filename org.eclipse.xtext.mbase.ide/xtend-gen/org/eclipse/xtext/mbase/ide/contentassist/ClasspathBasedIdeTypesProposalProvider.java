@@ -7,7 +7,6 @@
  */
 package org.eclipse.xtext.mbase.ide.contentassist;
 
-import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
@@ -15,29 +14,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistEntry;
 import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor;
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalCreator;
-import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalPriorities;
 import org.eclipse.xtext.mbase.ide.contentassist.IIdeTypesProposalProvider;
-import org.eclipse.xtext.mbase.ide.contentassist.mbaseIdeContentProposalPriorities;
 import org.eclipse.xtext.mbase.ide.types.ClasspathScanner;
 import org.eclipse.xtext.mbase.ide.types.ITypeDescriptor;
-import org.eclipse.xtext.mbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.mbase.imports.ImportSectionRegionUtil;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.ReplaceRegion;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
-import org.eclipse.xtext.xtype.XtypePackage;
 import org.objectweb.asm.Opcodes;
 
 @SuppressWarnings("all")
@@ -52,13 +42,7 @@ public class ClasspathBasedIdeTypesProposalProvider implements IIdeTypesProposal
   private IdeContentProposalCreator proposalCreator;
   
   @Inject
-  private IdeContentProposalPriorities proposalPriorities;
-  
-  @Inject
   private IQualifiedNameConverter qualifiedNameConverter;
-  
-  @Inject
-  private IImportsConfiguration importsConfiguration;
   
   @Inject
   private ImportSectionRegionUtil importSectionRegionUtil;
@@ -66,26 +50,17 @@ public class ClasspathBasedIdeTypesProposalProvider implements IIdeTypesProposal
   @Override
   public void createTypeProposals(final EReference reference, final ContentAssistContext context, final Predicate<ITypeDescriptor> filter, final IIdeContentProposalAcceptor acceptor) {
     ITextRegion importSectionRegion = null;
-    XImportSection importSection = null;
-    boolean _isImportDeclaration = this.isImportDeclaration(reference, context);
-    boolean _not = (!_isImportDeclaration);
-    if (_not) {
-      importSection = this.importsConfiguration.getImportSection(context.getResource());
-      importSectionRegion = this.importSectionRegionUtil.computeRegion(context.getResource());
-    }
+    importSectionRegion = this.importSectionRegionUtil.computeRegion(context.getResource());
     Iterable<ITypeDescriptor> _typeDescriptors = this.getTypeDescriptors(context);
     for (final ITypeDescriptor typeDesc : _typeDescriptors) {
       {
         boolean _canAcceptMoreProposals = acceptor.canAcceptMoreProposals();
-        boolean _not_1 = (!_canAcceptMoreProposals);
-        if (_not_1) {
+        boolean _not = (!_canAcceptMoreProposals);
+        if (_not) {
           return;
         }
         boolean _canPropose = this.canPropose(typeDesc, context, filter);
         if (_canPropose) {
-          final ContentAssistEntry entry = this.createProposal(reference, typeDesc, context, importSection, importSectionRegion);
-          final int priority = ((mbaseIdeContentProposalPriorities) this.proposalPriorities).getTypeRefPriority(typeDesc, entry);
-          acceptor.accept(entry, priority);
         }
       }
     }
@@ -122,27 +97,15 @@ public class ClasspathBasedIdeTypesProposalProvider implements IIdeTypesProposal
     return ((typeDesc.getAccessFlags() & Opcodes.ACC_PUBLIC) != 0);
   }
   
-  protected ContentAssistEntry createProposal(final EReference reference, final ITypeDescriptor typeDesc, final ContentAssistContext context, final XImportSection importSection, final ITextRegion importSectionRegion) {
+  protected ContentAssistEntry createProposal(final EReference reference, final ITypeDescriptor typeDesc, final ContentAssistContext context, final ITextRegion importSectionRegion) {
     ContentAssistEntry _xblockexpression = null;
     {
-      final boolean importDecl = this.isImportDeclaration(reference, context);
       final String qualifiedName = this.qualifiedNameConverter.toString(typeDesc.getQualifiedName());
-      String _xifexpression = null;
-      if (importDecl) {
-        _xifexpression = qualifiedName;
-      } else {
-        _xifexpression = typeDesc.getSimpleName();
-      }
-      final String proposal = _xifexpression;
+      final String proposal = typeDesc.getSimpleName();
       final Procedure1<ContentAssistEntry> _function = (ContentAssistEntry it) -> {
-        if (importDecl) {
-          it.setLabel(typeDesc.getSimpleName());
-          it.setDescription(proposal);
-        } else {
-          it.setDescription(qualifiedName);
-          if (((importSectionRegion != null) && this.isImportDeclarationRequired(typeDesc, qualifiedName, context, importSection))) {
-            this.addImportDeclaration(it, importSectionRegion, typeDesc, qualifiedName, context);
-          }
+        it.setDescription(qualifiedName);
+        if ((importSectionRegion != null)) {
+          this.addImportDeclaration(it, importSectionRegion, typeDesc, qualifiedName, context);
         }
       };
       _xblockexpression = this.proposalCreator.createProposal(proposal, context, _function);
@@ -150,19 +113,8 @@ public class ClasspathBasedIdeTypesProposalProvider implements IIdeTypesProposal
     return _xblockexpression;
   }
   
-  protected boolean isImportDeclaration(final EReference reference, final ContentAssistContext context) {
-    return Objects.equal(reference, XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE);
-  }
-  
-  protected boolean isImportDeclarationRequired(final ITypeDescriptor typeDesc, final String qualifiedName, final ContentAssistContext context, final XImportSection importSection) {
-    return ((!(typeDesc.getName().startsWith("java.lang") && (typeDesc.getName().lastIndexOf(".") == 9))) && ((importSection == null) || (!IterableExtensions.<XImportDeclaration>exists(importSection.getImportDeclarations(), ((Function1<XImportDeclaration, Boolean>) (XImportDeclaration it) -> {
-      JvmDeclaredType _importedType = it.getImportedType();
-      String _qualifiedName = null;
-      if (_importedType!=null) {
-        _qualifiedName=_importedType.getQualifiedName();
-      }
-      return Boolean.valueOf(Objects.equal(_qualifiedName, qualifiedName));
-    })))));
+  protected boolean isImportDeclarationRequired(final ITypeDescriptor typeDesc, final String qualifiedName, final ContentAssistContext context) {
+    return (!(typeDesc.getName().startsWith("java.lang") && (typeDesc.getName().lastIndexOf(".") == 9)));
   }
   
   protected boolean addImportDeclaration(final ContentAssistEntry entry, final ITextRegion importSectionRegion, final ITypeDescriptor typeDesc, final String qualifiedName, final ContentAssistContext context) {

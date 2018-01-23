@@ -17,7 +17,7 @@ import org.eclipse.xtext.mbase.scoping.batch.IIdentifiableElementDescription
 import org.eclipse.xtext.mbase.scoping.batch.SimpleIdentifiableElementDescription
 import org.eclipse.xtext.mbase.scoping.batch.StaticFeatureDescriptionWithTypeLiteralReceiver
 
-class mbaseIdeContentProposalPriorities extends IdeContentProposalPriorities {
+class MbaseIdeContentProposalPriorities extends IdeContentProposalPriorities {
 	
 	override getCrossRefPriority(IEObjectDescription objectDesc, ContentAssistEntry entry) {
 		if (entry !== null) {

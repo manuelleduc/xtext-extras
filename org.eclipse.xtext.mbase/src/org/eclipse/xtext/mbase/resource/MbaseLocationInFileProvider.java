@@ -28,7 +28,6 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.DefaultLocationInFileProvider;
 import org.eclipse.xtext.util.ITextRegion;
-import org.eclipse.xtext.xtype.XImportDeclaration;
 import org.eclipse.xtext.xtype.XtypePackage;
 
 import com.google.common.collect.Lists;
@@ -81,32 +80,6 @@ public class MbaseLocationInFileProvider extends DefaultLocationInFileProvider {
 				if (!targetNodes.isEmpty()) {
 					INode targetNode = targetNodes.get(0);
 					result = result.merge(toZeroBasedRegion(targetNode.getTextRegionWithLineInformation()));
-				}
-				return result;
-			}
-		}
-		if (isSignificant && owner instanceof XImportDeclaration && reference == XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE) {
-			List<INode> nodes = NodeModelUtils.findNodesForFeature(owner, reference);
-			if (!nodes.isEmpty()) {
-				INode qualifierNode = nodes.get(0);
-				ITextRegion result = ITextRegion.EMPTY_REGION;
-				INode pending = null;
-				String delimiter = qualifiedNameInStaticImportValueConverter.getStringNamespaceDelimiter();
-				for (INode node : qualifierNode.getLeafNodes()) {
-					if (!isHidden(node)) {
-						int length = node.getLength();
-						if (length != 0) {
-							if (pending != null) {
-								result.merge(toZeroBasedRegion(pending.getTextRegionWithLineInformation()));
-								pending = null;
-							}
-							if (delimiter.equals(node.getText())) {
-								pending = node;
-							} else {
-								result = result.merge(toZeroBasedRegion(node.getTextRegionWithLineInformation()));
-							}
-						}
-					}
 				}
 				return result;
 			}

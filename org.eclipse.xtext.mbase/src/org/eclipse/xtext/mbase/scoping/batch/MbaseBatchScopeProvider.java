@@ -26,8 +26,6 @@ import org.eclipse.xtext.mbase.XMemberFeatureCall;
 import org.eclipse.xtext.mbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.mbase.typesystem.IBatchTypeResolver;
 import org.eclipse.xtext.mbase.typesystem.IExpressionScope;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -114,34 +112,6 @@ public class MbaseBatchScopeProvider implements IBatchScopeProvider , IDelegatin
 		IFeatureScopeSession result = rootSession.addTypesToStaticScope(literalClasses, extensionClasses);
 		if (context.getContents().isEmpty() || !(context instanceof XtextResource))
 			return result;
-		final XImportSection importSection = importsConfig.getImportSection((XtextResource) context);
-		if(importSection != null) {
-			result = result.addImports(new ITypeImporter.Client() {
-
-				@Override
-				public void doAddImports(ITypeImporter importer) {
-					List<XImportDeclaration> imports = importSection.getImportDeclarations();
-					for(XImportDeclaration _import: imports) {
-						if (_import.isStatic()) {
-							if (_import.isWildcard()) {
-								if (_import.isExtension()) {
-									importer.importStaticExtension(_import.getImportedType(), false);
-								} else {
-									importer.importStatic(_import.getImportedType());
-								}
-							} else {
-								if (_import.isExtension()) {
-									importer.importStaticExtension(_import.getImportedType(), _import.getMemberName(), false);
-								} else {
-									importer.importStatic(_import.getImportedType(), _import.getMemberName());
-								}
-							}
-						}
-					}
-				}
-				
-			});
-		}
 		return result;
 	}
 

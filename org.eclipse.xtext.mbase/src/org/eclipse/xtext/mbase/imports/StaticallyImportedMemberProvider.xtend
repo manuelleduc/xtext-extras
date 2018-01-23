@@ -14,7 +14,6 @@ import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.mbase.typesystem.^override.IResolvedFeatures
 import org.eclipse.xtext.mbase.typesystem.util.ContextualVisibilityHelper
 import org.eclipse.xtext.mbase.typesystem.util.IVisibilityHelper
-import org.eclipse.xtext.xtype.XImportDeclaration
 import org.eclipse.xtext.common.types.JvmDeclaredType
 
 /**
@@ -31,22 +30,6 @@ class StaticallyImportedMemberProvider {
 	@Inject
 	IVisibilityHelper visibilityHelper
 
-	def findAllFeatures(XImportDeclaration it) {
-		val importedType = importedType
-		if (!static || importedType === null) {
-			return <JvmFeature>emptyList
-		}
-		val visibilityHelper = eResource.visibilityHelper
-		val resolvedFeatures = importedType.resolvedFeatures
-		resolvedFeatures.allFeatures.filter [ feature |
-			feature.static && visibilityHelper.isVisible(feature) &&
-			(memberName === null || feature.simpleName.startsWith(memberName))
-		]
-	}
-
-	def getAllFeatures(XImportDeclaration it) {
-		eResource.getAllFeatures(importedType, static, extension, memberName)
-	}
 
 	def getAllFeatures(Resource resource, JvmDeclaredType importedType, boolean ^static, boolean ^extension, String memberName) {
 		if (!static || importedType === null) {

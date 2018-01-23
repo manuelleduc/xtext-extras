@@ -15,13 +15,13 @@ import org.eclipse.xtext.ide.editor.contentassist.IdeCrossrefProposalProvider
 import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator
 import org.eclipse.xtext.mbase.ide.contentassist.ClasspathBasedIdeTypesProposalProvider
 import org.eclipse.xtext.mbase.ide.contentassist.IIdeTypesProposalProvider
-import org.eclipse.xtext.mbase.ide.contentassist.mbaseIdeContentProposalPriorities
-import org.eclipse.xtext.mbase.ide.contentassist.mbaseIdeContentProposalProvider
+import org.eclipse.xtext.mbase.ide.contentassist.MbaseIdeContentProposalProvider
 import org.eclipse.xtext.mbase.ide.contentassist.mbaseIdeCrossrefProposalProvider
 import org.eclipse.xtext.mbase.ide.highlighting.MbaseHighlightingCalculator
 import org.eclipse.xtext.mbase.ide.types.ClasspathScanner
 import org.eclipse.xtext.mbase.typesystem.internal.IFeatureScopeTracker
 import org.eclipse.xtext.mbase.typesystem.internal.OptimizingFeatureScopeTrackerProvider
+import org.eclipse.xtext.mbase.ide.contentassist.MbaseIdeContentProposalPriorities
 
 /**
  * Default Guice bindings for the generic IDE contributions of the mbase languages.
@@ -39,7 +39,7 @@ class DefaultMbaseIdeModule extends DefaultIdeModule {
 	}
 	
 	def Class<? extends IdeContentProposalProvider> bindIdeContentProposalProvider() {
-		mbaseIdeContentProposalProvider
+		MbaseIdeContentProposalProvider
 	}
 	
 	def Class<? extends IdeCrossrefProposalProvider> bindIdeCrossrefProposalProvider() {
@@ -51,7 +51,7 @@ class DefaultMbaseIdeModule extends DefaultIdeModule {
 	}
 	
 	def Class<? extends IdeContentProposalPriorities> bindIdeContentProposalPriorities() {
-		mbaseIdeContentProposalPriorities
+		MbaseIdeContentProposalPriorities
 	}
 	
 	def Class<? extends ISemanticHighlightingCalculator> bindSemanticHighlightingCalculator() {

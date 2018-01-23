@@ -1667,10 +1667,10 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMbaseWithAnnotations.g:18481:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // InternalMbaseWithAnnotations.g:18481:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // InternalMbaseWithAnnotations.g:17902:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // InternalMbaseWithAnnotations.g:17902:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // InternalMbaseWithAnnotations.g:18481:12: ( '0x' | '0X' )
+            // InternalMbaseWithAnnotations.g:17902:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1698,7 +1698,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalMbaseWithAnnotations.g:18481:13: '0x'
+                    // InternalMbaseWithAnnotations.g:17902:13: '0x'
                     {
                     match("0x"); 
 
@@ -1706,7 +1706,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalMbaseWithAnnotations.g:18481:18: '0X'
+                    // InternalMbaseWithAnnotations.g:17902:18: '0X'
                     {
                     match("0X"); 
 
@@ -1716,7 +1716,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
 
             }
 
-            // InternalMbaseWithAnnotations.g:18481:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // InternalMbaseWithAnnotations.g:17902:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -1754,7 +1754,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // InternalMbaseWithAnnotations.g:18481:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // InternalMbaseWithAnnotations.g:17902:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1763,10 +1763,10 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // InternalMbaseWithAnnotations.g:18481:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // InternalMbaseWithAnnotations.g:17902:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // InternalMbaseWithAnnotations.g:18481:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // InternalMbaseWithAnnotations.g:17902:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -1784,7 +1784,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // InternalMbaseWithAnnotations.g:18481:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // InternalMbaseWithAnnotations.g:17902:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -1808,7 +1808,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // InternalMbaseWithAnnotations.g:18481:84: ( 'l' | 'L' )
+                            // InternalMbaseWithAnnotations.g:17902:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -1847,11 +1847,11 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMbaseWithAnnotations.g:18483:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // InternalMbaseWithAnnotations.g:18483:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // InternalMbaseWithAnnotations.g:17904:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // InternalMbaseWithAnnotations.g:17904:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // InternalMbaseWithAnnotations.g:18483:21: ( '0' .. '9' | '_' )*
+            // InternalMbaseWithAnnotations.g:17904:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -1900,11 +1900,11 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMbaseWithAnnotations.g:18485:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // InternalMbaseWithAnnotations.g:18485:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // InternalMbaseWithAnnotations.g:17906:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // InternalMbaseWithAnnotations.g:17906:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // InternalMbaseWithAnnotations.g:18485:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // InternalMbaseWithAnnotations.g:17906:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1913,7 +1913,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // InternalMbaseWithAnnotations.g:18485:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // InternalMbaseWithAnnotations.g:17906:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -1924,7 +1924,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // InternalMbaseWithAnnotations.g:18485:36: ( '+' | '-' )?
+                    // InternalMbaseWithAnnotations.g:17906:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -1957,7 +1957,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
 
             }
 
-            // InternalMbaseWithAnnotations.g:18485:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // InternalMbaseWithAnnotations.g:17906:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -1969,7 +1969,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // InternalMbaseWithAnnotations.g:18485:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // InternalMbaseWithAnnotations.g:17906:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -1993,7 +1993,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalMbaseWithAnnotations.g:18485:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // InternalMbaseWithAnnotations.g:17906:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -2026,10 +2026,10 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMbaseWithAnnotations.g:18487:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // InternalMbaseWithAnnotations.g:18487:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // InternalMbaseWithAnnotations.g:17908:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // InternalMbaseWithAnnotations.g:17908:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // InternalMbaseWithAnnotations.g:18487:11: ( '^' )?
+            // InternalMbaseWithAnnotations.g:17908:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2038,7 +2038,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // InternalMbaseWithAnnotations.g:18487:11: '^'
+                    // InternalMbaseWithAnnotations.g:17908:11: '^'
                     {
                     match('^'); 
 
@@ -2056,7 +2056,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalMbaseWithAnnotations.g:18487:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // InternalMbaseWithAnnotations.g:17908:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -2105,10 +2105,10 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMbaseWithAnnotations.g:18489:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? ) )
-            // InternalMbaseWithAnnotations.g:18489:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
+            // InternalMbaseWithAnnotations.g:17910:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? ) )
+            // InternalMbaseWithAnnotations.g:17910:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
             {
-            // InternalMbaseWithAnnotations.g:18489:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
+            // InternalMbaseWithAnnotations.g:17910:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )? | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )? )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -2126,10 +2126,10 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt15) {
                 case 1 :
-                    // InternalMbaseWithAnnotations.g:18489:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )?
+                    // InternalMbaseWithAnnotations.g:17910:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' )?
                     {
                     match('\"'); 
-                    // InternalMbaseWithAnnotations.g:18489:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalMbaseWithAnnotations.g:17910:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -2145,7 +2145,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // InternalMbaseWithAnnotations.g:18489:21: '\\\\' .
+                    	    // InternalMbaseWithAnnotations.g:17910:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -2153,7 +2153,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalMbaseWithAnnotations.g:18489:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalMbaseWithAnnotations.g:17910:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2173,7 +2173,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                         }
                     } while (true);
 
-                    // InternalMbaseWithAnnotations.g:18489:44: ( '\"' )?
+                    // InternalMbaseWithAnnotations.g:17910:44: ( '\"' )?
                     int alt12=2;
                     int LA12_0 = input.LA(1);
 
@@ -2182,7 +2182,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                     }
                     switch (alt12) {
                         case 1 :
-                            // InternalMbaseWithAnnotations.g:18489:44: '\"'
+                            // InternalMbaseWithAnnotations.g:17910:44: '\"'
                             {
                             match('\"'); 
 
@@ -2195,10 +2195,10 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalMbaseWithAnnotations.g:18489:49: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )?
+                    // InternalMbaseWithAnnotations.g:17910:49: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' )?
                     {
                     match('\''); 
-                    // InternalMbaseWithAnnotations.g:18489:54: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalMbaseWithAnnotations.g:17910:54: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop13:
                     do {
                         int alt13=3;
@@ -2214,7 +2214,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
 
                         switch (alt13) {
                     	case 1 :
-                    	    // InternalMbaseWithAnnotations.g:18489:55: '\\\\' .
+                    	    // InternalMbaseWithAnnotations.g:17910:55: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -2222,7 +2222,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalMbaseWithAnnotations.g:18489:62: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalMbaseWithAnnotations.g:17910:62: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2242,7 +2242,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                         }
                     } while (true);
 
-                    // InternalMbaseWithAnnotations.g:18489:79: ( '\\'' )?
+                    // InternalMbaseWithAnnotations.g:17910:79: ( '\\'' )?
                     int alt14=2;
                     int LA14_0 = input.LA(1);
 
@@ -2251,7 +2251,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                     }
                     switch (alt14) {
                         case 1 :
-                            // InternalMbaseWithAnnotations.g:18489:79: '\\''
+                            // InternalMbaseWithAnnotations.g:17910:79: '\\''
                             {
                             match('\''); 
 
@@ -2282,12 +2282,12 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMbaseWithAnnotations.g:18491:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalMbaseWithAnnotations.g:18491:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalMbaseWithAnnotations.g:17912:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalMbaseWithAnnotations.g:17912:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalMbaseWithAnnotations.g:18491:24: ( options {greedy=false; } : . )*
+            // InternalMbaseWithAnnotations.g:17912:24: ( options {greedy=false; } : . )*
             loop16:
             do {
                 int alt16=2;
@@ -2312,7 +2312,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
 
                 switch (alt16) {
             	case 1 :
-            	    // InternalMbaseWithAnnotations.g:18491:52: .
+            	    // InternalMbaseWithAnnotations.g:17912:52: .
             	    {
             	    matchAny(); 
 
@@ -2342,12 +2342,12 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMbaseWithAnnotations.g:18493:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalMbaseWithAnnotations.g:18493:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalMbaseWithAnnotations.g:17914:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalMbaseWithAnnotations.g:17914:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalMbaseWithAnnotations.g:18493:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalMbaseWithAnnotations.g:17914:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop17:
             do {
                 int alt17=2;
@@ -2360,7 +2360,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
 
                 switch (alt17) {
             	case 1 :
-            	    // InternalMbaseWithAnnotations.g:18493:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalMbaseWithAnnotations.g:17914:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2380,7 +2380,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalMbaseWithAnnotations.g:18493:40: ( ( '\\r' )? '\\n' )?
+            // InternalMbaseWithAnnotations.g:17914:40: ( ( '\\r' )? '\\n' )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -2389,9 +2389,9 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt19) {
                 case 1 :
-                    // InternalMbaseWithAnnotations.g:18493:41: ( '\\r' )? '\\n'
+                    // InternalMbaseWithAnnotations.g:17914:41: ( '\\r' )? '\\n'
                     {
-                    // InternalMbaseWithAnnotations.g:18493:41: ( '\\r' )?
+                    // InternalMbaseWithAnnotations.g:17914:41: ( '\\r' )?
                     int alt18=2;
                     int LA18_0 = input.LA(1);
 
@@ -2400,7 +2400,7 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
                     }
                     switch (alt18) {
                         case 1 :
-                            // InternalMbaseWithAnnotations.g:18493:41: '\\r'
+                            // InternalMbaseWithAnnotations.g:17914:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2432,10 +2432,10 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMbaseWithAnnotations.g:18495:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalMbaseWithAnnotations.g:18495:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalMbaseWithAnnotations.g:17916:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalMbaseWithAnnotations.g:17916:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalMbaseWithAnnotations.g:18495:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalMbaseWithAnnotations.g:17916:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt20=0;
             loop20:
             do {
@@ -2489,8 +2489,8 @@ public class InternalMbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMbaseWithAnnotations.g:18497:16: ( . )
-            // InternalMbaseWithAnnotations.g:18497:18: .
+            // InternalMbaseWithAnnotations.g:17918:16: ( . )
+            // InternalMbaseWithAnnotations.g:17918:18: .
             {
             matchAny(); 
 

@@ -72,8 +72,6 @@ public class XtypeFactoryImpl extends EFactoryImpl implements XtypeFactory
 		{
 			case XtypePackage.XFUNCTION_TYPE_REF: return createXFunctionTypeRef();
 			case XtypePackage.XCOMPUTED_TYPE_REFERENCE: return createXComputedTypeReference();
-			case XtypePackage.XIMPORT_SECTION: return createXImportSection();
-			case XtypePackage.XIMPORT_DECLARATION: return createXImportDeclaration();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -129,28 +127,6 @@ public class XtypeFactoryImpl extends EFactoryImpl implements XtypeFactory
 	{
 		XComputedTypeReferenceImplCustom xComputedTypeReference = new XComputedTypeReferenceImplCustom();
 		return xComputedTypeReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public XImportSection createXImportSection()
-	{
-		XImportSectionImpl xImportSection = new XImportSectionImpl();
-		return xImportSection;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public XImportDeclaration createXImportDeclaration()
-	{
-		XImportDeclarationImplCustom xImportDeclaration = new XImportDeclarationImplCustom();
-		return xImportDeclaration;
 	}
 
 	/**

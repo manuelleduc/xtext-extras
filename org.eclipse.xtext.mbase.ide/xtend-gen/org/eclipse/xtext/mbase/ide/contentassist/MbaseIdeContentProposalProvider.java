@@ -58,10 +58,9 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xtype.XtypePackage;
 
 @SuppressWarnings("all")
-public class mbaseIdeContentProposalProvider extends IdeContentProposalProvider {
+public class MbaseIdeContentProposalProvider extends IdeContentProposalProvider {
   public static class ValidFeatureDescription implements Predicate<IEObjectDescription> {
     @Inject
     private OperatorMapping operatorMapping;
@@ -87,7 +86,7 @@ public class mbaseIdeContentProposalProvider extends IdeContentProposalProvider 
   private MbaseGrammarAccess _mbaseGrammarAccess;
   
   @Inject
-  private mbaseIdeContentProposalProvider.ValidFeatureDescription featureDescriptionPredicate;
+  private MbaseIdeContentProposalProvider.ValidFeatureDescription featureDescriptionPredicate;
   
   @Inject
   private IBatchTypeResolver typeResolver;
@@ -209,21 +208,6 @@ public class mbaseIdeContentProposalProvider extends IdeContentProposalProvider 
       if (Objects.equal(assignment, _typeAssignment_1_0_1)) {
         _matched=true;
         this.completeJavaTypes(TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, context, acceptor);
-      }
-    }
-    if (!_matched) {
-      Assignment _importedTypeAssignment_1_0_2 = this._mbaseGrammarAccess.getXImportDeclarationAccess().getImportedTypeAssignment_1_0_2();
-      if (Objects.equal(assignment, _importedTypeAssignment_1_0_2)) {
-        _matched=true;
-      }
-      if (!_matched) {
-        Assignment _importedTypeAssignment_1_1 = this._mbaseGrammarAccess.getXImportDeclarationAccess().getImportedTypeAssignment_1_1();
-        if (Objects.equal(assignment, _importedTypeAssignment_1_1)) {
-          _matched=true;
-        }
-      }
-      if (_matched) {
-        this.completeJavaTypes(XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE, context, acceptor);
       }
     }
     if (!_matched) {

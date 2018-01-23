@@ -80,8 +80,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
 
 /**
  * @author Moritz Eysholdt - Initial implementation and API
@@ -1474,12 +1472,6 @@ public class MbaseFormatter extends XtypeFormatter {
       return;
     } else if (expr instanceof XExpression) {
       _format((XExpression)expr, format);
-      return;
-    } else if (expr instanceof XImportDeclaration) {
-      _format((XImportDeclaration)expr, format);
-      return;
-    } else if (expr instanceof XImportSection) {
-      _format((XImportSection)expr, format);
       return;
     } else if (expr instanceof EObject) {
       _format((EObject)expr, format);

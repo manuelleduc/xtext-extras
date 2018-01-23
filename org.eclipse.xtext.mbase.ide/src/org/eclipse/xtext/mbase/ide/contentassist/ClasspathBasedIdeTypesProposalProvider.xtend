@@ -16,17 +16,13 @@ import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistEntry
 import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalCreator
-import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalPriorities
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.XtextResourceSet
 import org.eclipse.xtext.util.ITextRegion
 import org.eclipse.xtext.util.ReplaceRegion
 import org.eclipse.xtext.mbase.ide.types.ClasspathScanner
 import org.eclipse.xtext.mbase.ide.types.ITypeDescriptor
-import org.eclipse.xtext.mbase.imports.IImportsConfiguration
 import org.eclipse.xtext.mbase.imports.ImportSectionRegionUtil
-import org.eclipse.xtext.xtype.XImportSection
-import org.eclipse.xtext.xtype.XtypePackage
 import org.objectweb.asm.Opcodes
 
 class ClasspathBasedIdeTypesProposalProvider implements IIdeTypesProposalProvider {
@@ -37,31 +33,20 @@ class ClasspathBasedIdeTypesProposalProvider implements IIdeTypesProposalProvide
 	
 	@Inject IdeContentProposalCreator proposalCreator
 	
-	@Inject IdeContentProposalPriorities proposalPriorities
-	
 	@Inject IQualifiedNameConverter qualifiedNameConverter
-	
-	@Inject IImportsConfiguration importsConfiguration
 	
 	@Inject ImportSectionRegionUtil importSectionRegionUtil
 	
 	override createTypeProposals(EReference reference, ContentAssistContext context, Predicate<ITypeDescriptor> filter,
 			IIdeContentProposalAcceptor acceptor) {
 		var ITextRegion importSectionRegion
-		var XImportSection importSection
-		if (!isImportDeclaration(reference, context)) {
-			importSection = importsConfiguration.getImportSection(context.resource)
-			importSectionRegion = importSectionRegionUtil.computeRegion(context.resource)
-		}
+		importSectionRegion = importSectionRegionUtil.computeRegion(context.resource)
 		
 		for (typeDesc : context.typeDescriptors) {
 			if (!acceptor.canAcceptMoreProposals) {
 				return
 			}
 			if (canPropose(typeDesc, context, filter)) {
-				val entry = createProposal(reference, typeDesc, context, importSection, importSectionRegion)
-				val priority = (proposalPriorities as mbaseIdeContentProposalPriorities).getTypeRefPriority(typeDesc, entry)
-				acceptor.accept(entry, priority)
 			}
 		}
 	}
@@ -96,32 +81,20 @@ class ClasspathBasedIdeTypesProposalProvider implements IIdeTypesProposalProvide
 	}
 	
 	protected def ContentAssistEntry createProposal(EReference reference, ITypeDescriptor typeDesc,
-			ContentAssistContext context, XImportSection importSection, ITextRegion importSectionRegion) {
-		val importDecl = isImportDeclaration(reference, context)
+			ContentAssistContext context, ITextRegion importSectionRegion) {
 		val qualifiedName = qualifiedNameConverter.toString(typeDesc.qualifiedName)
-		val proposal = if (importDecl) qualifiedName else typeDesc.simpleName
+		val proposal =  typeDesc.simpleName
 		proposalCreator.createProposal(proposal, context) [
-			if (importDecl) {
-				label = typeDesc.simpleName
-				description = proposal
-			} else {
 				description = qualifiedName
-				if (importSectionRegion !== null
-						&& isImportDeclarationRequired(typeDesc, qualifiedName, context, importSection)) {
+				if (importSectionRegion !== null) {
 					addImportDeclaration(importSectionRegion, typeDesc, qualifiedName, context)
 				}
-			}
 		]
 	}
 	
-	protected def isImportDeclaration(EReference reference, ContentAssistContext context) {
-		reference == XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE
-	}
-	
 	protected def isImportDeclarationRequired(ITypeDescriptor typeDesc, String qualifiedName,
-			ContentAssistContext context, XImportSection importSection) {
-		!(typeDesc.name.startsWith('java.lang') && typeDesc.name.lastIndexOf('.') == 9)
-			&& (importSection === null || !importSection.importDeclarations.exists[importedType?.qualifiedName == qualifiedName])
+			ContentAssistContext context) {
+		!(typeDesc.name.startsWith('java.lang') && typeDesc.name.lastIndexOf('.') == 9) 
 	}
 	
 	protected def addImportDeclaration(ContentAssistEntry entry, ITextRegion importSectionRegion,

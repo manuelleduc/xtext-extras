@@ -130,8 +130,6 @@ import org.eclipse.xtext.mbase.util.TypesOrderUtil;
 import org.eclipse.xtext.mbase.util.XExpressionHelper;
 import org.eclipse.xtext.mbase.util.XSwitchExpressions;
 import org.eclipse.xtext.mbase.util.MbaseUsageCrossReferencer;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 
 import com.google.common.base.Joiner;
@@ -179,9 +177,6 @@ public class MbaseValidator extends AbstractMbaseValidator {
 	private IBatchTypeResolver typeResolver;
 	
 	@Inject 
-	private IImportsConfiguration importsConfiguration;
-	
-	@Inject 
 	private XSwitchExpressions switchExpressions;
 	
 	@Inject 
@@ -190,11 +185,6 @@ public class MbaseValidator extends AbstractMbaseValidator {
 	@Inject
 	private SwitchConstantExpressionsInterpreter switchConstantExpressionsInterpreter;
 	
-	@Inject
-	private Provider<ImportedTypesCollector> importedTypesCollectorProvider;
-	
-	@Inject
-	private StaticallyImportedMemberProvider staticallyImportedMemberProvider;
 	
 	@Inject
 	private ReadAndWriteTracking readAndWriteTracking;
@@ -1128,184 +1118,8 @@ public class MbaseValidator extends AbstractMbaseValidator {
 		}
 	}
 
-	@Check
-	public void checkImports(XImportSection importSection) {
-		if (importSection.getImportDeclarations().isEmpty()) {
-			return;
-		}
-		
-		final Map<String, List<XImportDeclaration>> imports = Maps.newHashMap();
-		final Map<String, List<XImportDeclaration>> staticImports = Maps.newHashMap();
-		final Map<String, List<XImportDeclaration>> extensionImports = Maps.newHashMap();
-		final Map<String, JvmType> importedNames = Maps.newHashMap();
-		
-		populateMaps(importSection, imports, staticImports, extensionImports, importedNames);
-		checkConflicts(importSection, imports, importedNames);
-		if (!isIgnored(IMPORT_UNUSED)) {
-			XtextResource xtextResource = (XtextResource) importSection.eResource();
-			
-			ImportedTypesCollector importedTypesCollector = importedTypesCollectorProvider.get();
-			TypeUsages typeUsages = importedTypesCollector.collectTypeUsages(xtextResource);
-			for (JvmMember member : typeUsages.getStaticImports()) {
-				if (typeUsages.getExtensionImports().contains(member)) {
-					if (!removeStaticImport(extensionImports, member)) {
-						removeStaticImport(staticImports, member);
-					}
-				} else {
-					if (!removeStaticImport(staticImports, member)) {
-						removeStaticImport(extensionImports, member);
-					}
-				}
-			}
-			for (JvmMember member : typeUsages.getExtensionImports()) {
-				removeStaticImport(extensionImports, member);
-			}
-			for (JvmDeclaredType type : typeUsages.getSimpleName2Types().values()) {
-				if (!removeTypeImport(imports, type)) {
-					for (JvmType key : importedNames.values()) {
-						if (isNestedTypeOf(key, type)) {
-							removeTypeImport(imports, key);
-						}
-					}
-				}
-			}
-			addImportUnusedIssues(imports);
-			addImportUnusedIssues(staticImports);
-			addImportUnusedIssues(extensionImports);
-		}
-	}
 
-	private boolean isNestedTypeOf(JvmType child, JvmDeclaredType parent) {
-		if (child instanceof JvmMember) {
-			JvmMember member = (JvmMember) child;
-			return member.getDeclaringType() == parent;
-		}
-		return false;
-	}
 
-	private boolean removeStaticImport(Map<String, List<XImportDeclaration>> staticImports, JvmMember member) {
-		JvmDeclaredType declaringType = member.getDeclaringType();
-		String identifier = declaringType.getIdentifier();
-		
-		List<XImportDeclaration> list = staticImports.get(identifier);
-		if (list == null) {
-			return false;
-		}
-		if (list.size() == 1) {
-			staticImports.remove(identifier);
-			return true;
-		}
-		int indexToRemove = -1;
-		for (int i = 0; i < list.size(); i++) {
-			XImportDeclaration staticImportDeclaration = list.get(i);
-			if (staticImportDeclaration.isWildcard()) {
-				if (indexToRemove == -1) {
-					indexToRemove = i;
-				}
-				continue;
-			}
-			if (Objects.equal(member.getSimpleName(), staticImportDeclaration.getMemberName())) {
-				indexToRemove = i;
-				break;
-			}
-		}
-		if (indexToRemove == -1) {
-			indexToRemove = 0;
-		}
-		list.remove(indexToRemove);
-		return true;
-	}
-
-	private boolean removeTypeImport(Map<String, List<XImportDeclaration>> imports, JvmType declaringType) {
-		String identifier = declaringType.getIdentifier();
-		List<XImportDeclaration> list = imports.get(identifier);
-		if (list == null) {
-			return false;
-		}
-		if (list.size() == 1) {
-			imports.remove(identifier);
-			return true;
-		}
-		list.remove(0);
-		return true;
-	}
-
-	protected void addImportUnusedIssues(final Map<String, List<XImportDeclaration>> imports) {
-		for (List<XImportDeclaration> importDeclarations : imports.values()) {
-			for (XImportDeclaration importDeclaration : importDeclarations) {
-				addIssue("The import '" + importDeclaration.getImportedName() + "' is never used.", importDeclaration, IMPORT_UNUSED);
-			}	
-		}
-	}
-
-	protected void checkConflicts(XImportSection importSection, final Map<String, List<XImportDeclaration>> imports,
-			final Map<String, JvmType> importedNames) {
-		for (JvmDeclaredType declaredType : importsConfiguration.getLocallyDefinedTypes((XtextResource)importSection.eResource())) {
-			if(importedNames.containsKey(declaredType.getSimpleName())){
-				JvmType importedType = importedNames.get(declaredType.getSimpleName());
-				if (importedType != declaredType  && importedType.eResource() != importSection.eResource()) {
-					List<XImportDeclaration> list = imports.get(importedType.getIdentifier());
-					if (list != null) {
-						for (XImportDeclaration importDeclaration: list ) {
-							error("The import '" 
-									+ importedType.getIdentifier() 
-									+ "' conflicts with a type defined in the same file", 
-									importDeclaration, null, IssueCodes.IMPORT_CONFLICT);
-						}
-					}
-				}
-			}
-		}
-	}
-
-	protected void populateMaps(XImportSection importSection, final Map<String, List<XImportDeclaration>> imports,
-			final Map<String, List<XImportDeclaration>> staticImports, final Map<String, List<XImportDeclaration>> extensionImports,
-			final Map<String, JvmType> importedNames) {
-		for (XImportDeclaration imp : importSection.getImportDeclarations()) {
-			if (imp.getImportedNamespace() != null) { 
-				addIssue("The use of wildcard imports is deprecated.", imp, IMPORT_WILDCARD_DEPRECATED);
-				continue;
-			}
-			
-			JvmType importedType = imp.getImportedType();
-			if (importedType == null || importedType.eIsProxy()) {
-				continue;
-			}
-			
-			Map<String, List<XImportDeclaration>> map = imp.isStatic() ? (imp.isExtension() ? extensionImports : staticImports) : imports;
-			List<XImportDeclaration> list = map.get(importedType.getIdentifier());
-			if (list != null) {
-				list.add(imp);
-				continue;
-			}
-			list = Lists.newArrayListWithCapacity(2);
-			list.add(imp);
-			map.put(importedType.getIdentifier(), list);
-			
-			if (!imp.isStatic()) {
-				JvmType currentType = importedType;
-				String currentSuffix = currentType.getSimpleName();
-				JvmType collidingImport = importedNames.put(currentSuffix, importedType);
-				if(collidingImport != null)
-					error("The import '" + importedType.getIdentifier() + "' collides with the import '" 
-							+ collidingImport.getIdentifier() + "'.", imp, null, IssueCodes.IMPORT_COLLISION);
-				while (currentType.eContainer() instanceof JvmType) {
-					currentType = (JvmType) currentType.eContainer();
-					currentSuffix = currentType.getSimpleName()+"$"+currentSuffix;
-					JvmType collidingImport2 = importedNames.put(currentSuffix, importedType);
-					if(collidingImport2 != null)
-						error("The import '" + importedType.getIdentifier() + "' collides with the import '" 
-								+ collidingImport2.getIdentifier() + "'.", imp, null, IssueCodes.IMPORT_COLLISION);
-				}
-			} else if (!imp.isWildcard()) {
-				Iterable<JvmFeature> allFeatures = staticallyImportedMemberProvider.getAllFeatures(imp);
-				if (!allFeatures.iterator().hasNext()) {
-					addIssue("The import " + imp.getImportedName() + " cannot be resolved.", imp, IMPORT_UNRESOLVED);
-					continue;
-				}
-			}
-		}
-	}
 	
 	@Check
 	public void checkPrimitiveComparedToNull(XBinaryOperation binaryOperation) {
@@ -1904,17 +1718,6 @@ public class MbaseValidator extends AbstractMbaseValidator {
 					jvmType,
 					type,
 					TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE);
-		}
-	}
-
-	@Check
-	public void checkDeprecated(XImportDeclaration decl) {
-		if (!isIgnored(DEPRECATED_MEMBER_REFERENCE)) {
-			JvmType jvmType = decl.getImportedType();
-			checkDeprecated(
-					jvmType,
-					decl,
-					XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE);
 		}
 	}
 

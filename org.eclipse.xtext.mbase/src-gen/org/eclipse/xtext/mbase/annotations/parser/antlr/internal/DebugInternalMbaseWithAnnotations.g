@@ -1244,45 +1244,9 @@ ruleJvmLowerBoundAnded:
 	ruleJvmTypeReference
 ;
 
-// Rule QualifiedNameWithWildcard
-ruleQualifiedNameWithWildcard:
-	ruleQualifiedName
-	'.'
-	'*'
-;
-
 // Rule ValidID
 ruleValidID:
 	RULE_ID
-;
-
-// Rule XImportDeclaration
-ruleXImportDeclaration:
-	'import'
-	(
-		'static'
-		'extension'
-		?
-		ruleQualifiedNameInStaticImport
-		(
-			'*'
-			    |
-			ruleValidID
-		)
-		    |
-		ruleQualifiedName
-		    |
-		ruleQualifiedNameWithWildcard
-	)
-	';'?
-;
-
-// Rule QualifiedNameInStaticImport
-ruleQualifiedNameInStaticImport:
-	(
-		ruleValidID
-		'.'
-	)+
 ;
 
 RULE_HEX : ('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ ('#' (('b'|'B') ('i'|'I')|('l'|'L')))?;

@@ -60,8 +60,6 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 
 @SuppressWarnings("all")
@@ -307,12 +305,6 @@ public abstract class AbstractMbaseSemanticSequencer extends XtypeSemanticSequen
 			switch (semanticObject.eClass().getClassifierID()) {
 			case XtypePackage.XFUNCTION_TYPE_REF:
 				sequence_XFunctionTypeRef(context, (XFunctionTypeRef) semanticObject); 
-				return; 
-			case XtypePackage.XIMPORT_DECLARATION:
-				sequence_XImportDeclaration(context, (XImportDeclaration) semanticObject); 
-				return; 
-			case XtypePackage.XIMPORT_SECTION:
-				sequence_XImportSection(context, (XImportSection) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)

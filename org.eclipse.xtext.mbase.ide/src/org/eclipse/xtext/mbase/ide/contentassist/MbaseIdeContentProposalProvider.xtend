@@ -44,7 +44,7 @@ import org.eclipse.xtext.mbase.typesystem.IBatchTypeResolver
 import org.eclipse.xtext.mbase.typesystem.IExpressionScope
 import org.eclipse.xtext.xtype.XtypePackage
 
-class mbaseIdeContentProposalProvider extends IdeContentProposalProvider {
+class MbaseIdeContentProposalProvider extends IdeContentProposalProvider {
 
 	static class ValidFeatureDescription implements Predicate<IEObjectDescription> {
 		@Inject OperatorMapping operatorMapping
@@ -131,10 +131,6 @@ class mbaseIdeContentProposalProvider extends IdeContentProposalProvider {
 			case getXRelationalExpressionAccess.typeAssignment_1_0_1:
 				completeJavaTypes(TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, context, acceptor)
 				
-			case getXImportDeclarationAccess.importedTypeAssignment_1_0_2,
-			case getXImportDeclarationAccess.importedTypeAssignment_1_1:
-				completeJavaTypes(XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE, context, acceptor)
-			
 			case getXTypeLiteralAccess.typeAssignment_3:
 				completeJavaTypes(MbasePackage.Literals.XTYPE_LITERAL__TYPE, context, acceptor)
 			

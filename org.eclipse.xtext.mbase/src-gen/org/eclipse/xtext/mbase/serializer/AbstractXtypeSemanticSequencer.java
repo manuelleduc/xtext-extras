@@ -28,8 +28,6 @@ import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 
 @SuppressWarnings("all")
@@ -96,12 +94,6 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 			switch (semanticObject.eClass().getClassifierID()) {
 			case XtypePackage.XFUNCTION_TYPE_REF:
 				sequence_XFunctionTypeRef(context, (XFunctionTypeRef) semanticObject); 
-				return; 
-			case XtypePackage.XIMPORT_DECLARATION:
-				sequence_XImportDeclaration(context, (XImportDeclaration) semanticObject); 
-				return; 
-			case XtypePackage.XIMPORT_SECTION:
-				sequence_XImportSection(context, (XImportSection) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -328,42 +320,6 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 	@Deprecated
 	protected void sequence_XFunctionTypeRef(EObject context, XFunctionTypeRef semanticObject) {
 		sequence_XFunctionTypeRef(createContext(context, semanticObject), semanticObject);
-	}
-	
-	/**
-	 * Contexts:
-	 *     XImportDeclaration returns XImportDeclaration
-	 *
-	 * Constraint:
-	 *     (
-	 *         (static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedNameInStaticImport] (wildcard?='*' | memberName=ValidID)) | 
-	 *         importedType=[JvmDeclaredType|QualifiedName] | 
-	 *         importedNamespace=QualifiedNameWithWildcard
-	 *     )
-	 */
-	protected void sequence_XImportDeclaration(ISerializationContext context, XImportDeclaration semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	@Deprecated
-	protected void sequence_XImportDeclaration(EObject context, XImportDeclaration semanticObject) {
-		sequence_XImportDeclaration(createContext(context, semanticObject), semanticObject);
-	}
-	
-	/**
-	 * Contexts:
-	 *     XImportSection returns XImportSection
-	 *
-	 * Constraint:
-	 *     importDeclarations+=XImportDeclaration+
-	 */
-	protected void sequence_XImportSection(ISerializationContext context, XImportSection semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	@Deprecated
-	protected void sequence_XImportSection(EObject context, XImportSection semanticObject) {
-		sequence_XImportSection(createContext(context, semanticObject), semanticObject);
 	}
 	
 }

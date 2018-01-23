@@ -39,8 +39,6 @@ import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.mbase.jvmmodel.ILogicalContainerProvider;
-import org.eclipse.xtext.xtype.XImportDeclaration;
-import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 
 import com.google.inject.Inject;
@@ -62,19 +60,6 @@ public class DefaultImportsConfiguration implements IImportsConfiguration {
 	@Inject
 	private ILogicalContainerProvider logicalContainerProvider;
 
-	@Override
-	public XImportSection getImportSection(XtextResource resource) {
-		EList<EObject> contents = resource.getContents();
-		if (!contents.isEmpty())
-		{
-			for (Iterator<EObject> i = contents.get(0).eAllContents(); i.hasNext();) {
-				EObject next = i.next();
-				if (next instanceof XImportSection)
-					return (XImportSection) next;
-			}
-		}
-		return null;
-	}
 
 	@Override
 	public Iterable<JvmDeclaredType> getLocallyDefinedTypes(XtextResource resource) {
@@ -146,29 +131,6 @@ public class DefaultImportsConfiguration implements IImportsConfiguration {
 		return 0;
 	}
 
-	/*
-	 * We cannot just use importDeclaration.getImportedTypeName since that would return the name from
-	 * the resolved type rather than the concrete syntax. 
-	 */
-	@Override
-	public String getLegacyImportSyntax(XImportDeclaration importDeclaration) {
-		List<INode> list = NodeModelUtils.findNodesForFeature(importDeclaration, XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE);
-		if (list.isEmpty()) {
-			return null;
-		}
-		INode singleNode = list.get(0);
-		if (singleNode.getText().indexOf('$') < 0) {
-			return null;
-		}
-		StringBuilder sb = new StringBuilder();
-		for(ILeafNode node: singleNode.getLeafNodes()) {
-			if (!node.isHidden()) {
-				sb.append(node.getText().replace("^", ""));
-			}
-		}
-		return sb.toString();
-	}
-	
 	protected INode findPreviousNode(ICompositeNode node, List<EObject> pathToImportSection) {
 		if(pathToImportSection.isEmpty() || node.getGrammarElement() != pathToImportSection.get(0)) 
 			return null;
@@ -225,10 +187,6 @@ public class DefaultImportsConfiguration implements IImportsConfiguration {
 		seenRules.add(rule);
 		pathToImportSection.addLast(ruleOrRuleCall);
 		returnType = rule.getType().getClassifier();
-		if(returnType instanceof EClass 
-				&& XtypePackage.Literals.XIMPORT_SECTION.isSuperTypeOf((EClass) returnType)) {
-			return true;
-		}
 		for(RuleCall containedRuleCall: GrammarUtil.containedRuleCalls(rule)) {
 			if(containedRuleCall.getRule() instanceof ParserRule) 
 				if(internalFindPathToImportSection(pathToImportSection, seenRules, containedRuleCall)) {

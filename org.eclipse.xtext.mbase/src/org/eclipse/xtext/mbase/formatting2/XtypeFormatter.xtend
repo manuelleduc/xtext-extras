@@ -13,8 +13,6 @@ import org.eclipse.xtext.common.types.JvmWildcardTypeReference
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
 import org.eclipse.xtext.xtype.XFunctionTypeRef
-import org.eclipse.xtext.xtype.XImportDeclaration
-import org.eclipse.xtext.xtype.XImportSection
 
 import static org.eclipse.xtext.mbase.formatting2.MbaseFormatterPreferenceKeys.*
 import static org.eclipse.xtext.xtype.XtypePackage.Literals.*
@@ -57,24 +55,5 @@ class XtypeFormatter extends AbstractFormatter2 {
 			c.prepend[oneSpace]
 			c.format
 		}
-	}
-
-	def dispatch format(XImportSection section, extension IFormattableDocument format) {
-		for (imp : section.importDeclarations) {
-			imp.format
-			if (imp != section.importDeclarations.last)
-				imp.append(blankLinesBetweenImports)
-			else
-				imp.append(blankLinesAfterImports)
-		}
-	}
-
-	def dispatch void format(XImportDeclaration imp, extension IFormattableDocument document) {
-		imp.regionFor.keyword("import").append[oneSpace]
-		imp.regionFor.feature(XIMPORT_DECLARATION__STATIC).append[oneSpace]
-		imp.regionFor.feature(XIMPORT_DECLARATION__EXTENSION).append[oneSpace]
-		for (node : imp.regionFor.keywords("."))
-			node.surround[noSpace]
-		imp.regionFor.keyword(";").prepend[noSpace]
 	}
 }
