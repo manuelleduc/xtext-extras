@@ -25,7 +25,7 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 
 /**
  * @author Sven Efftinge - Initial contribution and API
@@ -48,7 +48,7 @@ public abstract class XAbstractFeatureCallImplCustom extends XAbstractFeatureCal
 			feature = (JvmIdentifiableElement) eResolveProxy(oldFeature);
 			if (feature != oldFeature) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, mbasePackage.XABSTRACT_FEATURE_CALL__FEATURE, oldFeature, feature));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MbasePackage.XABSTRACT_FEATURE_CALL__FEATURE, oldFeature, feature));
 			}
 			
 			// and additionally maintain #isLinked flag
@@ -64,7 +64,7 @@ public abstract class XAbstractFeatureCallImplCustom extends XAbstractFeatureCal
 	
 	@Override
 	public String getConcreteSyntaxFeatureName() {
-		List<INode> list = NodeModelUtils.findNodesForFeature(this, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
+		List<INode> list = NodeModelUtils.findNodesForFeature(this, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
 		if (list.size()!=1) {
 			if (feature == null || feature.eIsProxy())
 				return "<unkown>";

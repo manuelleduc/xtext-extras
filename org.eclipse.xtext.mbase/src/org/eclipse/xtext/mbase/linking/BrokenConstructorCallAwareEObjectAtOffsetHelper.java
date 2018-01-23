@@ -16,7 +16,7 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.mbase.XConstructorCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.IBatchTypeResolver;
 
 import com.google.inject.Inject;
@@ -41,7 +41,7 @@ public class BrokenConstructorCallAwareEObjectAtOffsetHelper extends EObjectAtOf
 					referenceOwner.eClass());
 			if (!crossReference.isMany()) {
 				EObject resultOrProxy = (EObject) referenceOwner.eGet(crossReference);
-				if (resultOrProxy != null && resultOrProxy.eIsProxy() && crossReference == mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR) {
+				if (resultOrProxy != null && resultOrProxy.eIsProxy() && crossReference == MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR) {
 					if (referenceOwner instanceof XConstructorCall) {
 						JvmIdentifiableElement linkedType = batchTypeResolver.resolveTypes(referenceOwner).getLinkedFeature((XConstructorCall)referenceOwner);
 						if (linkedType != null)

@@ -36,7 +36,7 @@ import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XClosure;
 import org.eclipse.xtext.mbase.XConstructorCall;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureScopeSession;
 import org.eclipse.xtext.mbase.typesystem.IExpressionScope;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
@@ -328,7 +328,7 @@ public abstract class ResolvedTypes implements IResolvedTypes {
 	
 	/* @Nullable */
 	protected JvmIdentifiableElement doGetLinkedFeature(/* @Nullable */ XExpression featureOrConstructorCall) {
-		if (linkingMap == null || featureOrConstructorCall == null || featureOrConstructorCall.eClass() == mbasePackage.Literals.XCLOSURE)
+		if (linkingMap == null || featureOrConstructorCall == null || featureOrConstructorCall.eClass() == MbasePackage.Literals.XCLOSURE)
 			return null;
 		IApplicableCandidate candidate = linkingMap.get(featureOrConstructorCall);
 		if (candidate == null)
@@ -685,7 +685,7 @@ public abstract class ResolvedTypes implements IResolvedTypes {
 	
 	/* @Nullable */
 	protected List<LightweightTypeReference> doGetActualTypeArguments(XExpression expression) {
-		if (expression == null || expression.eClass() == mbasePackage.Literals.XCLOSURE) {
+		if (expression == null || expression.eClass() == MbasePackage.Literals.XCLOSURE) {
 			return Collections.emptyList();
 		}
 		ILinkingCandidate result = (ILinkingCandidate) basicGetLinkingMap().get(expression);

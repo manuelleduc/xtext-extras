@@ -8,6 +8,9 @@
 package org.eclipse.xtext.mbase.typesystem.util;
 
 import java.util.Set;
+import org.eclipse.xtext.common.types.JvmTypeParameter;
+import org.eclipse.xtext.common.types.JvmTypeParameterDeclarator;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
@@ -15,49 +18,43 @@ import java.util.Set;
  */
 @SuppressWarnings("all")
 public class ConstraintVisitingInfo {
-  private /* Set<JvmTypeParameter> */Object visiting;
+  private Set<JvmTypeParameter> visiting;
   
-  private /* JvmTypeParameterDeclarator */Object declarator;
+  private JvmTypeParameterDeclarator declarator;
   
   private int idx;
   
   public ConstraintVisitingInfo() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field newHashSet is undefined"
-      + "\nThe field ConstraintVisitingInfo.visiting refers to the missing type JvmTypeParameter");
+    this.visiting = CollectionLiterals.<JvmTypeParameter>newHashSet();
   }
   
-  public ConstraintVisitingInfo(final /* JvmTypeParameter */Object initial) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method newHashSet(JvmTypeParameter) is undefined"
-      + "\nThe field ConstraintVisitingInfo.visiting refers to the missing type JvmTypeParameter");
+  public ConstraintVisitingInfo(final JvmTypeParameter initial) {
+    this.visiting = CollectionLiterals.<JvmTypeParameter>newHashSet(initial);
   }
   
-  public boolean tryVisit(final /* JvmTypeParameter */Object parameter) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ConstraintVisitingInfo.visiting refers to the missing type JvmTypeParameter");
+  public boolean tryVisit(final JvmTypeParameter parameter) {
+    return this.visiting.add(parameter);
   }
   
-  public boolean canVisit(final /* JvmTypeParameter */Object parameter) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n! cannot be resolved."
-      + "\nThe field ConstraintVisitingInfo.visiting refers to the missing type JvmTypeParameter");
+  public boolean canVisit(final JvmTypeParameter parameter) {
+    boolean _contains = this.visiting.contains(parameter);
+    return (!_contains);
   }
   
-  public void didVisit(final /* JvmTypeParameter */Object parameter) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ConstraintVisitingInfo.visiting refers to the missing type JvmTypeParameter");
+  public void didVisit(final JvmTypeParameter parameter) {
+    this.visiting.remove(parameter);
   }
   
-  public void pushInfo(final /* JvmTypeParameterDeclarator */Object declarator, final int idx) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ConstraintVisitingInfo.declarator refers to the missing type JvmTypeParameterDeclarator"
-      + "\n=== cannot be resolved");
+  public void pushInfo(final JvmTypeParameterDeclarator declarator, final int idx) {
+    if ((declarator == null)) {
+      throw new NullPointerException("declarator may not be null");
+    }
+    this.declarator = declarator;
+    this.idx = idx;
   }
   
   public JvmTypeParameterDeclarator getCurrentDeclarator() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ConstraintVisitingInfo.declarator refers to the missing type JvmTypeParameterDeclarator");
+    return this.declarator;
   }
   
   public int getCurrentIndex() {

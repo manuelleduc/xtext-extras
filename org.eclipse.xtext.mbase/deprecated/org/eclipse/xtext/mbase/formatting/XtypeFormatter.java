@@ -5,7 +5,7 @@ package org.eclipse.xtext.mbase.formatting;
 
 import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
-import org.eclipse.xtext.mbase.formatting2.mbaseFormatter;
+import org.eclipse.xtext.mbase.formatting2.MbaseFormatter;
 import org.eclipse.xtext.mbase.services.XtypeGrammarAccess;
 import org.eclipse.xtext.mbase.services.XtypeGrammarAccess.JvmParameterizedTypeReferenceElements;
 import org.eclipse.xtext.mbase.services.XtypeGrammarAccess.XFunctionTypeRefElements;

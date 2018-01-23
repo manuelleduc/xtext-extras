@@ -7,9 +7,13 @@
  */
 package org.eclipse.xtext.mbase.util;
 
+import com.google.inject.Inject;
 import java.util.Collection;
+import org.eclipse.xtext.mbase.typesystem.conformance.RawTypeConformanceComputer;
+import org.eclipse.xtext.mbase.typesystem.conformance.TypeConformanceComputer;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
 import org.eclipse.xtext.mbase.typesystem.util.CommonTypeComputationServices;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 /**
  * Small utilitiy class that allows to check whether a given type was already handled in a chain
@@ -19,8 +23,8 @@ import org.eclipse.xtext.mbase.typesystem.util.CommonTypeComputationServices;
  */
 @SuppressWarnings("all")
 public class TypesOrderUtil {
-  /* @Inject
-   */private CommonTypeComputationServices services;
+  @Inject
+  private CommonTypeComputationServices services;
   
   public boolean isHandled(final LightweightTypeReference actualTypeReference, final Collection<LightweightTypeReference> collection) {
     boolean _xblockexpression = false;
@@ -37,11 +41,14 @@ public class TypesOrderUtil {
   }
   
   public boolean isHandled(final LightweightTypeReference actualTypeReference, final LightweightTypeReference previousTypeReference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method bitwiseOr(int) is undefined for the type int"
-      + "\nThe method bitwiseAnd(int) is undefined for the type int"
-      + "\nThe field typeConformanceComputer is not visible"
-      + "\nbitwiseOr cannot be resolved"
-      + "\n!= cannot be resolved");
+    boolean _xblockexpression = false;
+    {
+      @Extension
+      final TypeConformanceComputer typeConformanceComputer = this.services.getTypeConformanceComputer();
+      final int conformant = typeConformanceComputer.isConformant(previousTypeReference, actualTypeReference, 
+        ((RawTypeConformanceComputer.ALLOW_BOXING_UNBOXING | RawTypeConformanceComputer.ALLOW_PRIMITIVE_WIDENING) | RawTypeConformanceComputer.ALLOW_RAW_TYPE_CONVERSION));
+      _xblockexpression = ((conformant & RawTypeConformanceComputer.SUCCESS) != 0);
+    }
+    return _xblockexpression;
   }
 }

@@ -7,27 +7,24 @@
  */
 package org.eclipse.xtext.mbase.annotations;
 
-import org.eclipse.xtext.mbase.annotations.mbaseWithAnnotationsStandaloneSetupGenerated;
+import com.google.inject.Injector;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.xtext.mbase.annotations.MbaseWithAnnotationsStandaloneSetupGenerated;
+import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsPackage;
 
 /**
  * Initialization support for running Xtext languages
  * without equinox extension registry
  */
 @SuppressWarnings("all")
-public class mbaseWithAnnotationsStandaloneSetup extends mbaseWithAnnotationsStandaloneSetupGenerated {
+public class mbaseWithAnnotationsStandaloneSetup extends MbaseWithAnnotationsStandaloneSetupGenerated {
   public static void doSetup() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createInjectorAndDoEMFRegistration() from the type mbaseWithAnnotationsStandaloneSetup refers to the missing type Injector");
+    new mbaseWithAnnotationsStandaloneSetup().createInjectorAndDoEMFRegistration();
   }
   
   @Override
-  public /* Injector */Object createInjectorAndDoEMFRegistration() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field EPackage is undefined"
-      + "\nThe method getNsURI() is undefined for the type XAnnotationsPackage"
-      + "\nThe method createInjectorAndDoEMFRegistration() is undefined for the type mbaseWithAnnotationsStandaloneSetupGenerated"
-      + "\nRegistry cannot be resolved"
-      + "\nINSTANCE cannot be resolved"
-      + "\nput cannot be resolved");
+  public Injector createInjectorAndDoEMFRegistration() {
+    EPackage.Registry.INSTANCE.put(XAnnotationsPackage.eINSTANCE.getNsURI(), XAnnotationsPackage.eINSTANCE);
+    return super.createInjectorAndDoEMFRegistration();
   }
 }

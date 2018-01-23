@@ -10,15 +10,15 @@
 import com.google.inject.Guice
 import com.google.inject.Injector
 import org.eclipse.xtext.util.Modules2
-import org.eclipse.xtext.mbase.annotations.mbaseWithAnnotationsRuntimeModule
+import org.eclipse.xtext.mbase.annotations.MbaseWithAnnotationsRuntimeModule
 import org.eclipse.xtext.mbase.annotations.mbaseWithAnnotationsStandaloneSetup
 
 /** 
  * Initialization support for running Xtext languages as language servers.
  */
-class mbaseWithAnnotationsIdeSetup extends mbaseWithAnnotationsStandaloneSetup {
+class MbaseWithAnnotationsIdeSetup extends mbaseWithAnnotationsStandaloneSetup {
 	override Injector createInjector() {
 		return Guice.createInjector(
-			Modules2.mixin(new mbaseWithAnnotationsRuntimeModule(), new mbaseWithAnnotationsIdeModule()))
+			Modules2.mixin(new MbaseWithAnnotationsRuntimeModule(), new MbaseWithAnnotationsIdeModule()))
 	}
 }

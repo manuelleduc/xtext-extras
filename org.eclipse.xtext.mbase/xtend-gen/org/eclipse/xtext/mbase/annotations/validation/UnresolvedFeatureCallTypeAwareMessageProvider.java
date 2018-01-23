@@ -7,15 +7,41 @@
  */
 package org.eclipse.xtext.mbase.annotations.validation;
 
+import com.google.inject.Inject;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.diagnostics.Diagnostic;
+import org.eclipse.xtext.diagnostics.DiagnosticMessage;
+import org.eclipse.xtext.diagnostics.Severity;
+import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
+import org.eclipse.xtext.linking.impl.IllegalNodeException;
+import org.eclipse.xtext.linking.impl.LinkingDiagnosticMessageProvider;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
+import org.eclipse.xtext.mbase.XExpression;
+import org.eclipse.xtext.mbase.XFeatureCall;
+import org.eclipse.xtext.mbase.XMemberFeatureCall;
+import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsPackage;
+import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.internal.FeatureLinkHelper;
+import org.eclipse.xtext.mbase.typesystem.internal.TypeAwareLinkingDiagnosticContext;
+import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
 import org.eclipse.xtext.mbase.util.FeatureCallAsTypeLiteralHelper;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 /**
  * @author Dennis Huebner - Initial contribution and API
  */
 @SuppressWarnings("all")
-public class UnresolvedFeatureCallTypeAwareMessageProvider /* implements LinkingDiagnosticMessageProvider  */{
+public class UnresolvedFeatureCallTypeAwareMessageProvider extends LinkingDiagnosticMessageProvider {
   /**
    * A user data entry that indicates a broken feature link which could also be
    * a type literal, e.g. 'String::CASE_INSENSITIVE'.
@@ -24,93 +50,126 @@ public class UnresolvedFeatureCallTypeAwareMessageProvider /* implements Linking
   
   public final static String FEATURE_CALL = "key:FeatureCall";
   
-  /* @Inject
-   */private FeatureCallAsTypeLiteralHelper typeLiteralHelper;
+  @Inject
+  private FeatureCallAsTypeLiteralHelper typeLiteralHelper;
   
-  /* @Inject
-   */private FeatureLinkHelper _featureLinkHelper;
+  @Inject
+  @Extension
+  private FeatureLinkHelper _featureLinkHelper;
   
   @Override
-  public /* DiagnosticMessage */Object getUnresolvedProxyMessage(final /* ILinkingDiagnosticContext */Object context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nIllegalNodeException cannot be resolved to a type."
-      + "\nDiagnosticMessage cannot be resolved."
-      + "\nThe method or field ERROR is undefined"
-      + "\nThe method or field LINKING_DIAGNOSTIC is undefined"
-      + "\nDiagnosticMessage cannot be resolved."
-      + "\nThe method or field ERROR is undefined"
-      + "\nThe method or field LINKING_DIAGNOSTIC is undefined"
-      + "\nThe method isStaticMemberCallTarget(EObject) from the type UnresolvedFeatureCallTypeAwareMessageProvider refers to the missing type EObject"
-      + "\nThe method handleUnresolvedFeatureCall(ILinkingDiagnosticContext, XAbstractFeatureCall, String) from the type UnresolvedFeatureCallTypeAwareMessageProvider refers to the missing type DiagnosticMessage"
-      + "\ngetLinkText cannot be resolved"
-      + "\ngetNode cannot be resolved"
-      + "\ngetText cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\ngetContext cannot be resolved"
-      + "\nisOperation cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\ngetEReferenceType cannot be resolved");
+  public DiagnosticMessage getUnresolvedProxyMessage(final ILinkingDiagnosticMessageProvider.ILinkingDiagnosticContext context) {
+    String _xtrycatchfinallyexpression = null;
+    try {
+      _xtrycatchfinallyexpression = context.getLinkText();
+    } catch (final Throwable _t) {
+      if (_t instanceof IllegalNodeException) {
+        final IllegalNodeException e = (IllegalNodeException)_t;
+        _xtrycatchfinallyexpression = e.getNode().getText();
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    String linkText = _xtrycatchfinallyexpression;
+    if ((linkText == null)) {
+      return null;
+    }
+    EObject contextObject = context.getContext();
+    boolean _isStaticMemberCallTarget = this.isStaticMemberCallTarget(contextObject);
+    if (_isStaticMemberCallTarget) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("�linkText� cannot be resolved to a type.");
+      return new DiagnosticMessage(_builder.toString(), Severity.ERROR, Diagnostic.LINKING_DIAGNOSTIC, 
+        UnresolvedFeatureCallTypeAwareMessageProvider.TYPE_LITERAL);
+    }
+    if ((contextObject instanceof XAbstractFeatureCall)) {
+      boolean _isOperation = ((XAbstractFeatureCall)contextObject).isOperation();
+      boolean _not = (!_isOperation);
+      if (_not) {
+        return this.handleUnresolvedFeatureCall(context, ((XAbstractFeatureCall)contextObject), linkText);
+      }
+    }
+    EClass referenceType = context.getReference().getEReferenceType();
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("�linkText� cannot be resolved�referenceType.getTypeName(context.reference)�.");
+    final String msg = _builder_1.toString();
+    return new DiagnosticMessage(msg, Severity.ERROR, Diagnostic.LINKING_DIAGNOSTIC, linkText);
   }
   
-  private /* DiagnosticMessage */Object handleUnresolvedFeatureCall(final /* ILinkingDiagnosticContext */Object context, final XAbstractFeatureCall featureCall, final String linkText) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field syntacticReceiver is undefined for the type XAbstractFeatureCall"
-      + "\nThe method or field syntacticReceiver is undefined for the type XAbstractFeatureCall"
-      + "\nThe method or field syntacticArguments is undefined for the type XAbstractFeatureCall"
-      + "\nThe method or field any is undefined"
-      + "\nThe method or field humanReadableName is undefined"
-      + "\n! cannot be resolved."
-      + "\n!== cannot be resolved."
-      + "\n+= cannot be resolved."
-      + "\n&& cannot be resolved."
-      + "\n> cannot be resolved."
-      + "\nDiagnosticMessage cannot be resolved."
-      + "\nThe method or field ERROR is undefined"
-      + "\nThe method or field LINKING_DIAGNOSTIC is undefined"
-      + "\nDiagnosticMessage cannot be resolved."
-      + "\nThe method or field ERROR is undefined"
-      + "\nThe method or field LINKING_DIAGNOSTIC is undefined"
-      + "\nresolvedTypes cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\ngetActualType cannot be resolved"
-      + "\nmap cannot be resolved"
-      + "\ngetActualType cannot be resolved"
-      + "\njoin cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\n&& cannot be resolved");
+  private DiagnosticMessage handleUnresolvedFeatureCall(final ILinkingDiagnosticMessageProvider.ILinkingDiagnosticContext context, final XAbstractFeatureCall featureCall, final String linkText) {
+    LightweightTypeReference recieverType = null;
+    String args = "";
+    if ((context instanceof TypeAwareLinkingDiagnosticContext)) {
+      final IResolvedTypes types = ((TypeAwareLinkingDiagnosticContext)context).getResolvedTypes();
+      XExpression _syntacticReceiver = this._featureLinkHelper.getSyntacticReceiver(featureCall);
+      boolean _tripleNotEquals = (_syntacticReceiver != null);
+      if (_tripleNotEquals) {
+        recieverType = types.getActualType(this._featureLinkHelper.getSyntacticReceiver(featureCall));
+      }
+      final Function1<XExpression, LightweightTypeReference> _function = (XExpression it) -> {
+        return types.getActualType(it);
+      };
+      final Function1<LightweightTypeReference, CharSequence> _function_1 = (LightweightTypeReference it) -> {
+        String _xifexpression = null;
+        if (((it == null) || it.isAny())) {
+          _xifexpression = "Object";
+        } else {
+          _xifexpression = it.getHumanReadableName();
+        }
+        return _xifexpression;
+      };
+      args = IterableExtensions.<LightweightTypeReference>join(ListExtensions.<XExpression, LightweightTypeReference>map(this._featureLinkHelper.getSyntacticArguments(featureCall), _function), ", ", _function_1);
+    }
+    boolean _isExplicitOperationCallOrBuilderSyntax = featureCall.isExplicitOperationCallOrBuilderSyntax();
+    final boolean orField = (!_isExplicitOperationCallOrBuilderSyntax);
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("The method �IF (orField)�or field �linkText��ELSE��linkText�(�args�)�ENDIF� is undefined");
+    String msg = _builder.toString();
+    if ((recieverType != null)) {
+      String _msg = msg;
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append(" ");
+      _builder_1.append("for the type �recieverType.humanReadableName�");
+      msg = (_msg + _builder_1);
+    }
+    if (((((featureCall instanceof XFeatureCall) && (linkText.length() > 0)) && Character.isUpperCase(linkText.charAt(0))) && 
+      this.typeLiteralHelper.isPotentialTypeLiteral(featureCall, null))) {
+      return new DiagnosticMessage(msg, Severity.ERROR, Diagnostic.LINKING_DIAGNOSTIC, linkText, UnresolvedFeatureCallTypeAwareMessageProvider.TYPE_LITERAL);
+    }
+    return new DiagnosticMessage(msg, Severity.ERROR, Diagnostic.LINKING_DIAGNOSTIC, linkText, UnresolvedFeatureCallTypeAwareMessageProvider.FEATURE_CALL);
   }
   
-  protected boolean isStaticMemberCallTarget(final /* EObject */Object contextObject) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n&& cannot be resolved."
-      + "\nThe method or field XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET is undefined"
-      + "\neContainingFeature cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\neContainer cannot be resolved");
+  protected boolean isStaticMemberCallTarget(final EObject contextObject) {
+    boolean candidate = ((contextObject instanceof XFeatureCall) && (contextObject.eContainingFeature() == 
+      MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET));
+    if (candidate) {
+      EObject _eContainer = contextObject.eContainer();
+      XMemberFeatureCall memberFeatureCall = ((XMemberFeatureCall) _eContainer);
+      boolean _isExplicitStatic = memberFeatureCall.isExplicitStatic();
+      if (_isExplicitStatic) {
+        return true;
+      }
+    }
+    return false;
   }
   
   /**
    * @Nullable
    */
-  protected String getTypeName(final /* EClass */Object c, final /* EStructuralFeature */Object referingFeature) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field XANNOTATION__ANNOTATION_TYPE is undefined for the type Class<Literals>"
-      + "\nThe method or field TypesPackage is undefined"
-      + "\nThe method or field EcoreUtil2 is undefined"
-      + "\nThe method or field TypesPackage is undefined"
-      + "\nThe method or field TypesPackage is undefined"
-      + "\n=== cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\nLiterals cannot be resolved"
-      + "\nJVM_ENUMERATION_TYPE cannot be resolved"
-      + "\nisAssignableFrom cannot be resolved"
-      + "\nLiterals cannot be resolved"
-      + "\nJVM_TYPE cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\nLiterals cannot be resolved"
-      + "\nJVM_OPERATION cannot be resolved");
+  protected String getTypeName(final EClass c, final EStructuralFeature referingFeature) {
+    if ((referingFeature == XAnnotationsPackage.Literals.XANNOTATION__ANNOTATION_TYPE)) {
+      return " to an annotation type";
+    }
+    if ((c == TypesPackage.Literals.JVM_ENUMERATION_TYPE)) {
+      return " to an enum type";
+    }
+    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(TypesPackage.Literals.JVM_TYPE, c);
+    if (_isAssignableFrom) {
+      return " to a type";
+    }
+    if ((c == TypesPackage.Literals.JVM_OPERATION)) {
+      return " to an operation";
+    }
+    return "";
   }
 }

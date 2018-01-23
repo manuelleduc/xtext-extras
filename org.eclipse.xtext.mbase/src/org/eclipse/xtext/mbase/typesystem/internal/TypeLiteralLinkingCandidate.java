@@ -28,7 +28,7 @@ import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.scoping.batch.IIdentifiableElementDescription;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.computation.IFeatureLinkingCandidate;
@@ -156,7 +156,7 @@ public class TypeLiteralLinkingCandidate extends AbstractPendingLinkingCandidate
 					IssueCodes.INVALID_TYPE_ARGUMENTS_ON_TYPE_LITERAL, 
 					message, 
 					getExpression(),
-					mbasePackage.Literals.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS,
+					MbasePackage.Literals.XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS,
 					-1, null) {
 				
 				ICompositeNode node = NodeModelUtils.getNode(getFeatureCall());
@@ -258,7 +258,7 @@ public class TypeLiteralLinkingCandidate extends AbstractPendingLinkingCandidate
 	
 	@Override
 	public void applyToModel(IResolvedTypes resolvedTypes) {
-		resolveLinkingProxy(mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, mbasePackage.XABSTRACT_FEATURE_CALL__FEATURE);
+		resolveLinkingProxy(MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, MbasePackage.XABSTRACT_FEATURE_CALL__FEATURE);
 	}
 
 }

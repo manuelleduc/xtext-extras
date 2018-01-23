@@ -20,7 +20,7 @@ import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.computation.IApplicableCandidate;
 import org.eclipse.xtext.mbase.typesystem.computation.ITypeExpectation;
@@ -175,7 +175,7 @@ public class RootResolvedTypes extends ResolvedTypes {
 					return null;
 				}
 			}
-			if (expression.eContainingFeature() == mbasePackage.Literals.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT) {
+			if (expression.eContainingFeature() == MbasePackage.Literals.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT) {
 				return new EObjectDiagnosticImpl(Severity.ERROR, IssueCodes.INCOMPATIBLE_TYPES, String.format(
 						"Type mismatch: cannot convert implicit first argument from %s to %s", actualType.getHumanReadableName(), expectedType.getHumanReadableName()),
 						expression, null, -1, null);

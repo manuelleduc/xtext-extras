@@ -7,12 +7,18 @@
  */
 package org.eclipse.xtext.mbase.controlflow;
 
+import com.google.common.collect.Lists;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XBasicForLoopExpression;
 import org.eclipse.xtext.mbase.XBlockExpression;
+import org.eclipse.xtext.mbase.XCasePart;
+import org.eclipse.xtext.mbase.XCatchClause;
 import org.eclipse.xtext.mbase.XConstructorCall;
 import org.eclipse.xtext.mbase.XDoWhileExpression;
 import org.eclipse.xtext.mbase.XExpression;
@@ -31,10 +37,11 @@ import org.eclipse.xtext.mbase.controlflow.IEarlyExitComputer;
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
  */
-/* @Singleton */@SuppressWarnings("all")
+@Singleton
+@SuppressWarnings("all")
 public class DefaultEarlyExitComputer implements IEarlyExitComputer {
-  /* @Inject
-   */private EarlyExitInterpreter earlyExitInterpreter;
+  @Inject
+  private EarlyExitInterpreter earlyExitInterpreter;
   
   @Override
   public boolean isEarlyExit(final XExpression expression) {
@@ -47,16 +54,15 @@ public class DefaultEarlyExitComputer implements IEarlyExitComputer {
   }
   
   protected boolean isNotEmpty(final Collection<IEarlyExitComputer.ExitPoint> exitPoints) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved."
-      + "\n! cannot be resolved."
-      + "\n&& cannot be resolved");
+    return ((exitPoints != null) && (!exitPoints.isEmpty()));
   }
   
   @Override
   public Collection<IEarlyExitComputer.ExitPoint> getExitPoints(final XExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    if ((expression == null)) {
+      return Collections.<IEarlyExitComputer.ExitPoint>emptyList();
+    }
+    return this.exitPoints(expression);
   }
   
   /**
@@ -77,16 +83,56 @@ public class DefaultEarlyExitComputer implements IEarlyExitComputer {
   }
   
   protected Collection<IEarlyExitComputer.ExitPoint> _exitPoints(final XBlockExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getExpressions() is undefined for the type XBlockExpression");
+    EList<XExpression> _expressions = expression.getExpressions();
+    for (final XExpression child : _expressions) {
+      {
+        Collection<IEarlyExitComputer.ExitPoint> exitPoints = this.getExitPoints(child);
+        boolean _isNotEmpty = this.isNotEmpty(exitPoints);
+        if (_isNotEmpty) {
+          return exitPoints;
+        }
+      }
+    }
+    return Collections.<IEarlyExitComputer.ExitPoint>emptyList();
   }
   
   protected Collection<IEarlyExitComputer.ExitPoint> _exitPoints(final XBasicForLoopExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getInitExpressions() is undefined for the type XBasicForLoopExpression"
-      + "\n=== cannot be resolved."
-      + "\nThe method getUpdateExpressions() is undefined for the type XBasicForLoopExpression"
-      + "\n|| cannot be resolved");
+    EList<XExpression> _initExpressions = expression.getInitExpressions();
+    for (final XExpression initExpression : _initExpressions) {
+      {
+        Collection<IEarlyExitComputer.ExitPoint> exitPoints = this.getExitPoints(initExpression);
+        boolean _isNotEmpty = this.isNotEmpty(exitPoints);
+        if (_isNotEmpty) {
+          return exitPoints;
+        }
+      }
+    }
+    XExpression predicate = expression.getExpression();
+    Collection<IEarlyExitComputer.ExitPoint> exitPoints = this.getExitPoints(predicate);
+    boolean _isNotEmpty = this.isNotEmpty(exitPoints);
+    if (_isNotEmpty) {
+      return exitPoints;
+    }
+    if (((predicate == null) || this.isBooleanConstant(predicate, true))) {
+      exitPoints = this.getExitPoints(expression.getEachExpression());
+      boolean _isNotEmpty_1 = this.isNotEmpty(exitPoints);
+      if (_isNotEmpty_1) {
+        return exitPoints;
+      }
+      EList<XExpression> _updateExpressions = expression.getUpdateExpressions();
+      for (final XExpression child : _updateExpressions) {
+        {
+          exitPoints = this.getExitPoints(child);
+          boolean _isNotEmpty_2 = this.isNotEmpty(exitPoints);
+          if (_isNotEmpty_2) {
+            return exitPoints;
+          }
+        }
+      }
+      IEarlyExitComputer.ExitPoint _exitPoint = new IEarlyExitComputer.ExitPoint(expression, false);
+      return Collections.<IEarlyExitComputer.ExitPoint>singletonList(_exitPoint);
+    }
+    return Collections.<IEarlyExitComputer.ExitPoint>emptyList();
   }
   
   protected Collection<IEarlyExitComputer.ExitPoint> _exitPoints(final XForLoopExpression expression) {
@@ -145,37 +191,103 @@ public class DefaultEarlyExitComputer implements IEarlyExitComputer {
   }
   
   protected Collection<IEarlyExitComputer.ExitPoint> _exitPoints(final XIfExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n&& cannot be resolved."
-      + "\nThe method or field Lists is undefined"
-      + "\nnewArrayList cannot be resolved");
+    Collection<IEarlyExitComputer.ExitPoint> ifExitPoints = this.getExitPoints(expression.getIf());
+    boolean _isNotEmpty = this.isNotEmpty(ifExitPoints);
+    if (_isNotEmpty) {
+      return ifExitPoints;
+    }
+    Collection<IEarlyExitComputer.ExitPoint> thenExitPoints = this.getExitPoints(expression.getThen());
+    Collection<IEarlyExitComputer.ExitPoint> elseExitPoints = this.getExitPoints(expression.getElse());
+    if ((this.isNotEmpty(thenExitPoints) && this.isNotEmpty(elseExitPoints))) {
+      Collection<IEarlyExitComputer.ExitPoint> result = Lists.<IEarlyExitComputer.ExitPoint>newArrayList(thenExitPoints);
+      result.addAll(elseExitPoints);
+      return result;
+    }
+    return Collections.<IEarlyExitComputer.ExitPoint>emptyList();
   }
   
   protected Collection<IEarlyExitComputer.ExitPoint> _exitPoints(final XSwitchExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field Lists is undefined"
-      + "\nThe method getCases() is undefined for the type XSwitchExpression"
-      + "\n!== cannot be resolved."
-      + "\n! cannot be resolved."
-      + "\n! cannot be resolved."
-      + "\nnewArrayList cannot be resolved");
+    Collection<IEarlyExitComputer.ExitPoint> switchExitPoints = this.getExitPoints(expression.getSwitch());
+    boolean _isNotEmpty = this.isNotEmpty(switchExitPoints);
+    if (_isNotEmpty) {
+      return switchExitPoints;
+    }
+    Collection<IEarlyExitComputer.ExitPoint> result = Lists.<IEarlyExitComputer.ExitPoint>newArrayList();
+    EList<XCasePart> _cases = expression.getCases();
+    for (final XCasePart casePart : _cases) {
+      {
+        XExpression then = casePart.getThen();
+        if ((then != null)) {
+          Collection<IEarlyExitComputer.ExitPoint> caseExit = this.getExitPoints(then);
+          boolean _isNotEmpty_1 = this.isNotEmpty(caseExit);
+          boolean _not = (!_isNotEmpty_1);
+          if (_not) {
+            return Collections.<IEarlyExitComputer.ExitPoint>emptyList();
+          } else {
+            result.addAll(caseExit);
+          }
+        }
+      }
+    }
+    Collection<IEarlyExitComputer.ExitPoint> defaultExit = this.getExitPoints(expression.getDefault());
+    boolean _isNotEmpty_1 = this.isNotEmpty(defaultExit);
+    boolean _not = (!_isNotEmpty_1);
+    if (_not) {
+      return Collections.<IEarlyExitComputer.ExitPoint>emptyList();
+    } else {
+      result.addAll(defaultExit);
+    }
+    return result;
   }
   
   protected Collection<IEarlyExitComputer.ExitPoint> _exitPoints(final XAbstractFeatureCall expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getActualArguments() is undefined for the type XAbstractFeatureCall");
+    EList<XExpression> _actualArguments = expression.getActualArguments();
+    for (final XExpression argument : _actualArguments) {
+      {
+        Collection<IEarlyExitComputer.ExitPoint> argumentExitPoints = this.getExitPoints(argument);
+        boolean _isNotEmpty = this.isNotEmpty(argumentExitPoints);
+        if (_isNotEmpty) {
+          return argumentExitPoints;
+        }
+      }
+    }
+    return Collections.<IEarlyExitComputer.ExitPoint>emptyList();
   }
   
   protected Collection<IEarlyExitComputer.ExitPoint> _exitPoints(final XConstructorCall expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getArguments() is undefined for the type XConstructorCall");
+    EList<XExpression> _arguments = expression.getArguments();
+    for (final XExpression argument : _arguments) {
+      {
+        Collection<IEarlyExitComputer.ExitPoint> argumentExitPoints = this.getExitPoints(argument);
+        boolean _isNotEmpty = this.isNotEmpty(argumentExitPoints);
+        if (_isNotEmpty) {
+          return argumentExitPoints;
+        }
+      }
+    }
+    return Collections.<IEarlyExitComputer.ExitPoint>emptyList();
   }
   
   protected Collection<IEarlyExitComputer.ExitPoint> _exitPoints(final XTryCatchFinallyExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field Lists is undefined"
-      + "\nThe method getCatchClauses() is undefined for the type XTryCatchFinallyExpression"
-      + "\nnewArrayList cannot be resolved");
+    Collection<IEarlyExitComputer.ExitPoint> tryExitPoints = this.getExitPoints(expression.getExpression());
+    boolean _isNotEmpty = this.isNotEmpty(tryExitPoints);
+    if (_isNotEmpty) {
+      Collection<IEarlyExitComputer.ExitPoint> result = Lists.<IEarlyExitComputer.ExitPoint>newArrayList(tryExitPoints);
+      EList<XCatchClause> _catchClauses = expression.getCatchClauses();
+      for (final XCatchClause catchClause : _catchClauses) {
+        {
+          Collection<IEarlyExitComputer.ExitPoint> catchExitPoints = this.getExitPoints(catchClause.getExpression());
+          boolean _isNotEmpty_1 = this.isNotEmpty(catchExitPoints);
+          if (_isNotEmpty_1) {
+            result.addAll(catchExitPoints);
+          } else {
+            return this.getExitPoints(expression.getFinallyExpression());
+          }
+        }
+      }
+      return result;
+    }
+    return this.getExitPoints(expression.getFinallyExpression());
   }
   
   protected Collection<IEarlyExitComputer.ExitPoint> _exitPoints(final XSynchronizedExpression expression) {

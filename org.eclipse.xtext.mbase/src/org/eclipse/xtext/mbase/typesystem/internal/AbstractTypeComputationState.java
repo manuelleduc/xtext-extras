@@ -29,7 +29,7 @@ import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XConstructorCall;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XFeatureCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureScopeSession;
 import org.eclipse.xtext.mbase.scoping.batch.IIdentifiableElementDescription;
 import org.eclipse.xtext.mbase.scoping.batch.ITypeImporter;
@@ -215,7 +215,7 @@ public abstract class AbstractTypeComputationState implements ITypeComputationSt
 	public void addExtensionToCurrentScope(JvmIdentifiableElement extensionProvider) {
 		LightweightTypeReference knownType = getResolvedTypes().getActualType(extensionProvider);
 		if (knownType != null && !knownType.isAny() && !knownType.isUnknown()) {
-			XFeatureCall prototype = getResolver().getmbaseFactory().createXFeatureCall();
+			XFeatureCall prototype = getResolver().getMbaseFactory().createXFeatureCall();
 			prototype.setFeature(extensionProvider);
 			featureScopeSession = featureScopeSession.addToExtensionScope(Collections.<XExpression, LightweightTypeReference>singletonMap(prototype, knownType));
 		}
@@ -248,7 +248,7 @@ public abstract class AbstractTypeComputationState implements ITypeComputationSt
 		for(JvmIdentifiableElement extensionProvider: extensionProviders) {
 			LightweightTypeReference knownType = getResolvedTypes().getActualType(extensionProvider);
 			if (knownType != null && !knownType.isAny() && !knownType.isUnknown()) {
-				XFeatureCall prototype = getResolver().getmbaseFactory().createXFeatureCall();
+				XFeatureCall prototype = getResolver().getMbaseFactory().createXFeatureCall();
 				prototype.setFeature(extensionProvider);
 				prototypeToType.put(prototype, knownType);
 			}
@@ -386,7 +386,7 @@ public abstract class AbstractTypeComputationState implements ITypeComputationSt
 		if (result != null) {
 			return Collections.singletonList(result);
 		}
-		EObject proxyOrResolved = (EObject) featureCall.eGet(mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false);
+		EObject proxyOrResolved = (EObject) featureCall.eGet(MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false);
 		StackedResolvedTypes demandComputedTypes = resolvedTypes.pushTypes();
 		final AbstractTypeComputationState forked = withNonVoidExpectation(demandComputedTypes);
 		ForwardingResolvedTypes demandResolvedTypes = new ForwardingResolvedTypes() {
@@ -407,7 +407,7 @@ public abstract class AbstractTypeComputationState implements ITypeComputationSt
 			}
 		};
 		Iterable<IEObjectDescription> descriptions = reentrantTypeResolver.getScopeProviderAccess().getCandidateDescriptions(
-				featureCall, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, proxyOrResolved, featureScopeSession, demandResolvedTypes);
+				featureCall, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, proxyOrResolved, featureScopeSession, demandResolvedTypes);
 		List<IFeatureLinkingCandidate> resultList = Lists.newArrayList();
 		for(IEObjectDescription description: descriptions) {
 			resultList.add(createCandidate(featureCall, demandComputedTypes, toIdentifiableDescription(description)));
@@ -530,9 +530,9 @@ public abstract class AbstractTypeComputationState implements ITypeComputationSt
 		if(result != null) {
 			return Collections.singletonList(result);
 		}
-		EObject proxyOrResolved = (EObject) constructorCall.eGet(mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, false);
+		EObject proxyOrResolved = (EObject) constructorCall.eGet(MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, false);
 		Iterable<IEObjectDescription> descriptions = reentrantTypeResolver.getScopeProviderAccess().getCandidateDescriptions(
-				constructorCall, mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, proxyOrResolved, featureScopeSession, resolvedTypes);
+				constructorCall, MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, proxyOrResolved, featureScopeSession, resolvedTypes);
 		List<IConstructorLinkingCandidate> resultList = Lists.newArrayList();
 		for(IEObjectDescription description: descriptions) {
 			resultList.add(createCandidate(constructorCall, toIdentifiableDescription(description)));

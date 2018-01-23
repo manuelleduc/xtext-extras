@@ -18,7 +18,7 @@ import org.eclipse.xtext.mbase.XCollectionLiteral;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XListLiteral;
 import org.eclipse.xtext.mbase.XSetLiteral;
-import org.eclipse.xtext.mbase.lib.Pair;
+import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.mbase.typesystem.conformance.ConformanceFlags;
 import org.eclipse.xtext.mbase.typesystem.conformance.TypeConformanceComputationArgument;
 import org.eclipse.xtext.mbase.typesystem.references.ITypeReferenceOwner;

@@ -49,7 +49,7 @@ import org.eclipse.xtext.mbase.XCatchClause;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XFeatureCall;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationElementValuePair;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.mbase.controlflow.ConstantConditionsInterpreter;
@@ -57,7 +57,7 @@ import org.eclipse.xtext.mbase.controlflow.EvaluationContext;
 import org.eclipse.xtext.mbase.controlflow.IConstantEvaluationResult;
 import org.eclipse.xtext.mbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.mbase.jvmmodel.ILogicalContainerProvider;
-import org.eclipse.xtext.mbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureNames;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureScopeSession;
 import org.eclipse.xtext.mbase.typesystem.IBatchTypeResolver;
@@ -377,7 +377,7 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 			return true;
 		}
 		EClass type = container.eClass();
-		return type == mbasePackage.Literals.XCASE_PART || type == mbasePackage.Literals.XCATCH_CLAUSE || type == XAnnotationsPackage.Literals.XANNOTATION_ELEMENT_VALUE_PAIR;
+		return type == MbasePackage.Literals.XCASE_PART || type == MbasePackage.Literals.XCATCH_CLAUSE || type == XAnnotationsPackage.Literals.XANNOTATION_ELEMENT_VALUE_PAIR;
 	}
 	
 	@Override
@@ -954,7 +954,7 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 		JvmIdentifiableElement thisFeature = (JvmIdentifiableElement) thisDescription.getEObjectOrProxy();
 		IFeatureScopeSession childSession = addExtensionFieldsToMemberSession(
 				resolvedTypes, featureScopeSession, type, thisFeature, Sets.<String>newHashSetWithExpectedSize(8), Sets.<JvmType>newHashSetWithExpectedSize(4));
-		XFeatureCall thisAccess = getmbaseFactory().createXFeatureCall();
+		XFeatureCall thisAccess = getMbaseFactory().createXFeatureCall();
 		thisAccess.setFeature(thisFeature);
 		LightweightTypeReference thisType = resolvedTypes.getActualType(thisFeature);
 		childSession = childSession.addToExtensionScope(Collections.<XExpression, LightweightTypeReference>singletonMap(thisAccess, thisType));
@@ -998,13 +998,13 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 	
 	protected XAbstractFeatureCall createExtensionProvider(JvmIdentifiableElement thisFeature, JvmField field) {
 		if (field.isStatic()) {
-			XFeatureCall extensionProvider = getmbaseFactory().createXFeatureCall();
+			XFeatureCall extensionProvider = getMbaseFactory().createXFeatureCall();
 			extensionProvider.setFeature(field);
 			return extensionProvider;
 		} else {
-			XMemberFeatureCall extensionProvider = getmbaseFactory().createXMemberFeatureCall();
+			XMemberFeatureCall extensionProvider = getMbaseFactory().createXMemberFeatureCall();
 			extensionProvider.setFeature(field);
-			XFeatureCall thisAccess = getmbaseFactory().createXFeatureCall();
+			XFeatureCall thisAccess = getMbaseFactory().createXFeatureCall();
 			thisAccess.setFeature(thisFeature);
 			extensionProvider.setMemberCallTarget(thisAccess);
 			return extensionProvider;

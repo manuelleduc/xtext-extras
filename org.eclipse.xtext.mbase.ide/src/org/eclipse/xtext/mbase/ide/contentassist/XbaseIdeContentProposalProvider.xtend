@@ -34,12 +34,12 @@ import org.eclipse.xtext.mbase.XClosure
 import org.eclipse.xtext.mbase.XExpression
 import org.eclipse.xtext.mbase.XFeatureCall
 import org.eclipse.xtext.mbase.XMemberFeatureCall
-import org.eclipse.xtext.mbase.mbasePackage
+import org.eclipse.xtext.mbase.MbasePackage
 import org.eclipse.xtext.mbase.ide.types.ITypeDescriptor
 import org.eclipse.xtext.mbase.scoping.SyntaxFilteredScopes
 import org.eclipse.xtext.mbase.scoping.batch.IIdentifiableElementDescription
 import org.eclipse.xtext.mbase.scoping.featurecalls.OperatorMapping
-import org.eclipse.xtext.mbase.services.mbaseGrammarAccess
+import org.eclipse.xtext.mbase.services.MbaseGrammarAccess
 import org.eclipse.xtext.mbase.typesystem.IBatchTypeResolver
 import org.eclipse.xtext.mbase.typesystem.IExpressionScope
 import org.eclipse.xtext.xtype.XtypePackage
@@ -62,7 +62,7 @@ class mbaseIdeContentProposalProvider extends IdeContentProposalProvider {
 		}
 	}
 	
-	@Inject extension mbaseGrammarAccess
+	@Inject extension MbaseGrammarAccess
 
 	@Inject ValidFeatureDescription featureDescriptionPredicate
 	
@@ -136,7 +136,7 @@ class mbaseIdeContentProposalProvider extends IdeContentProposalProvider {
 				completeJavaTypes(XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE, context, acceptor)
 			
 			case getXTypeLiteralAccess.typeAssignment_3:
-				completeJavaTypes(mbasePackage.Literals.XTYPE_LITERAL__TYPE, context, acceptor)
+				completeJavaTypes(MbasePackage.Literals.XTYPE_LITERAL__TYPE, context, acceptor)
 			
 			case getXConstructorCallAccess.constructorAssignment_2:
 				completeJavaTypes(TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, context,
@@ -244,7 +244,7 @@ class mbaseIdeContentProposalProvider extends IdeContentProposalProvider {
 
 	protected def boolean isInMemberFeatureCall(EObject model, int endOffset, ContentAssistContext context) {
 		if (model instanceof XMemberFeatureCall && endOffset >= context.offset) {
-			val featureNodes = NodeModelUtils.findNodesForFeature(model, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE)
+			val featureNodes = NodeModelUtils.findNodesForFeature(model, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE)
 			if (!featureNodes.empty) {
 				val featureNode = featureNodes.head
 				if (featureNode.totalOffset < context.offset &&

@@ -39,7 +39,7 @@ import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XFeatureCall;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
 import org.eclipse.xtext.mbase.XVariableDeclaration;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureNames;
 import org.eclipse.xtext.mbase.scoping.batch.IIdentifiableElementDescription;
 import org.eclipse.xtext.mbase.scoping.featurecalls.OperatorMapping;
@@ -157,7 +157,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 			if (!expectedType.getIdentifier().equals(actualType.getIdentifier())) {
 				AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR, IssueCodes.INCOMPATIBLE_TYPES, String.format(
 						"Type mismatch: cannot convert from %s to %s", actualType.getHumanReadableName(), expectedType.getHumanReadableName()),
-						getExpression(), mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+						getExpression(), MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 				result.accept(diagnostic);
 				return false;
 			}
@@ -171,7 +171,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 						getFeatureParameterTypesAsString());
 				AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(severity,
 						IssueCodes.INSTANCE_ACCESS_TO_STATIC_MEMBER, message, getExpression(),
-						mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+						MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 				result.accept(diagnostic);
 				return false;
 			} else {
@@ -187,7 +187,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 				message += " from the type " + ((JvmDeclaredType) featureOwner).getSimpleName();
 			AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 					IssueCodes.STATIC_ACCESS_TO_INSTANCE_MEMBER, message, getExpression(),
-					mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+					MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 			result.accept(diagnostic);
 			return false;
 		} else if (super.validate(result)) {
@@ -199,7 +199,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 				}
 				String message = "Cannot access the " + typeName + " " + getFeature().getSimpleName() + " with parentheses";
 				AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR, code, message,
-						getExpression(), mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+						getExpression(), MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 				result.accept(diagnostic);
 				return false;
 			}
@@ -211,7 +211,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 						String message = String.format("Cannot use %s in a static context", featureName);
 						AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 								IssueCodes.STATIC_ACCESS_TO_INSTANCE_MEMBER, message, getExpression(),
-								mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+								MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 						result.accept(diagnostic);
 						return false;
 					}
@@ -231,7 +231,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 							String message = String.format("The enclosing type does not extend or implement the interface %s", referencedType.getSimpleName());
 							AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 									IssueCodes.NO_ENCLOSING_INSTANCE_AVAILABLE, message, getExpression(),
-									mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+									MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 							result.accept(diagnostic);
 							return false;
 						}
@@ -239,7 +239,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 						String message = String.format("No enclosing instance of the type %s is accessible in scope", referencedType.getSimpleName());
 						AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 								IssueCodes.NO_ENCLOSING_INSTANCE_AVAILABLE, message, getExpression(),
-								mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+								MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 						result.accept(diagnostic);
 						return false;
 					}
@@ -253,7 +253,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 							AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(getSeverity(IssueCodes.UNQUALIFIED_SUPER_CALL),
 									IssueCodes.UNQUALIFIED_SUPER_CALL,
 									"Unqualified super reference is not allowed in interface context", getExpression(),
-									mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+									MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 							result.accept(diagnostic);
 							return false;
 						}
@@ -265,7 +265,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 								AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 										IssueCodes.INVALID_SUPER_CALL,
 										"Cannot call super of an anonymous class from a lambda expression", getExpression(),
-										mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+										MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 								result.accept(diagnostic);
 								return false;
 							}
@@ -280,7 +280,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 					if (message != null) {
 						AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 								IssueCodes.INVALID_MUTABLE_VARIABLE_ACCESS, message, getExpression(),
-								mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+								MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 						result.accept(diagnostic);
 						return false;
 					}
@@ -289,7 +289,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 					String message = String.format("The local variable %s may not have been initialized", feature.getSimpleName());
 					AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 							IssueCodes.ILLEGAL_FORWARD_REFERENCE, message, getExpression(),
-							mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+							MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 					result.accept(diagnostic);
 					return false;
 				}
@@ -308,7 +308,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 									operation.getSimpleName(), getFeatureParameterTypesAsString(operation), targetFeature.getSimpleName());
 							AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(severity,
 									IssueCodes.ABSTRACT_METHOD_INVOCATION, message, memberFeatureCall,
-									mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+									MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 							result.accept(diagnostic);
 							return false;
 						}
@@ -330,7 +330,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 								issueData = new String[] { "subclass-context", member.getDeclaringType().getSimpleName() };
 								AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 										IssueCodes.FEATURE_NOT_VISIBLE, message, featureCall,
-										mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, issueData);
+										MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, issueData);
 								result.accept(diagnostic);
 								return false;
 							}
@@ -352,7 +352,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 						IssueCodes.UNEXPECTED_INVOCATION_ON_TYPE_LITERAL,
 						message, 
 						getExpression(),
-						mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, 
+						MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, 
 						-1, 
 						null);
 				result.accept(diagnostic);
@@ -1166,7 +1166,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 	
 	@Override
 	public void applyToModel(IResolvedTypes resolvedTypes) {
-		resolveLinkingProxy(mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, mbasePackage.XABSTRACT_FEATURE_CALL__FEATURE);
+		resolveLinkingProxy(MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, MbasePackage.XABSTRACT_FEATURE_CALL__FEATURE);
 		XAbstractFeatureCall featureCall = getFeatureCall();
 		if (featureCall instanceof XMemberFeatureCall) {
 			XMemberFeatureCall casted = (XMemberFeatureCall) featureCall;

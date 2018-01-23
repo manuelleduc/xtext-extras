@@ -9,7 +9,7 @@ package org.eclipse.xtext.mbase.jvmmodel;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
-import org.eclipse.xtext.mbase.lib.Procedures;
+import org.eclipse.xtext.xbase.lib.Procedures;
 
 /**
  * The acceptor is part of the {@link IJvmModelInferrer} API.

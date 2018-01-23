@@ -26,7 +26,7 @@ import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.validation.Issue.IssueImpl;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.mbase.typesystem.IBatchTypeResolver;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
@@ -108,7 +108,7 @@ public class ElementIssueProvider implements IElementIssueProvider {
 					if (expression instanceof XAbstractFeatureCall)
 						issue.setMessage(((XAbstractFeatureCall) expression).getConcreteSyntaxFeatureName() + " cannot be resolved");
 					else {
-						List<INode> nodes = NodeModelUtils.findNodesForFeature(expression, mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR);
+						List<INode> nodes = NodeModelUtils.findNodesForFeature(expression, MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR);
 						if (nodes.size() >= 1) {
 							issue.setMessage(nodes.get(0).getText() + " cannot be resolved");
 						}

@@ -7,26 +7,28 @@
  */
 package org.eclipse.xtext.mbase.formatting2;
 
+import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
+import org.eclipse.xtext.mbase.formatting2.mbaseFormatterPreferenceKeys;
+import org.eclipse.xtext.preferences.ITypedPreferenceValues;
+import org.eclipse.xtext.preferences.IntegerKey;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+
 /**
  * @author Moritz Eysholdt - Initial contribution and API
  */
 @SuppressWarnings("all")
-public class BlankLineKey /* implements IntegerKey, Procedures.Procedure1<IHiddenRegionFormatter>  */{
+public class BlankLineKey extends IntegerKey implements Procedure1<IHiddenRegionFormatter> {
   public BlankLineKey(final String name, final Integer defaultValue) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method super(String, Integer) is undefined");
+    super(name, defaultValue);
   }
   
   @Override
-  public Object apply(final /* IHiddenRegionFormatter */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field request is undefined"
-      + "\nThe method setNewLines(Object, Object, int) is undefined"
-      + "\nThe field mbaseFormatterPreferenceKeys.preserveBlankLines refers to the missing type Object"
-      + "\npreferences cannot be resolved"
-      + "\ngetPreference cannot be resolved"
-      + "\ngetPreference cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+  public void apply(final IHiddenRegionFormatter it) {
+    final ITypedPreferenceValues preferences = it.getRequest().getPreferences();
+    final Integer blankline = preferences.<Integer>getPreference(this);
+    final Integer preserve = preferences.<Integer>getPreference(mbaseFormatterPreferenceKeys.preserveBlankLines);
+    final int min = ((blankline).intValue() + 1);
+    final int max = Math.max(((preserve).intValue() + 1), min);
+    it.setNewLines(min, min, max);
   }
 }

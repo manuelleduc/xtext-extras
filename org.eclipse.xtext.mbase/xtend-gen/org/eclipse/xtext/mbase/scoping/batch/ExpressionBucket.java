@@ -8,9 +8,12 @@
 package org.eclipse.xtext.mbase.scoping.batch;
 
 import java.util.Map;
+import org.eclipse.xtend.lib.annotations.Data;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.typesystem.override.IResolvedFeatures;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
+import org.eclipse.xtext.xbase.lib.Pure;
+import org.eclipse.xtext.xbase.lib.util.ToStringBuilder;
 
 /**
  * A type bucket collects a number of types that originate in the
@@ -20,11 +23,80 @@ import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
  * 
  * @author Sebastian Zarnekow - Initial contribution and API
  */
-/* @Data */@SuppressWarnings("all")
+@Data
+@SuppressWarnings("all")
 public class ExpressionBucket {
-  private int id;
+  private final int id;
   
-  private Map<XExpression, LightweightTypeReference> extensionProviders;
+  private final Map<XExpression, LightweightTypeReference> extensionProviders;
   
-  private IResolvedFeatures.Provider resolvedFeaturesProvider;
+  private final IResolvedFeatures.Provider resolvedFeaturesProvider;
+  
+  public ExpressionBucket(final int id, final Map<XExpression, LightweightTypeReference> extensionProviders, final IResolvedFeatures.Provider resolvedFeaturesProvider) {
+    super();
+    this.id = id;
+    this.extensionProviders = extensionProviders;
+    this.resolvedFeaturesProvider = resolvedFeaturesProvider;
+  }
+  
+  @Override
+  @Pure
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + this.id;
+    result = prime * result + ((this.extensionProviders== null) ? 0 : this.extensionProviders.hashCode());
+    result = prime * result + ((this.resolvedFeaturesProvider== null) ? 0 : this.resolvedFeaturesProvider.hashCode());
+    return result;
+  }
+  
+  @Override
+  @Pure
+  public boolean equals(final Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    ExpressionBucket other = (ExpressionBucket) obj;
+    if (other.id != this.id)
+      return false;
+    if (this.extensionProviders == null) {
+      if (other.extensionProviders != null)
+        return false;
+    } else if (!this.extensionProviders.equals(other.extensionProviders))
+      return false;
+    if (this.resolvedFeaturesProvider == null) {
+      if (other.resolvedFeaturesProvider != null)
+        return false;
+    } else if (!this.resolvedFeaturesProvider.equals(other.resolvedFeaturesProvider))
+      return false;
+    return true;
+  }
+  
+  @Override
+  @Pure
+  public String toString() {
+    ToStringBuilder b = new ToStringBuilder(this);
+    b.add("id", this.id);
+    b.add("extensionProviders", this.extensionProviders);
+    b.add("resolvedFeaturesProvider", this.resolvedFeaturesProvider);
+    return b.toString();
+  }
+  
+  @Pure
+  public int getId() {
+    return this.id;
+  }
+  
+  @Pure
+  public Map<XExpression, LightweightTypeReference> getExtensionProviders() {
+    return this.extensionProviders;
+  }
+  
+  @Pure
+  public IResolvedFeatures.Provider getResolvedFeaturesProvider() {
+    return this.resolvedFeaturesProvider;
+  }
 }

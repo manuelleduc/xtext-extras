@@ -18,7 +18,7 @@ import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.computation.IFeatureLinkingCandidate;
 import org.eclipse.xtext.mbase.typesystem.computation.ILinkingCandidate;
@@ -101,7 +101,7 @@ public class SuspiciouslyOverloadedCandidate implements IFeatureLinkingCandidate
 			messageBuilder.append(".");
 			AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(chosenCandidate.getSeverity(IssueCodes.SUSPICIOUSLY_OVERLOADED_FEATURE),
 					IssueCodes.SUSPICIOUSLY_OVERLOADED_FEATURE, messageBuilder.toString(), getExpression(),
-					mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+					MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 			result.accept(diagnostic);
 		}
 		return false;

@@ -26,8 +26,8 @@ import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XClosure;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XVariableDeclaration;
-import org.eclipse.xtext.mbase.mbaseFactory;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbaseFactory;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.scoping.batch.FeatureScopes;
 import org.eclipse.xtext.mbase.scoping.batch.IBatchScopeProvider;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureScopeSession;
@@ -68,7 +68,7 @@ public class DefaultReentrantTypeResolver extends AbstractRootedReentrantTypeRes
 	private IssueSeveritiesProvider issueSeveritiesProvider;
 	
 	@Inject(optional = true)
-	private mbaseFactory mbaseFactory = mbaseFactory.eINSTANCE;
+	private MbaseFactory mbaseFactory = MbaseFactory.eINSTANCE;
 	
 	@Inject
 	private FeatureScopes featureScopes;
@@ -215,7 +215,7 @@ public class DefaultReentrantTypeResolver extends AbstractRootedReentrantTypeRes
 	
 	protected String getImplicitlyMessagePart(XAbstractFeatureCall featureCall) {
 		EStructuralFeature containingFeature = featureCall.eContainingFeature();
-		if (containingFeature == mbasePackage.Literals.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT || containingFeature == mbasePackage.Literals.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER) {
+		if (containingFeature == MbasePackage.Literals.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT || containingFeature == MbasePackage.Literals.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER) {
 			return "implicitly ";	
 		}
 		return "";
@@ -265,7 +265,7 @@ public class DefaultReentrantTypeResolver extends AbstractRootedReentrantTypeRes
 		return element;
 	}
 	
-	protected mbaseFactory getmbaseFactory() {
+	protected MbaseFactory getMbaseFactory() {
 		return mbaseFactory;
 	}
 	

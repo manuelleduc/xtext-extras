@@ -7,9 +7,13 @@
  */
 package org.eclipse.xtext.mbase.ide.contentassist;
 
+import com.google.common.base.Predicate;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor;
 import org.eclipse.xtext.mbase.ide.types.ITypeDescriptor;
 
 @SuppressWarnings("all")
 public interface IIdeTypesProposalProvider {
-  public abstract void createTypeProposals(final /* EReference */Object reference, final /* ContentAssistContext */Object context, final /* Predicate<ITypeDescriptor> */Object filter, final /* IIdeContentProposalAcceptor */Object acceptor);
+  public abstract void createTypeProposals(final EReference reference, final ContentAssistContext context, final Predicate<ITypeDescriptor> filter, final IIdeContentProposalAcceptor acceptor);
 }

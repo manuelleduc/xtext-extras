@@ -1,5 +1,9 @@
 package org.eclipse.xtext.mbase.formatting;
 
+import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
+import org.eclipse.xtext.preferences.PreferenceKey;
+import org.eclipse.xtext.xbase.lib.util.ToStringBuilder;
+
 /**
  * @deprecated use {@link IHiddenRegionFormatter}
  */
@@ -14,11 +18,10 @@ public class FormattingDataInit {
   
   public int decreaseIndentationChange = 0;
   
-  public /* PreferenceKey */Object key = null;
+  public PreferenceKey key = null;
   
-  public void cfg(final /* PreferenceKey */Object key) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field FormattingDataInit.key refers to the missing type PreferenceKey");
+  public void cfg(final PreferenceKey key) {
+    this.key = key;
   }
   
   public void newLine() {
@@ -34,20 +37,15 @@ public class FormattingDataInit {
   }
   
   public void increaseIndentation() {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    this.increaseIndentationChange = (this.increaseIndentationChange + 1);
   }
   
   public void decreaseIndentation() {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    this.decreaseIndentationChange = (this.decreaseIndentationChange - 1);
   }
   
   @Override
   public String toString() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nToStringBuilder cannot be resolved."
-      + "\naddAllFields cannot be resolved"
-      + "\ntoString cannot be resolved");
+    return new ToStringBuilder(this).addAllFields().toString();
   }
 }

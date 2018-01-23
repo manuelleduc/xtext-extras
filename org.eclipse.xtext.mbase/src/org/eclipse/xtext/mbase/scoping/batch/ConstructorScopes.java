@@ -25,7 +25,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.mbase.XConstructorCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.util.IVisibilityHelper;
 
@@ -130,7 +130,7 @@ public class ConstructorScopes {
 	}
 	
 	public boolean isConstructorCallScope(EReference reference) {
-		return reference == mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR;
+		return reference == MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR;
 	}
 	
 }

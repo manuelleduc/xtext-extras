@@ -30,7 +30,7 @@ import org.eclipse.xtext.mbase.XReturnExpression;
 import org.eclipse.xtext.mbase.XSwitchExpression;
 import org.eclipse.xtext.mbase.XThrowExpression;
 import org.eclipse.xtext.mbase.XWhileExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.controlflow.BooleanResult;
 import org.eclipse.xtext.mbase.controlflow.ConstantConditionsInterpreter;
 import org.eclipse.xtext.mbase.controlflow.IEarlyExitComputer;
@@ -45,7 +45,7 @@ import com.google.inject.Inject;
 public class EarlyExitValidator extends AbstractDeclarativeValidator {
 
 	private final Map<EReference,EarlyExitKind> disallowedEarylExitReferences = ImmutableMap.of(
-		mbasePackage.Literals.XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION, EarlyExitKind.BOTH
+		MbasePackage.Literals.XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION, EarlyExitKind.BOTH
 	);
 	
 	/**
@@ -131,7 +131,7 @@ public class EarlyExitValidator extends AbstractDeclarativeValidator {
 	}
 
 	protected void markConstantBooleanCondition(XExpression predicate, BooleanResult booleanResult, boolean ignoreBooleanLiteral) {
-		if (!ignoreBooleanLiteral || predicate.eClass() != mbasePackage.Literals.XBOOLEAN_LITERAL) {
+		if (!ignoreBooleanLiteral || predicate.eClass() != MbasePackage.Literals.XBOOLEAN_LITERAL) {
 			Optional<Boolean> value = booleanResult.getValue();
 			if (value.isPresent()) {
 				addIssue("Constant condition is always " + value.get() + ".", predicate, null, IssueCodes.CONSTANT_BOOLEAN_CONDITION);

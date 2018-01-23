@@ -7,53 +7,50 @@
  */
 package org.eclipse.xtext.mbase.compiler;
 
+import org.eclipse.xtext.common.types.JvmCompoundTypeReference;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmTypeConstraint;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmWildcardTypeReference;
+import org.eclipse.xtext.common.types.util.AbstractTypeReferenceVisitor;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+
 /**
  * A visitor that detects broken type references. Returns <code>true</code> if a broken reference
  * was detected.
  */
 @SuppressWarnings("all")
-public class BrokenTypeRefDetector /* implements AbstractTypeReferenceVisitor.InheritanceAware<Boolean>  */{
+public class BrokenTypeRefDetector extends AbstractTypeReferenceVisitor.InheritanceAware<Boolean> {
   @Override
-  protected boolean handleNullReference() {
-    return true;
+  protected Boolean handleNullReference() {
+    return Boolean.valueOf(true);
   }
   
   @Override
-  public Object doVisitTypeReference(final /* JvmTypeReference */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field type is undefined"
-      + "\nThe method or field type is undefined"
-      + "\n=== cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\neIsProxy cannot be resolved");
+  public Boolean doVisitTypeReference(final JvmTypeReference it) {
+    return Boolean.valueOf(((it.getType() == null) || it.getType().eIsProxy()));
   }
   
   @Override
-  public Object doVisitCompoundTypeReference(final /* JvmCompoundTypeReference */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field references is undefined"
-      + "\nThe method or field visit is undefined"
-      + "\nThe method doVisitTypeReference(JvmTypeReference) from the type BrokenTypeRefDetector refers to the missing type Object"
-      + "\n|| cannot be resolved"
-      + "\nexists cannot be resolved");
+  public Boolean doVisitCompoundTypeReference(final JvmCompoundTypeReference it) {
+    return Boolean.valueOf(((this.doVisitTypeReference(it)).booleanValue() || IterableExtensions.<JvmTypeReference>exists(it.getReferences(), ((Function1<JvmTypeReference, Boolean>) (JvmTypeReference it_1) -> {
+      return this.visit(it_1);
+    }))));
   }
   
   @Override
-  public Object doVisitParameterizedTypeReference(final /* JvmParameterizedTypeReference */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field arguments is undefined"
-      + "\nThe method or field visit is undefined"
-      + "\nThe method doVisitTypeReference(JvmTypeReference) from the type BrokenTypeRefDetector refers to the missing type Object"
-      + "\n|| cannot be resolved"
-      + "\nexists cannot be resolved");
+  public Boolean doVisitParameterizedTypeReference(final JvmParameterizedTypeReference it) {
+    return Boolean.valueOf(((this.doVisitTypeReference(it)).booleanValue() || IterableExtensions.<JvmTypeReference>exists(it.getArguments(), ((Function1<JvmTypeReference, Boolean>) (JvmTypeReference it_1) -> {
+      return this.visit(it_1);
+    }))));
   }
   
   @Override
-  public Object doVisitWildcardTypeReference(final /* JvmWildcardTypeReference */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field constraints is undefined"
-      + "\nThe method or field typeReference is undefined"
-      + "\nexists cannot be resolved"
-      + "\nvisit cannot be resolved");
+  public Boolean doVisitWildcardTypeReference(final JvmWildcardTypeReference it) {
+    final Function1<JvmTypeConstraint, Boolean> _function = (JvmTypeConstraint it_1) -> {
+      return this.visit(it_1.getTypeReference());
+    };
+    return Boolean.valueOf(IterableExtensions.<JvmTypeConstraint>exists(it.getConstraints(), _function));
   }
 }

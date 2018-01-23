@@ -15,7 +15,7 @@ import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.validation.IssueCodes;
 
@@ -45,7 +45,7 @@ public class ImplicitFirstArgument extends AbstractImplicitFeature {
 				String message = "Cannot make an implicit reference to this from a static context";
 				AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 						IssueCodes.STATIC_ACCESS_TO_INSTANCE_MEMBER, message, getOwner(),
-						mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+						MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 				result.accept(diagnostic);
 				return false;
 			}

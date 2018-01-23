@@ -24,7 +24,7 @@ import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.eclipse.xtext.mbase.XConstructorCall;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.scoping.batch.IIdentifiableElementDescription;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.computation.IConstructorLinkingCandidate;
@@ -117,7 +117,7 @@ public class ConstructorLinkingCandidate extends AbstractPendingLinkingCandidate
 	
 	@Override
 	protected EReference getDefaultValidationFeature() {
-		return mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR;
+		return MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR;
 	}
 	
 	/* @Nullable */
@@ -148,7 +148,7 @@ public class ConstructorLinkingCandidate extends AbstractPendingLinkingCandidate
 	
 	@Override
 	public void applyToModel(IResolvedTypes resolvedTypes) {
-		resolveLinkingProxy(mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, mbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR);
+		resolveLinkingProxy(MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, MbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR);
 		if (isAnonymousClassConstructorCall())
 			getConstructorCall().setAnonymousClassConstructorCall(true);
 	}

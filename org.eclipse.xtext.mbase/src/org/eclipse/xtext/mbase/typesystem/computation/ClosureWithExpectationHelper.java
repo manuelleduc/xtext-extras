@@ -23,7 +23,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.mbase.XClosure;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureNames;
 import org.eclipse.xtext.mbase.typesystem.conformance.ConformanceFlags;
 import org.eclipse.xtext.mbase.typesystem.references.AnyTypeReference;
@@ -469,16 +469,16 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 		if (expression == null) {
 			return true;
 		}
-		if (expression.eClass() == mbasePackage.Literals.XRETURN_EXPRESSION) {
+		if (expression.eClass() == MbasePackage.Literals.XRETURN_EXPRESSION) {
 			return false;
 		}
 		TreeIterator<EObject> contents = expression.eAllContents();
 		while (contents.hasNext()) {
 			EObject next = contents.next();
-			if (next.eClass() == mbasePackage.Literals.XRETURN_EXPRESSION) {
+			if (next.eClass() == MbasePackage.Literals.XRETURN_EXPRESSION) {
 				return false;
 			}
-			if (next.eClass() == mbasePackage.Literals.XCLOSURE) {
+			if (next.eClass() == MbasePackage.Literals.XCLOSURE) {
 				contents.prune();
 			}
 		}

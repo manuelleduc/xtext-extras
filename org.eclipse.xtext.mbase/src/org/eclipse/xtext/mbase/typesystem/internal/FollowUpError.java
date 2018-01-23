@@ -18,7 +18,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.linking.lazy.LazyLinkingResource;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.computation.IFeatureLinkingCandidate;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
@@ -71,7 +71,7 @@ public class FollowUpError extends AbstractUnresolvableReference implements IFea
 	}
 	
 	public EReference getReference() {
-		return mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE;
+		return MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE;
 	}
 
 	@Override

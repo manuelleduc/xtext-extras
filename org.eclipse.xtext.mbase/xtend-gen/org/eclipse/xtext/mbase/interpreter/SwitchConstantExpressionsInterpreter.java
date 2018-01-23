@@ -7,7 +7,20 @@
  */
 package org.eclipse.xtext.mbase.interpreter;
 
+import com.google.inject.Inject;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
+import org.eclipse.xtext.common.types.JvmEnumerationLiteral;
+import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.common.types.JvmFormalParameter;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.access.impl.ClassFinder;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XBinaryOperation;
 import org.eclipse.xtext.mbase.XBooleanLiteral;
@@ -15,92 +28,138 @@ import org.eclipse.xtext.mbase.XCastedExpression;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XNumberLiteral;
 import org.eclipse.xtext.mbase.XStringLiteral;
+import org.eclipse.xtext.mbase.XSwitchExpression;
 import org.eclipse.xtext.mbase.XTypeLiteral;
 import org.eclipse.xtext.mbase.XUnaryOperation;
+import org.eclipse.xtext.mbase.XVariableDeclaration;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.mbase.interpreter.AbstractConstantExpressionsInterpreter;
 import org.eclipse.xtext.mbase.interpreter.Context;
+import org.eclipse.xtext.mbase.interpreter.UnresolvableFeatureException;
 import org.eclipse.xtext.mbase.jvmmodel.ILogicalContainerProvider;
 import org.eclipse.xtext.mbase.typesystem.computation.NumberLiterals;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 /**
  * @author Anton Kosyakov - Initial contribution and API
  */
 @SuppressWarnings("all")
 public class SwitchConstantExpressionsInterpreter extends AbstractConstantExpressionsInterpreter {
-  /* @FinalFieldsConstructor
-   */private static class SwitchContext extends Context {
+  @FinalFieldsConstructor
+  private static class SwitchContext extends Context {
     private boolean validationMode;
+    
+    public SwitchContext(final JvmTypeReference expectedType, final ClassFinder classFinder, final Map<String, JvmIdentifiableElement> visibleFeatures, final Set<XExpression> alreadyEvaluating) {
+      super(expectedType, classFinder, visibleFeatures, alreadyEvaluating);
+    }
   }
   
-  /* @Inject
-   */private ILogicalContainerProvider _iLogicalContainerProvider;
+  @Inject
+  @Extension
+  private ILogicalContainerProvider _iLogicalContainerProvider;
   
-  /* @Inject
-   */private NumberLiterals numberLiterals;
+  @Inject
+  @Extension
+  private NumberLiterals numberLiterals;
   
   public Object evaluate(final XExpression it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field newHashSet is undefined"
-      + "\nInvalid number of arguments. The constructor Context() is not applicable for the arguments (null,null,null,Object)");
+    HashSet<XExpression> _newHashSet = CollectionLiterals.<XExpression>newHashSet();
+    Context _context = new Context(null, null, null, _newHashSet);
+    return this.evaluate(it, _context);
   }
   
   public Object evaluate(final XExpression it, final boolean validationMode) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field newHashSet is undefined"
-      + "\nInvalid number of arguments. The constructor SwitchContext() is not applicable for the arguments (null,null,null,Object)");
+    Object _xblockexpression = null;
+    {
+      HashSet<XExpression> _newHashSet = CollectionLiterals.<XExpression>newHashSet();
+      final SwitchConstantExpressionsInterpreter.SwitchContext ctx = new SwitchConstantExpressionsInterpreter.SwitchContext(null, null, null, _newHashSet);
+      ctx.validationMode = validationMode;
+      _xblockexpression = this.evaluate(it, ctx);
+    }
+    return _xblockexpression;
   }
   
   protected Object _internalEvaluate(final XNumberLiteral it, final Context ctx) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method numberValue(Object) is undefined"
-      + "\nThe method or field javaType is undefined");
+    return this.numberLiterals.numberValue(it, this.numberLiterals.getJavaType(it));
   }
   
   protected Object _internalEvaluate(final XAbstractFeatureCall it, final Context ctx) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmType cannot be resolved to a type."
-      + "\nJvmEnumerationLiteral cannot be resolved to a type."
-      + "\nJvmField cannot be resolved to a type."
-      + "\nJvmFormalParameter cannot be resolved to a type."
-      + "\nThe method or field feature is undefined"
-      + "\n&& cannot be resolved."
-      + "\n+ cannot be resolved."
-      + "\nThe method or field feature is undefined"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nThe method toTypeReference(JvmType, int) from the type AbstractConstantExpressionsInterpreter refers to the missing type JvmType"
-      + "\nsetConstant cannot be resolved"
-      + "\nconstant cannot be resolved"
-      + "\nconstantValue cannot be resolved"
-      + "\nfinal cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nstatic cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\nassociatedExpression cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nevaluateAssociatedExpression cannot be resolved"
-      + "\nwriteable cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nright cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nright cannot be resolved"
-      + "\nevaluateAssociatedExpression cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\n^switch cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\n^switch cannot be resolved"
-      + "\nevaluate cannot be resolved"
-      + "\nsimpleName cannot be resolved");
+    JvmIdentifiableElement _feature = it.getFeature();
+    final JvmIdentifiableElement feature = _feature;
+    boolean _matched = false;
+    if (feature instanceof JvmType) {
+      _matched=true;
+      return this.toTypeReference(((JvmType)feature), 0);
+    }
+    if (!_matched) {
+      if (feature instanceof JvmEnumerationLiteral) {
+        _matched=true;
+        return feature;
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof JvmField) {
+        _matched=true;
+        boolean _isSetConstant = ((JvmField)feature).isSetConstant();
+        if (_isSetConstant) {
+          boolean _isConstant = ((JvmField)feature).isConstant();
+          if (_isConstant) {
+            return ((JvmField)feature).getConstantValue();
+          }
+        } else {
+          if ((((JvmField)feature).isFinal() && (((JvmField)feature).isStatic() || ((ctx instanceof SwitchConstantExpressionsInterpreter.SwitchContext) && ((SwitchConstantExpressionsInterpreter.SwitchContext) ctx).validationMode)))) {
+            final XExpression associatedExpression = this._iLogicalContainerProvider.getAssociatedExpression(feature);
+            if ((associatedExpression != null)) {
+              return this.evaluateAssociatedExpression(associatedExpression, ctx);
+            }
+          }
+        }
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof XVariableDeclaration) {
+        if (((!((XVariableDeclaration)feature).isWriteable()) && (((XVariableDeclaration)feature).getRight() != null))) {
+          _matched=true;
+          return this.evaluateAssociatedExpression(((XVariableDeclaration)feature).getRight(), ctx);
+        }
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof JvmFormalParameter) {
+        _matched=true;
+        EObject _eContainer = ((JvmFormalParameter)feature).eContainer();
+        final EObject container = _eContainer;
+        boolean _matched_1 = false;
+        if (container instanceof XSwitchExpression) {
+          XExpression _switch = ((XSwitchExpression)container).getSwitch();
+          boolean _tripleNotEquals = (_switch != null);
+          if (_tripleNotEquals) {
+            _matched_1=true;
+            return this.evaluate(((XSwitchExpression)container).getSwitch(), ctx);
+          }
+        }
+      }
+    }
+    String _simpleName = it.getFeature().getSimpleName();
+    String _plus = ("Couldn\'t resolve feature " + _simpleName);
+    throw new UnresolvableFeatureException(_plus, it);
   }
   
   public Object evaluateAssociatedExpression(final XExpression it, final Context ctx) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmEnumerationLiteral cannot be resolved to a type."
-      + "\nThe method or field feature is undefined");
+    Object _switchResult = null;
+    boolean _matched = false;
+    if (it instanceof XAbstractFeatureCall) {
+      JvmIdentifiableElement _feature = ((XAbstractFeatureCall)it).getFeature();
+      if ((_feature instanceof JvmEnumerationLiteral)) {
+        _matched=true;
+        throw this.notConstantExpression(it);
+      }
+    }
+    if (!_matched) {
+      _switchResult = this.evaluate(it, ctx);
+    }
+    return _switchResult;
   }
   
   public Object internalEvaluate(final XExpression it, final Context ctx) {
@@ -122,10 +181,10 @@ public class SwitchConstantExpressionsInterpreter extends AbstractConstantExpres
       return _internalEvaluate((XTypeLiteral)it, ctx);
     } else if (it instanceof XAnnotation) {
       return _internalEvaluate((XAnnotation)it, ctx);
-    } else if (it == null) {
-      return _internalEvaluate((Void)null, ctx);
     } else if (it != null) {
       return _internalEvaluate(it, ctx);
+    } else if (it == null) {
+      return _internalEvaluate((Void)null, ctx);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(it, ctx).toString());

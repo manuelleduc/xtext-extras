@@ -1,5 +1,6 @@
 package org.eclipse.xtext.mbase.typesystem.references;
 
+import com.google.common.base.Objects;
 import java.util.List;
 import org.eclipse.xtext.mbase.compiler.ISourceAppender;
 import org.eclipse.xtext.mbase.typesystem.references.AnyTypeReference;
@@ -14,6 +15,8 @@ import org.eclipse.xtext.mbase.typesystem.references.TypeReferenceVisitor;
 import org.eclipse.xtext.mbase.typesystem.references.UnboundTypeReference;
 import org.eclipse.xtext.mbase.typesystem.references.UnknownTypeReference;
 import org.eclipse.xtext.mbase.typesystem.references.WildcardTypeReference;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class LightweightTypeReferenceSerializer extends TypeReferenceVisitor {
@@ -41,33 +44,80 @@ public class LightweightTypeReferenceSerializer extends TypeReferenceVisitor {
   
   @Override
   protected void doVisitFunctionTypeReference(final FunctionTypeReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    boolean _isJava = this.appender.isJava();
+    if (_isJava) {
+      this.doVisitParameterizedTypeReference(reference);
+    } else {
+      this.appender.append("(");
+      this.appendCommaSeparated(reference.getParameterTypes());
+      this.appender.append(")=>");
+      LightweightTypeReference _returnType = reference.getReturnType();
+      boolean _tripleEquals = (_returnType == null);
+      if (_tripleEquals) {
+        this.appender.append("void");
+      } else {
+        reference.getReturnType().accept(this);
+      }
+    }
   }
   
   @Override
   protected void doVisitInnerFunctionTypeReference(final InnerFunctionTypeReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field simpleName is undefined for the type boolean"
-      + "\n! cannot be resolved."
-      + "\n=== cannot be resolved."
-      + "\nInvalid number of arguments. The method isType(Class<?>) is not applicable without arguments");
+    boolean _isJava = this.appender.isJava();
+    if (_isJava) {
+      reference.getOuter().accept(this);
+      this.appender.append(".");
+      this.appender.append(reference.getType().getSimpleName());
+      boolean _isEmpty = reference.getTypeArguments().isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        this.appender.append("<");
+        this.appendCommaSeparated(reference.getTypeArguments());
+        this.appender.append(">");
+      }
+    } else {
+      this.appender.append("(");
+      this.appendCommaSeparated(reference.getParameterTypes());
+      this.appender.append(")=>");
+      LightweightTypeReference _returnType = reference.getReturnType();
+      boolean _tripleEquals = (_returnType == null);
+      if (_tripleEquals) {
+        this.appender.append("void");
+      } else {
+        reference.getReturnType().accept(this);
+      }
+    }
   }
   
   @Override
   protected void doVisitParameterizedTypeReference(final ParameterizedTypeReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n! cannot be resolved."
-      + "\nInvalid number of arguments. The method isType(Class<?>) is not applicable without arguments"
-      + "\nType mismatch: cannot convert from boolean to CharSequence");
+    boolean _isAnonymous = reference.isAnonymous();
+    if (_isAnonymous) {
+      reference.getNamedType().accept(this);
+    } else {
+      this.appender.append(reference.getType());
+      boolean _isEmpty = reference.getTypeArguments().isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        this.appender.append("<");
+        this.appendCommaSeparated(reference.getTypeArguments());
+        this.appender.append(">");
+      }
+    }
   }
   
   @Override
   protected void doVisitInnerTypeReference(final InnerTypeReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field simpleName is undefined for the type boolean"
-      + "\n! cannot be resolved."
-      + "\nInvalid number of arguments. The method isType(Class<?>) is not applicable without arguments");
+    reference.getOuter().accept(this);
+    this.appender.append(".");
+    this.appender.append(reference.getType().getSimpleName());
+    boolean _isEmpty = reference.getTypeArguments().isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      this.appender.append("<");
+      this.appendCommaSeparated(reference.getTypeArguments());
+      this.appender.append(">");
+    }
   }
   
   @Override
@@ -82,19 +132,46 @@ public class LightweightTypeReferenceSerializer extends TypeReferenceVisitor {
   
   @Override
   protected void doVisitWildcardTypeReference(final WildcardTypeReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved."
-      + "\nThe method filter(Object) is undefined for the type List<LightweightTypeReference>"
-      + "\n!= cannot be resolved."
-      + "\nThe method or field identifier is undefined"
-      + "\n! cannot be resolved."
-      + "\nempty cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\naccept cannot be resolved");
+    this.appender.append("?");
+    LightweightTypeReference _lowerBound = reference.getLowerBound();
+    boolean _tripleNotEquals = (_lowerBound != null);
+    if (_tripleNotEquals) {
+      this.appender.append(" super ");
+      reference.getLowerBound().accept(this);
+    } else {
+      final Function1<LightweightTypeReference, Boolean> _function = (LightweightTypeReference it) -> {
+        String _identifier = it.getIdentifier();
+        return Boolean.valueOf((!Objects.equal("java.lang.Object", _identifier)));
+      };
+      final Iterable<LightweightTypeReference> relevantUpperBounds = IterableExtensions.<LightweightTypeReference>filter(reference.getUpperBounds(), _function);
+      boolean _isEmpty = IterableExtensions.isEmpty(relevantUpperBounds);
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        this.appender.append(" extends ");
+        boolean isFirst = true;
+        for (final LightweightTypeReference upperBound : relevantUpperBounds) {
+          {
+            if ((!isFirst)) {
+              this.appender.append(" & ");
+            }
+            isFirst = false;
+            upperBound.accept(this);
+          }
+        }
+      }
+    }
   }
   
   protected void appendCommaSeparated(final List<LightweightTypeReference> references) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n! cannot be resolved.");
+    boolean isFirst = true;
+    for (final LightweightTypeReference reference : references) {
+      {
+        if ((!isFirst)) {
+          this.appender.append(", ");
+        }
+        isFirst = false;
+        reference.accept(this);
+      }
+    }
   }
 }

@@ -7,21 +7,24 @@
  */
 package org.eclipse.xtext.mbase.formatting2;
 
+import org.eclipse.xtext.formatting2.FormatterPreferenceKeys;
 import org.eclipse.xtext.mbase.formatting2.BlankLineKey;
 import org.eclipse.xtext.mbase.formatting2.NewLineKey;
 import org.eclipse.xtext.mbase.formatting2.NewLineOrPreserveKey;
 import org.eclipse.xtext.mbase.formatting2.WhitespaceKey;
+import org.eclipse.xtext.preferences.BooleanKey;
+import org.eclipse.xtext.preferences.IntegerKey;
 
 /**
  * @author Moritz Eysholdt - Initial implementation and API
  */
 @SuppressWarnings("all")
-public class mbaseFormatterPreferenceKeys /* implements FormatterPreferenceKeys  */{
-  public final static Object preserveBlankLines /* Skipped initializer because of errors */;
+public class mbaseFormatterPreferenceKeys extends FormatterPreferenceKeys {
+  public final static IntegerKey preserveBlankLines = new IntegerKey("preserve.blank.lines", Integer.valueOf(1));
   
   public final static BlankLineKey blankLinesAroundExpression = new BlankLineKey("blank.line.around.expressions", Integer.valueOf(0));
   
-  public final static Object preserveNewLines /* Skipped initializer because of errors */;
+  public final static BooleanKey preserveNewLines = new BooleanKey("preserve.new.lines", Boolean.valueOf(true));
   
   public final static NewLineOrPreserveKey newLineAfterClassAnnotations = new NewLineOrPreserveKey("newline.after.class.annotations", Boolean.valueOf(false));
   

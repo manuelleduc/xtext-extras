@@ -1,3 +1,3 @@
 org.eclipse.xtext.mbase.ide.XtypeIdeSetup
-org.eclipse.xtext.mbase.ide.mbaseIdeSetup
-org.eclipse.xtext.mbase.annotations.ide.mbaseWithAnnotationsIdeSetup
+org.eclipse.xtext.mbase.ide.MbaseIdeSetup
+org.eclipse.xtext.mbase.annotations.ide.MbaseWithAnnotationsIdeSetup

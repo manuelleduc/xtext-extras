@@ -7,7 +7,17 @@
  */
 package org.eclipse.xtext.mbase.interpreter;
 
+import com.google.common.base.Objects;
+import com.google.inject.Inject;
 import java.util.Arrays;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend.lib.annotations.AccessorType;
+import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XBinaryOperation;
 import org.eclipse.xtext.mbase.XBooleanLiteral;
@@ -21,23 +31,41 @@ import org.eclipse.xtext.mbase.interpreter.ConstantExpressionEvaluationException
 import org.eclipse.xtext.mbase.interpreter.ConstantOperators;
 import org.eclipse.xtext.mbase.interpreter.Context;
 import org.eclipse.xtext.mbase.scoping.featurecalls.OperatorMapping;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.resource.persistence.StorageAwareResource;
+import org.eclipse.xtext.xbase.lib.ExclusiveRange;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Pure;
 
 /**
  * @author Anton Kosyakov - Initial contribution and API
  */
 @SuppressWarnings("all")
 public class AbstractConstantExpressionsInterpreter {
-  /* @Accessors(/* name is null */)
+  @Accessors(AccessorType.PROTECTED_GETTER)
   @Inject
-   */private ConstantOperators constantOperators;
+  private ConstantOperators constantOperators;
   
-  /* @Inject
-   */private OperatorMapping operatorMapping;
+  @Inject
+  private OperatorMapping operatorMapping;
   
   protected Object evaluate(final XExpression expression, final Context ctx) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field alreadyEvaluating is not visible"
-      + "\nThe field alreadyEvaluating is not visible");
+    Object _xifexpression = null;
+    boolean _add = ctx.getAlreadyEvaluating().add(expression);
+    if (_add) {
+      Object _xtrycatchfinallyexpression = null;
+      try {
+        _xtrycatchfinallyexpression = this.internalEvaluate(expression, ctx);
+      } finally {
+        ctx.getAlreadyEvaluating().remove(expression);
+      }
+      _xifexpression = _xtrycatchfinallyexpression;
+    } else {
+      throw this.notConstantExpression(expression);
+    }
+    return _xifexpression;
   }
   
   protected Object _internalEvaluate(final XExpression expression, final Context ctx) {
@@ -49,10 +77,13 @@ public class AbstractConstantExpressionsInterpreter {
   }
   
   public ConstantExpressionEvaluationException notConstantExpression(final XExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\nThe method toText(XExpression) from the type AbstractConstantExpressionsInterpreter refers to the missing type Object"
-      + "\n+ cannot be resolved");
+    String _text = null;
+    if (expression!=null) {
+      _text=this.toText(expression);
+    }
+    String _plus = ("Not a constant expression : \'" + _text);
+    String _plus_1 = (_plus + "\'");
+    return new ConstantExpressionEvaluationException(_plus_1, expression);
   }
   
   protected Object _internalEvaluate(final XCastedExpression expression, final Context ctx) {
@@ -72,75 +103,164 @@ public class AbstractConstantExpressionsInterpreter {
   }
   
   protected Object _internalEvaluate(final XTypeLiteral it, final Context ctx) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field type is undefined"
-      + "\nThe method or field arrayDimensions is undefined"
-      + "\nThe method toTypeReference(JvmType, int) from the type AbstractConstantExpressionsInterpreter refers to the missing type JvmType"
-      + "\nsize cannot be resolved");
+    return this.toTypeReference(it.getType(), it.getArrayDimensions().size());
   }
   
-  protected Object toTypeReference(final /* JvmType */Object type, final int arrayDimensions) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmTypeReference cannot be resolved to a type."
-      + "\nThe method or field TypesFactory is undefined"
-      + "\n..< cannot be resolved."
-      + "\nThe method or field TypesFactory is undefined"
-      + "\n=== cannot be resolved"
-      + "\neINSTANCE cannot be resolved"
-      + "\ncreateJvmParameterizedTypeReference cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\neINSTANCE cannot be resolved"
-      + "\ncreateJvmGenericArrayTypeReference cannot be resolved"
-      + "\nsetComponentType cannot be resolved");
+  protected JvmTypeReference toTypeReference(final JvmType type, final int arrayDimensions) {
+    if ((type == null)) {
+      return null;
+    }
+    JvmParameterizedTypeReference _createJvmParameterizedTypeReference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
+    final Procedure1<JvmParameterizedTypeReference> _function = (JvmParameterizedTypeReference it) -> {
+      it.setType(type);
+    };
+    JvmTypeReference resultTypeRef = ObjectExtensions.<JvmParameterizedTypeReference>operator_doubleArrow(_createJvmParameterizedTypeReference, _function);
+    ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, arrayDimensions, true);
+    for (final Integer i : _doubleDotLessThan) {
+      {
+        final JvmGenericArrayTypeReference arrayRef = TypesFactory.eINSTANCE.createJvmGenericArrayTypeReference();
+        arrayRef.setComponentType(resultTypeRef);
+        resultTypeRef = arrayRef;
+      }
+    }
+    return resultTypeRef;
   }
   
   protected Object _internalEvaluate(final XBinaryOperation it, final Context ctx) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method cloneWithExpectation(JvmTypeReference) from the type Context refers to the missing type JvmTypeReference");
+    Object _xblockexpression = null;
+    {
+      final Context context = ctx.cloneWithExpectation(null);
+      final Object left = this.evaluate(it.getLeftOperand(), context);
+      final Object right = this.evaluate(it.getRightOperand(), context);
+      _xblockexpression = this.evaluateBinaryOperation(it, left, right);
+    }
+    return _xblockexpression;
   }
   
   protected Object evaluateBinaryOperation(final XBinaryOperation binaryOperation, final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\nThe method and(Object, Object) from the type ConstantOperators refers to the missing type Object"
-      + "\nThe method or(Object, Object) from the type ConstantOperators refers to the missing type Object"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    Object _xblockexpression = null;
+    {
+      final String op = this.getOperator(binaryOperation);
+      Object _switchResult = null;
+      if (op != null) {
+        switch (op) {
+          case "+":
+            _switchResult = this.constantOperators.plus(left, right);
+            break;
+          case "-":
+            _switchResult = this.constantOperators.minus(left, right);
+            break;
+          case "*":
+            _switchResult = this.constantOperators.multiply(left, right);
+            break;
+          case "/":
+            _switchResult = this.constantOperators.divide(left, right);
+            break;
+          case "%":
+            _switchResult = this.constantOperators.modulo(left, right);
+            break;
+          case "&&":
+            _switchResult = Boolean.valueOf(this.constantOperators.and(left, right));
+            break;
+          case "||":
+            _switchResult = Boolean.valueOf(this.constantOperators.or(left, right));
+            break;
+          case "<<":
+            _switchResult = this.constantOperators.shiftLeft(left, right);
+            break;
+          case ">>":
+            _switchResult = this.constantOperators.shiftRight(left, right);
+            break;
+          case ">>>":
+            _switchResult = this.constantOperators.shiftRightUnsigned(left, right);
+            break;
+          case "<":
+            _switchResult = Boolean.valueOf(this.constantOperators.lessThan(left, right));
+            break;
+          case ">":
+            _switchResult = Boolean.valueOf(this.constantOperators.greaterThan(left, right));
+            break;
+          case "<=":
+            _switchResult = Boolean.valueOf(this.constantOperators.lessEquals(left, right));
+            break;
+          case ">=":
+            _switchResult = Boolean.valueOf(this.constantOperators.greaterEquals(left, right));
+            break;
+          case "==":
+          case "===":
+            _switchResult = Boolean.valueOf(this.constantOperators.same(left, right));
+            break;
+          case "!=":
+          case "!==":
+            _switchResult = Boolean.valueOf(this.constantOperators.notSame(left, right));
+            break;
+          default:
+            throw new ConstantExpressionEvaluationException(((((("Couldn\'t evaluate binary operator \'" + op) + "\' on values ") + left) + " and ") + right));
+        }
+      } else {
+        throw new ConstantExpressionEvaluationException(((((("Couldn\'t evaluate binary operator \'" + op) + "\' on values ") + left) + " and ") + right));
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
   }
   
   protected Object _internalEvaluate(final XUnaryOperation it, final Context ctx) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n== cannot be resolved."
-      + "\n! cannot be resolved."
-      + "\n== cannot be resolved."
-      + "\n+ cannot be resolved."
-      + "\n&& cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    Object _xblockexpression = null;
+    {
+      final Object value = this.evaluate(it.getOperand(), ctx);
+      final String op = this.getOperator(it);
+      Object _switchResult = null;
+      boolean _matched = false;
+      if (Objects.equal(op, "-")) {
+        _matched=true;
+        _switchResult = this.constantOperators.minus(value);
+      }
+      if (!_matched) {
+        if ((Objects.equal(op, "!") && (value instanceof Boolean))) {
+          _matched=true;
+          _switchResult = Boolean.valueOf((!(((Boolean) value)).booleanValue()));
+        }
+      }
+      if (!_matched) {
+        if ((Objects.equal(op, "+") && (value instanceof Number))) {
+          _matched=true;
+          _switchResult = value;
+        }
+      }
+      if (!_matched) {
+        throw new ConstantExpressionEvaluationException(((("Couldn\'t evaluate unary operator \'" + op) + "\' on value ") + value));
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
   }
   
   protected String getOperator(final XAbstractFeatureCall call) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nStorageAwareResource cannot be resolved to a type."
-      + "\nThe method or field eResource is undefined for the type XAbstractFeatureCall"
-      + "\nThe method or field QualifiedName is undefined"
-      + "\nThe method or field feature is undefined for the type XAbstractFeatureCall"
-      + "\nInvalid number of arguments. The method getOperator(XAbstractFeatureCall) is not applicable for the arguments (OperatorMapping,Object)"
-      + "\nType mismatch: cannot convert from OperatorMapping to XAbstractFeatureCall"
-      + "\nisLoadedFromStorage cannot be resolved"
-      + "\ncreate cannot be resolved"
-      + "\nsimpleName cannot be resolved");
+    String _switchResult = null;
+    Resource _eResource = call.eResource();
+    final Resource res = _eResource;
+    boolean _matched = false;
+    if (res instanceof StorageAwareResource) {
+      boolean _isLoadedFromStorage = ((StorageAwareResource)res).isLoadedFromStorage();
+      if (_isLoadedFromStorage) {
+        _matched=true;
+        QualifiedName _operator = this.operatorMapping.getOperator(QualifiedName.create(call.getFeature().getSimpleName()));
+        String _string = null;
+        if (_operator!=null) {
+          _string=_operator.toString();
+        }
+        return _string;
+      }
+    }
+    if (!_matched) {
+      _switchResult = call.getConcreteSyntaxFeatureName();
+    }
+    return _switchResult;
   }
   
-  protected Object toText(final XExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field NodeModelUtils is undefined"
-      + "\ngetNode cannot be resolved"
-      + "\ntext cannot be resolved");
+  protected String toText(final XExpression expression) {
+    return NodeModelUtils.getNode(expression).getText();
   }
   
   public Object internalEvaluate(final XExpression it, final Context ctx) {
@@ -158,13 +278,18 @@ public class AbstractConstantExpressionsInterpreter {
       return _internalEvaluate((XTypeLiteral)it, ctx);
     } else if (it instanceof XAnnotation) {
       return _internalEvaluate((XAnnotation)it, ctx);
-    } else if (it == null) {
-      return _internalEvaluate((Void)null, ctx);
     } else if (it != null) {
       return _internalEvaluate(it, ctx);
+    } else if (it == null) {
+      return _internalEvaluate((Void)null, ctx);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(it, ctx).toString());
     }
+  }
+  
+  @Pure
+  protected ConstantOperators getConstantOperators() {
+    return this.constantOperators;
   }
 }

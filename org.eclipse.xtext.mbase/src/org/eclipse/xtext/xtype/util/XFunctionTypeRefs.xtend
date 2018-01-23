@@ -16,8 +16,8 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVoid
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.access.impl.ClassURIHelper
-import org.eclipse.xtext.mbase.lib.Functions
-import org.eclipse.xtext.mbase.lib.Procedures
+import org.eclipse.xtext.xbase.lib.Functions
+import org.eclipse.xtext.xbase.lib.Procedures
 
 import static extension org.eclipse.emf.common.util.URI.*
 

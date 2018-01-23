@@ -16,7 +16,7 @@ import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XFeatureCall;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
 
@@ -77,7 +77,7 @@ public class FeatureCallAsTypeLiteralHelper {
 	 */
 	/* @Nullable */
 	public List<String> getTypeNameSegmentsFromConcreteSyntax(XMemberFeatureCall featureCall) {
-		List<INode> nodes = NodeModelUtils.findNodesForFeature(featureCall, mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET);
+		List<INode> nodes = NodeModelUtils.findNodesForFeature(featureCall, MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET);
 		List<String> prefix = getTypeNameSegmentsFromConcreteSyntax(nodes, featureCall.isExplicitStatic());
 		return prefix;
 	}
@@ -135,7 +135,7 @@ public class FeatureCallAsTypeLiteralHelper {
 					return doGetRootTypeLiteral((XMemberFeatureCall) featureCall);
 				}
 				if (featureCall instanceof XFeatureCall) {
-					if (featureCall.eContainingFeature() == mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+					if (featureCall.eContainingFeature() == MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
 						return doGetRootTypeLiteral((XMemberFeatureCall) featureCall.eContainer());
 					}
 				}
@@ -147,7 +147,7 @@ public class FeatureCallAsTypeLiteralHelper {
 	protected XAbstractFeatureCall doGetRootTypeLiteral(XMemberFeatureCall featureCall) {
 		boolean staticNotation = featureCall.isExplicitStatic();
 		XMemberFeatureCall current = featureCall;
-		while(current.eContainingFeature() == mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+		while(current.eContainingFeature() == MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
 			XMemberFeatureCall container = (XMemberFeatureCall) current.eContainer();
 			if (container.isExplicitStatic()) {
 				if (staticNotation == false) {
@@ -171,7 +171,7 @@ public class FeatureCallAsTypeLiteralHelper {
 			return false;
 		if (!featureCall.getTypeArguments().isEmpty())
 			return false;
-		if (featureCall.eContainingFeature() == mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+		if (featureCall.eContainingFeature() == MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
 			XMemberFeatureCall container = (XMemberFeatureCall) featureCall.eContainer();
 			if (container.isExplicitStatic()) {
 				return true;

@@ -7,26 +7,41 @@
  */
 package org.eclipse.xtext.mbase.formatting2;
 
+import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
+import org.eclipse.xtext.mbase.formatting2.mbaseFormatterPreferenceKeys;
+import org.eclipse.xtext.preferences.BooleanKey;
+import org.eclipse.xtext.preferences.ITypedPreferenceValues;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+
 /**
  * @author Moritz Eysholdt - Initial contribution and API
  */
 @SuppressWarnings("all")
-public class NewLineOrPreserveKey /* implements BooleanKey, Procedures.Procedure1<IHiddenRegionFormatter>  */{
+public class NewLineOrPreserveKey extends BooleanKey implements Procedure1<IHiddenRegionFormatter> {
   public NewLineOrPreserveKey(final String name, final Boolean defaultValue) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method super(String, Boolean) is undefined");
+    super(name, defaultValue);
   }
   
   @Override
-  public Object apply(final /* IHiddenRegionFormatter */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field request is undefined"
-      + "\nThe method setNewLines(int, int, int) is undefined"
-      + "\nThe method setSpace(String) is undefined"
-      + "\nThe field mbaseFormatterPreferenceKeys.preserveNewLines refers to the missing type Object"
-      + "\npreferences cannot be resolved"
-      + "\ngetPreference cannot be resolved"
-      + "\ngetPreference cannot be resolved"
-      + "\n|| cannot be resolved");
+  public void apply(final IHiddenRegionFormatter it) {
+    final ITypedPreferenceValues preferences = it.getRequest().getPreferences();
+    final Boolean newLine = preferences.<Boolean>getPreference(this);
+    final Boolean preserve = preferences.<Boolean>getPreference(mbaseFormatterPreferenceKeys.preserveNewLines);
+    int _xifexpression = (int) 0;
+    if ((newLine).booleanValue()) {
+      _xifexpression = 1;
+    } else {
+      _xifexpression = 0;
+    }
+    final int min = _xifexpression;
+    int _xifexpression_1 = (int) 0;
+    if (((preserve).booleanValue() || (newLine).booleanValue())) {
+      _xifexpression_1 = 1;
+    } else {
+      _xifexpression_1 = 0;
+    }
+    final int max = _xifexpression_1;
+    it.setNewLines(min, min, max);
+    it.setSpace(" ");
   }
 }

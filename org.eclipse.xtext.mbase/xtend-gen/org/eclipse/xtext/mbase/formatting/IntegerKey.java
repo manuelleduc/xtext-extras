@@ -1,13 +1,14 @@
 package org.eclipse.xtext.mbase.formatting;
 
+import org.eclipse.xtext.preferences.PreferenceKey;
+
 /**
  * @deprecated use {@link org.eclipse.xtext.preferences.IntegerKey}
  */
 @Deprecated
 @SuppressWarnings("all")
-public class IntegerKey /* implements PreferenceKey  */{
+public class IntegerKey extends PreferenceKey {
   public IntegerKey(final String name, final Integer defaultValue) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method super(String, String) is undefined");
+    super(name, defaultValue.toString());
   }
 }

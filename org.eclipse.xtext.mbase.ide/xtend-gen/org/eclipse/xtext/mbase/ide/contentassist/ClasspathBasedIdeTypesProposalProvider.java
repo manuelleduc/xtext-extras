@@ -7,139 +7,175 @@
  */
 package org.eclipse.xtext.mbase.ide.contentassist;
 
+import com.google.common.base.Objects;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
+import java.util.ArrayList;
+import java.util.Collections;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ide.editor.contentassist.ContentAssistEntry;
+import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor;
+import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalCreator;
+import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalPriorities;
 import org.eclipse.xtext.mbase.ide.contentassist.IIdeTypesProposalProvider;
+import org.eclipse.xtext.mbase.ide.contentassist.mbaseIdeContentProposalPriorities;
 import org.eclipse.xtext.mbase.ide.types.ClasspathScanner;
 import org.eclipse.xtext.mbase.ide.types.ITypeDescriptor;
+import org.eclipse.xtext.mbase.imports.IImportsConfiguration;
+import org.eclipse.xtext.mbase.imports.ImportSectionRegionUtil;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.util.ITextRegion;
+import org.eclipse.xtext.util.ReplaceRegion;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xtype.XImportDeclaration;
+import org.eclipse.xtext.xtype.XImportSection;
+import org.eclipse.xtext.xtype.XtypePackage;
+import org.objectweb.asm.Opcodes;
 
 @SuppressWarnings("all")
 public class ClasspathBasedIdeTypesProposalProvider implements IIdeTypesProposalProvider {
-  /* @Inject
-   */private ClassLoader classLoader;
+  @Inject
+  private ClassLoader classLoader;
   
-  /* @Inject
-   */private ClasspathScanner classpathScanner;
+  @Inject
+  private ClasspathScanner classpathScanner;
   
-  /* @Inject
-   */private /* IdeContentProposalCreator */Object proposalCreator;
+  @Inject
+  private IdeContentProposalCreator proposalCreator;
   
-  /* @Inject
-   */private /* IdeContentProposalPriorities */Object proposalPriorities;
+  @Inject
+  private IdeContentProposalPriorities proposalPriorities;
   
-  /* @Inject
-   */private /* IQualifiedNameConverter */Object qualifiedNameConverter;
+  @Inject
+  private IQualifiedNameConverter qualifiedNameConverter;
   
-  /* @Inject
-   */private /* IImportsConfiguration */Object importsConfiguration;
+  @Inject
+  private IImportsConfiguration importsConfiguration;
   
-  /* @Inject
-   */private /* ImportSectionRegionUtil */Object importSectionRegionUtil;
+  @Inject
+  private ImportSectionRegionUtil importSectionRegionUtil;
   
   @Override
-  public void createTypeProposals(final /* EReference */Object reference, final /* ContentAssistContext */Object context, final /* Predicate<ITypeDescriptor> */Object filter, final /* IIdeContentProposalAcceptor */Object acceptor) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nITextRegion cannot be resolved to a type."
-      + "\nXImportSection cannot be resolved to a type."
-      + "\nThe method isImportDeclaration(EReference, ContentAssistContext) from the type ClasspathBasedIdeTypesProposalProvider refers to the missing type Object"
-      + "\nThe field ClasspathBasedIdeTypesProposalProvider.importsConfiguration refers to the missing type IImportsConfiguration"
-      + "\nThe field ClasspathBasedIdeTypesProposalProvider.importSectionRegionUtil refers to the missing type ImportSectionRegionUtil"
-      + "\nThe method canPropose(ITypeDescriptor, ContentAssistContext, Predicate) from the type ClasspathBasedIdeTypesProposalProvider refers to the missing type Object"
-      + "\nThe method createProposal(EReference, ITypeDescriptor, ContentAssistContext, XImportSection, ITextRegion) from the type ClasspathBasedIdeTypesProposalProvider refers to the missing type ContentAssistEntry"
-      + "\nThe method getTypeRefPriority(ITypeDescriptor, ContentAssistEntry) from the type mbaseIdeContentProposalPriorities refers to the missing type Object"
-      + "\nThe field ClasspathBasedIdeTypesProposalProvider.proposalPriorities refers to the missing type IdeContentProposalPriorities"
-      + "\n! cannot be resolved"
-      + "\ngetImportSection cannot be resolved"
-      + "\nresource cannot be resolved"
-      + "\ncomputeRegion cannot be resolved"
-      + "\nresource cannot be resolved"
-      + "\ntypeDescriptors cannot be resolved"
-      + "\ncanAcceptMoreProposals cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\naccept cannot be resolved");
+  public void createTypeProposals(final EReference reference, final ContentAssistContext context, final Predicate<ITypeDescriptor> filter, final IIdeContentProposalAcceptor acceptor) {
+    ITextRegion importSectionRegion = null;
+    XImportSection importSection = null;
+    boolean _isImportDeclaration = this.isImportDeclaration(reference, context);
+    boolean _not = (!_isImportDeclaration);
+    if (_not) {
+      importSection = this.importsConfiguration.getImportSection(context.getResource());
+      importSectionRegion = this.importSectionRegionUtil.computeRegion(context.getResource());
+    }
+    Iterable<ITypeDescriptor> _typeDescriptors = this.getTypeDescriptors(context);
+    for (final ITypeDescriptor typeDesc : _typeDescriptors) {
+      {
+        boolean _canAcceptMoreProposals = acceptor.canAcceptMoreProposals();
+        boolean _not_1 = (!_canAcceptMoreProposals);
+        if (_not_1) {
+          return;
+        }
+        boolean _canPropose = this.canPropose(typeDesc, context, filter);
+        if (_canPropose) {
+          final ContentAssistEntry entry = this.createProposal(reference, typeDesc, context, importSection, importSectionRegion);
+          final int priority = ((mbaseIdeContentProposalPriorities) this.proposalPriorities).getTypeRefPriority(typeDesc, entry);
+          acceptor.accept(entry, priority);
+        }
+      }
+    }
   }
   
-  protected Object getTypeDescriptors(final /* ContentAssistContext */Object context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field Iterables is undefined"
-      + "\nclassLoader cannot be resolved"
-      + "\nconcat cannot be resolved");
+  protected Iterable<ITypeDescriptor> getTypeDescriptors(final ContentAssistContext context) {
+    final Iterable<ITypeDescriptor> bootClasspath = this.classpathScanner.getBootClasspathDescriptors(Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("java")));
+    final Iterable<ITypeDescriptor> appClasspath = this.classpathScanner.getDescriptors(this.getClassLoader(context), Collections.<String>emptyList());
+    return Iterables.<ITypeDescriptor>concat(bootClasspath, appClasspath);
   }
   
-  protected Object getClassLoader(final /* ContentAssistContext */Object context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nXtextResourceSet cannot be resolved to a type."
-      + "\nresource cannot be resolved"
-      + "\nresourceSet cannot be resolved"
-      + "\nclasspathURIContext cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nclassLoader cannot be resolved"
-      + "\nclass cannot be resolved"
-      + "\nclassLoader cannot be resolved");
+  protected ClassLoader getClassLoader(final ContentAssistContext context) {
+    final ResourceSet resourceSet = context.getResource().getResourceSet();
+    if ((resourceSet instanceof XtextResourceSet)) {
+      final Object ctx = ((XtextResourceSet)resourceSet).getClasspathURIContext();
+      if ((ctx != null)) {
+        if ((ctx instanceof Class<?>)) {
+          return ((Class<?>)ctx).getClassLoader();
+        }
+        if ((ctx instanceof ClassLoader)) {
+          return ((ClassLoader)ctx);
+        }
+        return ctx.getClass().getClassLoader();
+      }
+    }
+    return this.classLoader;
   }
   
-  protected Object canPropose(final ITypeDescriptor typeDesc, final /* ContentAssistContext */Object context, final /* Predicate<ITypeDescriptor> */Object filter) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method isVisible(ITypeDescriptor, ContentAssistContext) from the type ClasspathBasedIdeTypesProposalProvider refers to the missing type Object"
-      + "\n&& cannot be resolved"
-      + "\napply cannot be resolved");
+  protected boolean canPropose(final ITypeDescriptor typeDesc, final ContentAssistContext context, final Predicate<ITypeDescriptor> filter) {
+    return (this.isVisible(typeDesc, context) && filter.apply(typeDesc));
   }
   
-  protected Object isVisible(final ITypeDescriptor typeDesc, final /* ContentAssistContext */Object context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method bitwiseAnd(Object) is undefined for the type int"
-      + "\nThe method or field Opcodes is undefined"
-      + "\nACC_PUBLIC cannot be resolved"
-      + "\n!= cannot be resolved");
+  protected boolean isVisible(final ITypeDescriptor typeDesc, final ContentAssistContext context) {
+    return ((typeDesc.getAccessFlags() & Opcodes.ACC_PUBLIC) != 0);
   }
   
-  protected /* ContentAssistEntry */Object createProposal(final /* EReference */Object reference, final ITypeDescriptor typeDesc, final /* ContentAssistContext */Object context, final /* XImportSection */Object importSection, final /* ITextRegion */Object importSectionRegion) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method label(String) is undefined"
-      + "\nThe method description(Object) is undefined"
-      + "\nThe method description(Object) is undefined"
-      + "\nThe method isImportDeclaration(EReference, ContentAssistContext) from the type ClasspathBasedIdeTypesProposalProvider refers to the missing type Object"
-      + "\nThe field ClasspathBasedIdeTypesProposalProvider.qualifiedNameConverter refers to the missing type IQualifiedNameConverter"
-      + "\nThe method getQualifiedName() from the type ITypeDescriptor refers to the missing type QualifiedName"
-      + "\nThe field ClasspathBasedIdeTypesProposalProvider.proposalCreator refers to the missing type IdeContentProposalCreator"
-      + "\nThe method isImportDeclarationRequired(ITypeDescriptor, String, ContentAssistContext, XImportSection) from the type ClasspathBasedIdeTypesProposalProvider refers to the missing type Object"
-      + "\nThe method addImportDeclaration(ContentAssistEntry, ITextRegion, ITypeDescriptor, String, ContentAssistContext) from the type ClasspathBasedIdeTypesProposalProvider refers to the missing type Object"
-      + "\ntoString cannot be resolved"
-      + "\ncreateProposal cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\n&& cannot be resolved");
+  protected ContentAssistEntry createProposal(final EReference reference, final ITypeDescriptor typeDesc, final ContentAssistContext context, final XImportSection importSection, final ITextRegion importSectionRegion) {
+    ContentAssistEntry _xblockexpression = null;
+    {
+      final boolean importDecl = this.isImportDeclaration(reference, context);
+      final String qualifiedName = this.qualifiedNameConverter.toString(typeDesc.getQualifiedName());
+      String _xifexpression = null;
+      if (importDecl) {
+        _xifexpression = qualifiedName;
+      } else {
+        _xifexpression = typeDesc.getSimpleName();
+      }
+      final String proposal = _xifexpression;
+      final Procedure1<ContentAssistEntry> _function = (ContentAssistEntry it) -> {
+        if (importDecl) {
+          it.setLabel(typeDesc.getSimpleName());
+          it.setDescription(proposal);
+        } else {
+          it.setDescription(qualifiedName);
+          if (((importSectionRegion != null) && this.isImportDeclarationRequired(typeDesc, qualifiedName, context, importSection))) {
+            this.addImportDeclaration(it, importSectionRegion, typeDesc, qualifiedName, context);
+          }
+        }
+      };
+      _xblockexpression = this.proposalCreator.createProposal(proposal, context, _function);
+    }
+    return _xblockexpression;
   }
   
-  protected Object isImportDeclaration(final /* EReference */Object reference, final /* ContentAssistContext */Object context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field XtypePackage is undefined"
-      + "\n== cannot be resolved"
-      + "\nLiterals cannot be resolved"
-      + "\nXIMPORT_DECLARATION__IMPORTED_TYPE cannot be resolved");
+  protected boolean isImportDeclaration(final EReference reference, final ContentAssistContext context) {
+    return Objects.equal(reference, XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE);
   }
   
-  protected Object isImportDeclarationRequired(final ITypeDescriptor typeDesc, final String qualifiedName, final /* ContentAssistContext */Object context, final /* XImportSection */Object importSection) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n&& cannot be resolved."
-      + "\n== cannot be resolved."
-      + "\nThe method or field importedType is undefined"
-      + "\n! cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\nimportDeclarations cannot be resolved"
-      + "\nexists cannot be resolved"
-      + "\nqualifiedName cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\n! cannot be resolved");
+  protected boolean isImportDeclarationRequired(final ITypeDescriptor typeDesc, final String qualifiedName, final ContentAssistContext context, final XImportSection importSection) {
+    return ((!(typeDesc.getName().startsWith("java.lang") && (typeDesc.getName().lastIndexOf(".") == 9))) && ((importSection == null) || (!IterableExtensions.<XImportDeclaration>exists(importSection.getImportDeclarations(), ((Function1<XImportDeclaration, Boolean>) (XImportDeclaration it) -> {
+      JvmDeclaredType _importedType = it.getImportedType();
+      String _qualifiedName = null;
+      if (_importedType!=null) {
+        _qualifiedName=_importedType.getQualifiedName();
+      }
+      return Boolean.valueOf(Objects.equal(_qualifiedName, qualifiedName));
+    })))));
   }
   
-  protected Object addImportDeclaration(final /* ContentAssistEntry */Object entry, final /* ITextRegion */Object importSectionRegion, final ITypeDescriptor typeDesc, final String qualifiedName, final /* ContentAssistContext */Object context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\nReplaceRegion cannot be resolved."
-      + "\noffset cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\nlength cannot be resolved"
-      + "\ntextReplacements cannot be resolved"
-      + "\n+= cannot be resolved");
+  protected boolean addImportDeclaration(final ContentAssistEntry entry, final ITextRegion importSectionRegion, final ITypeDescriptor typeDesc, final String qualifiedName, final ContentAssistContext context) {
+    boolean _xblockexpression = false;
+    {
+      int _offset = importSectionRegion.getOffset();
+      int _length = importSectionRegion.getLength();
+      final int insertionOffset = (_offset + _length);
+      final String declaration = ("\nimport " + qualifiedName);
+      ArrayList<ReplaceRegion> _textReplacements = entry.getTextReplacements();
+      ReplaceRegion _replaceRegion = new ReplaceRegion(insertionOffset, 0, declaration);
+      _xblockexpression = _textReplacements.add(_replaceRegion);
+    }
+    return _xblockexpression;
   }
 }

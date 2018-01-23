@@ -7,29 +7,43 @@
  */
 package org.eclipse.xtext.mbase.resource;
 
+import com.google.inject.Inject;
+import java.util.Set;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.mbase.jvmmodel.IJvmModelAssociations;
+import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * @author Holger Schill - Initial contribution and API
  */
 @SuppressWarnings("all")
 public class JvmElementAtOffsetHelper {
-  /* @Inject
-   */private /* EObjectAtOffsetHelper */Object eObjectAtOffsetHelper;
+  @Inject
+  private EObjectAtOffsetHelper eObjectAtOffsetHelper;
   
-  /* @Inject
-   */private IJvmModelAssociations associations;
+  @Inject
+  private IJvmModelAssociations associations;
   
-  public /* JvmIdentifiableElement */Object getJvmIdentifiableElement(final /* XtextResource */Object resource, final int offset) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmIdentifiableElement cannot be resolved to a type."
-      + "\nJvmIdentifiableElement cannot be resolved to a type."
-      + "\nThe method getJvmElements(Object) is undefined for the type IJvmModelAssociations"
-      + "\nThe field JvmElementAtOffsetHelper.eObjectAtOffsetHelper refers to the missing type EObjectAtOffsetHelper"
-      + "\nresolveElementAt cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\nisEmpty cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\nhead cannot be resolved");
+  public JvmIdentifiableElement getJvmIdentifiableElement(final XtextResource resource, final int offset) {
+    final EObject selectedElement = this.eObjectAtOffsetHelper.resolveElementAt(resource, offset);
+    if ((selectedElement == null)) {
+      return null;
+    }
+    if ((selectedElement instanceof JvmIdentifiableElement)) {
+      return ((JvmIdentifiableElement)selectedElement);
+    }
+    final Set<EObject> jvmElements = this.associations.getJvmElements(selectedElement);
+    boolean _isEmpty = jvmElements.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      final EObject firstElement = IterableExtensions.<EObject>head(jvmElements);
+      if ((firstElement instanceof JvmIdentifiableElement)) {
+        return ((JvmIdentifiableElement)firstElement);
+      }
+    }
+    return null;
   }
 }

@@ -7,18 +7,22 @@
  */
 package org.eclipse.xtext.mbase.ide;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import org.eclipse.xtext.mbase.XtypeRuntimeModule;
+import org.eclipse.xtext.mbase.XtypeStandaloneSetup;
+import org.eclipse.xtext.mbase.ide.XtypeIdeModule;
+import org.eclipse.xtext.util.Modules2;
+
 /**
  * Initialization support for running Xtext languages as language servers.
  */
 @SuppressWarnings("all")
-public class XtypeIdeSetup /* implements XtypeStandaloneSetup  */{
+public class XtypeIdeSetup extends XtypeStandaloneSetup {
   @Override
-  public /* Injector */Object createInjector() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field Guice is undefined"
-      + "\nThe method or field Modules2 is undefined"
-      + "\nXtypeRuntimeModule cannot be resolved."
-      + "\ncreateInjector cannot be resolved"
-      + "\nmixin cannot be resolved");
+  public Injector createInjector() {
+    XtypeRuntimeModule _xtypeRuntimeModule = new XtypeRuntimeModule();
+    XtypeIdeModule _xtypeIdeModule = new XtypeIdeModule();
+    return Guice.createInjector(Modules2.mixin(_xtypeRuntimeModule, _xtypeIdeModule));
   }
 }

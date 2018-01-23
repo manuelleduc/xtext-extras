@@ -7,46 +7,52 @@
  */
 package org.eclipse.xtext.mbase.controlflow;
 
+import com.google.inject.Inject;
 import java.util.Map;
 import java.util.Stack;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.typesystem.IBatchTypeResolver;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.util.RecursionGuard;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 /**
  * @author Sebastian Zarnekow - Initial API and implementation
  */
 @SuppressWarnings("all")
 public class EvaluationContext {
-  /* @Inject
-   */private IBatchTypeResolver typeResolver;
+  @Inject
+  private IBatchTypeResolver typeResolver;
   
-  private /* RecursionGuard<EObject> */Object visiting = new RecursionGuard<Object>();
+  private RecursionGuard<EObject> visiting = new RecursionGuard<EObject>();
   
-  private /* Map<Resource, IResolvedTypes> */Object resolvedTypesPerResource /* Skipped initializer because of errors */;
+  private Map<Resource, IResolvedTypes> resolvedTypesPerResource = CollectionLiterals.<Resource, IResolvedTypes>newHashMap();
   
   private Stack<IResolvedTypes> resolvedTypesStack = new Stack<IResolvedTypes>();
   
   public boolean tryNext(final XExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field EvaluationContext.visiting refers to the missing type EObject");
+    boolean _tryNext = this.visiting.tryNext(expression);
+    if (_tryNext) {
+      this.resolveTypes(expression);
+      return true;
+    }
+    return false;
   }
   
-  public void addResolvedTypes(final /* Resource */Object resource, final IResolvedTypes resolvedTypes) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field EvaluationContext.resolvedTypesPerResource refers to the missing type Resource");
+  public void addResolvedTypes(final Resource resource, final IResolvedTypes resolvedTypes) {
+    this.resolvedTypesPerResource.put(resource, resolvedTypes);
   }
   
   private void resolveTypes(final XExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field eResource is undefined for the type XExpression"
-      + "\n=== cannot be resolved."
-      + "\nInvalid number of arguments. The method resolveTypes(XExpression) is not applicable for the arguments (IBatchTypeResolver,XExpression)"
-      + "\nType mismatch: cannot convert from IBatchTypeResolver to XExpression"
-      + "\nType mismatch: cannot convert from void to IResolvedTypes"
-      + "\nThe field EvaluationContext.resolvedTypesPerResource refers to the missing type Resource"
-      + "\nThe field EvaluationContext.resolvedTypesPerResource refers to the missing type Resource");
+    final Resource resource = expression.eResource();
+    IResolvedTypes resolvedTypes = this.resolvedTypesPerResource.get(resource);
+    if ((resolvedTypes == null)) {
+      resolvedTypes = this.typeResolver.resolveTypes(expression);
+      this.resolvedTypesPerResource.put(resource, resolvedTypes);
+    }
+    this.resolvedTypesStack.push(resolvedTypes);
   }
   
   public IResolvedTypes getResolvedTypes() {
@@ -54,7 +60,7 @@ public class EvaluationContext {
   }
   
   public void done(final XExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field EvaluationContext.visiting refers to the missing type EObject");
+    this.resolvedTypesStack.pop();
+    this.visiting.done(expression);
   }
 }

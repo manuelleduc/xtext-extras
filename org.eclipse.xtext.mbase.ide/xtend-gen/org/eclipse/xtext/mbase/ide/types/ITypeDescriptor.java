@@ -7,13 +7,15 @@
  */
 package org.eclipse.xtext.mbase.ide.types;
 
+import org.eclipse.xtext.naming.QualifiedName;
+
 @SuppressWarnings("all")
 public interface ITypeDescriptor {
   public abstract String getName();
   
   public abstract String getSimpleName();
   
-  public abstract /* QualifiedName */Object getQualifiedName();
+  public abstract QualifiedName getQualifiedName();
   
   public abstract int getAccessFlags();
 }

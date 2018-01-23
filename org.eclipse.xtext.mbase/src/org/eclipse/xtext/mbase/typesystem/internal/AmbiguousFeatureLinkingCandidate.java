@@ -16,7 +16,7 @@ import org.eclipse.xtext.mbase.XBinaryOperation;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XPostfixOperation;
 import org.eclipse.xtext.mbase.XUnaryOperation;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.computation.IFeatureLinkingCandidate;
 import org.eclipse.xtext.mbase.typesystem.computation.ILinkingCandidate;
 
@@ -79,7 +79,7 @@ public class AmbiguousFeatureLinkingCandidate extends AbstractAmbiguousLinkingCa
 	
 	@Override
 	protected EStructuralFeature getFeatureToMark() {
-		return mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE;
+		return MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE;
 	}
 
 	@Override

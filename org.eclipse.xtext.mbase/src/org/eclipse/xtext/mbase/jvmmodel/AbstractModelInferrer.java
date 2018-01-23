@@ -9,7 +9,7 @@ package org.eclipse.xtext.mbase.jvmmodel;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.mbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 import com.google.inject.Inject;
 

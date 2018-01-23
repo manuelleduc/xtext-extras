@@ -34,8 +34,8 @@ import org.eclipse.xtext.mbase.XClosure;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
 import org.eclipse.xtext.mbase.XVariableDeclaration;
-import org.eclipse.xtext.mbase.mbasePackage;
-import org.eclipse.xtext.mbase.lib.IterableExtensions;
+import org.eclipse.xtext.mbase.MbasePackage;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.mbase.scoping.batch.IIdentifiableElementDescription;
 import org.eclipse.xtext.mbase.typesystem.computation.ILinkingCandidate;
 import org.eclipse.xtext.mbase.typesystem.computation.ITypeExpectation;
@@ -286,12 +286,12 @@ public abstract class AbstractPendingLinkingCandidate<Expression extends XExpres
 	}
 
 	protected EReference getDefaultValidationFeature() {
-		return mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE;
+		return MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE;
 	}
 	
 	/* @Nullable */
 	protected EReference getInvalidArgumentsValidationFeature() {
-		return mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE;
+		return MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE;
 	}
 	
 	protected boolean validateArity(IAcceptor<? super AbstractDiagnostic> result) {

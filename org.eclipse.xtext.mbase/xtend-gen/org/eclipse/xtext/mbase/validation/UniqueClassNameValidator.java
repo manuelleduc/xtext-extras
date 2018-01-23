@@ -7,104 +7,123 @@
  */
 package org.eclipse.xtext.mbase.validation;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
+import java.util.Set;
+import java.util.function.Consumer;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.AbstractRule;
+import org.eclipse.xtext.IGrammarAccess;
+import org.eclipse.xtext.ParserRule;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.mbase.jvmmodel.IJvmModelAssociations;
+import org.eclipse.xtext.mbase.validation.IssueCodes;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.IResourceDescriptions;
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
+import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.EValidatorRegistrar;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
  */
 @SuppressWarnings("all")
-public class UniqueClassNameValidator /* implements AbstractDeclarativeValidator  */{
-  /* @Inject
-   */private /* ResourceDescriptionsProvider */Object resourceDescriptionsProvider;
+public class UniqueClassNameValidator extends AbstractDeclarativeValidator {
+  @Inject
+  private ResourceDescriptionsProvider resourceDescriptionsProvider;
   
-  /* @Inject
-   */private /* IQualifiedNameProvider */Object qualifiedNameProvider;
+  @Inject
+  private IQualifiedNameProvider qualifiedNameProvider;
   
-  /* @Inject
-   */private IJvmModelAssociations associations;
+  @Inject
+  private IJvmModelAssociations associations;
   
   @Override
-  public Object register(final /* EValidatorRegistrar */Object registrar) {
-    return null;
+  public void register(final EValidatorRegistrar registrar) {
   }
   
-  /* @Inject
-   */protected void register(final /* EValidatorRegistrar */Object registrar, final /* IGrammarAccess */Object grammarAccess) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nParserRule cannot be resolved to a type."
-      + "\ngrammar cannot be resolved"
-      + "\nrules cannot be resolved"
-      + "\nhead cannot be resolved"
-      + "\nregister cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\nclassifier cannot be resolved"
-      + "\nEPackage cannot be resolved");
+  @Inject
+  protected void register(final EValidatorRegistrar registrar, final IGrammarAccess grammarAccess) {
+    final AbstractRule entryRule = IterableExtensions.<AbstractRule>head(grammarAccess.getGrammar().getRules());
+    if ((entryRule instanceof ParserRule)) {
+      registrar.register(((ParserRule)entryRule).getType().getClassifier().getEPackage(), this);
+    }
   }
   
-  /* @Check
-   */public void checkUniqueName(final /* EObject */Object root) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field JvmDeclaredType is undefined"
-      + "\nThe method doCheckUniqueName(JvmDeclaredType) from the type UniqueClassNameValidator refers to the missing type JvmDeclaredType"
-      + "\neContainer cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\neResource cannot be resolved"
-      + "\ncontents cannot be resolved"
-      + "\nhead cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\ncontents cannot be resolved"
-      + "\nfilter cannot be resolved"
-      + "\nforEach cannot be resolved");
+  @Check
+  public void checkUniqueName(final EObject root) {
+    EObject _eContainer = root.eContainer();
+    boolean _tripleEquals = (_eContainer == null);
+    if (_tripleEquals) {
+      final Resource resource = root.eResource();
+      EObject _head = IterableExtensions.<EObject>head(resource.getContents());
+      boolean _equals = Objects.equal(_head, root);
+      if (_equals) {
+        final Consumer<JvmDeclaredType> _function = (JvmDeclaredType it) -> {
+          this.doCheckUniqueName(it);
+        };
+        Iterables.<JvmDeclaredType>filter(resource.getContents(), JvmDeclaredType.class).forEach(_function);
+      }
+    }
   }
   
-  protected void doCheckUniqueName(final /* JvmDeclaredType */Object type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field UniqueClassNameValidator.qualifiedNameProvider refers to the missing type IQualifiedNameProvider"
-      + "\nThe method doCheckUniqueName(QualifiedName, JvmDeclaredType) from the type UniqueClassNameValidator refers to the missing type QualifiedName"
-      + "\neContainer cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\ngetFullyQualifiedName cannot be resolved"
-      + "\n!== cannot be resolved");
+  protected void doCheckUniqueName(final JvmDeclaredType type) {
+    EObject _eContainer = type.eContainer();
+    boolean _tripleEquals = (_eContainer == null);
+    if (_tripleEquals) {
+      final QualifiedName name = this.qualifiedNameProvider.getFullyQualifiedName(type);
+      if ((name != null)) {
+        this.doCheckUniqueName(name, type);
+      }
+    }
   }
   
-  protected boolean doCheckUniqueName(final /* QualifiedName */Object name, final /* JvmDeclaredType */Object type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field TypesPackage is undefined"
-      + "\nThe field UniqueClassNameValidator.resourceDescriptionsProvider refers to the missing type ResourceDescriptionsProvider"
-      + "\nThe method checkUniqueInIndex(JvmDeclaredType, Iterable<IEObjectDescription>) from the type UniqueClassNameValidator refers to the missing type JvmDeclaredType"
-      + "\ngetResourceDescriptions cannot be resolved"
-      + "\neResource cannot be resolved"
-      + "\ngetExportedObjects cannot be resolved"
-      + "\nLiterals cannot be resolved"
-      + "\nJVM_DECLARED_TYPE cannot be resolved");
+  protected boolean doCheckUniqueName(final QualifiedName name, final JvmDeclaredType type) {
+    final IResourceDescriptions index = this.resourceDescriptionsProvider.getResourceDescriptions(type.eResource());
+    final Iterable<IEObjectDescription> others = index.getExportedObjects(TypesPackage.Literals.JVM_DECLARED_TYPE, name, false);
+    return this.checkUniqueInIndex(type, others);
   }
   
-  protected boolean checkUniqueInIndex(final /* JvmDeclaredType */Object type, final /* Iterable<IEObjectDescription> */Object descriptions) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method map(Object) is undefined for the type Iterable<IEObjectDescription>"
-      + "\nThe method or field EObjectURI is undefined"
-      + "\nThe method addIssue(JvmDeclaredType, String) from the type UniqueClassNameValidator refers to the missing type JvmDeclaredType"
-      + "\ntrimFragment cannot be resolved"
-      + "\ntoSet cannot be resolved"
-      + "\nsize cannot be resolved"
-      + "\n> cannot be resolved"
-      + "\nfilter cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\neResource cannot be resolved"
-      + "\nURI cannot be resolved"
-      + "\nhead cannot be resolved"
-      + "\nlastSegment cannot be resolved");
+  protected boolean checkUniqueInIndex(final JvmDeclaredType type, final Iterable<IEObjectDescription> descriptions) {
+    final Function1<IEObjectDescription, URI> _function = (IEObjectDescription it) -> {
+      return it.getEObjectURI().trimFragment();
+    };
+    final Set<URI> resourceURIs = IterableExtensions.<URI>toSet(IterableExtensions.<IEObjectDescription, URI>map(descriptions, _function));
+    int _size = resourceURIs.size();
+    boolean _greaterThan = (_size > 1);
+    if (_greaterThan) {
+      final Function1<URI, Boolean> _function_1 = (URI it) -> {
+        URI _uRI = type.eResource().getURI();
+        return Boolean.valueOf((!Objects.equal(it, _uRI)));
+      };
+      this.addIssue(type, IterableExtensions.<URI>head(IterableExtensions.<URI>filter(resourceURIs, _function_1)).lastSegment());
+      return false;
+    }
+    return true;
   }
   
-  protected void addIssue(final /* JvmDeclaredType */Object type, final String fileName) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getPrimarySourceElement(JvmDeclaredType) is undefined for the type IJvmModelAssociations"
-      + "\nInvalid number of arguments. The method addIssue(JvmDeclaredType, String) is not applicable for the arguments (CharSequence,JvmDeclaredType,String)"
-      + "\nInvalid number of arguments. The method addIssue(JvmDeclaredType, String) is not applicable for the arguments (CharSequence,Object,Object,String)"
-      + "\nThe method addIssue(JvmDeclaredType, String) from the type UniqueClassNameValidator refers to the missing type JvmDeclaredType"
-      + "\nThe method addIssue(JvmDeclaredType, String) from the type UniqueClassNameValidator refers to the missing type JvmDeclaredType"
-      + "\n=== cannot be resolved"
-      + "\neClass cannot be resolved"
-      + "\ngetEStructuralFeature cannot be resolved");
+  protected void addIssue(final JvmDeclaredType type, final String fileName) {
+    final EObject sourceElement = this.associations.getPrimarySourceElement(type);
+    if ((sourceElement == null)) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("The type �type.simpleName� is already defined in �fileName�.");
+      this.addIssue(_builder.toString(), type, IssueCodes.DUPLICATE_TYPE);
+    } else {
+      final EStructuralFeature feature = sourceElement.eClass().getEStructuralFeature("name");
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("The type �type.simpleName� is already defined in �fileName�.");
+      this.addIssue(_builder_1.toString(), sourceElement, feature, IssueCodes.DUPLICATE_TYPE);
+    }
   }
 }

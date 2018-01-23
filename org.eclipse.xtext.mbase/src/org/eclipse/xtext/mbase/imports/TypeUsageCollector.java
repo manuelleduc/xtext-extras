@@ -61,7 +61,7 @@ import org.eclipse.xtext.mbase.XFeatureCall;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
 import org.eclipse.xtext.mbase.XSwitchExpression;
 import org.eclipse.xtext.mbase.XTypeLiteral;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationElementValuePair;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsPackage;
@@ -187,9 +187,9 @@ public class TypeUsageCollector {
 			} else if (next instanceof XAnnotation) {
 				acceptPreferredType(next, XAnnotationsPackage.Literals.XANNOTATION__ANNOTATION_TYPE);
 			} else if (next instanceof XConstructorCall) {
-				acceptPreferredType(next, mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR);
+				acceptPreferredType(next, MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR);
 			} else if (next instanceof XTypeLiteral) {
-				acceptPreferredType(next, mbasePackage.Literals.XTYPE_LITERAL__TYPE);
+				acceptPreferredType(next, MbasePackage.Literals.XTYPE_LITERAL__TYPE);
 			} else if (next instanceof XFeatureCall) {
 				XFeatureCall featureCall = (XFeatureCall) next;
 				if (featureCall.getFeature() instanceof JvmType && featureCall.isTypeLiteral()) {
@@ -197,9 +197,9 @@ public class TypeUsageCollector {
 						contents.prune();
 						continue;
 					}
-					acceptPreferredType(featureCall, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
+					acceptPreferredType(featureCall, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
 				} else if (featureCall.getFeature().eIsProxy()) {
-					acceptPreferredType(featureCall, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
+					acceptPreferredType(featureCall, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
 				} else {
 					collectStaticImportsFrom(featureCall, indexedAmbiguousCandidates.get(featureCall));
 				}
@@ -210,7 +210,7 @@ public class TypeUsageCollector {
 						contents.prune();
 						continue;
 					}
-					acceptPreferredType(featureCall, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
+					acceptPreferredType(featureCall, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE);
 				}
 				if (!featureCall.isExplicitStatic()) {
 					XExpression target = featureCall.getMemberCallTarget();
@@ -253,7 +253,7 @@ public class TypeUsageCollector {
 	}
 	
 	private boolean isOuterTypeLiteral(XAbstractFeatureCall featureCall) {
-		if (featureCall.eContainingFeature() == mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+		if (featureCall.eContainingFeature() == MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
 			XMemberFeatureCall container = (XMemberFeatureCall) featureCall.eContainer();
 			if (container.isTypeLiteral()) {
 				return true;

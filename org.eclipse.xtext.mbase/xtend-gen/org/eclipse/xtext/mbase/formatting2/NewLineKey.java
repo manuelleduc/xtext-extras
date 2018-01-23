@@ -7,23 +7,26 @@
  */
 package org.eclipse.xtext.mbase.formatting2;
 
+import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
+import org.eclipse.xtext.preferences.BooleanKey;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+
 /**
  * @author Moritz Eysholdt - Initial contribution and API
  */
 @SuppressWarnings("all")
-public class NewLineKey /* implements BooleanKey, Procedures.Procedure1<IHiddenRegionFormatter>  */{
+public class NewLineKey extends BooleanKey implements Procedure1<IHiddenRegionFormatter> {
   public NewLineKey(final String name, final Boolean defaultValue) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method super(String, Boolean) is undefined");
+    super(name, defaultValue);
   }
   
   @Override
-  public Object apply(final /* IHiddenRegionFormatter */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field request is undefined"
-      + "\nThe method setNewLines(int) is undefined"
-      + "\nThe method or field oneSpace is undefined"
-      + "\npreferences cannot be resolved"
-      + "\ngetPreference cannot be resolved");
+  public void apply(final IHiddenRegionFormatter it) {
+    final Boolean newLine = it.getRequest().getPreferences().<Boolean>getPreference(this);
+    if ((newLine).booleanValue()) {
+      it.setNewLines(1);
+    } else {
+      it.oneSpace();
+    }
   }
 }

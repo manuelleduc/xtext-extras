@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureScopeSession;
 import org.eclipse.xtext.mbase.typesystem.computation.IFeatureLinkingCandidate;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
@@ -120,12 +120,12 @@ public class ExpressionTypeComputationState extends AbstractStackedTypeComputati
 	}
 	
 	protected boolean isImplicitReceiver(XAbstractFeatureCall featureCall) {
-		boolean result = featureCall.eContainingFeature() == mbasePackage.Literals.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER;
+		boolean result = featureCall.eContainingFeature() == MbasePackage.Literals.XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER;
 		return result;
 	}
 	
 	protected boolean isImplicitFirstArgument(XAbstractFeatureCall featureCall) {
-		boolean result = featureCall.eContainingFeature() == mbasePackage.Literals.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT;
+		boolean result = featureCall.eContainingFeature() == MbasePackage.Literals.XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT;
 		return result;
 	}
 	

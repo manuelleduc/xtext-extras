@@ -27,7 +27,7 @@ import org.eclipse.xtext.mbase.util.FeatureCallAsTypeLiteralHelper
 
 import static org.eclipse.xtext.diagnostics.Diagnostic.LINKING_DIAGNOSTIC
 import static org.eclipse.xtext.diagnostics.Severity.ERROR
-import static org.eclipse.xtext.mbase.mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET
+import static org.eclipse.xtext.mbase.MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET
 
 /** 
  * @author Dennis Huebner - Initial contribution and API

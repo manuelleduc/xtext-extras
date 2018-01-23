@@ -9,6 +9,8 @@ package org.eclipse.xtext.mbase.compiler
 
 import com.google.inject.Inject
 import java.util.List
+import java.util.Map
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.util.EcoreUtil
@@ -29,6 +31,7 @@ import org.eclipse.xtext.common.types.JvmEnumAnnotationValue
 import org.eclipse.xtext.common.types.JvmEnumerationLiteral
 import org.eclipse.xtext.common.types.JvmEnumerationType
 import org.eclipse.xtext.common.types.JvmExecutable
+import org.eclipse.xtext.common.types.JvmFeature
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmFloatAnnotationValue
 import org.eclipse.xtext.common.types.JvmFormalParameter
@@ -55,16 +58,10 @@ import org.eclipse.xtext.documentation.IFileHeaderProvider
 import org.eclipse.xtext.documentation.IJavaDocTypeReferenceProvider
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.xtext.generator.trace.AbsoluteURI
 import org.eclipse.xtext.generator.trace.ITraceURIConverter
 import org.eclipse.xtext.generator.trace.LocationData
-import org.eclipse.xtext.naming.IQualifiedNameConverter
-import org.eclipse.xtext.nodemodel.INode
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
-import org.eclipse.xtext.resource.ILocationInFileProvider
-import org.eclipse.xtext.scoping.IScopeProvider
-import org.eclipse.xtext.util.ITextRegionWithLineInformation
-import org.eclipse.xtext.util.Strings
-import org.eclipse.xtext.validation.Issue
+import org.eclipse.xtext.generator.trace.SourceRelativeURI
 import org.eclipse.xtext.mbase.XExpression
 import org.eclipse.xtext.mbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.mbase.compiler.output.ImportingStringConcatenation
@@ -77,16 +74,19 @@ import org.eclipse.xtext.mbase.jvmmodel.JvmTypeExtensions
 import org.eclipse.xtext.mbase.typesystem.references.ITypeReferenceOwner
 import org.eclipse.xtext.mbase.typesystem.references.StandardTypeReferenceOwner
 import org.eclipse.xtext.mbase.typesystem.util.CommonTypeComputationServices
+import org.eclipse.xtext.naming.IQualifiedNameConverter
+import org.eclipse.xtext.nodemodel.INode
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import org.eclipse.xtext.resource.ILocationInFileProvider
+import org.eclipse.xtext.scoping.IScopeProvider
+import org.eclipse.xtext.util.ITextRegionWithLineInformation
+import org.eclipse.xtext.util.Strings
+import org.eclipse.xtext.validation.Issue
+import org.eclipse.xtext.workspace.IProjectConfig
 
+import static com.google.common.collect.Maps.newHashMap
 import static org.eclipse.xtext.common.types.TypesPackage.Literals.*
 import static org.eclipse.xtext.util.JavaVersion.*
-import org.eclipse.xtext.common.types.JvmFeature
-import org.eclipse.xtext.workspace.IProjectConfig
-import org.eclipse.xtext.generator.trace.AbsoluteURI
-import java.util.Map
-import org.eclipse.xtext.generator.trace.SourceRelativeURI
-import static com.google.common.collect.Maps.newHashMap
-import org.eclipse.emf.common.util.URI
 
 /**
  * A generator implementation that processes the 
@@ -103,7 +103,7 @@ class JvmModelGenerator implements IGenerator {
 	@Inject protected extension ErrorSafeExtensions
 	
 	@Inject CommonTypeComputationServices commonServices
-	@Inject mbaseCompiler compiler
+	@Inject MbaseCompiler compiler
 	@Inject ILocationInFileProvider locationProvider
 	@Inject IEObjectDocumentationProvider documentationProvider
 	@Inject IFileHeaderProvider fileHeaderProvider

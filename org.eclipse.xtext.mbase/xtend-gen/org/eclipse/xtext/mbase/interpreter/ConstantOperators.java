@@ -8,6 +8,15 @@
 package org.eclipse.xtext.mbase.interpreter;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
+import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.mbase.interpreter.ConstantExpressionEvaluationException;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.DoubleExtensions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.Pair;
 
 /**
  * @author Sven Efftinge - Initial contribution and API
@@ -15,2208 +24,2577 @@ import java.util.Arrays;
 @SuppressWarnings("all")
 public class ConstantOperators {
   protected Object _minus(final Object operand) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    throw new ConstantExpressionEvaluationException(("Unsupported operator \'-\' for operand " + operand));
   }
   
   protected Object _minus(final Integer e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    return Integer.valueOf((-(e).intValue()));
   }
   
   protected Object _minus(final Double e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    return Double.valueOf(DoubleExtensions.operator_minus(e));
   }
   
   protected Object _minus(final Long e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    return Long.valueOf((-(e).longValue()));
   }
   
   protected Object _minus(final Short e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    return Integer.valueOf((-(e).shortValue()));
   }
   
   protected Object _minus(final Float e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    return Float.valueOf((-(e).floatValue()));
   }
   
   protected Object _minus(final Byte e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    return Integer.valueOf((-(e).byteValue()));
   }
   
   protected Object _plus(final String left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    return (left + right);
   }
   
   protected Object _shiftLeft(final Object operand, final Object bits) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException((((("Unsupported operator \'<<\' for operands (" + operand) + ", ") + bits) + ")"));
   }
   
   protected Object _shiftLeft(final Integer i, final Integer bits) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<< cannot be resolved.");
+    int _intValue = i.intValue();
+    int _intValue_1 = bits.intValue();
+    return Integer.valueOf((_intValue << _intValue_1));
   }
   
   protected Object _shiftLeft(final Long l, final Integer bits) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<< cannot be resolved.");
+    long _longValue = l.longValue();
+    int _intValue = bits.intValue();
+    return Long.valueOf((_longValue << _intValue));
   }
   
   protected Object _shiftRight(final Object operand, final Object bits) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException((((("Unsupported operator \'>>\' for operands (" + operand) + ", ") + bits) + ")"));
   }
   
   protected Object _shiftRight(final Integer i, final Integer bits) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>> cannot be resolved.");
+    int _intValue = i.intValue();
+    int _intValue_1 = bits.intValue();
+    return Integer.valueOf((_intValue >> _intValue_1));
   }
   
   protected Object _shiftRight(final Long l, final Integer bits) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>> cannot be resolved.");
+    long _longValue = l.longValue();
+    int _intValue = bits.intValue();
+    return Long.valueOf((_longValue >> _intValue));
   }
   
   protected Object _shiftRightUnsigned(final Object operand, final Object bits) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException((((("Unsupported operator \'>>>\' for operands (" + operand) + ", ") + bits) + ")"));
   }
   
   protected Object _shiftRightUnsigned(final Integer i, final Integer bits) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>>> cannot be resolved.");
+    int _intValue = i.intValue();
+    int _intValue_1 = bits.intValue();
+    return Integer.valueOf((_intValue >>> _intValue_1));
   }
   
   protected Object _shiftRightUnsigned(final Long l, final Integer bits) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>>> cannot be resolved.");
+    long _longValue = l.longValue();
+    int _intValue = bits.intValue();
+    return Long.valueOf((_longValue >>> _intValue));
   }
   
-  protected Object _and(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+  protected boolean _and(final Object left, final Object right) {
+    throw new ConstantExpressionEvaluationException((((("Unsupported operator \'&&\' for operands (" + left) + ", ") + right) + ")"));
   }
   
-  protected Object _and(final Boolean left, final Boolean right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n&& cannot be resolved.");
+  protected boolean _and(final Boolean left, final Boolean right) {
+    return ((left).booleanValue() && (right).booleanValue());
   }
   
-  protected Object _or(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+  protected boolean _or(final Object left, final Object right) {
+    throw new ConstantExpressionEvaluationException((((("Unsupported operator \'||\' for operands (" + left) + ", ") + right) + ")"));
   }
   
-  protected Object _or(final Boolean left, final Boolean right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n|| cannot be resolved.");
+  protected boolean _or(final Boolean left, final Boolean right) {
+    return ((left).booleanValue() || (right).booleanValue());
   }
   
   public static void main(final String[] args) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\n-> cannot be resolved."
-      + "\nThe method or field entrySet is undefined for the type Set<Object>"
-      + "\nThe method println(String) is undefined"
-      + "\nThe method or field keySet is undefined for the type Set<Object>"
-      + "\nThe method println(String) is undefined"
-      + "\nThe method or field keySet is undefined for the type Set<Object>"
-      + "\nThe method println(String) is undefined"
-      + "\nvalue cannot be resolved");
+    Pair<String, String> _mappedTo = Pair.<String, String>of("Integer", "intValue()");
+    Pair<String, String> _mappedTo_1 = Pair.<String, String>of("Short", "shortValue()");
+    Pair<String, String> _mappedTo_2 = Pair.<String, String>of("Long", "longValue()");
+    Pair<String, String> _mappedTo_3 = Pair.<String, String>of("Float", "floatValue()");
+    Pair<String, String> _mappedTo_4 = Pair.<String, String>of("Double", "doubleValue()");
+    Pair<String, String> _mappedTo_5 = Pair.<String, String>of("Byte", "byteValue()");
+    final Map<String, String> types = Collections.<String, String>unmodifiableMap(CollectionLiterals.<String, String>newHashMap(_mappedTo, _mappedTo_1, _mappedTo_2, _mappedTo_3, _mappedTo_4, _mappedTo_5));
+    Pair<String, String> _mappedTo_6 = Pair.<String, String>of("plus", "+");
+    Pair<String, String> _mappedTo_7 = Pair.<String, String>of("minus", "-");
+    Pair<String, String> _mappedTo_8 = Pair.<String, String>of("divide", "/");
+    Pair<String, String> _mappedTo_9 = Pair.<String, String>of("multiply", "*");
+    Pair<String, String> _mappedTo_10 = Pair.<String, String>of("modulo", "%");
+    Pair<String, String> _mappedTo_11 = Pair.<String, String>of("lessThan", "<");
+    Pair<String, String> _mappedTo_12 = Pair.<String, String>of("greaterThan", ">");
+    Pair<String, String> _mappedTo_13 = Pair.<String, String>of("lessEquals", "<=");
+    Pair<String, String> _mappedTo_14 = Pair.<String, String>of("greaterEquals", ">=");
+    Pair<String, String> _mappedTo_15 = Pair.<String, String>of("same", "===");
+    Pair<String, String> _mappedTo_16 = Pair.<String, String>of("notSame", "!==");
+    final Map<String, String> operators = Collections.<String, String>unmodifiableMap(CollectionLiterals.<String, String>newHashMap(_mappedTo_6, _mappedTo_7, _mappedTo_8, _mappedTo_9, _mappedTo_10, _mappedTo_11, _mappedTo_12, _mappedTo_13, _mappedTo_14, _mappedTo_15, _mappedTo_16));
+    final Set<String> booleanOps = Collections.<String>unmodifiableSet(CollectionLiterals.<String>newHashSet("<", "<=", ">", ">=", "===", "!=="));
+    Set<Map.Entry<String, String>> _entrySet = operators.entrySet();
+    for (final Map.Entry<String, String> op : _entrySet) {
+      {
+        String _xifexpression = null;
+        boolean _contains = booleanOps.contains(op.getValue());
+        if (_contains) {
+          _xifexpression = "boolean ";
+        } else {
+          _xifexpression = "Object ";
+        }
+        final String returnType = _xifexpression;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.newLine();
+        _builder.append("def dispatch �returnType��op.key�(Object left, Object right) {");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("throw new ConstantExpressionEvaluationException(\"Unsupported operator \'�op.value�\' for operands \"+left+\" and \"+right);");
+        _builder.newLine();
+        _builder.append("}");
+        _builder.newLine();
+        InputOutput.<String>println(_builder.toString());
+        Set<String> _keySet = types.keySet();
+        for (final String left : _keySet) {
+          {
+            InputOutput.<String>println("");
+            Set<String> _keySet_1 = types.keySet();
+            for (final String right : _keySet_1) {
+              StringConcatenation _builder_1 = new StringConcatenation();
+              _builder_1.append("def dispatch �returnType��op.key�(�left� left, �right� right) { left.�types.get(left)� �op.value� right.�types.get(right)� }");
+              InputOutput.<String>println(_builder_1.toString());
+            }
+          }
+        }
+      }
+    }
   }
   
   protected Object _plus(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'+\' for operands " + left) + " and ") + right));
   }
   
   protected Object _plus(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return Integer.valueOf((_byteValue + _byteValue_1));
   }
   
   protected Object _plus(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_byteValue + _doubleValue));
   }
   
   protected Object _plus(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_byteValue + _floatValue));
   }
   
   protected Object _plus(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_byteValue + _longValue));
   }
   
   protected Object _plus(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return Integer.valueOf((_byteValue + _shortValue));
   }
   
   protected Object _plus(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return Integer.valueOf((_byteValue + _intValue));
   }
   
   protected Object _plus(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return Double.valueOf((_doubleValue + _byteValue));
   }
   
   protected Object _plus(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return Double.valueOf((_doubleValue + _doubleValue_1));
   }
   
   protected Object _plus(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return Double.valueOf((_doubleValue + _floatValue));
   }
   
   protected Object _plus(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return Double.valueOf((_doubleValue + _longValue));
   }
   
   protected Object _plus(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return Double.valueOf((_doubleValue + _shortValue));
   }
   
   protected Object _plus(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return Double.valueOf((_doubleValue + _intValue));
   }
   
   protected Object _plus(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return Float.valueOf((_floatValue + _byteValue));
   }
   
   protected Object _plus(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_floatValue + _doubleValue));
   }
   
   protected Object _plus(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return Float.valueOf((_floatValue + _floatValue_1));
   }
   
   protected Object _plus(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return Float.valueOf((_floatValue + _longValue));
   }
   
   protected Object _plus(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return Float.valueOf((_floatValue + _shortValue));
   }
   
   protected Object _plus(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return Float.valueOf((_floatValue + _intValue));
   }
   
   protected Object _plus(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return Long.valueOf((_longValue + _byteValue));
   }
   
   protected Object _plus(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_longValue + _doubleValue));
   }
   
   protected Object _plus(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_longValue + _floatValue));
   }
   
   protected Object _plus(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return Long.valueOf((_longValue + _longValue_1));
   }
   
   protected Object _plus(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return Long.valueOf((_longValue + _shortValue));
   }
   
   protected Object _plus(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return Long.valueOf((_longValue + _intValue));
   }
   
   protected Object _plus(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return Integer.valueOf((_shortValue + _byteValue));
   }
   
   protected Object _plus(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_shortValue + _doubleValue));
   }
   
   protected Object _plus(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_shortValue + _floatValue));
   }
   
   protected Object _plus(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_shortValue + _longValue));
   }
   
   protected Object _plus(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return Integer.valueOf((_shortValue + _shortValue_1));
   }
   
   protected Object _plus(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return Integer.valueOf((_shortValue + _intValue));
   }
   
   protected Object _plus(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return Integer.valueOf((_intValue + _byteValue));
   }
   
   protected Object _plus(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_intValue + _doubleValue));
   }
   
   protected Object _plus(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_intValue + _floatValue));
   }
   
   protected Object _plus(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_intValue + _longValue));
   }
   
   protected Object _plus(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return Integer.valueOf((_intValue + _shortValue));
   }
   
   protected Object _plus(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return Integer.valueOf((_intValue + _intValue_1));
   }
   
   protected boolean _lessThan(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'<\' for operands " + left) + " and ") + right));
   }
   
   protected boolean _lessThan(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return (_byteValue < _byteValue_1);
   }
   
   protected boolean _lessThan(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return (_byteValue < _doubleValue);
   }
   
   protected boolean _lessThan(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return (_byteValue < _floatValue);
   }
   
   protected boolean _lessThan(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return (_byteValue < _longValue);
   }
   
   protected boolean _lessThan(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return (_byteValue < _shortValue);
   }
   
   protected boolean _lessThan(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return (_byteValue < _intValue);
   }
   
   protected boolean _lessThan(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return (_doubleValue < _byteValue);
   }
   
   protected boolean _lessThan(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return (_doubleValue < _doubleValue_1);
   }
   
   protected boolean _lessThan(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return (_doubleValue < _floatValue);
   }
   
   protected boolean _lessThan(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return (_doubleValue < _longValue);
   }
   
   protected boolean _lessThan(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return (_doubleValue < _shortValue);
   }
   
   protected boolean _lessThan(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return (_doubleValue < _intValue);
   }
   
   protected boolean _lessThan(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return (_floatValue < _byteValue);
   }
   
   protected boolean _lessThan(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return (_floatValue < _doubleValue);
   }
   
   protected boolean _lessThan(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return (_floatValue < _floatValue_1);
   }
   
   protected boolean _lessThan(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return (_floatValue < _longValue);
   }
   
   protected boolean _lessThan(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return (_floatValue < _shortValue);
   }
   
   protected boolean _lessThan(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return (_floatValue < _intValue);
   }
   
   protected boolean _lessThan(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return (_longValue < _byteValue);
   }
   
   protected boolean _lessThan(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return (_longValue < _doubleValue);
   }
   
   protected boolean _lessThan(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return (_longValue < _floatValue);
   }
   
   protected boolean _lessThan(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return (_longValue < _longValue_1);
   }
   
   protected boolean _lessThan(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return (_longValue < _shortValue);
   }
   
   protected boolean _lessThan(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return (_longValue < _intValue);
   }
   
   protected boolean _lessThan(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return (_shortValue < _byteValue);
   }
   
   protected boolean _lessThan(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return (_shortValue < _doubleValue);
   }
   
   protected boolean _lessThan(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return (_shortValue < _floatValue);
   }
   
   protected boolean _lessThan(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return (_shortValue < _longValue);
   }
   
   protected boolean _lessThan(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return (_shortValue < _shortValue_1);
   }
   
   protected boolean _lessThan(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return (_shortValue < _intValue);
   }
   
   protected boolean _lessThan(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return (_intValue < _byteValue);
   }
   
   protected boolean _lessThan(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return (_intValue < _doubleValue);
   }
   
   protected boolean _lessThan(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return (_intValue < _floatValue);
   }
   
   protected boolean _lessThan(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return (_intValue < _longValue);
   }
   
   protected boolean _lessThan(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return (_intValue < _shortValue);
   }
   
   protected boolean _lessThan(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n< cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return (_intValue < _intValue_1);
   }
   
   protected Object _minus(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'-\' for operands " + left) + " and ") + right));
   }
   
   protected Object _minus(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return Integer.valueOf((_byteValue - _byteValue_1));
   }
   
   protected Object _minus(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_byteValue - _doubleValue));
   }
   
   protected Object _minus(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_byteValue - _floatValue));
   }
   
   protected Object _minus(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_byteValue - _longValue));
   }
   
   protected Object _minus(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return Integer.valueOf((_byteValue - _shortValue));
   }
   
   protected Object _minus(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return Integer.valueOf((_byteValue - _intValue));
   }
   
   protected Object _minus(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return Double.valueOf((_doubleValue - _byteValue));
   }
   
   protected Object _minus(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return Double.valueOf((_doubleValue - _doubleValue_1));
   }
   
   protected Object _minus(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return Double.valueOf((_doubleValue - _floatValue));
   }
   
   protected Object _minus(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return Double.valueOf((_doubleValue - _longValue));
   }
   
   protected Object _minus(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return Double.valueOf((_doubleValue - _shortValue));
   }
   
   protected Object _minus(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return Double.valueOf((_doubleValue - _intValue));
   }
   
   protected Object _minus(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return Float.valueOf((_floatValue - _byteValue));
   }
   
   protected Object _minus(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_floatValue - _doubleValue));
   }
   
   protected Object _minus(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return Float.valueOf((_floatValue - _floatValue_1));
   }
   
   protected Object _minus(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return Float.valueOf((_floatValue - _longValue));
   }
   
   protected Object _minus(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return Float.valueOf((_floatValue - _shortValue));
   }
   
   protected Object _minus(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return Float.valueOf((_floatValue - _intValue));
   }
   
   protected Object _minus(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return Long.valueOf((_longValue - _byteValue));
   }
   
   protected Object _minus(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_longValue - _doubleValue));
   }
   
   protected Object _minus(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_longValue - _floatValue));
   }
   
   protected Object _minus(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return Long.valueOf((_longValue - _longValue_1));
   }
   
   protected Object _minus(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return Long.valueOf((_longValue - _shortValue));
   }
   
   protected Object _minus(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return Long.valueOf((_longValue - _intValue));
   }
   
   protected Object _minus(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return Integer.valueOf((_shortValue - _byteValue));
   }
   
   protected Object _minus(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_shortValue - _doubleValue));
   }
   
   protected Object _minus(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_shortValue - _floatValue));
   }
   
   protected Object _minus(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_shortValue - _longValue));
   }
   
   protected Object _minus(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return Integer.valueOf((_shortValue - _shortValue_1));
   }
   
   protected Object _minus(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return Integer.valueOf((_shortValue - _intValue));
   }
   
   protected Object _minus(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return Integer.valueOf((_intValue - _byteValue));
   }
   
   protected Object _minus(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_intValue - _doubleValue));
   }
   
   protected Object _minus(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_intValue - _floatValue));
   }
   
   protected Object _minus(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_intValue - _longValue));
   }
   
   protected Object _minus(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return Integer.valueOf((_intValue - _shortValue));
   }
   
   protected Object _minus(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return Integer.valueOf((_intValue - _intValue_1));
   }
   
   protected boolean _greaterThan(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'>\' for operands " + left) + " and ") + right));
   }
   
   protected boolean _greaterThan(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return (_byteValue > _byteValue_1);
   }
   
   protected boolean _greaterThan(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return (_byteValue > _doubleValue);
   }
   
   protected boolean _greaterThan(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return (_byteValue > _floatValue);
   }
   
   protected boolean _greaterThan(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return (_byteValue > _longValue);
   }
   
   protected boolean _greaterThan(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return (_byteValue > _shortValue);
   }
   
   protected boolean _greaterThan(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return (_byteValue > _intValue);
   }
   
   protected boolean _greaterThan(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return (_doubleValue > _byteValue);
   }
   
   protected boolean _greaterThan(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return (_doubleValue > _doubleValue_1);
   }
   
   protected boolean _greaterThan(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return (_doubleValue > _floatValue);
   }
   
   protected boolean _greaterThan(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return (_doubleValue > _longValue);
   }
   
   protected boolean _greaterThan(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return (_doubleValue > _shortValue);
   }
   
   protected boolean _greaterThan(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return (_doubleValue > _intValue);
   }
   
   protected boolean _greaterThan(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return (_floatValue > _byteValue);
   }
   
   protected boolean _greaterThan(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return (_floatValue > _doubleValue);
   }
   
   protected boolean _greaterThan(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return (_floatValue > _floatValue_1);
   }
   
   protected boolean _greaterThan(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return (_floatValue > _longValue);
   }
   
   protected boolean _greaterThan(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return (_floatValue > _shortValue);
   }
   
   protected boolean _greaterThan(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return (_floatValue > _intValue);
   }
   
   protected boolean _greaterThan(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return (_longValue > _byteValue);
   }
   
   protected boolean _greaterThan(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return (_longValue > _doubleValue);
   }
   
   protected boolean _greaterThan(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return (_longValue > _floatValue);
   }
   
   protected boolean _greaterThan(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return (_longValue > _longValue_1);
   }
   
   protected boolean _greaterThan(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return (_longValue > _shortValue);
   }
   
   protected boolean _greaterThan(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return (_longValue > _intValue);
   }
   
   protected boolean _greaterThan(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return (_shortValue > _byteValue);
   }
   
   protected boolean _greaterThan(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return (_shortValue > _doubleValue);
   }
   
   protected boolean _greaterThan(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return (_shortValue > _floatValue);
   }
   
   protected boolean _greaterThan(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return (_shortValue > _longValue);
   }
   
   protected boolean _greaterThan(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return (_shortValue > _shortValue_1);
   }
   
   protected boolean _greaterThan(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return (_shortValue > _intValue);
   }
   
   protected boolean _greaterThan(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return (_intValue > _byteValue);
   }
   
   protected boolean _greaterThan(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return (_intValue > _doubleValue);
   }
   
   protected boolean _greaterThan(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return (_intValue > _floatValue);
   }
   
   protected boolean _greaterThan(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return (_intValue > _longValue);
   }
   
   protected boolean _greaterThan(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return (_intValue > _shortValue);
   }
   
   protected boolean _greaterThan(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return (_intValue > _intValue_1);
   }
   
   protected Object _modulo(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'%\' for operands " + left) + " and ") + right));
   }
   
   protected Object _modulo(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return Integer.valueOf((_byteValue % _byteValue_1));
   }
   
   protected Object _modulo(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_byteValue % _doubleValue));
   }
   
   protected Object _modulo(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_byteValue % _floatValue));
   }
   
   protected Object _modulo(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_byteValue % _longValue));
   }
   
   protected Object _modulo(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return Integer.valueOf((_byteValue % _shortValue));
   }
   
   protected Object _modulo(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return Integer.valueOf((_byteValue % _intValue));
   }
   
   protected Object _modulo(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return Double.valueOf((_doubleValue % _byteValue));
   }
   
   protected Object _modulo(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return Double.valueOf((_doubleValue % _doubleValue_1));
   }
   
   protected Object _modulo(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return Double.valueOf((_doubleValue % _floatValue));
   }
   
   protected Object _modulo(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return Double.valueOf((_doubleValue % _longValue));
   }
   
   protected Object _modulo(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return Double.valueOf((_doubleValue % _shortValue));
   }
   
   protected Object _modulo(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return Double.valueOf((_doubleValue % _intValue));
   }
   
   protected Object _modulo(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return Float.valueOf((_floatValue % _byteValue));
   }
   
   protected Object _modulo(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_floatValue % _doubleValue));
   }
   
   protected Object _modulo(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return Float.valueOf((_floatValue % _floatValue_1));
   }
   
   protected Object _modulo(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return Float.valueOf((_floatValue % _longValue));
   }
   
   protected Object _modulo(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return Float.valueOf((_floatValue % _shortValue));
   }
   
   protected Object _modulo(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return Float.valueOf((_floatValue % _intValue));
   }
   
   protected Object _modulo(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return Long.valueOf((_longValue % _byteValue));
   }
   
   protected Object _modulo(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_longValue % _doubleValue));
   }
   
   protected Object _modulo(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_longValue % _floatValue));
   }
   
   protected Object _modulo(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return Long.valueOf((_longValue % _longValue_1));
   }
   
   protected Object _modulo(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return Long.valueOf((_longValue % _shortValue));
   }
   
   protected Object _modulo(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return Long.valueOf((_longValue % _intValue));
   }
   
   protected Object _modulo(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return Integer.valueOf((_shortValue % _byteValue));
   }
   
   protected Object _modulo(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_shortValue % _doubleValue));
   }
   
   protected Object _modulo(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_shortValue % _floatValue));
   }
   
   protected Object _modulo(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_shortValue % _longValue));
   }
   
   protected Object _modulo(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return Integer.valueOf((_shortValue % _shortValue_1));
   }
   
   protected Object _modulo(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return Integer.valueOf((_shortValue % _intValue));
   }
   
   protected Object _modulo(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return Integer.valueOf((_intValue % _byteValue));
   }
   
   protected Object _modulo(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_intValue % _doubleValue));
   }
   
   protected Object _modulo(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_intValue % _floatValue));
   }
   
   protected Object _modulo(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_intValue % _longValue));
   }
   
   protected Object _modulo(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return Integer.valueOf((_intValue % _shortValue));
   }
   
   protected Object _modulo(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n% cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return Integer.valueOf((_intValue % _intValue_1));
   }
   
   protected Object _multiply(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'*\' for operands " + left) + " and ") + right));
   }
   
   protected Object _multiply(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return Integer.valueOf((_byteValue * _byteValue_1));
   }
   
   protected Object _multiply(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_byteValue * _doubleValue));
   }
   
   protected Object _multiply(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_byteValue * _floatValue));
   }
   
   protected Object _multiply(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_byteValue * _longValue));
   }
   
   protected Object _multiply(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return Integer.valueOf((_byteValue * _shortValue));
   }
   
   protected Object _multiply(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return Integer.valueOf((_byteValue * _intValue));
   }
   
   protected Object _multiply(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return Double.valueOf((_doubleValue * _byteValue));
   }
   
   protected Object _multiply(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return Double.valueOf((_doubleValue * _doubleValue_1));
   }
   
   protected Object _multiply(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return Double.valueOf((_doubleValue * _floatValue));
   }
   
   protected Object _multiply(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return Double.valueOf((_doubleValue * _longValue));
   }
   
   protected Object _multiply(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return Double.valueOf((_doubleValue * _shortValue));
   }
   
   protected Object _multiply(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return Double.valueOf((_doubleValue * _intValue));
   }
   
   protected Object _multiply(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return Float.valueOf((_floatValue * _byteValue));
   }
   
   protected Object _multiply(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_floatValue * _doubleValue));
   }
   
   protected Object _multiply(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return Float.valueOf((_floatValue * _floatValue_1));
   }
   
   protected Object _multiply(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return Float.valueOf((_floatValue * _longValue));
   }
   
   protected Object _multiply(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return Float.valueOf((_floatValue * _shortValue));
   }
   
   protected Object _multiply(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return Float.valueOf((_floatValue * _intValue));
   }
   
   protected Object _multiply(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return Long.valueOf((_longValue * _byteValue));
   }
   
   protected Object _multiply(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_longValue * _doubleValue));
   }
   
   protected Object _multiply(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_longValue * _floatValue));
   }
   
   protected Object _multiply(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return Long.valueOf((_longValue * _longValue_1));
   }
   
   protected Object _multiply(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return Long.valueOf((_longValue * _shortValue));
   }
   
   protected Object _multiply(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return Long.valueOf((_longValue * _intValue));
   }
   
   protected Object _multiply(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return Integer.valueOf((_shortValue * _byteValue));
   }
   
   protected Object _multiply(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_shortValue * _doubleValue));
   }
   
   protected Object _multiply(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_shortValue * _floatValue));
   }
   
   protected Object _multiply(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_shortValue * _longValue));
   }
   
   protected Object _multiply(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return Integer.valueOf((_shortValue * _shortValue_1));
   }
   
   protected Object _multiply(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return Integer.valueOf((_shortValue * _intValue));
   }
   
   protected Object _multiply(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return Integer.valueOf((_intValue * _byteValue));
   }
   
   protected Object _multiply(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_intValue * _doubleValue));
   }
   
   protected Object _multiply(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_intValue * _floatValue));
   }
   
   protected Object _multiply(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_intValue * _longValue));
   }
   
   protected Object _multiply(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return Integer.valueOf((_intValue * _shortValue));
   }
   
   protected Object _multiply(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n* cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return Integer.valueOf((_intValue * _intValue_1));
   }
   
   protected Object _divide(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'/\' for operands " + left) + " and ") + right));
   }
   
   protected Object _divide(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return Integer.valueOf((_byteValue / _byteValue_1));
   }
   
   protected Object _divide(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_byteValue / _doubleValue));
   }
   
   protected Object _divide(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_byteValue / _floatValue));
   }
   
   protected Object _divide(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_byteValue / _longValue));
   }
   
   protected Object _divide(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return Integer.valueOf((_byteValue / _shortValue));
   }
   
   protected Object _divide(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return Integer.valueOf((_byteValue / _intValue));
   }
   
   protected Object _divide(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return Double.valueOf((_doubleValue / _byteValue));
   }
   
   protected Object _divide(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return Double.valueOf((_doubleValue / _doubleValue_1));
   }
   
   protected Object _divide(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return Double.valueOf((_doubleValue / _floatValue));
   }
   
   protected Object _divide(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return Double.valueOf((_doubleValue / _longValue));
   }
   
   protected Object _divide(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return Double.valueOf((_doubleValue / _shortValue));
   }
   
   protected Object _divide(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return Double.valueOf((_doubleValue / _intValue));
   }
   
   protected Object _divide(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return Float.valueOf((_floatValue / _byteValue));
   }
   
   protected Object _divide(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_floatValue / _doubleValue));
   }
   
   protected Object _divide(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return Float.valueOf((_floatValue / _floatValue_1));
   }
   
   protected Object _divide(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return Float.valueOf((_floatValue / _longValue));
   }
   
   protected Object _divide(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return Float.valueOf((_floatValue / _shortValue));
   }
   
   protected Object _divide(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return Float.valueOf((_floatValue / _intValue));
   }
   
   protected Object _divide(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return Long.valueOf((_longValue / _byteValue));
   }
   
   protected Object _divide(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_longValue / _doubleValue));
   }
   
   protected Object _divide(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_longValue / _floatValue));
   }
   
   protected Object _divide(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return Long.valueOf((_longValue / _longValue_1));
   }
   
   protected Object _divide(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return Long.valueOf((_longValue / _shortValue));
   }
   
   protected Object _divide(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return Long.valueOf((_longValue / _intValue));
   }
   
   protected Object _divide(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return Integer.valueOf((_shortValue / _byteValue));
   }
   
   protected Object _divide(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_shortValue / _doubleValue));
   }
   
   protected Object _divide(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_shortValue / _floatValue));
   }
   
   protected Object _divide(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_shortValue / _longValue));
   }
   
   protected Object _divide(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return Integer.valueOf((_shortValue / _shortValue_1));
   }
   
   protected Object _divide(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return Integer.valueOf((_shortValue / _intValue));
   }
   
   protected Object _divide(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return Integer.valueOf((_intValue / _byteValue));
   }
   
   protected Object _divide(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return Double.valueOf((_intValue / _doubleValue));
   }
   
   protected Object _divide(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return Float.valueOf((_intValue / _floatValue));
   }
   
   protected Object _divide(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return Long.valueOf((_intValue / _longValue));
   }
   
   protected Object _divide(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return Integer.valueOf((_intValue / _shortValue));
   }
   
   protected Object _divide(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n/ cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return Integer.valueOf((_intValue / _intValue_1));
   }
   
   protected boolean _same(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'===\' for operands " + left) + " and ") + right));
   }
   
   protected boolean _same(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return (_byteValue == _byteValue_1);
   }
   
   protected boolean _same(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return (_byteValue == _doubleValue);
   }
   
   protected boolean _same(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return (_byteValue == _floatValue);
   }
   
   protected boolean _same(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return (_byteValue == _longValue);
   }
   
   protected boolean _same(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return (_byteValue == _shortValue);
   }
   
   protected boolean _same(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return (_byteValue == _intValue);
   }
   
   protected boolean _same(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return (_doubleValue == _byteValue);
   }
   
   protected boolean _same(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return (_doubleValue == _doubleValue_1);
   }
   
   protected boolean _same(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return (_doubleValue == _floatValue);
   }
   
   protected boolean _same(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return (_doubleValue == _longValue);
   }
   
   protected boolean _same(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return (_doubleValue == _shortValue);
   }
   
   protected boolean _same(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return (_doubleValue == _intValue);
   }
   
   protected boolean _same(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return (_floatValue == _byteValue);
   }
   
   protected boolean _same(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return (_floatValue == _doubleValue);
   }
   
   protected boolean _same(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return (_floatValue == _floatValue_1);
   }
   
   protected boolean _same(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return (_floatValue == _longValue);
   }
   
   protected boolean _same(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return (_floatValue == _shortValue);
   }
   
   protected boolean _same(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return (_floatValue == _intValue);
   }
   
   protected boolean _same(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return (_longValue == _byteValue);
   }
   
   protected boolean _same(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return (_longValue == _doubleValue);
   }
   
   protected boolean _same(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return (_longValue == _floatValue);
   }
   
   protected boolean _same(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return (_longValue == _longValue_1);
   }
   
   protected boolean _same(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return (_longValue == _shortValue);
   }
   
   protected boolean _same(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return (_longValue == _intValue);
   }
   
   protected boolean _same(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return (_shortValue == _byteValue);
   }
   
   protected boolean _same(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return (_shortValue == _doubleValue);
   }
   
   protected boolean _same(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return (_shortValue == _floatValue);
   }
   
   protected boolean _same(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return (_shortValue == _longValue);
   }
   
   protected boolean _same(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return (_shortValue == _shortValue_1);
   }
   
   protected boolean _same(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return (_shortValue == _intValue);
   }
   
   protected boolean _same(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return (_intValue == _byteValue);
   }
   
   protected boolean _same(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return (_intValue == _doubleValue);
   }
   
   protected boolean _same(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return (_intValue == _floatValue);
   }
   
   protected boolean _same(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return (_intValue == _longValue);
   }
   
   protected boolean _same(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return (_intValue == _shortValue);
   }
   
   protected boolean _same(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n=== cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return (_intValue == _intValue_1);
   }
   
   protected boolean _lessEquals(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'<=\' for operands " + left) + " and ") + right));
   }
   
   protected boolean _lessEquals(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return (_byteValue <= _byteValue_1);
   }
   
   protected boolean _lessEquals(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return (_byteValue <= _doubleValue);
   }
   
   protected boolean _lessEquals(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return (_byteValue <= _floatValue);
   }
   
   protected boolean _lessEquals(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return (_byteValue <= _longValue);
   }
   
   protected boolean _lessEquals(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return (_byteValue <= _shortValue);
   }
   
   protected boolean _lessEquals(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return (_byteValue <= _intValue);
   }
   
   protected boolean _lessEquals(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return (_doubleValue <= _byteValue);
   }
   
   protected boolean _lessEquals(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return (_doubleValue <= _doubleValue_1);
   }
   
   protected boolean _lessEquals(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return (_doubleValue <= _floatValue);
   }
   
   protected boolean _lessEquals(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return (_doubleValue <= _longValue);
   }
   
   protected boolean _lessEquals(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return (_doubleValue <= _shortValue);
   }
   
   protected boolean _lessEquals(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return (_doubleValue <= _intValue);
   }
   
   protected boolean _lessEquals(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return (_floatValue <= _byteValue);
   }
   
   protected boolean _lessEquals(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return (_floatValue <= _doubleValue);
   }
   
   protected boolean _lessEquals(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return (_floatValue <= _floatValue_1);
   }
   
   protected boolean _lessEquals(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return (_floatValue <= _longValue);
   }
   
   protected boolean _lessEquals(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return (_floatValue <= _shortValue);
   }
   
   protected boolean _lessEquals(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return (_floatValue <= _intValue);
   }
   
   protected boolean _lessEquals(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return (_longValue <= _byteValue);
   }
   
   protected boolean _lessEquals(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return (_longValue <= _doubleValue);
   }
   
   protected boolean _lessEquals(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return (_longValue <= _floatValue);
   }
   
   protected boolean _lessEquals(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return (_longValue <= _longValue_1);
   }
   
   protected boolean _lessEquals(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return (_longValue <= _shortValue);
   }
   
   protected boolean _lessEquals(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return (_longValue <= _intValue);
   }
   
   protected boolean _lessEquals(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return (_shortValue <= _byteValue);
   }
   
   protected boolean _lessEquals(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return (_shortValue <= _doubleValue);
   }
   
   protected boolean _lessEquals(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return (_shortValue <= _floatValue);
   }
   
   protected boolean _lessEquals(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return (_shortValue <= _longValue);
   }
   
   protected boolean _lessEquals(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return (_shortValue <= _shortValue_1);
   }
   
   protected boolean _lessEquals(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return (_shortValue <= _intValue);
   }
   
   protected boolean _lessEquals(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return (_intValue <= _byteValue);
   }
   
   protected boolean _lessEquals(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return (_intValue <= _doubleValue);
   }
   
   protected boolean _lessEquals(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return (_intValue <= _floatValue);
   }
   
   protected boolean _lessEquals(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return (_intValue <= _longValue);
   }
   
   protected boolean _lessEquals(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return (_intValue <= _shortValue);
   }
   
   protected boolean _lessEquals(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n<= cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return (_intValue <= _intValue_1);
   }
   
   protected boolean _greaterEquals(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'>=\' for operands " + left) + " and ") + right));
   }
   
   protected boolean _greaterEquals(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return (_byteValue >= _byteValue_1);
   }
   
   protected boolean _greaterEquals(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return (_byteValue >= _doubleValue);
   }
   
   protected boolean _greaterEquals(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return (_byteValue >= _floatValue);
   }
   
   protected boolean _greaterEquals(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return (_byteValue >= _longValue);
   }
   
   protected boolean _greaterEquals(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return (_byteValue >= _shortValue);
   }
   
   protected boolean _greaterEquals(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return (_byteValue >= _intValue);
   }
   
   protected boolean _greaterEquals(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return (_doubleValue >= _byteValue);
   }
   
   protected boolean _greaterEquals(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return (_doubleValue >= _doubleValue_1);
   }
   
   protected boolean _greaterEquals(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return (_doubleValue >= _floatValue);
   }
   
   protected boolean _greaterEquals(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return (_doubleValue >= _longValue);
   }
   
   protected boolean _greaterEquals(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return (_doubleValue >= _shortValue);
   }
   
   protected boolean _greaterEquals(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return (_doubleValue >= _intValue);
   }
   
   protected boolean _greaterEquals(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return (_floatValue >= _byteValue);
   }
   
   protected boolean _greaterEquals(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return (_floatValue >= _doubleValue);
   }
   
   protected boolean _greaterEquals(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return (_floatValue >= _floatValue_1);
   }
   
   protected boolean _greaterEquals(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return (_floatValue >= _longValue);
   }
   
   protected boolean _greaterEquals(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return (_floatValue >= _shortValue);
   }
   
   protected boolean _greaterEquals(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return (_floatValue >= _intValue);
   }
   
   protected boolean _greaterEquals(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return (_longValue >= _byteValue);
   }
   
   protected boolean _greaterEquals(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return (_longValue >= _doubleValue);
   }
   
   protected boolean _greaterEquals(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return (_longValue >= _floatValue);
   }
   
   protected boolean _greaterEquals(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return (_longValue >= _longValue_1);
   }
   
   protected boolean _greaterEquals(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return (_longValue >= _shortValue);
   }
   
   protected boolean _greaterEquals(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return (_longValue >= _intValue);
   }
   
   protected boolean _greaterEquals(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return (_shortValue >= _byteValue);
   }
   
   protected boolean _greaterEquals(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return (_shortValue >= _doubleValue);
   }
   
   protected boolean _greaterEquals(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return (_shortValue >= _floatValue);
   }
   
   protected boolean _greaterEquals(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return (_shortValue >= _longValue);
   }
   
   protected boolean _greaterEquals(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return (_shortValue >= _shortValue_1);
   }
   
   protected boolean _greaterEquals(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return (_shortValue >= _intValue);
   }
   
   protected boolean _greaterEquals(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return (_intValue >= _byteValue);
   }
   
   protected boolean _greaterEquals(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return (_intValue >= _doubleValue);
   }
   
   protected boolean _greaterEquals(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return (_intValue >= _floatValue);
   }
   
   protected boolean _greaterEquals(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return (_intValue >= _longValue);
   }
   
   protected boolean _greaterEquals(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return (_intValue >= _shortValue);
   }
   
   protected boolean _greaterEquals(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n>= cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return (_intValue >= _intValue_1);
   }
   
   protected boolean _notSame(final Object left, final Object right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+    throw new ConstantExpressionEvaluationException(((("Unsupported operator \'!==\' for operands " + left) + " and ") + right));
   }
   
   protected boolean _notSame(final Byte left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    byte _byteValue_1 = right.byteValue();
+    return (_byteValue != _byteValue_1);
   }
   
   protected boolean _notSame(final Byte left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    double _doubleValue = right.doubleValue();
+    return (_byteValue != _doubleValue);
   }
   
   protected boolean _notSame(final Byte left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    float _floatValue = right.floatValue();
+    return (_byteValue != _floatValue);
   }
   
   protected boolean _notSame(final Byte left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    long _longValue = right.longValue();
+    return (_byteValue != _longValue);
   }
   
   protected boolean _notSame(final Byte left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    short _shortValue = right.shortValue();
+    return (_byteValue != _shortValue);
   }
   
   protected boolean _notSame(final Byte left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    byte _byteValue = left.byteValue();
+    int _intValue = right.intValue();
+    return (_byteValue != _intValue);
   }
   
   protected boolean _notSame(final Double left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    byte _byteValue = right.byteValue();
+    return (_doubleValue != _byteValue);
   }
   
   protected boolean _notSame(final Double left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    double _doubleValue_1 = right.doubleValue();
+    return (_doubleValue != _doubleValue_1);
   }
   
   protected boolean _notSame(final Double left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    float _floatValue = right.floatValue();
+    return (_doubleValue != _floatValue);
   }
   
   protected boolean _notSame(final Double left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    long _longValue = right.longValue();
+    return (_doubleValue != _longValue);
   }
   
   protected boolean _notSame(final Double left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    short _shortValue = right.shortValue();
+    return (_doubleValue != _shortValue);
   }
   
   protected boolean _notSame(final Double left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    double _doubleValue = left.doubleValue();
+    int _intValue = right.intValue();
+    return (_doubleValue != _intValue);
   }
   
   protected boolean _notSame(final Float left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    byte _byteValue = right.byteValue();
+    return (_floatValue != _byteValue);
   }
   
   protected boolean _notSame(final Float left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    double _doubleValue = right.doubleValue();
+    return (_floatValue != _doubleValue);
   }
   
   protected boolean _notSame(final Float left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    float _floatValue_1 = right.floatValue();
+    return (_floatValue != _floatValue_1);
   }
   
   protected boolean _notSame(final Float left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    long _longValue = right.longValue();
+    return (_floatValue != _longValue);
   }
   
   protected boolean _notSame(final Float left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    short _shortValue = right.shortValue();
+    return (_floatValue != _shortValue);
   }
   
   protected boolean _notSame(final Float left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    float _floatValue = left.floatValue();
+    int _intValue = right.intValue();
+    return (_floatValue != _intValue);
   }
   
   protected boolean _notSame(final Long left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    long _longValue = left.longValue();
+    byte _byteValue = right.byteValue();
+    return (_longValue != _byteValue);
   }
   
   protected boolean _notSame(final Long left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    long _longValue = left.longValue();
+    double _doubleValue = right.doubleValue();
+    return (_longValue != _doubleValue);
   }
   
   protected boolean _notSame(final Long left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    long _longValue = left.longValue();
+    float _floatValue = right.floatValue();
+    return (_longValue != _floatValue);
   }
   
   protected boolean _notSame(final Long left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    long _longValue = left.longValue();
+    long _longValue_1 = right.longValue();
+    return (_longValue != _longValue_1);
   }
   
   protected boolean _notSame(final Long left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    long _longValue = left.longValue();
+    short _shortValue = right.shortValue();
+    return (_longValue != _shortValue);
   }
   
   protected boolean _notSame(final Long left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    long _longValue = left.longValue();
+    int _intValue = right.intValue();
+    return (_longValue != _intValue);
   }
   
   protected boolean _notSame(final Short left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    byte _byteValue = right.byteValue();
+    return (_shortValue != _byteValue);
   }
   
   protected boolean _notSame(final Short left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    double _doubleValue = right.doubleValue();
+    return (_shortValue != _doubleValue);
   }
   
   protected boolean _notSame(final Short left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    float _floatValue = right.floatValue();
+    return (_shortValue != _floatValue);
   }
   
   protected boolean _notSame(final Short left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    long _longValue = right.longValue();
+    return (_shortValue != _longValue);
   }
   
   protected boolean _notSame(final Short left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    short _shortValue_1 = right.shortValue();
+    return (_shortValue != _shortValue_1);
   }
   
   protected boolean _notSame(final Short left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    short _shortValue = left.shortValue();
+    int _intValue = right.intValue();
+    return (_shortValue != _intValue);
   }
   
   protected boolean _notSame(final Integer left, final Byte right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    int _intValue = left.intValue();
+    byte _byteValue = right.byteValue();
+    return (_intValue != _byteValue);
   }
   
   protected boolean _notSame(final Integer left, final Double right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    int _intValue = left.intValue();
+    double _doubleValue = right.doubleValue();
+    return (_intValue != _doubleValue);
   }
   
   protected boolean _notSame(final Integer left, final Float right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    int _intValue = left.intValue();
+    float _floatValue = right.floatValue();
+    return (_intValue != _floatValue);
   }
   
   protected boolean _notSame(final Integer left, final Long right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    int _intValue = left.intValue();
+    long _longValue = right.longValue();
+    return (_intValue != _longValue);
   }
   
   protected boolean _notSame(final Integer left, final Short right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    int _intValue = left.intValue();
+    short _shortValue = right.shortValue();
+    return (_intValue != _shortValue);
   }
   
   protected boolean _notSame(final Integer left, final Integer right) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n!== cannot be resolved.");
+    int _intValue = left.intValue();
+    int _intValue_1 = right.intValue();
+    return (_intValue != _intValue_1);
   }
   
   public Object minus(final Object e) {
@@ -2409,7 +2787,7 @@ public class ConstantOperators {
     }
   }
   
-  public Object and(final Object left, final Object right) {
+  public boolean and(final Object left, final Object right) {
     if (left instanceof Boolean
          && right instanceof Boolean) {
       return _and((Boolean)left, (Boolean)right);
@@ -2422,7 +2800,7 @@ public class ConstantOperators {
     }
   }
   
-  public Object or(final Object left, final Object right) {
+  public boolean or(final Object left, final Object right) {
     if (left instanceof Boolean
          && right instanceof Boolean) {
       return _or((Boolean)left, (Boolean)right);

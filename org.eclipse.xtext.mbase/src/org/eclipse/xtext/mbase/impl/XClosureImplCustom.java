@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.util.Strings;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.resource.BatchLinkableResource;
 import com.google.common.base.Joiner;
 
@@ -65,7 +65,7 @@ public class XClosureImplCustom extends XClosureImpl {
 	{
 		switch (featureID)
 		{
-			case mbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
+			case MbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
 				linked = false;
 				getDeclaredFormalParameters().clear();
 				return;

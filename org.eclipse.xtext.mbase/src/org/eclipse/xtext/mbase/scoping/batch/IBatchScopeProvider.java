@@ -10,7 +10,7 @@ package org.eclipse.xtext.mbase.scoping.batch;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.scoping.IScopeProvider;
-import org.eclipse.xtext.mbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 import com.google.inject.ImplementedBy;
 
@@ -24,7 +24,7 @@ import com.google.inject.ImplementedBy;
  * 
  * TODO More JavaDoc, remove ImplementedBy annotation
  */
-@ImplementedBy(mbaseBatchScopeProvider.class)
+@ImplementedBy(MbaseBatchScopeProvider.class)
 public interface IBatchScopeProvider extends IScopeProvider {
 
 	/**

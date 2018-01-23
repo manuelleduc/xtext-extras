@@ -7,13 +7,20 @@
  */
 package org.eclipse.xtext.mbase.compiler.output;
 
+import com.google.common.base.Objects;
 import java.util.Arrays;
+import java.util.List;
+import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.mbase.compiler.ImportManager;
 import org.eclipse.xtext.mbase.compiler.StringBuilderBasedAppendable;
 import org.eclipse.xtext.mbase.compiler.output.SharedAppendableState;
 import org.eclipse.xtext.mbase.typesystem.references.ITypeReferenceOwner;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
+import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReferenceFactory;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReferenceSerializer;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * A specialized {@link StringConcatenation} that will properly convert instances of
@@ -23,29 +30,28 @@ import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReferenceSer
  * @author Sebastian Zarnekow - Initial contribution and API
  */
 @SuppressWarnings("all")
-public class ImportingStringConcatenation /* implements StringConcatenation  */{
+public class ImportingStringConcatenation extends StringConcatenation {
   private final ImportManager importManager;
   
   private final ITypeReferenceOwner typeReferenceOwner;
   
   public ImportingStringConcatenation(final SharedAppendableState state, final ITypeReferenceOwner typeReferenceOwner) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method super(String) is undefined");
+    super(state.getLineSeparator());
+    this.importManager = state.getImportManager();
+    this.typeReferenceOwner = typeReferenceOwner;
   }
   
   protected String _getStringRepresentation(final Object object) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field super is undefined"
-      + "\ngetStringRepresentation cannot be resolved");
+    return super.getStringRepresentation(object);
   }
   
-  protected String _getStringRepresentation(final /* JvmType */Object object) {
+  protected String _getStringRepresentation(final JvmType object) {
     return this.importManager.serialize(object).toString();
   }
   
-  protected String _getStringRepresentation(final /* JvmTypeReference */Object object) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method toLightweightReference(JvmTypeReference) is undefined for the type LightweightTypeReferenceFactory");
+  protected String _getStringRepresentation(final JvmTypeReference object) {
+    final LightweightTypeReference reference = new LightweightTypeReferenceFactory(this.typeReferenceOwner, true).toLightweightReference(object);
+    return this._getStringRepresentation(reference);
   }
   
   protected String _getStringRepresentation(final LightweightTypeReference object) {
@@ -63,28 +69,25 @@ public class ImportingStringConcatenation /* implements StringConcatenation  */{
    * A potentially contained trailing line delimiter is ignored.
    */
   @Override
-  protected Object getSignificantContent() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field super is undefined"
-      + "\nThe method or field lineDelimiter is undefined"
-      + "\ngetSignificantContent cannot be resolved"
-      + "\nsize cannot be resolved"
-      + "\n>= cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nlast cannot be resolved"
-      + "\nsubList cannot be resolved"
-      + "\nsize cannot be resolved"
-      + "\n- cannot be resolved");
+  protected List<String> getSignificantContent() {
+    final List<String> result = super.getSignificantContent();
+    if (((result.size() >= 1) && Objects.equal(this.getLineDelimiter(), IterableExtensions.<String>last(result)))) {
+      int _size = result.size();
+      int _minus = (_size - 1);
+      return result.subList(0, _minus);
+    }
+    return result;
   }
   
-  protected String getStringRepresentation(final JvmType object) {
-    if (object != null) {
-      return _getStringRepresentation(object);
-    } else if (object != null) {
-      return _getStringRepresentation(object);
-    } else if (object != null) {
-      return _getStringRepresentation(object);
+  protected String getStringRepresentation(final Object object) {
+    if (object instanceof JvmType) {
+      return _getStringRepresentation((JvmType)object);
+    } else if (object instanceof Class) {
+      return _getStringRepresentation((Class<?>)object);
+    } else if (object instanceof JvmTypeReference) {
+      return _getStringRepresentation((JvmTypeReference)object);
+    } else if (object instanceof LightweightTypeReference) {
+      return _getStringRepresentation((LightweightTypeReference)object);
     } else if (object != null) {
       return _getStringRepresentation(object);
     } else {

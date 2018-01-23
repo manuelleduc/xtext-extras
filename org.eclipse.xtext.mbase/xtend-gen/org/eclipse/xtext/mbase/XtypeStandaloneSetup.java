@@ -7,7 +7,11 @@
  */
 package org.eclipse.xtext.mbase;
 
+import com.google.inject.Injector;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.mbase.XtypeStandaloneSetupGenerated;
+import org.eclipse.xtext.xtype.XtypePackage;
 
 /**
  * Initialization support for running Xtext languages
@@ -17,27 +21,13 @@ import org.eclipse.xtext.mbase.XtypeStandaloneSetupGenerated;
 @SuppressWarnings("all")
 public class XtypeStandaloneSetup extends XtypeStandaloneSetupGenerated {
   public static void doSetup() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createInjectorAndDoEMFRegistration() from the type XtypeStandaloneSetup refers to the missing type Injector");
+    new XtypeStandaloneSetup().createInjectorAndDoEMFRegistration();
   }
   
   @Override
-  public /* Injector */Object createInjectorAndDoEMFRegistration() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field EPackage is undefined"
-      + "\nThe method or field TypesPackage is undefined"
-      + "\nThe method or field TypesPackage is undefined"
-      + "\nThe method or field EPackage is undefined"
-      + "\nThe method getNsURI() is undefined for the type XtypePackage"
-      + "\nThe method createInjectorAndDoEMFRegistration() is undefined for the type XtypeStandaloneSetupGenerated"
-      + "\nRegistry cannot be resolved"
-      + "\nINSTANCE cannot be resolved"
-      + "\nput cannot be resolved"
-      + "\neINSTANCE cannot be resolved"
-      + "\ngetNsURI cannot be resolved"
-      + "\neINSTANCE cannot be resolved"
-      + "\nRegistry cannot be resolved"
-      + "\nINSTANCE cannot be resolved"
-      + "\nput cannot be resolved");
+  public Injector createInjectorAndDoEMFRegistration() {
+    EPackage.Registry.INSTANCE.put(TypesPackage.eINSTANCE.getNsURI(), TypesPackage.eINSTANCE);
+    EPackage.Registry.INSTANCE.put(XtypePackage.eINSTANCE.getNsURI(), XtypePackage.eINSTANCE);
+    return super.createInjectorAndDoEMFRegistration();
   }
 }

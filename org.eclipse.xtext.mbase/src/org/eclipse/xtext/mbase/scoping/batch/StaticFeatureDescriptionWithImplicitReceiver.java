@@ -10,7 +10,7 @@ package org.eclipse.xtext.mbase.scoping.batch;
 import org.eclipse.xtext.common.types.JvmFeature;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbaseFactory;
+import org.eclipse.xtext.mbase.MbaseFactory;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
 
 /**
@@ -26,7 +26,7 @@ public class StaticFeatureDescriptionWithImplicitReceiver extends StaticFeatureD
 			int bucketId, boolean visible) {
 		super(qualifiedName, feature, bucketId, visible);
 		this.implicitReceiverType = receiverType;
-		this.implicitReceiver = mbaseFactory.eINSTANCE.createXFeatureCall();
+		this.implicitReceiver = MbaseFactory.eINSTANCE.createXFeatureCall();
 	}
 	
 	@Override

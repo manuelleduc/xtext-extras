@@ -1,7 +1,0 @@
-dependencies {
-	compile "org.eclipse.xtext:org.eclipse.xtext.xbase.lib:$versions.xtext"
-	compile "com.google.inject:guice:$versions.guice"
-	compile "junit:junit:$versions.junit"
-}
-
-uploadArchives.enabled = false

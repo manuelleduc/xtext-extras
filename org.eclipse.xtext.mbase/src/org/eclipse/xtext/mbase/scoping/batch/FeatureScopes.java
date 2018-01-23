@@ -15,17 +15,12 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmType;
-import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.impl.SimpleScope;
-import org.eclipse.xtext.util.Wrapper;
+import org.eclipse.xtext.mbase.MbaseFactory;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XFeatureCall;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
-import org.eclipse.xtext.mbase.mbaseFactory;
-import org.eclipse.xtext.mbase.mbasePackage;
 import org.eclipse.xtext.mbase.scoping.featurecalls.OperatorMapping;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.computation.IFeatureLinkingCandidate;
@@ -39,6 +34,11 @@ import org.eclipse.xtext.mbase.typesystem.references.LightweightBoundTypeArgumen
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
 import org.eclipse.xtext.mbase.typesystem.references.UnboundTypeReference;
 import org.eclipse.xtext.mbase.util.FeatureCallAsTypeLiteralHelper;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.impl.SimpleScope;
+import org.eclipse.xtext.util.Wrapper;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -66,7 +66,7 @@ public class FeatureScopes implements IFeatureNames {
 	private SynonymTypesProvider synonymProvider;
 	
 	@Inject(optional = true)
-	private mbaseFactory mbaseFactory = mbaseFactory.eINSTANCE;
+	private MbaseFactory mbaseFactory = MbaseFactory.eINSTANCE;
 	
 	@Inject
 	private FeatureCallAsTypeLiteralHelper typeLiteralHelper;
@@ -94,7 +94,7 @@ public class FeatureScopes implements IFeatureNames {
 	}
 
 	public boolean isFeatureCallScope(EReference reference) {
-		return reference == mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE;
+		return reference == MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE;
 	}
 	
 	/**
@@ -695,7 +695,7 @@ public class FeatureScopes implements IFeatureNames {
 		return typeLiteralHelper;
 	}
 	
-	protected mbaseFactory getmbaseFactory() {
+	protected MbaseFactory getMbaseFactory() {
 		return mbaseFactory;
 	}
 }

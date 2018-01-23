@@ -28,6 +28,8 @@ import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.formatting.IWhitespaceInformationProvider;
+import org.eclipse.xtext.mbase.conversion.MbaseQualifiedNameValueConverter;
+import org.eclipse.xtext.mbase.typesystem.util.Maps2;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
@@ -35,8 +37,6 @@ import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.ReplaceRegion;
 import org.eclipse.xtext.util.TextRegion;
-import org.eclipse.xtext.mbase.conversion.mbaseQualifiedNameValueConverter;
-import org.eclipse.xtext.mbase.typesystem.util.Maps2;
 import org.eclipse.xtext.xtype.XImportDeclaration;
 import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypeFactory;
@@ -71,7 +71,7 @@ public class RewritableImportSection {
 		private ImportSectionRegionUtil regionUtil;
 
 		@Inject
-		private mbaseQualifiedNameValueConverter nameValueConverter;
+		private MbaseQualifiedNameValueConverter nameValueConverter;
 
 		public RewritableImportSection parse(XtextResource resource) {
 			RewritableImportSection rewritableImportSection = new RewritableImportSection(resource, importsConfiguration,

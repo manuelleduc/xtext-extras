@@ -61,12 +61,12 @@ import org.eclipse.xtext.mbase.XListLiteral;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
 import org.eclipse.xtext.mbase.XStringLiteral;
 import org.eclipse.xtext.mbase.XVariableDeclaration;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.mbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.eclipse.xtext.mbase.jvmmodel.ILogicalContainerProvider;
-import org.eclipse.xtext.mbase.lib.IntegerExtensions;
-import org.eclipse.xtext.mbase.lib.LongExtensions;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
+import org.eclipse.xtext.xbase.lib.LongExtensions;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureNames;
 import org.eclipse.xtext.mbase.typesystem.IBatchTypeResolver;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
@@ -379,7 +379,7 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 			return true;
 		}
 		final EStructuralFeature eContainingFeature = expr.eContainingFeature();
-		if (eContainingFeature == mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+		if (eContainingFeature == MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
 			if (((XMemberFeatureCall) expr.eContainer()).isNullSafe()) {
 				if (expr instanceof XFeatureCall) {
 					JvmIdentifiableElement feature = ((XFeatureCall) expr).getFeature();
@@ -392,7 +392,7 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 				return false;
 			}
 		}
-		if (eContainingFeature == mbasePackage.Literals.XBINARY_OPERATION__LEFT_OPERAND) {
+		if (eContainingFeature == MbasePackage.Literals.XBINARY_OPERATION__LEFT_OPERAND) {
 			XBinaryOperation binaryOperation = (XBinaryOperation) expr.eContainer();
 			if (binaryOperation.isReassignFirstArgument()) {
 				return true;
@@ -443,9 +443,9 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 			JvmIdentifiableElement feature = featureCall.getFeature();
 			if (feature instanceof JvmField || feature instanceof JvmFormalParameter)
 				return false;
-			if (eContainingFeature == mbasePackage.Literals.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS
-					|| eContainingFeature == mbasePackage.Literals.XASSIGNMENT__VALUE
-					|| eContainingFeature == mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS) {
+			if (eContainingFeature == MbasePackage.Literals.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS
+					|| eContainingFeature == MbasePackage.Literals.XASSIGNMENT__VALUE
+					|| eContainingFeature == MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS) {
 				return false;
 			}
 			return !b.hasName(feature);
@@ -485,7 +485,7 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 		if (featureCall.isOperation()) {
 			return true;
 		}
-		if (featureCall.eClass() == mbasePackage.Literals.XMEMBER_FEATURE_CALL && featureCall.isStatic() && featureCall.isExtension() && featureCall.getActualArguments().size() == 2) {
+		if (featureCall.eClass() == MbasePackage.Literals.XMEMBER_FEATURE_CALL && featureCall.isStatic() && featureCall.isExtension() && featureCall.getActualArguments().size() == 2) {
 			JvmIdentifiableElement feature = featureCall.getFeature();
 			if (feature.eClass() == TypesPackage.Literals.JVM_OPERATION) {
 				JvmDeclaredType declarator = ((JvmOperation) feature).getDeclaringType();
@@ -563,7 +563,7 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 			final String referenceName = getReferenceName(call, b);
 			if (referenceName != null) {
 				if (call instanceof XFeatureCall || call instanceof XMemberFeatureCall) {
-					b.trace(call, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, 0).append(referenceName);
+					b.trace(call, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, 0).append(referenceName);
 				} else {
 					b.trace(call, false).append(referenceName);
 				}
@@ -888,8 +888,8 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 			boolean isArgument = expr.eContainer() instanceof XAbstractFeatureCall;
 			if (isArgument) {
 				EStructuralFeature containingFeature = expr.eContainingFeature();
-				if (containingFeature == mbasePackage.Literals.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS 
-						|| containingFeature == mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS) {
+				if (containingFeature == MbasePackage.Literals.XFEATURE_CALL__FEATURE_CALL_ARGUMENTS 
+						|| containingFeature == MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_ARGUMENTS) {
 					isArgument = false;
 				} else {
 					b.append("(");
@@ -936,7 +936,7 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 		}
 		if(name == null)
 			name = "/* name is null */";
-		b.trace(call, mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, 0).append(name);
+		b.trace(call, MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, 0).append(name);
 		if (feature instanceof JvmExecutable) {
 			b.append("(");
 			List<XExpression> arguments = getActualArguments(call);

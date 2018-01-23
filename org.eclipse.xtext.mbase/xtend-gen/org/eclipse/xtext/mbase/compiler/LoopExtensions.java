@@ -7,7 +7,12 @@
  */
 package org.eclipse.xtext.mbase.compiler;
 
+import java.util.function.Consumer;
+import org.eclipse.xtext.mbase.compiler.LoopParams;
 import org.eclipse.xtext.mbase.compiler.output.ITreeAppendable;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 /**
  * @author Jan Koehnlein
@@ -18,32 +23,42 @@ public class LoopExtensions {
    * Iterates elements and execute the procedure.
    * A prefix, a separator and a suffix can be initialized with the loopInitializer lambda.
    */
-  public <T extends Object> void forEach(final ITreeAppendable appendable, final Iterable<T> elements, final /*  */Object loopInitializer, final /*  */Object procedure) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field empty is undefined for the type Iterable<T>"
-      + "\n=> cannot be resolved."
-      + "\nThe method or field head is undefined for the type Iterable<T>"
-      + "\nThe method or field tail is undefined for the type Iterable<T>"
-      + "\nappendPrefix cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nforEach cannot be resolved"
-      + "\nappendSeparator cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nappendSuffix cannot be resolved");
+  public <T extends Object> void forEach(final ITreeAppendable appendable, final Iterable<T> elements, final Procedure1<? super LoopParams> loopInitializer, final Procedure1<? super T> procedure) {
+    boolean _isEmpty = IterableExtensions.isEmpty(elements);
+    if (_isEmpty) {
+      return;
+    }
+    LoopParams _loopParams = new LoopParams();
+    final LoopParams params = ObjectExtensions.<LoopParams>operator_doubleArrow(_loopParams, loopInitializer);
+    params.appendPrefix(appendable);
+    T _head = IterableExtensions.<T>head(elements);
+    ObjectExtensions.<T>operator_doubleArrow(_head, procedure);
+    final Consumer<T> _function = (T it) -> {
+      params.appendSeparator(appendable);
+      ObjectExtensions.<T>operator_doubleArrow(it, procedure);
+    };
+    IterableExtensions.<T>tail(elements).forEach(_function);
+    params.appendSuffix(appendable);
   }
   
   /**
    * Uses curly braces and comma as delimiters. Doesn't use them for single valued iterables.
    */
-  public <T extends Object> void forEachWithShortcut(final ITreeAppendable appendable, final Iterable<T> elements, final /*  */Object procedure) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field size is undefined for the type Iterable<T>"
-      + "\nThe method or field head is undefined for the type Iterable<T>"
-      + "\nThe method prefix(String) is undefined"
-      + "\nThe method separator(String) is undefined"
-      + "\nThe method suffix(String) is undefined"
-      + "\nThe method forEach(ITreeAppendable, Iterable<T>, Object, Object) from the type LoopExtensions refers to the missing type Object"
-      + "\n== cannot be resolved"
-      + "\n=> cannot be resolved");
+  public <T extends Object> void forEachWithShortcut(final ITreeAppendable appendable, final Iterable<T> elements, final Procedure1<? super T> procedure) {
+    int _size = IterableExtensions.size(elements);
+    boolean _equals = (_size == 1);
+    if (_equals) {
+      T _head = IterableExtensions.<T>head(elements);
+      ObjectExtensions.<T>operator_doubleArrow(_head, procedure);
+    } else {
+      appendable.append("{");
+      final Procedure1<LoopParams> _function = (LoopParams it) -> {
+        it.setPrefix(" ");
+        it.setSeparator(", ");
+        it.setSuffix(" ");
+      };
+      this.<T>forEach(appendable, elements, _function, procedure);
+      appendable.append("}");
+    }
   }
 }

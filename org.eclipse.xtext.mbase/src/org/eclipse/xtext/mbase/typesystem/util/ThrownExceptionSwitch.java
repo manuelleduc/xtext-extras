@@ -23,14 +23,14 @@ import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XThrowExpression;
 import org.eclipse.xtext.mbase.XTryCatchFinallyExpression;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
-import org.eclipse.xtext.mbase.util.mbaseSwitch;
+import org.eclipse.xtext.mbase.util.MbaseSwitch;
 
 import com.google.common.collect.Lists;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
  */
-public class ThrownExceptionSwitch extends mbaseSwitch<Boolean> {
+public class ThrownExceptionSwitch extends MbaseSwitch<Boolean> {
 	
 	private IThrownExceptionDelegate delegate;
 

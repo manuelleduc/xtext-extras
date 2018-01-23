@@ -8,7 +8,7 @@
 package org.eclipse.xtext.mbase.typesystem.computation;
 
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.annotations.typesystem.mbaseWithAnnotationsTypeComputer;
+import org.eclipse.xtext.mbase.annotations.typesystem.MbaseWithAnnotationsTypeComputer;
 
 import com.google.inject.ImplementedBy;
 
@@ -93,7 +93,7 @@ import com.google.inject.ImplementedBy;
  * 
  * @author Sebastian Zarnekow - Initial contribution and API
  */
-@ImplementedBy(mbaseTypeComputer.class)
+@ImplementedBy(MbaseTypeComputer.class)
 public interface ITypeComputer {
 
 	/**

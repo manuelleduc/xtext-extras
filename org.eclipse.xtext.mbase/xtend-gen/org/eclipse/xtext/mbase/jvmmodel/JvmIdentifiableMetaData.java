@@ -7,6 +7,11 @@
  */
 package org.eclipse.xtext.mbase.jvmmodel;
 
+import com.google.common.base.Objects;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtext.xbase.lib.Pure;
+
 /**
  * @noextend This class is not intended to be subclassed by clients.
  * @noinstantiate This class is not intended to be instantiated by clients.
@@ -15,13 +20,21 @@ package org.eclipse.xtext.mbase.jvmmodel;
  * @since 2.7
  */
 @SuppressWarnings("all")
-public class JvmIdentifiableMetaData /* implements AdapterImpl  */{
-  /* @Accessors
-   */private boolean synthetic;
+public class JvmIdentifiableMetaData extends AdapterImpl {
+  @Accessors
+  private boolean synthetic;
   
   @Override
-  public Object isAdapterForType(final Object type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n== cannot be resolved.");
+  public boolean isAdapterForType(final Object type) {
+    return Objects.equal(JvmIdentifiableMetaData.class, type);
+  }
+  
+  @Pure
+  public boolean isSynthetic() {
+    return this.synthetic;
+  }
+  
+  public void setSynthetic(final boolean synthetic) {
+    this.synthetic = synthetic;
   }
 }

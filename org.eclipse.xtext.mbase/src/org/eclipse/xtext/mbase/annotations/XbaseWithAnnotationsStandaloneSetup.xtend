@@ -15,7 +15,7 @@ import com.google.inject.Injector
  * Initialization support for running Xtext languages 
  * without equinox extension registry
  */
-class mbaseWithAnnotationsStandaloneSetup extends mbaseWithAnnotationsStandaloneSetupGenerated {
+class mbaseWithAnnotationsStandaloneSetup extends MbaseWithAnnotationsStandaloneSetupGenerated {
 
 	def static void doSetup() {
 		new mbaseWithAnnotationsStandaloneSetup().createInjectorAndDoEMFRegistration()

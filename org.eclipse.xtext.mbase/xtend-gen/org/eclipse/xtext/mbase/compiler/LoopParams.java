@@ -8,63 +8,79 @@
 package org.eclipse.xtext.mbase.compiler;
 
 import org.eclipse.xtext.mbase.compiler.output.ITreeAppendable;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 
 @SuppressWarnings("all")
 public class LoopParams {
-  private /*  */Object prefix;
+  private Function1<? super ITreeAppendable, ? extends ITreeAppendable> prefix;
   
-  private /*  */Object separator;
+  private Function1<? super ITreeAppendable, ? extends ITreeAppendable> separator;
   
-  private /*  */Object suffix;
+  private Function1<? super ITreeAppendable, ? extends ITreeAppendable> suffix;
   
-  public Object setPrefix(final /*  */Object prefix) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field LoopParams.prefix refers to the missing type Object");
+  public Function1<? super ITreeAppendable, ? extends ITreeAppendable> setPrefix(final Function1<? super ITreeAppendable, ? extends ITreeAppendable> prefix) {
+    return this.prefix = prefix;
   }
   
-  public Object setSeparator(final /*  */Object separator) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field LoopParams.separator refers to the missing type Object");
+  public Function1<? super ITreeAppendable, ? extends ITreeAppendable> setSeparator(final Function1<? super ITreeAppendable, ? extends ITreeAppendable> separator) {
+    return this.separator = separator;
   }
   
-  public Object setSuffix(final /*  */Object suffix) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field LoopParams.suffix refers to the missing type Object");
+  public Function1<? super ITreeAppendable, ? extends ITreeAppendable> setSuffix(final Function1<? super ITreeAppendable, ? extends ITreeAppendable> suffix) {
+    return this.suffix = suffix;
   }
   
-  public Object setPrefix(final String prefix) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method append(String) is undefined"
-      + "\nThe method setPrefix(Object) from the type LoopParams refers to the missing type Object");
+  public Function1<? super ITreeAppendable, ? extends ITreeAppendable> setPrefix(final String prefix) {
+    final Function1<ITreeAppendable, ITreeAppendable> _function = (ITreeAppendable it) -> {
+      return it.append(prefix);
+    };
+    return this.prefix = _function;
   }
   
-  public Object setSeparator(final String separator) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method append(String) is undefined"
-      + "\nThe method setSeparator(Object) from the type LoopParams refers to the missing type Object");
+  public Function1<? super ITreeAppendable, ? extends ITreeAppendable> setSeparator(final String separator) {
+    final Function1<ITreeAppendable, ITreeAppendable> _function = (ITreeAppendable it) -> {
+      return it.append(separator);
+    };
+    return this.separator = _function;
   }
   
-  public Object setSuffix(final String suffix) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method append(String) is undefined"
-      + "\nThe method setSuffix(Object) from the type LoopParams refers to the missing type Object");
+  public Function1<? super ITreeAppendable, ? extends ITreeAppendable> setSuffix(final String suffix) {
+    final Function1<ITreeAppendable, ITreeAppendable> _function = (ITreeAppendable it) -> {
+      return it.append(suffix);
+    };
+    return this.suffix = _function;
   }
   
   public ITreeAppendable appendPrefix(final ITreeAppendable app) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field LoopParams.prefix refers to the missing type Object"
-      + "\napply cannot be resolved");
+    ITreeAppendable _xblockexpression = null;
+    {
+      if (this.prefix!=null) {
+        this.prefix.apply(app);
+      }
+      _xblockexpression = app;
+    }
+    return _xblockexpression;
   }
   
   public ITreeAppendable appendSeparator(final ITreeAppendable app) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field LoopParams.separator refers to the missing type Object"
-      + "\napply cannot be resolved");
+    ITreeAppendable _xblockexpression = null;
+    {
+      if (this.separator!=null) {
+        this.separator.apply(app);
+      }
+      _xblockexpression = app;
+    }
+    return _xblockexpression;
   }
   
   public ITreeAppendable appendSuffix(final ITreeAppendable app) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field LoopParams.suffix refers to the missing type Object"
-      + "\napply cannot be resolved");
+    ITreeAppendable _xblockexpression = null;
+    {
+      if (this.suffix!=null) {
+        this.suffix.apply(app);
+      }
+      _xblockexpression = app;
+    }
+    return _xblockexpression;
   }
 }

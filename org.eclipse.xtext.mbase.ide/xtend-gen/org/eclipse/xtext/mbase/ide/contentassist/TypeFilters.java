@@ -7,15 +7,17 @@
  */
 package org.eclipse.xtext.mbase.ide.contentassist;
 
+import com.google.common.base.Predicate;
 import org.eclipse.xtext.mbase.ide.types.ITypeDescriptor;
+import org.objectweb.asm.Opcodes;
 
 @SuppressWarnings("all")
 final class TypeFilters {
-  public final static /* Predicate<ITypeDescriptor> */Object NON_ABSTRACT /* Skipped initializer because of errors */;
+  public final static Predicate<ITypeDescriptor> NON_ABSTRACT = ((Predicate<ITypeDescriptor>) (ITypeDescriptor typeDesc) -> {
+    return ((!TypeFilters.contains(typeDesc.getAccessFlags(), Opcodes.ACC_ABSTRACT)) && (!TypeFilters.contains(typeDesc.getAccessFlags(), Opcodes.ACC_INTERFACE)));
+  });
   
-  private static Object contains(final int flags, final int code) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method bitwiseAnd(int) is undefined for the type int"
-      + "\n!= cannot be resolved");
+  private static boolean contains(final int flags, final int code) {
+    return ((flags & code) != 0);
   }
 }

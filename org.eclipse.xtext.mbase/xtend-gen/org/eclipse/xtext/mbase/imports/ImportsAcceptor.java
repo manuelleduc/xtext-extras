@@ -8,48 +8,63 @@
 package org.eclipse.xtext.mbase.imports;
 
 import java.util.Set;
+import org.eclipse.xtend.lib.annotations.AccessorType;
+import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Pure;
 
 /**
  * @author dhuebner - Initial contribution and API
  */
 @SuppressWarnings("all")
 public interface ImportsAcceptor {
-  /* @Accessors(/* name is null */./* name is null */)
-   */public static class DefaultImportsAcceptor implements ImportsAcceptor {
-    private Set<String> types /* Skipped initializer because of errors */;
+  @Accessors(AccessorType.PUBLIC_GETTER)
+  public static class DefaultImportsAcceptor implements ImportsAcceptor {
+    private Set<String> types = CollectionLiterals.<String>newHashSet();
     
-    private Set<String> staticImport /* Skipped initializer because of errors */;
+    private Set<String> staticImport = CollectionLiterals.<String>newHashSet();
     
-    private Set<String> extensions /* Skipped initializer because of errors */;
+    private Set<String> extensions = CollectionLiterals.<String>newHashSet();
     
     @Override
-    public void acceptTypeImport(final /* JvmType */Object typeImport) {
-      throw new Error("Unresolved compilation problems:"
-        + "\nqualifiedNameWithout$ cannot be resolved");
+    public void acceptTypeImport(final JvmType typeImport) {
+      this.types.add(this.qualifiedNameWithout$(typeImport));
     }
     
     @Override
     public void acceptStaticImport(final XAbstractFeatureCall statImport) {
-      throw new Error("Unresolved compilation problems:"
-        + "\nThe method or field feature is undefined for the type XAbstractFeatureCall"
-        + "\nqualifiedNameWithout$ cannot be resolved");
+      this.staticImport.add(this.qualifiedNameWithout$(statImport.getFeature()));
     }
     
     @Override
     public void acceptStaticExtensionImport(final XAbstractFeatureCall extImport) {
-      throw new Error("Unresolved compilation problems:"
-        + "\nThe method or field feature is undefined for the type XAbstractFeatureCall"
-        + "\nqualifiedNameWithout$ cannot be resolved");
+      this.extensions.add(this.qualifiedNameWithout$(extImport.getFeature()));
     }
     
-    private String qualifiedNameWithout$(final /* JvmIdentifiableElement */Object ele) {
-      throw new Error("Unresolved compilation problems:"
-        + "\ngetQualifiedName cannot be resolved");
+    private String qualifiedNameWithout$(final JvmIdentifiableElement ele) {
+      return ele.getQualifiedName('.');
+    }
+    
+    @Pure
+    public Set<String> getTypes() {
+      return this.types;
+    }
+    
+    @Pure
+    public Set<String> getStaticImport() {
+      return this.staticImport;
+    }
+    
+    @Pure
+    public Set<String> getExtensions() {
+      return this.extensions;
     }
   }
   
-  public abstract void acceptTypeImport(final /* JvmType */Object typeImport);
+  public abstract void acceptTypeImport(final JvmType typeImport);
   
   public abstract void acceptStaticImport(final XAbstractFeatureCall staticImport);
   

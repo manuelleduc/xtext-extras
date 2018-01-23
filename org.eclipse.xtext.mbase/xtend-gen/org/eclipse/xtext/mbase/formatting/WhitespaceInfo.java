@@ -1,42 +1,58 @@
 package org.eclipse.xtext.mbase.formatting;
 
+import org.eclipse.xtend.lib.annotations.Data;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.mbase.formatting.CommentInfo;
+import org.eclipse.xtext.mbase.formatting.HiddenLeafs;
 import org.eclipse.xtext.mbase.formatting.LeafInfo;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.xbase.lib.Pure;
 
-@Deprecated/* 
-@Data */
+@Deprecated
+@Data
 @SuppressWarnings("all")
 public class WhitespaceInfo extends LeafInfo {
-  private int offset;
+  private final int offset;
   
-  public Object getLength() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field node is not visible"
-      + "\nThe field LeafInfo.node refers to the missing type ILeafNode"
-      + "\nlength cannot be resolved");
+  public int getLength() {
+    ILeafNode _node = this.getNode();
+    int _length = 0;
+    if (_node!=null) {
+      _length=_node.getLength();
+    }
+    return _length;
   }
   
   public CommentInfo leadingComment() {
-    throw new Error("Unresolved compilation problems:"
-      + "\n- cannot be resolved."
-      + "\nThe field container is not visible"
-      + "\nThe field leafs is not visible"
-      + "\nThe field container is not visible"
-      + "\nThe field leafs is not visible"
-      + "\n>= cannot be resolved");
+    CommentInfo _xblockexpression = null;
+    {
+      int _indexOf = this.getContainer().getLeafs().indexOf(this);
+      final int i = (_indexOf - 1);
+      CommentInfo _xifexpression = null;
+      if ((i >= 0)) {
+        LeafInfo _get = this.getContainer().getLeafs().get(i);
+        _xifexpression = ((CommentInfo) _get);
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
   public CommentInfo trailingComment() {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\nThe field container is not visible"
-      + "\nThe field leafs is not visible"
-      + "\nThe field container is not visible"
-      + "\nThe field leafs is not visible"
-      + "\nThe field container is not visible"
-      + "\nThe field leafs is not visible"
-      + "\n< cannot be resolved");
+    CommentInfo _xblockexpression = null;
+    {
+      int _indexOf = this.getContainer().getLeafs().indexOf(this);
+      final int i = (_indexOf + 1);
+      CommentInfo _xifexpression = null;
+      int _size = this.getContainer().getLeafs().size();
+      boolean _lessThan = (i < _size);
+      if (_lessThan) {
+        LeafInfo _get = this.getContainer().getLeafs().get(i);
+        _xifexpression = ((CommentInfo) _get);
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
   @Override
@@ -45,5 +61,41 @@ public class WhitespaceInfo extends LeafInfo {
     _builder.append("WS: \"�node?.text�\"");
     _builder.newLine();
     return _builder.toString();
+  }
+  
+  public WhitespaceInfo(final HiddenLeafs container, final ILeafNode node, final int newLines, final int offset) {
+    super(container, node, newLines);
+    this.offset = offset;
+  }
+  
+  @Override
+  @Pure
+  public int hashCode() {
+    final int prime = 31;
+    int result = super.hashCode();
+    result = prime * result + this.offset;
+    return result;
+  }
+  
+  @Override
+  @Pure
+  public boolean equals(final Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    if (!super.equals(obj))
+      return false;
+    WhitespaceInfo other = (WhitespaceInfo) obj;
+    if (other.offset != this.offset)
+      return false;
+    return true;
+  }
+  
+  @Pure
+  public int getOffset() {
+    return this.offset;
   }
 }

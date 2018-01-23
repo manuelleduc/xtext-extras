@@ -9,7 +9,7 @@ package org.eclipse.xtext.mbase.compiler;
 
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.xtext.mbase.compiler.output.ITreeAppendable;
-import org.eclipse.xtext.mbase.lib.Procedures;
+import org.eclipse.xtext.xbase.lib.Procedures;
 
 /**
  * @author Sven Efftinge - Initial contribution and API

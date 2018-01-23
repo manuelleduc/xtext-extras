@@ -36,7 +36,7 @@ import org.eclipse.xtext.mbase.XConstructorCall;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XFeatureCall;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.scoping.batch.IFeatureScopeSession;
 import org.eclipse.xtext.mbase.scoping.batch.IIdentifiableElementDescription;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
@@ -72,7 +72,7 @@ public class ScopeProviderAccess {
 		if (result != null) {
 			return new AppliedFeatureLinkingCandidate(result);
 		}
-		EObject proxyOrResolved = (EObject) featureCall.eGet(mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false);
+		EObject proxyOrResolved = (EObject) featureCall.eGet(MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false);
 		if (proxyOrResolved == null) {
 			return new NullFeatureLinkingCandidate(featureCall, state);
 		}
@@ -95,7 +95,7 @@ public class ScopeProviderAccess {
 		if (result != null) {
 			return result;
 		}
-		EObject proxyOrResolved = (EObject) constructorCall.eGet(mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, false);
+		EObject proxyOrResolved = (EObject) constructorCall.eGet(MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, false);
 		if (proxyOrResolved == null) {
 			result = new NullConstructorLinkingCandidate(constructorCall, state);
 			return result;
@@ -190,7 +190,7 @@ public class ScopeProviderAccess {
 			if (!canBeTypeLiteral(featureCall)) {
 				return node;
 			}
-			if (featureCall.eContainingFeature() == mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+			if (featureCall.eContainingFeature() == MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
 				XMemberFeatureCall container = (XMemberFeatureCall) featureCall.eContainer();
 				if (canBeTypeLiteral(container)) {
 					boolean explicitStatic = container.isExplicitStatic();
@@ -205,7 +205,7 @@ public class ScopeProviderAccess {
 
 	/* @Nullable */
 	private XMemberFeatureCall getLongestTypeLiteralCandidate(XMemberFeatureCall current, boolean mustBeStatic) {
-		if (current.eContainingFeature() == mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+		if (current.eContainingFeature() == MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
 			XMemberFeatureCall container = (XMemberFeatureCall) current.eContainer();
 			if (canBeTypeLiteral(container)) {
 				if (!mustBeStatic && !container.isExplicitStatic()) {
@@ -214,7 +214,7 @@ public class ScopeProviderAccess {
 				if (mustBeStatic != container.isExplicitStatic()) {
 					return current;
 				}
-				if (mustBeStatic && container.eContainingFeature() != mbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
+				if (mustBeStatic && container.eContainingFeature() != MbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET) {
 					return current;
 				}
 				return getLongestTypeLiteralCandidate(container, mustBeStatic);

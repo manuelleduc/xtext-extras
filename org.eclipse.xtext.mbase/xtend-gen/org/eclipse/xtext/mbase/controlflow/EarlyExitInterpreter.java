@@ -7,8 +7,11 @@
  */
 package org.eclipse.xtext.mbase.controlflow;
 
+import com.google.common.base.Objects;
 import org.eclipse.xtext.mbase.XExpression;
+import org.eclipse.xtext.mbase.interpreter.ConstantExpressionEvaluationException;
 import org.eclipse.xtext.mbase.interpreter.SwitchConstantExpressionsInterpreter;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
@@ -16,7 +19,16 @@ import org.eclipse.xtext.mbase.interpreter.SwitchConstantExpressionsInterpreter;
 @SuppressWarnings("all")
 public class EarlyExitInterpreter extends SwitchConstantExpressionsInterpreter {
   public boolean isConstant(final XExpression it, final Object value) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n== cannot be resolved.");
+    try {
+      final Object constant = this.evaluate(it);
+      return Objects.equal(value, constant);
+    } catch (final Throwable _t) {
+      if (_t instanceof ConstantExpressionEvaluationException) {
+        final ConstantExpressionEvaluationException e = (ConstantExpressionEvaluationException)_t;
+        return false;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
   }
 }

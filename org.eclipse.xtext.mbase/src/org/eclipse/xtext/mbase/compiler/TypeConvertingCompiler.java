@@ -23,9 +23,9 @@ import org.eclipse.xtext.mbase.XBlockExpression;
 import org.eclipse.xtext.mbase.XCastedExpression;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.compiler.output.ITreeAppendable;
-import org.eclipse.xtext.mbase.lib.Conversions;
-import org.eclipse.xtext.mbase.lib.Functions;
-import org.eclipse.xtext.mbase.lib.Procedures;
+import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Functions;
+import org.eclipse.xtext.xbase.lib.Procedures;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.references.AnyTypeReference;
 import org.eclipse.xtext.mbase.typesystem.references.CompoundTypeReference;
@@ -38,7 +38,7 @@ import com.google.common.collect.Lists;
 /**
  * @author Sven Efftinge - Initial contribution and API
  */
-public class TypeConvertingCompiler extends AbstractmbaseCompiler {
+public class TypeConvertingCompiler extends AbstractMbaseCompiler {
 
 	@Override
 	protected final void internalToJavaExpression(final XExpression obj, final ITreeAppendable appendable) {

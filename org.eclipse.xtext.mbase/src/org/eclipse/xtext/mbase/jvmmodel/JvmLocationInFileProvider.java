@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.resource.ILocationInFileProviderExtension;
 import org.eclipse.xtext.util.ITextRegion;
-import org.eclipse.xtext.mbase.resource.mbaseLocationInFileProvider;
+import org.eclipse.xtext.mbase.resource.MbaseLocationInFileProvider;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -23,7 +23,7 @@ import com.google.inject.Singleton;
  * @since 2.7
  */
 @Singleton
-public class JvmLocationInFileProvider extends mbaseLocationInFileProvider {
+public class JvmLocationInFileProvider extends MbaseLocationInFileProvider {
 
 	@Inject
 	private IJvmModelAssociations jvmAssociations;

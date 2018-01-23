@@ -34,8 +34,8 @@ import org.eclipse.xtext.service.OperationCanceledManager;
 import org.eclipse.xtext.util.internal.Stopwatches;
 import org.eclipse.xtext.util.internal.Stopwatches.StoppedTask;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.lib.Pair;
-import org.eclipse.xtext.mbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Pair;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.mbase.typesystem.util.Maps2;
 
 import com.google.common.base.Preconditions;

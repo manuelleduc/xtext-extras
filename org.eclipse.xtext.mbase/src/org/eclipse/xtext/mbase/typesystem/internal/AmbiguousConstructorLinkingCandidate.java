@@ -10,7 +10,7 @@ package org.eclipse.xtext.mbase.typesystem.internal;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.common.types.JvmConstructor;
 import org.eclipse.xtext.mbase.XConstructorCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.computation.IConstructorLinkingCandidate;
 
 /**
@@ -45,7 +45,7 @@ public class AmbiguousConstructorLinkingCandidate extends AbstractAmbiguousLinki
 	
 	@Override
 	protected EStructuralFeature getFeatureToMark() {
-		return mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR;
+		return MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR;
 	}
 
 	@Override

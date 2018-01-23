@@ -25,15 +25,15 @@ import org.eclipse.xtext.mbase.XConstructorCall
 import org.eclipse.xtext.mbase.XFeatureCall
 import org.eclipse.xtext.mbase.XMemberFeatureCall
 import org.eclipse.xtext.mbase.XTypeLiteral
-import org.eclipse.xtext.mbase.mbasePackage
+import org.eclipse.xtext.mbase.MbasePackage
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotation
-import org.eclipse.xtext.mbase.services.mbaseGrammarAccess
+import org.eclipse.xtext.mbase.services.MbaseGrammarAccess
 
 /**
  * @author Dennis Huebner - Initial contribution and API
  */
 class ImportsCollector {
-	@Inject mbaseGrammarAccess grammarAccess
+	@Inject MbaseGrammarAccess grammarAccess
 
 	/**
 	 * Collects import declarations in XtextResource for the given range (selectedRegion) 
@@ -141,7 +141,7 @@ class ImportsCollector {
 	}
 
 	dispatch def void visit(XTypeLiteral semanticElement, INode originNode, ImportsAcceptor acceptor) {
-		val elementNode = NodeModelUtils.findNodesForFeature(semanticElement, mbasePackage.Literals.XTYPE_LITERAL__TYPE)
+		val elementNode = NodeModelUtils.findNodesForFeature(semanticElement, MbasePackage.Literals.XTYPE_LITERAL__TYPE)
 		visit(semanticElement.type, elementNode.head, acceptor)
 	}
 

@@ -14,7 +14,7 @@ import com.google.inject.ImplementedBy;
 /**
  * @author Stefan Oehme - Initial contribution and API
  */
-@ImplementedBy(mbaseImplicitReturnFinder.class)
+@ImplementedBy(MbaseImplicitReturnFinder.class)
 public interface ImplicitReturnFinder {
 
 	void findImplicitReturns(XExpression expression, Acceptor acceptor);

@@ -7,7 +7,25 @@
  */
 package org.eclipse.xtext.mbase.controlflow;
 
+import com.google.common.base.Objects;
+import com.google.inject.Inject;
+import com.google.inject.Provider;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend.lib.annotations.AccessorType;
+import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.JvmEnumerationLiteral;
+import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.common.types.JvmFormalParameter;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.JvmMember;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XBinaryOperation;
 import org.eclipse.xtext.mbase.XBooleanLiteral;
@@ -16,16 +34,25 @@ import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XNullLiteral;
 import org.eclipse.xtext.mbase.XNumberLiteral;
 import org.eclipse.xtext.mbase.XStringLiteral;
+import org.eclipse.xtext.mbase.XSwitchExpression;
 import org.eclipse.xtext.mbase.XTypeLiteral;
 import org.eclipse.xtext.mbase.XUnaryOperation;
+import org.eclipse.xtext.mbase.XVariableDeclaration;
 import org.eclipse.xtext.mbase.controlflow.BooleanResult;
 import org.eclipse.xtext.mbase.controlflow.EvaluationContext;
 import org.eclipse.xtext.mbase.controlflow.EvaluationResult;
 import org.eclipse.xtext.mbase.controlflow.IConstantEvaluationResult;
+import org.eclipse.xtext.mbase.controlflow.ThisReference;
 import org.eclipse.xtext.mbase.interpreter.ConstantExpressionEvaluationException;
 import org.eclipse.xtext.mbase.interpreter.ConstantOperators;
 import org.eclipse.xtext.mbase.jvmmodel.ILogicalContainerProvider;
+import org.eclipse.xtext.mbase.scoping.XImportSectionNamespaceScopeProvider;
 import org.eclipse.xtext.mbase.typesystem.computation.NumberLiterals;
+import org.eclipse.xtext.resource.persistence.StorageAwareResource;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Pure;
 
 /**
  * Interpreter for expressions at development time that uses the static linking
@@ -33,32 +60,48 @@ import org.eclipse.xtext.mbase.typesystem.computation.NumberLiterals;
  * 
  * @author Sebastian Zarnekow - Initial contribution and API
  */
-/* @Accessors(/* name is null */) */@SuppressWarnings("all")
+@Accessors(AccessorType.PROTECTED_GETTER)
+@SuppressWarnings("all")
 public class ConstantConditionsInterpreter {
-  /* @Inject
-   */private ILogicalContainerProvider logicalContainerProvider;
-  
-  /* @Inject
-   */private NumberLiterals numberLiterals;
-  
-  /* @Inject
-   */private ConstantOperators constantOperators;
-  
-  /* @Accessors(/* name is null */)
   @Inject
-   */private /* Provider<EvaluationContext> */Object evaluationContextProvider;
+  private ILogicalContainerProvider logicalContainerProvider;
+  
+  @Inject
+  @Extension
+  private NumberLiterals numberLiterals;
+  
+  @Inject
+  private ConstantOperators constantOperators;
+  
+  @Accessors(AccessorType.NONE)
+  @Inject
+  private Provider<EvaluationContext> evaluationContextProvider;
   
   public BooleanResult getBooleanConstantOrNull(final XExpression it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field rawValue is not visible"
-      + "\nInvalid number of arguments. The constructor BooleanResult() is not applicable for the arguments (Boolean,boolean)"
-      + "\nThe field rawValue is not visible");
+    try {
+      final EvaluationResult evaluationResult = this.doEvaluate(it, this.newEvaluationContext());
+      Object _rawValue = evaluationResult.getRawValue();
+      if ((_rawValue instanceof Boolean)) {
+        Object _rawValue_1 = evaluationResult.getRawValue();
+        boolean _isCompileTimeConstant = evaluationResult.isCompileTimeConstant();
+        return new BooleanResult(((Boolean) _rawValue_1), _isCompileTimeConstant);
+      }
+      return null;
+    } catch (final Throwable _t) {
+      if (_t instanceof ConstantExpressionEvaluationException) {
+        final ConstantExpressionEvaluationException e = (ConstantExpressionEvaluationException)_t;
+        return null;
+      } else if (_t instanceof IllegalArgumentException) {
+        final IllegalArgumentException e_1 = (IllegalArgumentException)_t;
+        return null;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
   }
   
   public EvaluationContext newEvaluationContext() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ConstantConditionsInterpreter.evaluationContextProvider refers to the missing type Provider"
-      + "\nget cannot be resolved");
+    return this.evaluationContextProvider.get();
   }
   
   protected EvaluationResult doEvaluate(final XExpression expression, final EvaluationContext context) {
@@ -87,177 +130,346 @@ public class ConstantConditionsInterpreter {
   }
   
   protected EvaluationResult _internalEvaluate(final XNumberLiteral it, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method numberValue(Object) is undefined"
-      + "\nThe method or field javaType is undefined"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)");
+    final Number value = this.numberLiterals.numberValue(it, this.numberLiterals.getJavaType(it));
+    boolean _isPrimitive = context.getResolvedTypes().getActualType(it).isPrimitive();
+    return new EvaluationResult(value, _isPrimitive);
   }
   
   protected EvaluationResult _internalEvaluate(final XAbstractFeatureCall it, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmType cannot be resolved to a type."
-      + "\nJvmType cannot be resolved to a type."
-      + "\nJvmEnumerationLiteral cannot be resolved to a type."
-      + "\nJvmField cannot be resolved to a type."
-      + "\nJvmIdentifiableElement cannot be resolved to a type."
-      + "\nJvmFormalParameter cannot be resolved to a type."
-      + "\n! cannot be resolved."
-      + "\n!== cannot be resolved."
-      + "\nThe method newArrayList(Object) is undefined"
-      + "\nThe method newArrayList(JvmIdentifiableElement) is undefined"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (ThisReference,boolean)"
-      + "\nInvalid number of arguments. The constructor ThisReference() is not applicable for the arguments (JvmIdentifiableElement)"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (JvmIdentifiableElement,boolean)"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)"
-      + "\nThe field rawValue is not visible"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (JvmIdentifiableElement,boolean)"
-      + "\nThe method getFeature(XAbstractFeatureCall, EvaluationContext) from the type ConstantConditionsInterpreter refers to the missing type JvmIdentifiableElement"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\n=== cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\neIsProxy cannot be resolved"
-      + "\nsetConstant cannot be resolved"
-      + "\nconstant cannot be resolved"
-      + "\nconstantValue cannot be resolved"
-      + "\nfinal cannot be resolved"
-      + "\nassociatedExpression cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nevaluateAssociatedExpression cannot be resolved"
-      + "\nrawValue cannot be resolved"
-      + "\nrawValue cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\nassociatedExpression cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nevaluateAssociatedExpression cannot be resolved"
-      + "\nrawValue cannot be resolved"
-      + "\nwriteable cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nright cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nright cannot be resolved"
-      + "\nevaluateAssociatedExpression cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\n^switch cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\n^switch cannot be resolved"
-      + "\ndoEvaluate cannot be resolved");
+    final JvmIdentifiableElement feature = this.getFeature(it, context);
+    if (((feature == null) || feature.eIsProxy())) {
+      return EvaluationResult.NOT_A_CONSTANT;
+    }
+    boolean _matched = false;
+    if (feature instanceof JvmType) {
+      boolean _isTypeLiteral = it.isTypeLiteral();
+      boolean _not = (!_isTypeLiteral);
+      if (_not) {
+        _matched=true;
+        ThisReference _thisReference = new ThisReference(((JvmType)feature));
+        return new EvaluationResult(_thisReference, false);
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof JvmType) {
+        _matched=true;
+      }
+      if (!_matched) {
+        if (feature instanceof JvmEnumerationLiteral) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        return new EvaluationResult(feature, false);
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof JvmField) {
+        _matched=true;
+        boolean _isSetConstant = ((JvmField)feature).isSetConstant();
+        if (_isSetConstant) {
+          boolean _isConstant = ((JvmField)feature).isConstant();
+          if (_isConstant) {
+            Object _constantValue = ((JvmField)feature).getConstantValue();
+            return new EvaluationResult(_constantValue, true);
+          }
+        } else {
+          boolean _isFinal = ((JvmField)feature).isFinal();
+          if (_isFinal) {
+            XExpression _actualReceiver = it.getActualReceiver();
+            boolean _tripleNotEquals = (_actualReceiver != null);
+            if (_tripleNotEquals) {
+              final EvaluationResult receiver = this.doEvaluate(it.getActualReceiver(), context);
+              boolean _isNotAConstant = receiver.isNotAConstant();
+              if (_isNotAConstant) {
+                return receiver;
+              }
+              final XExpression associatedExpression = this.getAssociatedExpression(((JvmField)feature));
+              if ((associatedExpression != null)) {
+                final EvaluationResult result = this.evaluateAssociatedExpression(associatedExpression, context);
+                Object _rawValue = result.getRawValue();
+                if ((_rawValue instanceof ThisReference)) {
+                  return EvaluationResult.NOT_A_CONSTANT;
+                }
+                Object _rawValue_1 = result.getRawValue();
+                return new EvaluationResult(_rawValue_1, false);
+              } else {
+                ArrayList<Object> _switchResult_1 = null;
+                Object _rawValue_2 = receiver.getRawValue();
+                final Object v = _rawValue_2;
+                boolean _matched_1 = false;
+                if (v instanceof JvmIdentifiableElement) {
+                  _matched_1=true;
+                }
+                if (!_matched_1) {
+                  if (v instanceof ThisReference) {
+                    _matched_1=true;
+                  }
+                }
+                if (_matched_1) {
+                  _switchResult_1 = CollectionLiterals.<Object>newArrayList(v);
+                }
+                if (!_matched_1) {
+                  if (v instanceof List) {
+                    _matched_1=true;
+                    _switchResult_1 = new ArrayList<Object>(((Collection<?>)v));
+                  }
+                }
+                final ArrayList<Object> list = _switchResult_1;
+                list.add(feature);
+                return new EvaluationResult(list, false);
+              }
+            } else {
+              final XExpression associatedExpression_1 = this.getAssociatedExpression(((JvmField)feature));
+              if ((associatedExpression_1 != null)) {
+                final EvaluationResult result_1 = this.evaluateAssociatedExpression(associatedExpression_1, context);
+                Object _rawValue_3 = result_1.getRawValue();
+                return new EvaluationResult(_rawValue_3, false);
+              } else {
+                ArrayList<JvmField> _newArrayList = CollectionLiterals.<JvmField>newArrayList(((JvmField)feature));
+                return new EvaluationResult(_newArrayList, false);
+              }
+            }
+          }
+        }
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof XVariableDeclaration) {
+        if (((!((XVariableDeclaration)feature).isWriteable()) && (((XVariableDeclaration)feature).getRight() != null))) {
+          _matched=true;
+          return this.evaluateAssociatedExpression(((XVariableDeclaration)feature).getRight(), context);
+        }
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof JvmFormalParameter) {
+        _matched=true;
+        EObject _eContainer = ((JvmFormalParameter)feature).eContainer();
+        final EObject container = _eContainer;
+        boolean _matched_1 = false;
+        if (container instanceof XSwitchExpression) {
+          XExpression _switch = ((XSwitchExpression)container).getSwitch();
+          boolean _tripleNotEquals = (_switch != null);
+          if (_tripleNotEquals) {
+            _matched_1=true;
+            return this.doEvaluate(((XSwitchExpression)container).getSwitch(), context);
+          }
+        }
+        return new EvaluationResult(feature, false);
+      }
+    }
+    return EvaluationResult.NOT_A_CONSTANT;
   }
   
   public JvmIdentifiableElement getFeature(final XAbstractFeatureCall call, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmIdentifiableElement cannot be resolved to a type."
-      + "\nThe method eGet(Object, boolean) is undefined for the type XAbstractFeatureCall"
-      + "\nThe method or field XABSTRACT_FEATURE_CALL__FEATURE is undefined for the type Class<Literals>"
-      + "\nThe method getLinkedFeature(XAbstractFeatureCall) is undefined for the type IResolvedTypes"
-      + "\n=== cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\neIsProxy cannot be resolved");
+    Object _eGet = call.eGet(MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false);
+    JvmIdentifiableElement feature = ((JvmIdentifiableElement) _eGet);
+    if (((feature == null) || feature.eIsProxy())) {
+      feature = context.getResolvedTypes().getLinkedFeature(call);
+    }
+    return feature;
   }
   
-  public XExpression getAssociatedExpression(final /* JvmField */Object field) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nStorageAwareResource cannot be resolved to a type."
-      + "\nInvalid number of arguments. The method getAssociatedExpression(JvmField) is not applicable for the arguments (ILogicalContainerProvider,JvmField)"
-      + "\nThe method getAssociatedExpression(JvmField) from the type ConstantConditionsInterpreter refers to the missing type JvmField"
-      + "\neResource cannot be resolved"
-      + "\nisLoadedFromStorage cannot be resolved");
+  public XExpression getAssociatedExpression(final JvmField field) {
+    final Resource resource = field.eResource();
+    if ((resource instanceof StorageAwareResource)) {
+      boolean _isLoadedFromStorage = ((StorageAwareResource)resource).isLoadedFromStorage();
+      if (_isLoadedFromStorage) {
+        return null;
+      }
+    }
+    return this.logicalContainerProvider.getAssociatedExpression(field);
   }
   
   public EvaluationResult evaluateAssociatedExpression(final XExpression it, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmEnumerationLiteral cannot be resolved to a type."
-      + "\nInvalid number of arguments. The method getFeature(XAbstractFeatureCall, EvaluationContext) is not applicable for the arguments (XAbstractFeatureCall)"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)"
-      + "\nThe field rawValue is not visible"
-      + "\nThe method getFeature(XAbstractFeatureCall, EvaluationContext) from the type ConstantConditionsInterpreter refers to the missing type JvmIdentifiableElement");
+    EvaluationResult _switchResult = null;
+    boolean _matched = false;
+    if (it instanceof XAbstractFeatureCall) {
+      JvmIdentifiableElement _feature = ((XAbstractFeatureCall)it).getFeature();
+      if ((_feature instanceof JvmEnumerationLiteral)) {
+        _matched=true;
+        final EvaluationResult arg = this.doEvaluate(it, context);
+        Object _rawValue = arg.getRawValue();
+        return new EvaluationResult(_rawValue, false);
+      }
+    }
+    if (!_matched) {
+      _switchResult = this.doEvaluate(it, context);
+    }
+    return _switchResult;
   }
   
   protected EvaluationResult _internalEvaluate(final XNullLiteral it, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (null,boolean)");
+    return new EvaluationResult(null, true);
   }
   
   private boolean isFrommbaseLibrary(final XAbstractFeatureCall it, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmMember cannot be resolved to a type."
-      + "\nThe method or field mbase_LIB is undefined for the type Class<XImportSectionNamespaceScopeProvider>"
-      + "\nThe method getFeature(XAbstractFeatureCall, EvaluationContext) from the type ConstantConditionsInterpreter refers to the missing type JvmIdentifiableElement"
-      + "\ndeclaringType cannot be resolved"
-      + "\npackageName cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\ntoString cannot be resolved");
+    boolean _xblockexpression = false;
+    {
+      final JvmIdentifiableElement feature = this.getFeature(it, context);
+      boolean _switchResult = false;
+      boolean _matched = false;
+      if (feature instanceof JvmMember) {
+        _matched=true;
+        JvmDeclaredType _declaringType = null;
+        if (((JvmMember)feature)!=null) {
+          _declaringType=((JvmMember)feature).getDeclaringType();
+        }
+        String _packageName = null;
+        if (_declaringType!=null) {
+          _packageName=_declaringType.getPackageName();
+        }
+        String _string = XImportSectionNamespaceScopeProvider.mbase_LIB.toString();
+        _switchResult = Objects.equal(_packageName, _string);
+      }
+      if (!_matched) {
+        _switchResult = false;
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
   }
   
   protected EvaluationResult _internalEvaluate(final XUnaryOperation it, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n== cannot be resolved."
-      + "\n! cannot be resolved."
-      + "\n== cannot be resolved."
-      + "\nThe field rawValue is not visible"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)"
-      + "\nThe field rawValue is not visible"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\n&& cannot be resolved"
-      + "\n&& cannot be resolved");
+    EvaluationResult _xifexpression = null;
+    boolean _isFrommbaseLibrary = this.isFrommbaseLibrary(it, context);
+    if (_isFrommbaseLibrary) {
+      EvaluationResult _xblockexpression = null;
+      {
+        final EvaluationResult arg = this.doEvaluate(it.getOperand(), context);
+        final String op = it.getConcreteSyntaxFeatureName();
+        EvaluationResult _switchResult = null;
+        boolean _matched = false;
+        if (Objects.equal(op, "-")) {
+          _matched=true;
+          try {
+            final Object result = this.constantOperators.minus(arg.getRawValue());
+            boolean _isCompileTimeConstant = arg.isCompileTimeConstant();
+            return new EvaluationResult(result, _isCompileTimeConstant);
+          } catch (final Throwable _t) {
+            if (_t instanceof ConstantExpressionEvaluationException) {
+              final ConstantExpressionEvaluationException e = (ConstantExpressionEvaluationException)_t;
+              return EvaluationResult.NOT_A_CONSTANT;
+            } else {
+              throw Exceptions.sneakyThrow(_t);
+            }
+          }
+        }
+        if (!_matched) {
+          if ((Objects.equal(op, "!") && (arg.getRawValue() instanceof Boolean))) {
+            _matched=true;
+            Object _rawValue = arg.getRawValue();
+            boolean _not = (!(((Boolean) _rawValue)).booleanValue());
+            boolean _isCompileTimeConstant_1 = arg.isCompileTimeConstant();
+            _switchResult = new EvaluationResult(Boolean.valueOf(_not), _isCompileTimeConstant_1);
+          }
+        }
+        if (!_matched) {
+          if ((Objects.equal(op, "+") && (arg.getRawValue() instanceof Number))) {
+            _matched=true;
+            _switchResult = arg;
+          }
+        }
+        if (!_matched) {
+          _switchResult = EvaluationResult.NOT_A_CONSTANT;
+        }
+        _xblockexpression = _switchResult;
+      }
+      _xifexpression = _xblockexpression;
+    } else {
+      return EvaluationResult.NOT_A_CONSTANT;
+    }
+    return _xifexpression;
   }
   
   protected EvaluationResult _internalEvaluate(final XBinaryOperation it, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n&& cannot be resolved."
-      + "\n!== cannot be resolved."
-      + "\n&& cannot be resolved."
-      + "\n&& cannot be resolved."
-      + "\n|| cannot be resolved."
-      + "\n&& cannot be resolved."
-      + "\n|| cannot be resolved."
-      + "\n! cannot be resolved."
-      + "\n&& cannot be resolved."
-      + "\n&& cannot be resolved."
-      + "\n&& cannot be resolved."
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nThe field rawValue is not visible"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,Object)"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,Object)"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,Object)"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,Object)");
+    if ((this.isFrommbaseLibrary(it, context) && (it.getRightOperand() != null))) {
+      final EvaluationResult left = this.doEvaluate(it.getLeftOperand(), context);
+      final EvaluationResult right = this.doEvaluate(it.getRightOperand(), context);
+      try {
+        final String op = it.getConcreteSyntaxFeatureName();
+        Object _switchResult = null;
+        if (op != null) {
+          switch (op) {
+            case "+":
+              _switchResult = this.constantOperators.plus(left.getRawValue(), right.getRawValue());
+              break;
+            case "-":
+              _switchResult = this.constantOperators.minus(left.getRawValue(), right.getRawValue());
+              break;
+            case "*":
+              _switchResult = this.constantOperators.multiply(left.getRawValue(), right.getRawValue());
+              break;
+            case "/":
+              _switchResult = this.constantOperators.divide(left.getRawValue(), right.getRawValue());
+              break;
+            case "%":
+              _switchResult = this.constantOperators.modulo(left.getRawValue(), right.getRawValue());
+              break;
+            case "<<":
+              _switchResult = this.constantOperators.shiftLeft(left.getRawValue(), right.getRawValue());
+              break;
+            case ">>":
+              _switchResult = this.constantOperators.shiftRight(left.getRawValue(), right.getRawValue());
+              break;
+            case ">>>":
+              _switchResult = this.constantOperators.shiftRightUnsigned(left.getRawValue(), right.getRawValue());
+              break;
+            case "<":
+              _switchResult = Boolean.valueOf(this.constantOperators.lessThan(left.getRawValue(), right.getRawValue()));
+              break;
+            case ">":
+              _switchResult = Boolean.valueOf(this.constantOperators.greaterThan(left.getRawValue(), right.getRawValue()));
+              break;
+            case "<=":
+              _switchResult = Boolean.valueOf(this.constantOperators.lessEquals(left.getRawValue(), right.getRawValue()));
+              break;
+            case ">=":
+              _switchResult = Boolean.valueOf(this.constantOperators.greaterEquals(left.getRawValue(), right.getRawValue()));
+              break;
+            case "&&":
+              return this.internalLogicalAnd(left.getRawValue(), right.getRawValue(), (left.isCompileTimeConstant() && right.isCompileTimeConstant()));
+            case "||":
+              return this.internalLogicalOr(left.getRawValue(), right.getRawValue(), (left.isCompileTimeConstant() && right.isCompileTimeConstant()));
+            case "==":
+            case "===":
+              if ((left.isNotAConstant() || right.isNotAConstant())) {
+                return EvaluationResult.NOT_A_CONSTANT;
+              }
+              Object _equalValue = left.equalValue(right);
+              return new EvaluationResult(_equalValue, (left.isCompileTimeConstant() && right.isCompileTimeConstant()));
+            case "!=":
+            case "!==":
+              if ((left.isNotAConstant() || right.isNotAConstant())) {
+                return EvaluationResult.NOT_A_CONSTANT;
+              }
+              final Object result = left.equalValue(right);
+              boolean _matched = false;
+              if (result instanceof Boolean) {
+                _matched=true;
+                return new EvaluationResult(Boolean.valueOf((!((Boolean) result).booleanValue())), (left.isCompileTimeConstant() && right.isCompileTimeConstant()));
+              }
+              return new EvaluationResult(result, (left.isCompileTimeConstant() && right.isCompileTimeConstant()));
+            default:
+              return EvaluationResult.NOT_A_CONSTANT;
+          }
+        } else {
+          return EvaluationResult.NOT_A_CONSTANT;
+        }
+        final Object value = _switchResult;
+        return new EvaluationResult(value, (left.isCompileTimeConstant() && right.isCompileTimeConstant()));
+      } catch (final Throwable _t) {
+        if (_t instanceof ConstantExpressionEvaluationException) {
+          final ConstantExpressionEvaluationException e = (ConstantExpressionEvaluationException)_t;
+          return EvaluationResult.NOT_A_CONSTANT;
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
+    } else {
+      return EvaluationResult.NOT_A_CONSTANT;
+    }
   }
   
   protected EvaluationResult _internalLogicalAnd(final Object left, final Object right, final boolean compileTimeConstant) {
@@ -265,27 +477,28 @@ public class ConstantConditionsInterpreter {
   }
   
   protected EvaluationResult _internalLogicalAnd(final Boolean left, final Boolean right, final boolean compileTimeConstant) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n&& cannot be resolved."
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)");
+    return new EvaluationResult(Boolean.valueOf(((left).booleanValue() && (right).booleanValue())), compileTimeConstant);
   }
   
   protected EvaluationResult _internalLogicalAnd(final Boolean left, final Object right, final boolean compileTimeConstant) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n! cannot be resolved."
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Boolean,boolean)");
+    if ((!(left).booleanValue())) {
+      return new EvaluationResult(Boolean.FALSE, compileTimeConstant);
+    }
+    return EvaluationResult.NOT_A_CONSTANT;
   }
   
   protected EvaluationResult _internalLogicalAnd(final Boolean left, final Void right, final boolean compileTimeConstant) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n! cannot be resolved."
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Boolean,boolean)");
+    if ((!(left).booleanValue())) {
+      return new EvaluationResult(Boolean.FALSE, compileTimeConstant);
+    }
+    return EvaluationResult.NOT_A_CONSTANT;
   }
   
   protected EvaluationResult _internalLogicalAnd(final Object left, final Boolean right, final boolean compileTimeConstant) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n! cannot be resolved."
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Boolean,boolean)");
+    if ((!(right).booleanValue())) {
+      return new EvaluationResult(Boolean.FALSE, compileTimeConstant);
+    }
+    return EvaluationResult.NOT_A_CONSTANT;
   }
   
   protected EvaluationResult _internalLogicalAnd(final Void left, final Boolean right, final boolean compileTimeConstant) {
@@ -297,24 +510,28 @@ public class ConstantConditionsInterpreter {
   }
   
   protected EvaluationResult _internalLogicalOr(final Boolean left, final Boolean right, final boolean compileTimeConstant) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n|| cannot be resolved."
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Object,boolean)");
+    return new EvaluationResult(Boolean.valueOf(((left).booleanValue() || (right).booleanValue())), compileTimeConstant);
   }
   
   protected EvaluationResult _internalLogicalOr(final Boolean left, final Object right, final boolean compileTimeConstant) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Boolean,boolean)");
+    if ((left).booleanValue()) {
+      return new EvaluationResult(Boolean.TRUE, compileTimeConstant);
+    }
+    return EvaluationResult.NOT_A_CONSTANT;
   }
   
   protected EvaluationResult _internalLogicalOr(final Boolean left, final Void right, final boolean compileTimeConstant) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Boolean,boolean)");
+    if ((left).booleanValue()) {
+      return new EvaluationResult(Boolean.TRUE, compileTimeConstant);
+    }
+    return EvaluationResult.NOT_A_CONSTANT;
   }
   
   protected EvaluationResult _internalLogicalOr(final Object left, final Boolean right, final boolean compileTimeConstant) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (Boolean,boolean)");
+    if ((right).booleanValue()) {
+      return new EvaluationResult(Boolean.TRUE, compileTimeConstant);
+    }
+    return EvaluationResult.NOT_A_CONSTANT;
   }
   
   protected EvaluationResult _internalLogicalOr(final Void left, final Boolean right, final boolean compileTimeConstant) {
@@ -326,18 +543,17 @@ public class ConstantConditionsInterpreter {
   }
   
   protected EvaluationResult _internalEvaluate(final XStringLiteral it, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (String,boolean)");
+    String _value = it.getValue();
+    return new EvaluationResult(_value, true);
   }
   
   protected EvaluationResult _internalEvaluate(final XBooleanLiteral it, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (boolean,boolean)");
+    boolean _isIsTrue = it.isIsTrue();
+    return new EvaluationResult(Boolean.valueOf(_isIsTrue), true);
   }
   
   protected EvaluationResult _internalEvaluate(final XTypeLiteral it, final EvaluationContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInvalid number of arguments. The constructor EvaluationResult() is not applicable for the arguments (XTypeLiteral,boolean)");
+    return new EvaluationResult(it, false);
   }
   
   public EvaluationResult internalEvaluate(final XExpression it, final EvaluationContext context) {
@@ -359,10 +575,10 @@ public class ConstantConditionsInterpreter {
       return _internalEvaluate((XStringLiteral)it, context);
     } else if (it instanceof XTypeLiteral) {
       return _internalEvaluate((XTypeLiteral)it, context);
-    } else if (it == null) {
-      return _internalEvaluate((Void)null, context);
     } else if (it != null) {
       return _internalEvaluate(it, context);
+    } else if (it == null) {
+      return _internalEvaluate((Void)null, context);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(it, context).toString());
@@ -417,5 +633,20 @@ public class ConstantConditionsInterpreter {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(left, right, compileTimeConstant).toString());
     }
+  }
+  
+  @Pure
+  protected ILogicalContainerProvider getLogicalContainerProvider() {
+    return this.logicalContainerProvider;
+  }
+  
+  @Pure
+  protected NumberLiterals getNumberLiterals() {
+    return this.numberLiterals;
+  }
+  
+  @Pure
+  protected ConstantOperators getConstantOperators() {
+    return this.constantOperators;
   }
 }

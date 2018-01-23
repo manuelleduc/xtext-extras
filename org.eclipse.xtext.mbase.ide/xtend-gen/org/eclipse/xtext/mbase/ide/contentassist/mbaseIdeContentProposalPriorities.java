@@ -7,51 +7,66 @@
  */
 package org.eclipse.xtext.mbase.ide.contentassist;
 
+import com.google.common.base.Objects;
+import org.eclipse.xtext.common.types.JvmExecutable;
+import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.ide.editor.contentassist.ContentAssistEntry;
+import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalPriorities;
 import org.eclipse.xtext.mbase.ide.types.ITypeDescriptor;
+import org.eclipse.xtext.mbase.scoping.batch.IIdentifiableElementDescription;
+import org.eclipse.xtext.mbase.scoping.batch.SimpleIdentifiableElementDescription;
+import org.eclipse.xtext.mbase.scoping.batch.StaticFeatureDescriptionWithTypeLiteralReceiver;
+import org.eclipse.xtext.resource.IEObjectDescription;
 
 @SuppressWarnings("all")
-public class mbaseIdeContentProposalPriorities /* implements IdeContentProposalPriorities  */{
+public class mbaseIdeContentProposalPriorities extends IdeContentProposalPriorities {
   @Override
-  public Object getCrossRefPriority(final /* IEObjectDescription */Object objectDesc, final /* ContentAssistEntry */Object entry) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nSimpleIdentifiableElementDescription cannot be resolved to a type."
-      + "\nStaticFeatureDescriptionWithTypeLiteralReceiver cannot be resolved to a type."
-      + "\nIIdentifiableElementDescription cannot be resolved to a type."
-      + "\nJvmField cannot be resolved to a type."
-      + "\nJvmExecutable cannot be resolved to a type."
-      + "\nThe method adjustPriority(ContentAssistEntry, Object) is undefined"
-      + "\n+ cannot be resolved."
-      + "\nThe method adjustPriority(ContentAssistEntry, Object) is undefined"
-      + "\n+ cannot be resolved."
-      + "\nThe method adjustPriority(ContentAssistEntry, Object) is undefined"
-      + "\n+ cannot be resolved."
-      + "\nThe method adjustPriority(ContentAssistEntry, Object) is undefined"
-      + "\n+ cannot be resolved."
-      + "\nThe method or field super is undefined"
-      + "\nInvalid number of arguments. The method getCrossRefPriority(IEObjectDescription, ContentAssistEntry) is not applicable for the arguments (mbaseIdeContentProposalPriorities)"
-      + "\nInvalid number of arguments. The method getCrossRefPriority(IEObjectDescription, ContentAssistEntry) is not applicable for the arguments (mbaseIdeContentProposalPriorities)"
-      + "\nInvalid number of arguments. The method getCrossRefPriority(IEObjectDescription, ContentAssistEntry) is not applicable for the arguments (mbaseIdeContentProposalPriorities)"
-      + "\nInvalid number of arguments. The method getCrossRefPriority(IEObjectDescription, ContentAssistEntry) is not applicable for the arguments (mbaseIdeContentProposalPriorities)"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nThe method getCrossRefPriority(IEObjectDescription, ContentAssistEntry) from the type mbaseIdeContentProposalPriorities refers to the missing type IEObjectDescription"
-      + "\nThe method getCrossRefPriority(IEObjectDescription, ContentAssistEntry) from the type mbaseIdeContentProposalPriorities refers to the missing type IEObjectDescription"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nThe method getCrossRefPriority(IEObjectDescription, ContentAssistEntry) from the type mbaseIdeContentProposalPriorities refers to the missing type IEObjectDescription"
-      + "\nThe method getCrossRefPriority(IEObjectDescription, ContentAssistEntry) from the type mbaseIdeContentProposalPriorities refers to the missing type IEObjectDescription"
-      + "\n!== cannot be resolved"
-      + "\nproposal cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nproposal cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nelementOrProxy cannot be resolved"
-      + "\ngetCrossRefPriority cannot be resolved");
+  public int getCrossRefPriority(final IEObjectDescription objectDesc, final ContentAssistEntry entry) {
+    if ((entry != null)) {
+      boolean _matched = false;
+      if (objectDesc instanceof SimpleIdentifiableElementDescription) {
+        if (((!Objects.equal(entry.getProposal(), "this")) && (!Objects.equal(entry.getProposal(), "super")))) {
+          _matched=true;
+          int _crossRefPriority = this.getCrossRefPriority();
+          int _plus = (_crossRefPriority + 70);
+          return this.adjustPriority(entry, _plus);
+        }
+      }
+      if (!_matched) {
+        if (objectDesc instanceof StaticFeatureDescriptionWithTypeLiteralReceiver) {
+          _matched=true;
+          int _crossRefPriority = this.getCrossRefPriority();
+          int _plus = (_crossRefPriority + 60);
+          return this.adjustPriority(entry, _plus);
+        }
+      }
+      if (!_matched) {
+        if (objectDesc instanceof IIdentifiableElementDescription) {
+          _matched=true;
+          JvmIdentifiableElement _elementOrProxy = ((IIdentifiableElementDescription)objectDesc).getElementOrProxy();
+          boolean _matched_1 = false;
+          if (_elementOrProxy instanceof JvmField) {
+            _matched_1=true;
+            int _crossRefPriority = this.getCrossRefPriority();
+            int _plus = (_crossRefPriority + 50);
+            return this.adjustPriority(entry, _plus);
+          }
+          if (!_matched_1) {
+            if (_elementOrProxy instanceof JvmExecutable) {
+              _matched_1=true;
+              int _crossRefPriority = this.getCrossRefPriority();
+              int _plus = (_crossRefPriority + 20);
+              return this.adjustPriority(entry, _plus);
+            }
+          }
+        }
+      }
+    }
+    return super.getCrossRefPriority(objectDesc, entry);
   }
   
-  public Object getTypeRefPriority(final ITypeDescriptor typeDesc, final /* ContentAssistEntry */Object entry) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method adjustPriority(ContentAssistEntry, Object) is undefined"
-      + "\nInvalid number of arguments. The method getCrossRefPriority(IEObjectDescription, ContentAssistEntry) is not applicable for the arguments (mbaseIdeContentProposalPriorities)"
-      + "\nThe method getCrossRefPriority(IEObjectDescription, ContentAssistEntry) from the type mbaseIdeContentProposalPriorities refers to the missing type IEObjectDescription");
+  public int getTypeRefPriority(final ITypeDescriptor typeDesc, final ContentAssistEntry entry) {
+    return this.adjustPriority(entry, this.getCrossRefPriority());
   }
 }

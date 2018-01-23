@@ -7,15 +7,19 @@
  */
 package org.eclipse.xtext.mbase.formatting2;
 
+import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.formatting2.regionaccess.ITextSegment;
 import org.eclipse.xtext.mbase.formatting2.Entry;
 import org.eclipse.xtext.mbase.formatting2.ObjectEntry;
+import org.eclipse.xtext.xbase.lib.Pure;
 
 /**
  * @author Moritz Eysholdt - Initial implementation and API
  */
-/* @Accessors */@SuppressWarnings("all")
-public class SeparatorEntry<T extends Object, R/*  extends ITextSegment */> extends Entry<T, R> {
+@Accessors
+@SuppressWarnings("all")
+public class SeparatorEntry<T extends Object, R extends ITextSegment> extends Entry<T, R> {
   private R separator;
   
   @Override
@@ -51,5 +55,14 @@ public class SeparatorEntry<T extends Object, R/*  extends ITextSegment */> exte
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("\"�separator.text�\" at offset=�separator.offset� lenght=�separator.length�");
     return _builder.toString();
+  }
+  
+  @Pure
+  public R getSeparator() {
+    return this.separator;
+  }
+  
+  public void setSeparator(final R separator) {
+    this.separator = separator;
   }
 }

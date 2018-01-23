@@ -17,7 +17,7 @@ import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.conformance.ConformanceFlags;
 import org.eclipse.xtext.mbase.typesystem.internal.util.FeatureKinds;
@@ -71,7 +71,7 @@ public class ImplicitReceiver extends AbstractImplicitFeature {
 				String message = String.format("Cannot make a static reference to the non-static %s %s from the type %s", typeName, feature.getSimpleName(), getFeature().getSimpleName());
 				AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 						IssueCodes.STATIC_ACCESS_TO_INSTANCE_MEMBER, message, getOwner(),
-						mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+						MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 				result.accept(diagnostic);
 				return false;
 			} else if (implicitFeature instanceof JvmFeature && !((JvmFeature) implicitFeature).isStatic()) {
@@ -82,7 +82,7 @@ public class ImplicitReceiver extends AbstractImplicitFeature {
 				String message = String.format("Cannot make an implicit static reference to the non-static extension %s", feature.getSimpleName());
 				AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 						IssueCodes.STATIC_ACCESS_TO_INSTANCE_MEMBER, message, getOwner(),
-						mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+						MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 				result.accept(diagnostic);
 				return false;
 			}

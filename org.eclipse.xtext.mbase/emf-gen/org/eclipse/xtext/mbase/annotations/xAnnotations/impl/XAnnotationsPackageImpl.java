@@ -15,14 +15,14 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.common.types.TypesPackage;
 
-import org.eclipse.xtext.mbase.mbasePackage;
-
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationElementValuePair;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsFactory;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotationsPackage;
 
 import org.eclipse.xtext.mbase.impl.mbasePackageImpl;
+
+import org.eclipse.xtext.mbase.mbasePackage;
 
 import org.eclipse.xtext.xtype.XtypePackage;
 

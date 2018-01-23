@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.common.types.JvmMember;
+import org.eclipse.xtext.mbase.conversion.MbaseQualifiedNameValueConverter;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.ReplaceRegion;
-import org.eclipse.xtext.mbase.conversion.mbaseQualifiedNameValueConverter;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
@@ -49,7 +49,7 @@ public class ImportOrganizer {
 	private IUnresolvedTypeResolver unresolvedTypeResolver;
 
 	@Inject
-	private mbaseQualifiedNameValueConverter nameValueConverter;
+	private MbaseQualifiedNameValueConverter nameValueConverter;
 
 	public List<ReplaceRegion> getOrganizedImportChanges(XtextResource resource) {
 		TypeUsageCollector typeUsageCollector = typeUsageCollectorProvider.get();

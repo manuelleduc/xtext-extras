@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2017 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2010-2018 itemis AG (http://www.itemis.eu) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,13 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.formatting2.FormatterPreferenceValuesProvider;
 import org.eclipse.xtext.formatting2.FormatterPreferences;
 import org.eclipse.xtext.formatting2.IFormatter2;
+import org.eclipse.xtext.mbase.formatting2.XtypeFormatter;
+import org.eclipse.xtext.mbase.parser.antlr.XtypeAntlrTokenFileProvider;
+import org.eclipse.xtext.mbase.parser.antlr.XtypeParser;
+import org.eclipse.xtext.mbase.parser.antlr.internal.InternalXtypeLexer;
+import org.eclipse.xtext.mbase.serializer.XtypeSemanticSequencer;
+import org.eclipse.xtext.mbase.serializer.XtypeSyntacticSequencer;
+import org.eclipse.xtext.mbase.services.XtypeGrammarAccess;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.parser.ITokenToStringConverter;
 import org.eclipse.xtext.parser.antlr.AntlrTokenDefProvider;
@@ -31,13 +38,6 @@ import org.eclipse.xtext.serializer.impl.Serializer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISyntacticSequencer;
 import org.eclipse.xtext.service.DefaultRuntimeModule;
-import org.eclipse.xtext.mbase.formatting2.XtypeFormatter;
-import org.eclipse.xtext.mbase.parser.antlr.XtypeAntlrTokenFileProvider;
-import org.eclipse.xtext.mbase.parser.antlr.XtypeParser;
-import org.eclipse.xtext.mbase.parser.antlr.internal.InternalXtypeLexer;
-import org.eclipse.xtext.mbase.serializer.XtypeSemanticSequencer;
-import org.eclipse.xtext.mbase.serializer.XtypeSyntacticSequencer;
-import org.eclipse.xtext.mbase.services.XtypeGrammarAccess;
 
 /**
  * Manual modifications go to {@link XtypeRuntimeModule}.

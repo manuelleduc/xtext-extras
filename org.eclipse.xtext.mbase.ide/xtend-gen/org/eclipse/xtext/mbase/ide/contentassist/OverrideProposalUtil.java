@@ -7,119 +7,122 @@
  */
 package org.eclipse.xtext.mbase.ide.contentassist;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.inject.Inject;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import org.eclipse.xtext.common.types.JvmConstructor;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.JvmExecutable;
+import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.mbase.compiler.IGeneratorConfigProvider;
+import org.eclipse.xtext.mbase.typesystem.override.IResolvedConstructor;
+import org.eclipse.xtext.mbase.typesystem.override.IResolvedExecutable;
+import org.eclipse.xtext.mbase.typesystem.override.IResolvedOperation;
+import org.eclipse.xtext.mbase.typesystem.override.OverrideHelper;
+import org.eclipse.xtext.mbase.typesystem.override.ResolvedConstructor;
+import org.eclipse.xtext.mbase.typesystem.override.ResolvedFeatures;
+import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
+import org.eclipse.xtext.mbase.typesystem.util.ContextualVisibilityHelper;
+import org.eclipse.xtext.mbase.typesystem.util.IVisibilityHelper;
+import org.eclipse.xtext.util.JavaVersion;
 
 @SuppressWarnings("all")
 public class OverrideProposalUtil {
-  /* @Inject
-   */private /* IGeneratorConfigProvider */Object generatorConfigProvider;
+  @Inject
+  private IGeneratorConfigProvider generatorConfigProvider;
   
-  /* @Inject
-   */private /* OverrideHelper */Object overrideHelper;
+  @Inject
+  private OverrideHelper overrideHelper;
   
-  /* @Inject
-   */private /* IVisibilityHelper */Object visibilityHelper;
+  @Inject
+  private IVisibilityHelper visibilityHelper;
   
-  public /* List<IResolvedExecutable> */Object getImplementationCandidates(final /* JvmDeclaredType */Object type, final boolean isAnonymous) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmGenericType cannot be resolved to a type."
-      + "\nJavaVersion cannot be resolved to a type."
-      + "\nResolvedFeatures cannot be resolved to a type."
-      + "\nIResolvedExecutable cannot be resolved to a type."
-      + "\nContextualVisibilityHelper cannot be resolved to a type."
-      + "\nJvmGenericType cannot be resolved to a type."
-      + "\n! cannot be resolved."
-      + "\nThe method newArrayList() is undefined"
-      + "\nContextualVisibilityHelper cannot be resolved."
-      + "\n! cannot be resolved."
-      + "\nThe field OverrideProposalUtil.generatorConfigProvider refers to the missing type IGeneratorConfigProvider"
-      + "\nThe field OverrideProposalUtil.overrideHelper refers to the missing type OverrideHelper"
-      + "\nThe field OverrideProposalUtil.visibilityHelper refers to the missing type IVisibilityHelper"
-      + "\nThe method addOperationCandidates(ResolvedFeatures, IVisibilityHelper, List<IResolvedExecutable>) from the type OverrideProposalUtil refers to the missing type ResolvedFeatures"
-      + "\nThe method addConstructorCandidates(ResolvedFeatures, IVisibilityHelper, List<IResolvedExecutable>) from the type OverrideProposalUtil refers to the missing type ResolvedFeatures"
-      + "\n=== cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ngetJavaSourceVersion cannot be resolved"
-      + "\ngetResolvedFeatures cannot be resolved"
-      + "\ngetType cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nisInterface cannot be resolved"
-      + "\n! cannot be resolved");
+  public List<IResolvedExecutable> getImplementationCandidates(final JvmDeclaredType type, final boolean isAnonymous) {
+    if (((type == null) || (!(type instanceof JvmGenericType)))) {
+      return Collections.<IResolvedExecutable>emptyList();
+    }
+    JavaVersion sourceVersion = this.generatorConfigProvider.get(type).getJavaSourceVersion();
+    ResolvedFeatures resolvedFeatures = this.overrideHelper.getResolvedFeatures(type, sourceVersion);
+    List<IResolvedExecutable> result = Lists.<IResolvedExecutable>newArrayList();
+    LightweightTypeReference _type = resolvedFeatures.getType();
+    ContextualVisibilityHelper contextualVisibilityHelper = new ContextualVisibilityHelper(this.visibilityHelper, _type);
+    this.addOperationCandidates(resolvedFeatures, contextualVisibilityHelper, result);
+    if (((!isAnonymous) && (!((JvmGenericType) type).isInterface()))) {
+      this.addConstructorCandidates(resolvedFeatures, contextualVisibilityHelper, result);
+    }
+    return result;
   }
   
-  protected void addOperationCandidates(final /* ResolvedFeatures */Object resolvedFeatures, final /* IVisibilityHelper */Object visibilityHelper, final /* List<IResolvedExecutable> */Object result) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nIResolvedOperation cannot be resolved to a type."
-      + "\nLightweightTypeReference cannot be resolved to a type."
-      + "\nIResolvedOperation cannot be resolved to a type."
-      + "\nThe method isCandidate(LightweightTypeReference, IResolvedExecutable, IVisibilityHelper) from the type OverrideProposalUtil refers to the missing type LightweightTypeReference"
-      + "\ngetAllOperations cannot be resolved"
-      + "\ngetType cannot be resolved");
+  protected void addOperationCandidates(final ResolvedFeatures resolvedFeatures, final IVisibilityHelper visibilityHelper, final List<IResolvedExecutable> result) {
+    List<IResolvedOperation> allOperations = resolvedFeatures.getAllOperations();
+    LightweightTypeReference inferredType = resolvedFeatures.getType();
+    for (final IResolvedOperation operation : allOperations) {
+      boolean _isCandidate = this.isCandidate(inferredType, operation, visibilityHelper);
+      if (_isCandidate) {
+        result.add(operation);
+      }
+    }
   }
   
-  protected void addConstructorCandidates(final /* ResolvedFeatures */Object resolvedFeatures, final /* IVisibilityHelper */Object visibilityHelper, final /* List<IResolvedExecutable> */Object result) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nLightweightTypeReference cannot be resolved to a type."
-      + "\nLightweightTypeReference cannot be resolved to a type."
-      + "\nLightweightTypeReference cannot be resolved to a type."
-      + "\nIResolvedConstructor cannot be resolved to a type."
-      + "\nIResolvedConstructor cannot be resolved to a type."
-      + "\nResolvedFeatures cannot be resolved to a type."
-      + "\nIResolvedConstructor cannot be resolved to a type."
-      + "\nIResolvedConstructor cannot be resolved to a type."
-      + "\nIResolvedConstructor cannot be resolved to a type."
-      + "\nThe method or field Sets is undefined"
-      + "\nResolvedConstructor cannot be resolved."
-      + "\nThe field OverrideProposalUtil.overrideHelper refers to the missing type OverrideHelper"
-      + "\nThe method isCandidate(LightweightTypeReference, IResolvedExecutable, IVisibilityHelper) from the type OverrideProposalUtil refers to the missing type LightweightTypeReference"
-      + "\ngetType cannot be resolved"
-      + "\ngetSuperTypes cannot be resolved"
-      + "\nisInterfaceType cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\ngetDeclaredConstructors cannot be resolved"
-      + "\nnewHashSet cannot be resolved"
-      + "\ngetResolvedErasureSignature cannot be resolved"
-      + "\ngetResolvedFeatures cannot be resolved"
-      + "\ngetDeclaredConstructors cannot be resolved"
-      + "\ngetDeclaration cannot be resolved"
-      + "\ngetResolvedErasureSignature cannot be resolved");
+  protected void addConstructorCandidates(final ResolvedFeatures resolvedFeatures, final IVisibilityHelper visibilityHelper, final List<IResolvedExecutable> result) {
+    LightweightTypeReference typeReference = resolvedFeatures.getType();
+    List<LightweightTypeReference> superTypes = typeReference.getSuperTypes();
+    for (final LightweightTypeReference superType : superTypes) {
+      boolean _isInterfaceType = superType.isInterfaceType();
+      boolean _not = (!_isInterfaceType);
+      if (_not) {
+        List<IResolvedConstructor> declaredConstructors = resolvedFeatures.getDeclaredConstructors();
+        Set<String> erasedSignatures = Sets.<String>newHashSet();
+        for (final IResolvedConstructor constructor : declaredConstructors) {
+          erasedSignatures.add(constructor.getResolvedErasureSignature());
+        }
+        ResolvedFeatures superClass = this.overrideHelper.getResolvedFeatures(superType);
+        List<IResolvedConstructor> constructors = superClass.getDeclaredConstructors();
+        for (final IResolvedConstructor constructor_1 : constructors) {
+          {
+            JvmConstructor _declaration = constructor_1.getDeclaration();
+            IResolvedConstructor overriddenConstructor = new ResolvedConstructor(_declaration, typeReference);
+            boolean _isCandidate = this.isCandidate(typeReference, overriddenConstructor, visibilityHelper);
+            if (_isCandidate) {
+              boolean _add = erasedSignatures.add(constructor_1.getResolvedErasureSignature());
+              if (_add) {
+                result.add(overriddenConstructor);
+              }
+            }
+          }
+        }
+        return;
+      }
+    }
   }
   
-  protected boolean isCandidate(final /* LightweightTypeReference */Object type, final /* IResolvedExecutable */Object executable, final /* IVisibilityHelper */Object visibilityHelper) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmDeclaredType cannot be resolved to a type."
-      + "\nJvmExecutable cannot be resolved to a type."
-      + "\nJvmOperation cannot be resolved to a type."
-      + "\nJvmOperation cannot be resolved to a type."
-      + "\nJvmGenericType cannot be resolved to a type."
-      + "\nJvmGenericType cannot be resolved to a type."
-      + "\nJvmGenericType cannot be resolved to a type."
-      + "\nJvmGenericType cannot be resolved to a type."
-      + "\n&& cannot be resolved."
-      + "\n&& cannot be resolved."
-      + "\nThe method isVisible(IResolvedExecutable, IVisibilityHelper) from the type OverrideProposalUtil refers to the missing type IResolvedExecutable"
-      + "\ngetDeclaration cannot be resolved"
-      + "\ngetDeclaringType cannot be resolved"
-      + "\ngetType cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\ngetDeclaration cannot be resolved"
-      + "\nisFinal cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\nisStatic cannot be resolved"
-      + "\ngetType cannot be resolved"
-      + "\ngetType cannot be resolved"
-      + "\nisInterface cannot be resolved"
-      + "\nisInterface cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nisAbstract cannot be resolved"
-      + "\n! cannot be resolved");
+  protected boolean isCandidate(final LightweightTypeReference type, final IResolvedExecutable executable, final IVisibilityHelper visibilityHelper) {
+    JvmDeclaredType declaringType = executable.getDeclaration().getDeclaringType();
+    if (((type.getType() != declaringType) && this.isVisible(executable, visibilityHelper))) {
+      JvmExecutable rawExecutable = executable.getDeclaration();
+      if ((rawExecutable instanceof JvmOperation)) {
+        JvmOperation operation = ((JvmOperation)rawExecutable);
+        if ((operation.isFinal() || operation.isStatic())) {
+          return false;
+        } else {
+          if (((type.getType() instanceof JvmGenericType) && ((JvmGenericType) type.getType()).isInterface())) {
+            return (((declaringType instanceof JvmGenericType) && ((JvmGenericType) declaringType).isInterface()) && (!operation.isAbstract()));
+          } else {
+            return true;
+          }
+        }
+      } else {
+        return true;
+      }
+    }
+    return false;
   }
   
-  protected boolean isVisible(final /* IResolvedExecutable */Object executable, final /* IVisibilityHelper */Object visibilityHelper) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nisVisible cannot be resolved"
-      + "\ngetDeclaration cannot be resolved");
+  protected boolean isVisible(final IResolvedExecutable executable, final IVisibilityHelper visibilityHelper) {
+    return visibilityHelper.isVisible(executable.getDeclaration());
   }
 }

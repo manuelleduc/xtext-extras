@@ -7,6 +7,7 @@
  */
 package org.eclipse.xtext.mbase.controlflow;
 
+import com.google.common.base.Optional;
 import org.eclipse.xtext.mbase.validation.ConstantExpressionValidator;
 
 /**
@@ -22,7 +23,7 @@ public interface IConstantEvaluationResult<T extends Object> {
    * Returns the optional computation result. If the result is null, no value could be
    * computed.
    */
-  public abstract /* Optional<T> */Object getValue();
+  public abstract Optional<T> getValue();
   
   public abstract boolean isCompileTimeConstant();
 }

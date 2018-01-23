@@ -9,7 +9,13 @@ package org.eclipse.xtext.mbase.typesystem.references;
 
 import java.util.Map;
 import java.util.Set;
+import org.eclipse.xtend.lib.annotations.Data;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightMergedBoundTypeArgument;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Pure;
+import org.eclipse.xtext.xbase.lib.util.ToStringBuilder;
 
 /**
  * Small utility data structure to carry around in the type reference visitors.
@@ -17,9 +23,62 @@ import org.eclipse.xtext.mbase.typesystem.references.LightweightMergedBoundTypeA
  * 
  * @author Sebastian Zarnekow - Initial contribution and API
  */
-/* @Data */@SuppressWarnings("all")
+@Data
+@SuppressWarnings("all")
 public class LightweightTraversalData {
-  private /* Set<JvmType> */Object visited /* Skipped initializer because of errors */;
+  private final Set<JvmType> visited = CollectionLiterals.<JvmType>newHashSet();
   
-  private /* Map<JvmTypeParameter, LightweightMergedBoundTypeArgument> */Object typeParameterMapping /* Skipped initializer because of errors */;
+  private final Map<JvmTypeParameter, LightweightMergedBoundTypeArgument> typeParameterMapping = CollectionLiterals.<JvmTypeParameter, LightweightMergedBoundTypeArgument>newLinkedHashMap();
+  
+  @Override
+  @Pure
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((this.visited== null) ? 0 : this.visited.hashCode());
+    result = prime * result + ((this.typeParameterMapping== null) ? 0 : this.typeParameterMapping.hashCode());
+    return result;
+  }
+  
+  @Override
+  @Pure
+  public boolean equals(final Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    LightweightTraversalData other = (LightweightTraversalData) obj;
+    if (this.visited == null) {
+      if (other.visited != null)
+        return false;
+    } else if (!this.visited.equals(other.visited))
+      return false;
+    if (this.typeParameterMapping == null) {
+      if (other.typeParameterMapping != null)
+        return false;
+    } else if (!this.typeParameterMapping.equals(other.typeParameterMapping))
+      return false;
+    return true;
+  }
+  
+  @Override
+  @Pure
+  public String toString() {
+    ToStringBuilder b = new ToStringBuilder(this);
+    b.add("visited", this.visited);
+    b.add("typeParameterMapping", this.typeParameterMapping);
+    return b.toString();
+  }
+  
+  @Pure
+  public Set<JvmType> getVisited() {
+    return this.visited;
+  }
+  
+  @Pure
+  public Map<JvmTypeParameter, LightweightMergedBoundTypeArgument> getTypeParameterMapping() {
+    return this.typeParameterMapping;
+  }
 }

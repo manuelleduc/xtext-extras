@@ -19,7 +19,7 @@ import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XVariableDeclaration;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.computation.IFeatureLinkingCandidate;
 import org.eclipse.xtext.mbase.typesystem.computation.ILinkingCandidate;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
@@ -74,7 +74,7 @@ public abstract class AbstractImplicitFeature implements IFeatureLinkingCandidat
 				if (message != null) {
 					AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 							IssueCodes.INVALID_MUTABLE_VARIABLE_ACCESS, message, getOwner(),
-							mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+							MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 					result.accept(diagnostic);
 					return false;
 				}
@@ -83,7 +83,7 @@ public abstract class AbstractImplicitFeature implements IFeatureLinkingCandidat
 				String message = String.format("The implicitly referenced variable %s may not have been initialized", implicitFeature.getSimpleName());
 				AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 						IssueCodes.ILLEGAL_FORWARD_REFERENCE, message, getOwner(),
-						mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+						MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
 				result.accept(diagnostic);
 				return false;
 			}

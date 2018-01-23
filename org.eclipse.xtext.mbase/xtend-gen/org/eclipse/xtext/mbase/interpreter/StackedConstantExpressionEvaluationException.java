@@ -7,21 +7,19 @@
  */
 package org.eclipse.xtext.mbase.interpreter;
 
+import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.interpreter.ConstantExpressionEvaluationException;
 
 @SuppressWarnings("all")
 public class StackedConstantExpressionEvaluationException extends ConstantExpressionEvaluationException {
-  private /* JvmField */Object field;
+  private JvmField field;
   
   private ConstantExpressionEvaluationException cause;
   
-  public StackedConstantExpressionEvaluationException(final XExpression expression, final /* JvmField */Object field, final ConstantExpressionEvaluationException cause) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n+ cannot be resolved."
-      + "\nThe field StackedConstantExpressionEvaluationException.field refers to the missing type JvmField"
-      + "\nsimpleName cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+  public StackedConstantExpressionEvaluationException(final XExpression expression, final JvmField field, final ConstantExpressionEvaluationException cause) {
+    super(((("Error during call to " + field.getSimpleName()) + " : ") + cause.getMessage()), expression);
+    this.field = field;
+    this.cause = cause;
   }
 }

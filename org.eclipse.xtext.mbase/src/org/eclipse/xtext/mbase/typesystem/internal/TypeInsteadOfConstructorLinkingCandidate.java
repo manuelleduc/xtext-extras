@@ -31,7 +31,7 @@ import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.eclipse.xtext.mbase.XConstructorCall;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.scoping.batch.IIdentifiableElementDescription;
 import org.eclipse.xtext.mbase.typesystem.IResolvedTypes;
 import org.eclipse.xtext.mbase.typesystem.computation.IConstructorLinkingCandidate;
@@ -115,7 +115,7 @@ public class TypeInsteadOfConstructorLinkingCandidate extends AbstractUnresolvab
 		String message = String.format("Cannot instantiate the %s %s", typeKind, type.getSimpleName());
 		AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
 				IssueCodes.ILLEGAL_CLASS_INSTANTIATION, message, getExpression(),
-				mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, -1, null);
+				MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, -1, null);
 		result.accept(diagnostic);
 		return false;
 	}
@@ -167,7 +167,7 @@ public class TypeInsteadOfConstructorLinkingCandidate extends AbstractUnresolvab
 		Resource resource = getExpression().eResource();
 		if (resource instanceof LazyLinkingResource) {
 			LazyLinkingResource lazyLinkingResource = (LazyLinkingResource) resource;
-			EObject referenced = (InternalEObject) getExpression().eGet(mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, false);
+			EObject referenced = (InternalEObject) getExpression().eGet(MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR, false);
 			lazyLinkingResource.markUnresolvable(referenced);
 		}
 	}

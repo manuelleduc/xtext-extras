@@ -8,12 +8,29 @@
 package org.eclipse.xtext.mbase.typesystem.references;
 
 import java.util.Arrays;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.common.types.JvmArrayType;
+import org.eclipse.xtext.common.types.JvmComponentType;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmVoid;
+import org.eclipse.xtext.common.types.TypesPackage;
+import org.eclipse.xtext.common.types.impl.JvmGenericArrayTypeReferenceImplCustom;
+import org.eclipse.xtext.mbase.typesystem.references.FunctionTypeReference;
 import org.eclipse.xtext.mbase.typesystem.references.ITypeReferenceOwner;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReferenceFactory;
+import org.eclipse.xtext.mbase.typesystem.references.WildcardTypeReference;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
+import org.eclipse.xtext.xtype.XtypePackage;
 import org.eclipse.xtext.xtype.impl.XFunctionTypeRefImplCustom;
+import org.eclipse.xtext.xtype.util.XFunctionTypeRefs;
 
 /**
  * @author Anton Kosyakov - Initial contribution and API
@@ -28,104 +45,154 @@ public class IndexingLightweightTypeReferenceFactory extends LightweightTypeRefe
     super(owner, keepUnboundWildcards);
   }
   
-  protected /* JvmType */Object _getType(final /* JvmTypeReference */Object it) {
+  protected JvmType _getType(final JvmTypeReference it) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("It is not possible to get a type for the given jvm type reference: �it.class.name�");
     throw new UnsupportedOperationException(_builder.toString());
   }
   
-  protected /* JvmType */Object _getType(final /* JvmGenericArrayTypeReferenceImplCustom */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmComponentType cannot be resolved to a type."
-      + "\nThe method or field componentType is undefined"
-      + "\nThe method getType(XFunctionTypeRef) from the type IndexingLightweightTypeReferenceFactory refers to the missing type JvmType"
-      + "\n=== cannot be resolved"
-      + "\narrayType cannot be resolved");
+  protected JvmType _getType(final JvmGenericArrayTypeReferenceImplCustom it) {
+    JvmArrayType _xblockexpression = null;
+    {
+      final JvmTypeReference componentTypeReference = it.getComponentType();
+      if ((componentTypeReference == null)) {
+        return null;
+      }
+      JvmArrayType _switchResult = null;
+      JvmType _type = this.getType(componentTypeReference);
+      final JvmType componentType = _type;
+      boolean _matched = false;
+      if (componentType instanceof JvmComponentType) {
+        _matched=true;
+        _switchResult = ((JvmComponentType)componentType).getArrayType();
+      }
+      if (!_matched) {
+        _switchResult = null;
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
   }
   
-  protected /* JvmType */Object _getType(final /* JvmParameterizedTypeReference */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE is undefined"
-      + "\nThe method getType(XFunctionTypeRef) from the type IndexingLightweightTypeReferenceFactory refers to the missing type JvmType");
+  protected JvmType _getType(final JvmParameterizedTypeReference it) {
+    return this.getType(it, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE);
   }
   
-  protected /* JvmType */Object _getType(final XFunctionTypeRef it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field XFUNCTION_TYPE_REF__TYPE is undefined"
-      + "\nThe method getType(XFunctionTypeRef) from the type IndexingLightweightTypeReferenceFactory refers to the missing type JvmType");
+  protected JvmType _getType(final XFunctionTypeRef it) {
+    return this.getType(it, XtypePackage.Literals.XFUNCTION_TYPE_REF__TYPE);
   }
   
-  protected /* JvmType */Object _getType(final XFunctionTypeRefImplCustom it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmType cannot be resolved to a type."
-      + "\nThe method or field paramTypes is undefined"
-      + "\nThe method or field eResource is undefined"
-      + "\nThe method computeTypeUri(boolean, int) from the type XFunctionTypeRefs refers to the missing type Object"
-      + "\nsize cannot be resolved"
-      + "\nresourceSet cannot be resolved"
-      + "\ngetEObject cannot be resolved");
+  protected JvmType _getType(final XFunctionTypeRefImplCustom it) {
+    JvmType _xblockexpression = null;
+    {
+      final URI uri = XFunctionTypeRefs.computeTypeUri(this.isProcedure(it), it.getParamTypes().size());
+      EObject _eObject = it.eResource().getResourceSet().getEObject(uri, true);
+      _xblockexpression = ((JvmType) _eObject);
+    }
+    return _xblockexpression;
   }
   
   public boolean isProcedure(final XFunctionTypeRefImplCustom it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmVoid cannot be resolved to a type."
-      + "\nThe method or field returnType is undefined"
-      + "\nThe method getType(XFunctionTypeRef) from the type IndexingLightweightTypeReferenceFactory refers to the missing type JvmType"
-      + "\n=== cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\neIsProxy cannot be resolved");
+    final JvmTypeReference returnType = it.getReturnType();
+    if ((returnType == null)) {
+      return true;
+    }
+    final JvmType type = this.getType(returnType);
+    if ((type == null)) {
+      return false;
+    }
+    boolean _eIsProxy = type.eIsProxy();
+    if (_eIsProxy) {
+      return false;
+    }
+    if ((type instanceof JvmVoid)) {
+      return true;
+    }
+    return false;
   }
   
-  public /* JvmType */Object getType(final /* EObject */Object it, final /* EReference */Object reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nEObject cannot be resolved to a type."
-      + "\nInternalEObject cannot be resolved to a type."
-      + "\nJvmType cannot be resolved to a type."
-      + "\nJvmType cannot be resolved to a type."
-      + "\nThe method eGet(EReference, boolean) is undefined"
-      + "\nThe method or field eResource is undefined"
-      + "\neIsProxy cannot be resolved"
-      + "\neProxyURI cannot be resolved"
-      + "\nresourceSet cannot be resolved"
-      + "\ngetEObject cannot be resolved");
+  public JvmType getType(final EObject it, final EReference reference) {
+    JvmType _switchResult = null;
+    Object _eGet = it.eGet(reference, false);
+    final Object proxy = _eGet;
+    boolean _matched = false;
+    if (proxy instanceof EObject) {
+      boolean _eIsProxy = ((EObject)proxy).eIsProxy();
+      if (_eIsProxy) {
+        _matched=true;
+        final URI uri = ((InternalEObject) proxy).eProxyURI();
+        EObject _eObject = it.eResource().getResourceSet().getEObject(uri, true);
+        return ((JvmType) _eObject);
+      }
+    }
+    if (!_matched) {
+      if (proxy instanceof JvmType) {
+        _matched=true;
+        _switchResult = ((JvmType)proxy);
+      }
+    }
+    return _switchResult;
   }
   
   @Override
   public LightweightTypeReference doVisitFunctionTypeReference(final XFunctionTypeRef reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmTypeReference cannot be resolved to a type."
-      + "\nFunctionTypeReference cannot be resolved."
-      + "\nThe method getParamTypes() is undefined for the type XFunctionTypeRef"
-      + "\nThe method visit(JvmTypeReference) is undefined"
-      + "\nThe method getReturnType() is undefined for the type XFunctionTypeRef"
-      + "\nThe method visit(JvmTypeReference) is undefined"
-      + "\nThe method getReturnType() is undefined for the type XFunctionTypeRef"
-      + "\nThe method getType(XFunctionTypeRef) from the type IndexingLightweightTypeReferenceFactory refers to the missing type JvmType"
-      + "\nThe method wrapIfNecessary(JvmTypeReference) from the type IndexingLightweightTypeReferenceFactory refers to the missing type JvmTypeReference"
-      + "\nThe method wrapIfNecessary(JvmTypeReference) from the type IndexingLightweightTypeReferenceFactory refers to the missing type JvmTypeReference"
-      + "\naddParameterType cannot be resolved"
-      + "\naddTypeArgument cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nsetReturnType cannot be resolved"
-      + "\naddTypeArgument cannot be resolved");
+    ITypeReferenceOwner _owner = this.getOwner();
+    JvmType _type = this.getType(reference);
+    final FunctionTypeReference result = new FunctionTypeReference(_owner, _type);
+    EList<JvmTypeReference> _paramTypes = reference.getParamTypes();
+    for (final JvmTypeReference parameter : _paramTypes) {
+      {
+        final LightweightTypeReference parameterType = this.visit(this.wrapIfNecessary(parameter));
+        result.addParameterType(parameterType);
+        final WildcardTypeReference typeArgument = this.getOwner().newWildcardTypeReference();
+        typeArgument.setLowerBound(parameterType);
+        typeArgument.addUpperBound(this.getJavaLangObjectTypeReference());
+        result.addTypeArgument(typeArgument);
+      }
+    }
+    JvmTypeReference _returnType = reference.getReturnType();
+    boolean _tripleNotEquals = (_returnType != null);
+    if (_tripleNotEquals) {
+      final LightweightTypeReference returnType = this.visit(this.wrapIfNecessary(reference.getReturnType()));
+      result.setReturnType(returnType);
+      if ((reference instanceof XFunctionTypeRefImplCustom)) {
+        boolean _isProcedure = this.isProcedure(((XFunctionTypeRefImplCustom)reference));
+        if (_isProcedure) {
+          return result;
+        }
+      }
+      final WildcardTypeReference typeArgument = this.getOwner().newWildcardTypeReference();
+      typeArgument.addUpperBound(returnType);
+      result.addTypeArgument(typeArgument);
+    }
+    return result;
   }
   
-  public /* JvmTypeReference */Object wrapIfNecessary(final /* JvmTypeReference */Object reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getType(XFunctionTypeRef) from the type IndexingLightweightTypeReferenceFactory refers to the missing type JvmType"
-      + "\n=== cannot be resolved"
-      + "\nwrapIfNecessary cannot be resolved");
+  public JvmTypeReference wrapIfNecessary(final JvmTypeReference reference) {
+    JvmTypeReference _xblockexpression = null;
+    {
+      if ((reference == null)) {
+        return null;
+      }
+      final JvmType type = this.getType(reference);
+      _xblockexpression = XFunctionTypeRefs.wrapIfNecessary(reference, type);
+    }
+    return _xblockexpression;
   }
   
   protected LightweightTypeReference getJavaLangObjectTypeReference() {
     return this.getOwner().newReferenceToObject();
   }
   
-  public JvmType getType(final XFunctionTypeRef it) {
+  public JvmType getType(final JvmTypeReference it) {
     if (it instanceof XFunctionTypeRefImplCustom) {
       return _getType((XFunctionTypeRefImplCustom)it);
-    } else if (it != null) {
-      return _getType(it);
+    } else if (it instanceof JvmGenericArrayTypeReferenceImplCustom) {
+      return _getType((JvmGenericArrayTypeReferenceImplCustom)it);
+    } else if (it instanceof XFunctionTypeRef) {
+      return _getType((XFunctionTypeRef)it);
+    } else if (it instanceof JvmParameterizedTypeReference) {
+      return _getType((JvmParameterizedTypeReference)it);
     } else if (it != null) {
       return _getType(it);
     } else {

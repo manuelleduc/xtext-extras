@@ -7,16 +7,36 @@
  */
 package org.eclipse.xtext.mbase.validation;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
 import java.util.Arrays;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.common.types.JvmAnnotationReference;
+import org.eclipse.xtext.common.types.JvmBooleanAnnotationValue;
+import org.eclipse.xtext.common.types.JvmEnumerationLiteral;
+import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.access.TypeResource;
+import org.eclipse.xtext.common.types.util.Primitives;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XBooleanLiteral;
 import org.eclipse.xtext.mbase.XCastedExpression;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XNumberLiteral;
 import org.eclipse.xtext.mbase.XStringLiteral;
+import org.eclipse.xtext.mbase.XSwitchExpression;
 import org.eclipse.xtext.mbase.XTypeLiteral;
+import org.eclipse.xtext.mbase.XVariableDeclaration;
 import org.eclipse.xtext.mbase.jvmmodel.ILogicalContainerProvider;
 import org.eclipse.xtext.mbase.util.XExpressionHelper;
+import org.eclipse.xtext.mbase.validation.NotResolvedFeatureException;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * Checks whether a given XExpression is a a constant expression.
@@ -25,17 +45,21 @@ import org.eclipse.xtext.mbase.util.XExpressionHelper;
  */
 @SuppressWarnings("all")
 public class ConstantExpressionValidator {
-  /* @Inject
-   */private /* TypeReferences */Object _typeReferences;
+  @Inject
+  @Extension
+  private TypeReferences _typeReferences;
   
-  /* @Inject
-   */private /* Primitives */Object _primitives;
+  @Inject
+  @Extension
+  private Primitives _primitives;
   
-  /* @Inject
-   */private XExpressionHelper _xExpressionHelper;
+  @Inject
+  @Extension
+  private XExpressionHelper _xExpressionHelper;
   
-  /* @Inject
-   */private ILogicalContainerProvider _iLogicalContainerProvider;
+  @Inject
+  @Extension
+  private ILogicalContainerProvider _iLogicalContainerProvider;
   
   protected boolean _isConstant(final XExpression expression) {
     return false;
@@ -58,60 +82,85 @@ public class ConstantExpressionValidator {
   }
   
   protected boolean _isConstant(final XCastedExpression expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field type is undefined for the type XCastedExpression"
-      + "\nThe method or field type is undefined for the type XCastedExpression"
-      + "\nprimitive cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\nis cannot be resolved");
+    return (this._primitives.isPrimitive(expression.getType()) || this._typeReferences.is(expression.getType(), String.class));
   }
   
   protected boolean _isConstant(final XAbstractFeatureCall expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmEnumerationLiteral cannot be resolved to a type."
-      + "\nJvmField cannot be resolved to a type."
-      + "\nTypeResource cannot be resolved to a type."
-      + "\nJvmOperation cannot be resolved to a type."
-      + "\nEObject cannot be resolved to a type."
-      + "\nThe method or field feature is undefined for the type XAbstractFeatureCall"
-      + "\nThe method or field findInlineAnnotation is undefined for the type XAbstractFeatureCall"
-      + "\nThe method or field JvmBooleanAnnotationValue is undefined"
-      + "\nThe method or field valueName is undefined"
-      + "\nThe method or field values is undefined"
-      + "\n=== cannot be resolved."
-      + "\n&& cannot be resolved."
-      + "\nThe method or field actualArguments is undefined for the type XAbstractFeatureCall"
-      + "\nType mismatch: cannot convert implicit first argument from ConstantExpressionValidator to XExpression"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nsetConstant cannot be resolved"
-      + "\nconstant cannot be resolved"
-      + "\nstatic cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nfinal cannot be resolved"
-      + "\neResource cannot be resolved"
-      + "\nassociatedExpression cannot be resolved"
-      + "\nconstantExpression cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\nvalues cannot be resolved"
-      + "\nfilter cannot be resolved"
-      + "\nexists cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nhead cannot be resolved"
-      + "\nbooleanValue cannot be resolved"
-      + "\nforall cannot be resolved"
-      + "\nwriteable cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nright cannot be resolved"
-      + "\nconstantExpression cannot be resolved"
-      + "\n^switch cannot be resolved"
-      + "\nconstantExpression cannot be resolved"
-      + "\neIsProxy cannot be resolved");
+    JvmIdentifiableElement _feature = expression.getFeature();
+    final JvmIdentifiableElement feature = _feature;
+    boolean _matched = false;
+    if (feature instanceof JvmEnumerationLiteral) {
+      _matched=true;
+      return true;
+    }
+    if (!_matched) {
+      if (feature instanceof JvmField) {
+        _matched=true;
+        boolean _isSetConstant = ((JvmField)feature).isSetConstant();
+        if (_isSetConstant) {
+          return ((JvmField)feature).isConstant();
+        }
+        final boolean potentiallyConstant = (((JvmField)feature).isStatic() && ((JvmField)feature).isFinal());
+        if (potentiallyConstant) {
+          Resource _eResource = ((JvmField)feature).eResource();
+          if ((_eResource instanceof TypeResource)) {
+            return true;
+          } else {
+            return this.isConstantExpression(this._iLogicalContainerProvider.getAssociatedExpression(feature));
+          }
+        }
+        return false;
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof JvmOperation) {
+        _matched=true;
+        final JvmAnnotationReference annotationReference = this._xExpressionHelper.findInlineAnnotation(expression);
+        if ((annotationReference == null)) {
+          return false;
+        }
+        final Function1<JvmBooleanAnnotationValue, Boolean> _function = (JvmBooleanAnnotationValue it) -> {
+          return Boolean.valueOf((Objects.equal(it.getValueName(), "constantExpression") && IterableExtensions.<Boolean>head(it.getValues()).booleanValue()));
+        };
+        boolean _exists = IterableExtensions.<JvmBooleanAnnotationValue>exists(Iterables.<JvmBooleanAnnotationValue>filter(annotationReference.getValues(), JvmBooleanAnnotationValue.class), _function);
+        if (_exists) {
+          boolean _xifexpression = false;
+          XExpression _actualReceiver = expression.getActualReceiver();
+          boolean _tripleEquals = (_actualReceiver == null);
+          if (_tripleEquals) {
+            _xifexpression = true;
+          } else {
+            _xifexpression = this.isConstant(expression.getActualReceiver());
+          }
+          final boolean receiverConstant = _xifexpression;
+          return (receiverConstant && IterableExtensions.<XExpression>forall(expression.getActualArguments(), ((Function1<XExpression, Boolean>) (XExpression it) -> {
+            return Boolean.valueOf(this.isConstant(it));
+          })));
+        }
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof XVariableDeclaration) {
+        _matched=true;
+        return ((!((XVariableDeclaration)feature).isWriteable()) && this.isConstantExpression(((XVariableDeclaration)feature).getRight()));
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof XSwitchExpression) {
+        _matched=true;
+        return this.isConstantExpression(((XSwitchExpression)feature).getSwitch());
+      }
+    }
+    if (!_matched) {
+      if (feature instanceof EObject) {
+        boolean _eIsProxy = feature.eIsProxy();
+        if (_eIsProxy) {
+          _matched=true;
+          throw new NotResolvedFeatureException();
+        }
+      }
+    }
+    return false;
   }
   
   protected boolean _isConstantExpression(final Void it) {
@@ -123,9 +172,17 @@ public class ConstantExpressionValidator {
   }
   
   protected boolean _isConstantExpression(final XAbstractFeatureCall it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nJvmEnumerationLiteral cannot be resolved to a type."
-      + "\nThe method or field feature is undefined");
+    boolean _switchResult = false;
+    JvmIdentifiableElement _feature = it.getFeature();
+    boolean _matched = false;
+    if (_feature instanceof JvmEnumerationLiteral) {
+      _matched=true;
+      _switchResult = false;
+    }
+    if (!_matched) {
+      _switchResult = this.isConstant(it);
+    }
+    return _switchResult;
   }
   
   public boolean isConstant(final XExpression expression) {
@@ -152,10 +209,10 @@ public class ConstantExpressionValidator {
   public boolean isConstantExpression(final XExpression it) {
     if (it instanceof XAbstractFeatureCall) {
       return _isConstantExpression((XAbstractFeatureCall)it);
-    } else if (it == null) {
-      return _isConstantExpression((Void)null);
     } else if (it != null) {
       return _isConstantExpression(it);
+    } else if (it == null) {
+      return _isConstantExpression((Void)null);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(it).toString());

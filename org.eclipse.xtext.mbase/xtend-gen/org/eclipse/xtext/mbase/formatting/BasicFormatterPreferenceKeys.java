@@ -1,5 +1,6 @@
 package org.eclipse.xtext.mbase.formatting;
 
+import org.eclipse.xtext.formatting2.FormatterPreferenceKeys;
 import org.eclipse.xtext.mbase.formatting.IntegerKey;
 import org.eclipse.xtext.mbase.formatting.StringKey;
 

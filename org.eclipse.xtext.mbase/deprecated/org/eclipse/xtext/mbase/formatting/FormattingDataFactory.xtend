@@ -4,7 +4,7 @@ import com.google.inject.Inject
 import org.eclipse.xtext.formatting2.IHiddenRegionFormatter
 import org.eclipse.xtext.nodemodel.INode
 import org.eclipse.xtext.preferences.PreferenceKey
-import org.eclipse.xtext.mbase.lib.util.ToStringBuilder
+import org.eclipse.xtext.xbase.lib.util.ToStringBuilder
 
 import static org.eclipse.xtext.mbase.formatting.mbaseFormatterPreferenceKeys.*
 

@@ -13,18 +13,33 @@ import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XListLiteral;
 import org.eclipse.xtext.mbase.annotations.xAnnotations.XAnnotation;
 import org.eclipse.xtext.mbase.validation.ConstantExpressionValidator;
+import org.eclipse.xtext.mbase.validation.IssueCodes;
+import org.eclipse.xtext.mbase.validation.NotResolvedFeatureException;
+import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
  */
 @SuppressWarnings("all")
 public class AnnotationValueValidator extends ConstantExpressionValidator {
-  public void validateAnnotationValue(final XExpression value, final /* ValidationMessageAcceptor */Object acceptor) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n! cannot be resolved."
-      + "\nThe method or field ValidationMessageAcceptor is undefined"
-      + "\nacceptError cannot be resolved"
-      + "\nINSIGNIFICANT_INDEX cannot be resolved");
+  public void validateAnnotationValue(final XExpression value, final ValidationMessageAcceptor acceptor) {
+    try {
+      boolean _isValidAnnotationValue = this.isValidAnnotationValue(value);
+      boolean _not = (!_isValidAnnotationValue);
+      if (_not) {
+        acceptor.acceptError("The value for an annotation attribute must be a constant expression", value, null, 
+          ValidationMessageAcceptor.INSIGNIFICANT_INDEX, IssueCodes.ANNOTATIONS_ILLEGAL_ATTRIBUTE);
+      }
+    } catch (final Throwable _t) {
+      if (_t instanceof NotResolvedFeatureException) {
+        final NotResolvedFeatureException e = (NotResolvedFeatureException)_t;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
   }
   
   protected boolean _isValidAnnotationValue(final XExpression expression) {
@@ -36,13 +51,9 @@ public class AnnotationValueValidator extends ConstantExpressionValidator {
   }
   
   protected boolean _isValidAnnotationValue(final XListLiteral expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field elements is undefined for the type XListLiteral"
-      + "\nThe method or field elements is undefined for the type XListLiteral"
-      + "\nType mismatch: cannot convert implicit first argument from AnnotationValueValidator to XExpression"
-      + "\nempty cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\nforall cannot be resolved");
+    return (expression.getElements().isEmpty() || IterableExtensions.<XExpression>forall(expression.getElements(), ((Function1<XExpression, Boolean>) (XExpression it) -> {
+      return Boolean.valueOf(this.isValidAnnotationValue(it));
+    })));
   }
   
   protected boolean _isValidAnnotationValue(final XAnnotation expression) {
@@ -64,10 +75,10 @@ public class AnnotationValueValidator extends ConstantExpressionValidator {
       return _isValidAnnotationValue((XAbstractFeatureCall)expression);
     } else if (expression instanceof XAnnotation) {
       return _isValidAnnotationValue((XAnnotation)expression);
-    } else if (expression == null) {
-      return _isValidAnnotationValue((Void)null);
     } else if (expression != null) {
       return _isValidAnnotationValue(expression);
+    } else if (expression == null) {
+      return _isValidAnnotationValue((Void)null);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(expression).toString());

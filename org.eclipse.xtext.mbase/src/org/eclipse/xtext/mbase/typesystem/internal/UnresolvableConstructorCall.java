@@ -16,7 +16,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.mbase.XConstructorCall;
 import org.eclipse.xtext.mbase.XExpression;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.computation.IConstructorLinkingCandidate;
 import org.eclipse.xtext.mbase.typesystem.references.LightweightTypeReference;
 
@@ -53,7 +53,7 @@ public class UnresolvableConstructorCall extends AbstractUnresolvableReferenceWi
 	
 	@Override
 	public EReference getReference() {
-		return mbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR;
+		return MbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR;
 	}
 	
 	@Override

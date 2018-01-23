@@ -14,7 +14,7 @@ import org.eclipse.xtext.mbase.XAbstractFeatureCall;
 import org.eclipse.xtext.mbase.XExpression;
 import org.eclipse.xtext.mbase.XFeatureCall;
 import org.eclipse.xtext.mbase.XMemberFeatureCall;
-import org.eclipse.xtext.mbase.mbasePackage;
+import org.eclipse.xtext.mbase.MbasePackage;
 import org.eclipse.xtext.mbase.typesystem.computation.IFeatureLinkingCandidate;
 
 /**
@@ -46,7 +46,7 @@ public class TypeLiteralLinkingCandidateResolver extends PendingLinkingCandidate
 			XExpression target = casted.getMemberCallTarget();
 			IFeatureLinkingCandidate candidate = getLinkingCandidate(target);
 			if (candidate == null || !candidate.isTypeLiteral()) {
-				resolveLinkingProxy((InternalEObject) target, newValue, structuralFeature, mbasePackage.XABSTRACT_FEATURE_CALL__FEATURE);
+				resolveLinkingProxy((InternalEObject) target, newValue, structuralFeature, MbasePackage.XABSTRACT_FEATURE_CALL__FEATURE);
 			}
 		}
 	}

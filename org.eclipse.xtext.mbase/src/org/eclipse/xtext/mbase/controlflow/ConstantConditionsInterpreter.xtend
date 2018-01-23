@@ -46,7 +46,7 @@ import org.eclipse.xtext.mbase.typesystem.computation.NumberLiterals
 import org.eclipse.xtext.mbase.typesystem.util.RecursionGuard
 import org.eclipse.xtext.resource.persistence.StorageAwareResource
 import org.eclipse.xtext.mbase.validation.ConstantExpressionValidator
-import org.eclipse.xtext.mbase.mbasePackage
+import org.eclipse.xtext.mbase.MbasePackage
 
 /**
  * Interpreter for expressions at development time that uses the static linking
@@ -179,7 +179,7 @@ class ConstantConditionsInterpreter {
 	}
 	
 	def getFeature(XAbstractFeatureCall call, EvaluationContext context) {
-		var feature = call.eGet(mbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false) as JvmIdentifiableElement
+		var feature = call.eGet(MbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false) as JvmIdentifiableElement
 		if (feature === null || feature.eIsProxy) {
 			feature = context.resolvedTypes.getLinkedFeature(call)
 		}

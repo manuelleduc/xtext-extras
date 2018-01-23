@@ -1,13 +1,14 @@
 package org.eclipse.xtext.mbase.formatting;
 
+import org.eclipse.xtext.preferences.PreferenceKey;
+
 /**
  * @deprecated use {@link org.eclipse.xtext.preferences.StringKey}
  */
 @Deprecated
 @SuppressWarnings("all")
-public class StringKey /* implements PreferenceKey  */{
+public class StringKey extends PreferenceKey {
   public StringKey(final String id, final String defaultValue) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method super(String, String) is undefined");
+    super(id, defaultValue);
   }
 }

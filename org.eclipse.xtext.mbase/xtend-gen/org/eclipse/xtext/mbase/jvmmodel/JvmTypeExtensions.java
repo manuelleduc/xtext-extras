@@ -7,8 +7,24 @@
  */
 package org.eclipse.xtext.mbase.jvmmodel;
 
+import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtend2.lib.StringConcatenationClient;
+import org.eclipse.xtext.common.types.JvmAnnotationReference;
+import org.eclipse.xtext.common.types.JvmConstructor;
+import org.eclipse.xtext.common.types.JvmIdentifiableElement;
+import org.eclipse.xtext.mbase.compiler.CompilationStrategyAdapter;
+import org.eclipse.xtext.mbase.compiler.CompilationTemplateAdapter;
+import org.eclipse.xtext.mbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.mbase.jvmmodel.ILogicalContainerProvider;
 import org.eclipse.xtext.mbase.jvmmodel.JvmIdentifiableMetaData;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 /**
  * @noextend This class is not intended to be subclassed by clients.
@@ -18,87 +34,72 @@ import org.eclipse.xtext.mbase.jvmmodel.JvmIdentifiableMetaData;
  */
 @SuppressWarnings("all")
 public class JvmTypeExtensions {
-  /* @Inject
-   */private ILogicalContainerProvider _iLogicalContainerProvider;
+  @Inject
+  @Extension
+  private ILogicalContainerProvider _iLogicalContainerProvider;
   
-  public /*  */Object getCompilationStrategy(final /* JvmIdentifiableElement */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field eAdapters is undefined"
-      + "\nfilter cannot be resolved"
-      + "\nhead cannot be resolved"
-      + "\ncompilationStrategy cannot be resolved");
+  public Procedure1<? super ITreeAppendable> getCompilationStrategy(final JvmIdentifiableElement it) {
+    final CompilationStrategyAdapter adapter = IterableExtensions.<CompilationStrategyAdapter>head(Iterables.<CompilationStrategyAdapter>filter(it.eAdapters(), CompilationStrategyAdapter.class));
+    Procedure1<ITreeAppendable> _compilationStrategy = null;
+    if (adapter!=null) {
+      _compilationStrategy=adapter.getCompilationStrategy();
+    }
+    return _compilationStrategy;
   }
   
-  public /* StringConcatenationClient */Object getCompilationTemplate(final /* JvmIdentifiableElement */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field eAdapters is undefined"
-      + "\nfilter cannot be resolved"
-      + "\nhead cannot be resolved"
-      + "\ncompilationTemplate cannot be resolved");
+  public StringConcatenationClient getCompilationTemplate(final JvmIdentifiableElement it) {
+    final CompilationTemplateAdapter adapter = IterableExtensions.<CompilationTemplateAdapter>head(Iterables.<CompilationTemplateAdapter>filter(it.eAdapters(), CompilationTemplateAdapter.class));
+    StringConcatenationClient _compilationTemplate = null;
+    if (adapter!=null) {
+      _compilationTemplate=adapter.getCompilationTemplate();
+    }
+    return _compilationTemplate;
   }
   
-  public Object isSingleSyntheticDefaultConstructor(final /* JvmConstructor */Object it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field parameters is undefined"
-      + "\nThe method or field associatedExpression is undefined"
-      + "\nThe method or field declaringType is undefined"
-      + "\nThe method or field JvmConstructor is undefined"
-      + "\nThe method getCompilationStrategy(JvmIdentifiableElement) from the type JvmTypeExtensions refers to the missing type Object"
-      + "\nThe method getCompilationTemplate(JvmIdentifiableElement) from the type JvmTypeExtensions refers to the missing type StringConcatenationClient"
-      + "\nempty cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nmembers cannot be resolved"
-      + "\nfilter cannot be resolved"
-      + "\nsize cannot be resolved"
-      + "\n== cannot be resolved");
+  public boolean isSingleSyntheticDefaultConstructor(final JvmConstructor it) {
+    return ((((it.getParameters().isEmpty() && 
+      (this._iLogicalContainerProvider.getAssociatedExpression(it) == null)) && 
+      (this.getCompilationStrategy(it) == null)) && 
+      (this.getCompilationTemplate(it) == null)) && 
+      (IterableExtensions.size(Iterables.<JvmConstructor>filter(it.getDeclaringType().getMembers(), JvmConstructor.class)) == 1));
   }
   
-  public Object isSynthetic(final /* JvmIdentifiableElement */Object element) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nmetaData cannot be resolved"
-      + "\nsynthetic cannot be resolved");
+  public boolean isSynthetic(final JvmIdentifiableElement element) {
+    return this.getMetaData(element).isSynthetic();
   }
   
   /**
    * @since 2.8
    */
-  public Object isSynthetic(final /* JvmAnnotationReference */Object element) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nmetaData cannot be resolved"
-      + "\nsynthetic cannot be resolved");
+  public boolean isSynthetic(final JvmAnnotationReference element) {
+    return this.getMetaData(element).isSynthetic();
   }
   
-  public void setSynthetic(final /* JvmIdentifiableElement */Object element, final boolean isSynthetic) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nmetaData cannot be resolved"
-      + "\nsynthetic cannot be resolved");
+  public void setSynthetic(final JvmIdentifiableElement element, final boolean isSynthetic) {
+    JvmIdentifiableMetaData _metaData = this.getMetaData(element);
+    _metaData.setSynthetic(isSynthetic);
   }
   
   /**
    * @since 2.8
    */
-  public void setSynthetic(final /* JvmAnnotationReference */Object element, final boolean isSynthetic) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nmetaData cannot be resolved"
-      + "\nsynthetic cannot be resolved");
+  public void setSynthetic(final JvmAnnotationReference element, final boolean isSynthetic) {
+    JvmIdentifiableMetaData _metaData = this.getMetaData(element);
+    _metaData.setSynthetic(isSynthetic);
   }
   
   /**
    * @since 2.8
    */
-  protected JvmIdentifiableMetaData getMetaData(final /* EObject */Object element) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field EcoreUtil is undefined"
-      + "\n=== cannot be resolved."
-      + "\ngetAdapter cannot be resolved"
-      + "\neAdapters cannot be resolved"
-      + "\neAdapters cannot be resolved"
-      + "\n+= cannot be resolved");
+  protected JvmIdentifiableMetaData getMetaData(final EObject element) {
+    Adapter _adapter = EcoreUtil.getAdapter(element.eAdapters(), JvmIdentifiableMetaData.class);
+    JvmIdentifiableMetaData metaData = ((JvmIdentifiableMetaData) _adapter);
+    if ((metaData == null)) {
+      JvmIdentifiableMetaData _jvmIdentifiableMetaData = new JvmIdentifiableMetaData();
+      metaData = _jvmIdentifiableMetaData;
+      EList<Adapter> _eAdapters = element.eAdapters();
+      _eAdapters.add(metaData);
+    }
+    return metaData;
   }
 }

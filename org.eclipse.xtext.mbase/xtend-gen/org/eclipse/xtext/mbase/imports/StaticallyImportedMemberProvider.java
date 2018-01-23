@@ -7,9 +7,19 @@
  */
 package org.eclipse.xtext.mbase.imports;
 
+import com.google.inject.Inject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
+import org.eclipse.xtext.common.types.JvmFeature;
 import org.eclipse.xtext.mbase.imports.IImportsConfiguration;
 import org.eclipse.xtext.mbase.typesystem.override.IResolvedFeatures;
+import org.eclipse.xtext.mbase.typesystem.util.ContextualVisibilityHelper;
 import org.eclipse.xtext.mbase.typesystem.util.IVisibilityHelper;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xtype.XImportDeclaration;
 
 /**
@@ -17,65 +27,75 @@ import org.eclipse.xtext.xtype.XImportDeclaration;
  */
 @SuppressWarnings("all")
 public class StaticallyImportedMemberProvider {
-  /* @Inject
-   */private IImportsConfiguration _iImportsConfiguration;
+  @Inject
+  @Extension
+  private IImportsConfiguration _iImportsConfiguration;
   
-  /* @Inject
-   */private IResolvedFeatures.Provider _provider;
+  @Inject
+  @Extension
+  private IResolvedFeatures.Provider _provider;
   
-  /* @Inject
-   */private IVisibilityHelper visibilityHelper;
+  @Inject
+  private IVisibilityHelper visibilityHelper;
   
-  public Object findAllFeatures(final XImportDeclaration it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field importedType is undefined"
-      + "\n! cannot be resolved."
-      + "\nThe method or field emptyList is undefined"
-      + "\nThe method or field eResource is undefined"
-      + "\n=== cannot be resolved."
-      + "\nJvmFeature cannot be resolved to a type."
-      + "\n|| cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\nvisibilityHelper cannot be resolved"
-      + "\nresolvedFeatures cannot be resolved"
-      + "\nallFeatures cannot be resolved"
-      + "\nfilter cannot be resolved"
-      + "\nstatic cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nisVisible cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\nsimpleName cannot be resolved"
-      + "\nstartsWith cannot be resolved");
+  public Iterable<JvmFeature> findAllFeatures(final XImportDeclaration it) {
+    Iterable<JvmFeature> _xblockexpression = null;
+    {
+      final JvmDeclaredType importedType = it.getImportedType();
+      if (((!it.isStatic()) || (importedType == null))) {
+        return CollectionLiterals.<JvmFeature>emptyList();
+      }
+      final IVisibilityHelper visibilityHelper = this.getVisibilityHelper(it.eResource());
+      final IResolvedFeatures resolvedFeatures = this._provider.getResolvedFeatures(importedType);
+      final Function1<JvmFeature, Boolean> _function = (JvmFeature feature) -> {
+        return Boolean.valueOf(((feature.isStatic() && visibilityHelper.isVisible(feature)) && ((it.getMemberName() == null) || feature.getSimpleName().startsWith(it.getMemberName()))));
+      };
+      _xblockexpression = IterableExtensions.<JvmFeature>filter(resolvedFeatures.getAllFeatures(), _function);
+    }
+    return _xblockexpression;
   }
   
-  public Object getAllFeatures(final XImportDeclaration it) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field eResource is undefined"
-      + "\nThe method or field importedType is undefined"
-      + "\ngetAllFeatures cannot be resolved");
+  public Iterable<JvmFeature> getAllFeatures(final XImportDeclaration it) {
+    return this.getAllFeatures(it.eResource(), it.getImportedType(), it.isStatic(), it.isExtension(), it.getMemberName());
   }
   
-  public Object getAllFeatures(final /* Resource */Object resource, final /* JvmDeclaredType */Object importedType, final boolean static_, final boolean extension, final String memberName) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n! cannot be resolved."
-      + "\nThe method or field emptyList is undefined"
-      + "\nJvmFeature cannot be resolved to a type."
-      + "\n|| cannot be resolved"
-      + "\n=== cannot be resolved"
-      + "\nvisibilityHelper cannot be resolved"
-      + "\nresolvedFeatures cannot be resolved"
-      + "\ngetAllFeatures cannot be resolved"
-      + "\nfilter cannot be resolved"
-      + "\nstatic cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nisVisible cannot be resolved");
+  public Iterable<JvmFeature> getAllFeatures(final Resource resource, final JvmDeclaredType importedType, final boolean static_, final boolean extension, final String memberName) {
+    Iterable<JvmFeature> _xblockexpression = null;
+    {
+      if (((!static_) || (importedType == null))) {
+        return CollectionLiterals.<JvmFeature>emptyList();
+      }
+      final IVisibilityHelper visibilityHelper = this.getVisibilityHelper(resource);
+      final IResolvedFeatures resolvedFeatures = this._provider.getResolvedFeatures(importedType);
+      final Function1<JvmFeature, Boolean> _function = (JvmFeature feature) -> {
+        return Boolean.valueOf((feature.isStatic() && visibilityHelper.isVisible(feature)));
+      };
+      _xblockexpression = IterableExtensions.<JvmFeature>filter(resolvedFeatures.getAllFeatures(memberName), _function);
+    }
+    return _xblockexpression;
   }
   
-  public IVisibilityHelper getVisibilityHelper(final /* Resource */Object resource) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nXtextResource cannot be resolved to a type."
-      + "\npackageName cannot be resolved"
-      + "\n=== cannot be resolved");
+  public IVisibilityHelper getVisibilityHelper(final Resource resource) {
+    IVisibilityHelper _switchResult = null;
+    boolean _matched = false;
+    if (resource instanceof XtextResource) {
+      _matched=true;
+      IVisibilityHelper _xblockexpression = null;
+      {
+        final String packageName = this._iImportsConfiguration.getPackageName(((XtextResource)resource));
+        IVisibilityHelper _xifexpression = null;
+        if ((packageName == null)) {
+          _xifexpression = this.visibilityHelper;
+        } else {
+          _xifexpression = new ContextualVisibilityHelper(this.visibilityHelper, packageName);
+        }
+        _xblockexpression = _xifexpression;
+      }
+      _switchResult = _xblockexpression;
+    }
+    if (!_matched) {
+      _switchResult = this.visibilityHelper;
+    }
+    return _switchResult;
   }
 }

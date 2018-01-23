@@ -7,47 +7,55 @@
  */
 package org.eclipse.xtext.mbase.resource;
 
+import com.google.inject.Inject;
 import java.io.InputStream;
 import java.io.OutputStream;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.mbase.resource.BatchLinkableResourceStorageLoadable;
 import org.eclipse.xtext.mbase.resource.BatchLinkableResourceStorageWritable;
+import org.eclipse.xtext.resource.persistence.ResourceStorageFacade;
+import org.eclipse.xtext.resource.persistence.ResourceStorageLoadable;
+import org.eclipse.xtext.resource.persistence.ResourceStorageWritable;
+import org.eclipse.xtext.resource.persistence.StorageAwareResource;
+import org.eclipse.xtext.workspace.IProjectConfig;
+import org.eclipse.xtext.workspace.IProjectConfigProvider;
+import org.eclipse.xtext.workspace.ISourceFolder;
 
 /**
  * @author Sven Efftinge - Initial contribution and API
  */
 @SuppressWarnings("all")
-public class BatchLinkableResourceStorageFacade /* implements ResourceStorageFacade  */{
-  /* @Inject
-   */private /* IProjectConfigProvider */Object projectConfigProvider;
+public class BatchLinkableResourceStorageFacade extends ResourceStorageFacade {
+  @Inject
+  private IProjectConfigProvider projectConfigProvider;
   
   @Override
-  public BatchLinkableResourceStorageLoadable createResourceStorageLoadable(final InputStream in) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field isStoreNodeModel is undefined"
-      + "\nInvalid number of arguments. The constructor BatchLinkableResourceStorageLoadable() is not applicable for the arguments (InputStream,Object)");
+  public ResourceStorageLoadable createResourceStorageLoadable(final InputStream in) {
+    boolean _isStoreNodeModel = this.isStoreNodeModel();
+    return new BatchLinkableResourceStorageLoadable(in, _isStoreNodeModel);
   }
   
   @Override
-  public BatchLinkableResourceStorageWritable createResourceStorageWritable(final OutputStream out) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field isStoreNodeModel is undefined"
-      + "\nInvalid number of arguments. The constructor BatchLinkableResourceStorageWritable() is not applicable for the arguments (OutputStream,Object)");
+  public ResourceStorageWritable createResourceStorageWritable(final OutputStream out) {
+    boolean _isStoreNodeModel = this.isStoreNodeModel();
+    return new BatchLinkableResourceStorageWritable(out, _isStoreNodeModel);
   }
   
   @Override
-  protected Object getSourceContainerURI(final /* StorageAwareResource */Object resource) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field super is undefined"
-      + "\nThe field BatchLinkableResourceStorageFacade.projectConfigProvider refers to the missing type IProjectConfigProvider"
-      + "\nURI cannot be resolved"
-      + "\ngetProjectConfig cannot be resolved"
-      + "\nresourceSet cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\nworkspaceConfig cannot be resolved"
-      + "\nfindProjectContaining cannot be resolved"
-      + "\nfindSourceFolderContaining cannot be resolved"
-      + "\n!== cannot be resolved"
-      + "\npath cannot be resolved"
-      + "\ngetSourceContainerURI cannot be resolved");
+  protected URI getSourceContainerURI(final StorageAwareResource resource) {
+    final URI uri = resource.getURI();
+    final IProjectConfig mainProject = this.projectConfigProvider.getProjectConfig(resource.getResourceSet());
+    if ((mainProject != null)) {
+      final IProjectConfig project = mainProject.getWorkspaceConfig().findProjectContaining(uri);
+      ISourceFolder _findSourceFolderContaining = null;
+      if (project!=null) {
+        _findSourceFolderContaining=project.findSourceFolderContaining(uri);
+      }
+      final ISourceFolder sourceFolder = _findSourceFolderContaining;
+      if ((sourceFolder != null)) {
+        return sourceFolder.getPath();
+      }
+    }
+    return super.getSourceContainerURI(resource);
   }
 }
