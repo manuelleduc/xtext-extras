@@ -648,7 +648,10 @@ public class JvmModelGenerator implements IGenerator {
       if (it instanceof JvmEnumerationType) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("java.lang.Enum<�identifier�>");
+        _builder.append("java.lang.Enum<");
+        String _identifier = ((JvmEnumerationType)it).getIdentifier();
+        _builder.append(_identifier);
+        _builder.append(">");
         _switchResult = _builder.toString();
       }
     }

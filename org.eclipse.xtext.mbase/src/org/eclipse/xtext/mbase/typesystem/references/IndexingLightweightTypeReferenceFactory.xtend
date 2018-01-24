@@ -38,7 +38,7 @@ class IndexingLightweightTypeReferenceFactory extends LightweightTypeReferenceFa
 
 	def dispatch JvmType getType(JvmTypeReference it) {
 		throw new UnsupportedOperationException(
-			'''It is not possible to get a type for the given jvm type reference: �it.class.name�''')
+			'''It is not possible to get a type for the given jvm type reference: «it.class.name»''')
 	}
 
 	def dispatch JvmType getType(JvmGenericArrayTypeReferenceImplCustom it) {

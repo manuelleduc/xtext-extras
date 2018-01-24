@@ -170,7 +170,7 @@ import org.eclipse.xtext.formatting2.regionaccess.ITextRegionAccess
 	}
 	
 	override toString() '''
-		WS: "�node?.text�"
+		WS: "«node?.text»"
 	'''
 }
 
@@ -187,6 +187,6 @@ import org.eclipse.xtext.formatting2.regionaccess.ITextRegionAccess
 	}
 	
 	override toString() '''
-		Comment: "�node.text�"
+		Comment: "«node.text»"
 	'''
 }

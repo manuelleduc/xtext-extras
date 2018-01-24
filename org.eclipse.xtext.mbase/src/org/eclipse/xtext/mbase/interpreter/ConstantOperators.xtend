@@ -97,14 +97,14 @@ class ConstantOperators {
 			val returnType = if (booleanOps.contains(op.value)) 'boolean ' else 'Object '
 			println('''
 				
-				def dispatch �returnType��op.key�(Object left, Object right) {
-					throw new ConstantExpressionEvaluationException("Unsupported operator '�op.value�' for operands "+left+" and "+right);
+				def dispatch «returnType»«op.key»(Object left, Object right) {
+					throw new ConstantExpressionEvaluationException("Unsupported operator '«op.value»' for operands "+left+" and "+right);
 				}
 			''')
 			for (left : types.keySet) {
 				println("")			
 				for (right : types.keySet) {
-					println('''def dispatch �returnType��op.key�(�left� left, �right� right) { left.�types.get(left)� �op.value� right.�types.get(right)� }''')
+					println('''def dispatch «returnType»«op.key»(«left» left, «right» right) { left.«types.get(left)» «op.value» right.«types.get(right)» }''')
 				}
 			}
 		}

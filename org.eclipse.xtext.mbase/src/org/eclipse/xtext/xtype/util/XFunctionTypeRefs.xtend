@@ -33,9 +33,9 @@ class XFunctionTypeRefs {
 	def static String buildUri(boolean procedure, int functionParamCount) {
 		val paramCount = Math.min(6, functionParamCount);
 		if (procedure) {
-			return '''java:/Objects/�Procedures.canonicalName�#�Procedures.canonicalName�$Procedure�paramCount�'''
+			return '''java:/Objects/«Procedures.canonicalName»#«Procedures.canonicalName»$Procedure«paramCount»'''
 		}
-		return '''java:/Objects/�Functions.canonicalName�#�Functions.canonicalName�$Function�paramCount�'''
+		return '''java:/Objects/«Functions.canonicalName»#«Functions.canonicalName»$Function«paramCount»'''
 	}
 
 	def static computeTypeUri(Class<?> topLevelClass) {

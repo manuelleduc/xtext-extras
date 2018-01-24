@@ -117,12 +117,22 @@ public class UniqueClassNameValidator extends AbstractDeclarativeValidator {
     final EObject sourceElement = this.associations.getPrimarySourceElement(type);
     if ((sourceElement == null)) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("The type �type.simpleName� is already defined in �fileName�.");
+      _builder.append("The type ");
+      String _simpleName = type.getSimpleName();
+      _builder.append(_simpleName);
+      _builder.append(" is already defined in ");
+      _builder.append(fileName);
+      _builder.append(".");
       this.addIssue(_builder.toString(), type, IssueCodes.DUPLICATE_TYPE);
     } else {
       final EStructuralFeature feature = sourceElement.eClass().getEStructuralFeature("name");
       StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("The type �type.simpleName� is already defined in �fileName�.");
+      _builder_1.append("The type ");
+      String _simpleName_1 = type.getSimpleName();
+      _builder_1.append(_simpleName_1);
+      _builder_1.append(" is already defined in ");
+      _builder_1.append(fileName);
+      _builder_1.append(".");
       this.addIssue(_builder_1.toString(), sourceElement, feature, IssueCodes.DUPLICATE_TYPE);
     }
   }

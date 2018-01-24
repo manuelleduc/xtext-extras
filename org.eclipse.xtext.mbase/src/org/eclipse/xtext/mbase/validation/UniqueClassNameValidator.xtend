@@ -82,10 +82,10 @@ class UniqueClassNameValidator extends AbstractDeclarativeValidator {
 	protected def void addIssue(JvmDeclaredType type, String fileName) {
 		val sourceElement = associations.getPrimarySourceElement(type)
 		if (sourceElement === null)
-			addIssue('''The type �type.simpleName� is already defined in �fileName�.''', type, IssueCodes.DUPLICATE_TYPE)
+			addIssue('''The type «type.simpleName» is already defined in «fileName».''', type, IssueCodes.DUPLICATE_TYPE)
 		else {
 			val feature = sourceElement.eClass.getEStructuralFeature('name')
-			addIssue('''The type �type.simpleName� is already defined in �fileName�.''', sourceElement, feature, IssueCodes.DUPLICATE_TYPE)
+			addIssue('''The type «type.simpleName» is already defined in «fileName».''', sourceElement, feature, IssueCodes.DUPLICATE_TYPE)
 		}
 	}
 	

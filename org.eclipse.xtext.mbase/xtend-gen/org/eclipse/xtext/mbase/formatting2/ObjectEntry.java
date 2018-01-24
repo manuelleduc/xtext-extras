@@ -84,7 +84,19 @@ public class ObjectEntry<T extends Object, R extends ITextSegment> extends Entry
     {
       final ITextSegment reg = this.getRegion();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("\"�reg.text�\" at offset=�reg.offset� lenght=�reg.length� (�object.class.simpleName�)");
+      _builder.append("\"");
+      String _text = reg.getText();
+      _builder.append(_text);
+      _builder.append("\" at offset=");
+      int _offset = reg.getOffset();
+      _builder.append(_offset);
+      _builder.append(" lenght=");
+      int _length = reg.getLength();
+      _builder.append(_length);
+      _builder.append(" (");
+      String _simpleName = this.object.getClass().getSimpleName();
+      _builder.append(_simpleName);
+      _builder.append(")");
       _xblockexpression = _builder.toString();
     }
     return _xblockexpression;

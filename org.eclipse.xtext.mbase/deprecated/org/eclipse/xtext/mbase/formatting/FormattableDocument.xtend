@@ -45,7 +45,7 @@ class FormattableDocument {
 				log.error('''
 					lenght of text-edit can not be negative:
 					--------------------------------- document snippet ------------------------------
-					�text.key�[[[!!]]]�text.value�
+					«text.key»[[[!!]]]«text.value»
 					---------------------------------------------------------------------------------
 				''')
 				throw new IllegalStateException("Length of text edit can not be negative")
@@ -57,7 +57,7 @@ class FormattableDocument {
 					log.error('''
 						Can not edit non-whitespace:
 						------------------------------- document snippet --------------------------------
-						�text.key�[[[�oldText�]]]�text.value�
+						«text.key»[[[«oldText»]]]«text.value»
 						---------------------------------------------------------------------------------
 					''')
 					throw new IllegalStateException("Can non format non-whitespace: "+oldText)
@@ -119,14 +119,14 @@ class FormattableDocument {
 		log.error('''
 			Conflicting TextEdits during formatting:
 			------------------------------- document snippet --------------------------------
-			�text.key�[!!!]�text.value�
+			«text.key»[!!!]«text.value»
 			---------------------------------------------------------------------------------
-			TextEdit1: �data1.toString.replaceAll("\\n\\s*"," ")�
-			TextEdit2: �data2.toString.replaceAll("\\n\\s*"," ")�
+			TextEdit1: «data1.toString.replaceAll("\\n\\s*"," ")»
+			TextEdit2: «data2.toString.replaceAll("\\n\\s*"," ")»
 			---------------------------------- Trace 1 --------------------------------------
-			�shortTrace1�
+			«shortTrace1»
 			---------------------------------- Trace 2 --------------------------------------
-			�shortTrace2�
+			«shortTrace2»
 			---------------------------------------------------------------------------------
 		''')
 	}
@@ -268,7 +268,7 @@ class FormattableDocument {
 		for(edit:renderToEdits) {
 			val text = document.substring(lastOffset, edit.offset)
 			debugTrace.append(text)
-			debugTrace.append('''[�document.substring(edit.offset, edit.offset + edit.length)�|�edit.text�]''')
+			debugTrace.append('''[«document.substring(edit.offset, edit.offset + edit.length)»|«edit.text»]''')
 			lastOffset = edit.offset + edit.length
 		}
 		val text = document.substring(lastOffset, document.length)

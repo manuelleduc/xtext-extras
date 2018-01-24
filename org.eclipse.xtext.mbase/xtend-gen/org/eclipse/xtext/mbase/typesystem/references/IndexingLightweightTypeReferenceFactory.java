@@ -47,7 +47,9 @@ public class IndexingLightweightTypeReferenceFactory extends LightweightTypeRefe
   
   protected JvmType _getType(final JvmTypeReference it) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("It is not possible to get a type for the given jvm type reference: �it.class.name�");
+    _builder.append("It is not possible to get a type for the given jvm type reference: ");
+    String _name = it.getClass().getName();
+    _builder.append(_name);
     throw new UnsupportedOperationException(_builder.toString());
   }
   

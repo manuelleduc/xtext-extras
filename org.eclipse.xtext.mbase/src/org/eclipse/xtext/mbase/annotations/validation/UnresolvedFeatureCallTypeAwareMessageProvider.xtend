@@ -55,7 +55,7 @@ class UnresolvedFeatureCallTypeAwareMessageProvider extends LinkingDiagnosticMes
 
 		var contextObject = context.getContext()
 		if (isStaticMemberCallTarget(contextObject)) {
-			return new DiagnosticMessage('''�linkText� cannot be resolved to a type.''', ERROR, LINKING_DIAGNOSTIC,
+			return new DiagnosticMessage('''«linkText» cannot be resolved to a type.''', ERROR, LINKING_DIAGNOSTIC,
 				TYPE_LITERAL)
 		}
 		if (contextObject instanceof XAbstractFeatureCall) {
@@ -64,7 +64,7 @@ class UnresolvedFeatureCallTypeAwareMessageProvider extends LinkingDiagnosticMes
 			}
 		}
 		var referenceType = context.reference.getEReferenceType
-		val msg = '''�linkText� cannot be resolved�referenceType.getTypeName(context.reference)�.'''
+		val msg = '''«linkText» cannot be resolved«referenceType.getTypeName(context.reference)».'''
 		return new DiagnosticMessage(msg, ERROR, LINKING_DIAGNOSTIC, linkText)
 	}
 
@@ -84,9 +84,9 @@ class UnresolvedFeatureCallTypeAwareMessageProvider extends LinkingDiagnosticMes
 
 		val orField = !featureCall.isExplicitOperationCallOrBuilderSyntax()
 
-		var msg = '''The method �IF (orField)�or field �linkText��ELSE��linkText�(�args�)�ENDIF� is undefined'''
+		var msg = '''The method «IF (orField)»or field «linkText»«ELSE»«linkText»(«args»)«ENDIF» is undefined'''
 		if (recieverType !== null) {
-			msg += ''' for the type �recieverType.humanReadableName�'''
+			msg += ''' for the type «recieverType.humanReadableName»'''
 		}
 		if (featureCall instanceof XFeatureCall && linkText.length() > 0 && Character.isUpperCase(linkText.charAt(0)) &&
 			typeLiteralHelper.isPotentialTypeLiteral(featureCall, null)) {

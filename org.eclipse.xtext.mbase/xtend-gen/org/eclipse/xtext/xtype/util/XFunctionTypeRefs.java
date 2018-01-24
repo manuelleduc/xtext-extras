@@ -19,7 +19,9 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVoid;
 import org.eclipse.xtext.common.types.TypesFactory;
 import org.eclipse.xtext.common.types.access.impl.ClassURIHelper;
+import org.eclipse.xtext.xbase.lib.Functions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 /**
@@ -35,11 +37,25 @@ public class XFunctionTypeRefs {
     final int paramCount = Math.min(6, functionParamCount);
     if (procedure) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("java:/Objects/�Procedures.canonicalName�#�Procedures.canonicalName�$Procedure�paramCount�");
+      _builder.append("java:/Objects/");
+      String _canonicalName = Procedures.class.getCanonicalName();
+      _builder.append(_canonicalName);
+      _builder.append("#");
+      String _canonicalName_1 = Procedures.class.getCanonicalName();
+      _builder.append(_canonicalName_1);
+      _builder.append("$Procedure");
+      _builder.append(paramCount);
       return _builder.toString();
     }
     StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append("java:/Objects/�Functions.canonicalName�#�Functions.canonicalName�$Function�paramCount�");
+    _builder_1.append("java:/Objects/");
+    String _canonicalName_2 = Functions.class.getCanonicalName();
+    _builder_1.append(_canonicalName_2);
+    _builder_1.append("#");
+    String _canonicalName_3 = Functions.class.getCanonicalName();
+    _builder_1.append(_canonicalName_3);
+    _builder_1.append("$Function");
+    _builder_1.append(paramCount);
     return _builder_1.toString();
   }
   

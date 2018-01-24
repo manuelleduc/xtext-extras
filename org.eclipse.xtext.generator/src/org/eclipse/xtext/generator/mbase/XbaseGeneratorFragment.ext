@@ -16,5 +16,5 @@ String getJvmModelInferrerName(Grammar this) :
 private String getJvmModelInferrerName(Grammar this, Naming naming) :
     JAVA org.eclipse.xtext.generator.mbase.MbaseGeneratorFragment.getJvmModelInferrerName(org.eclipse.xtext.Grammar, org.eclipse.xtext.generator.Naming);
 	
-S() : 'ï¿½';
-E() : 'ï¿½';
+S() : '«';
+E() : '»';

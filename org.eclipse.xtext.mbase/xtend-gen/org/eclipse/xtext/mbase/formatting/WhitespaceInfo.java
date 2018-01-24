@@ -58,8 +58,15 @@ public class WhitespaceInfo extends LeafInfo {
   @Override
   public String toString() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("WS: \"�node?.text�\"");
-    _builder.newLine();
+    _builder.append("WS: \"");
+    ILeafNode _node = this.getNode();
+    String _text = null;
+    if (_node!=null) {
+      _text=_node.getText();
+    }
+    _builder.append(_text);
+    _builder.append("\"");
+    _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
   

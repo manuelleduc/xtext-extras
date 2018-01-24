@@ -24,8 +24,11 @@ public class CommentInfo extends LeafInfo {
   @Override
   public String toString() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Comment: \"�node.text�\"");
-    _builder.newLine();
+    _builder.append("Comment: \"");
+    String _text = this.getNode().getText();
+    _builder.append(_text);
+    _builder.append("\"");
+    _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
   

@@ -78,7 +78,8 @@ public class UnresolvedFeatureCallTypeAwareMessageProvider extends LinkingDiagno
     boolean _isStaticMemberCallTarget = this.isStaticMemberCallTarget(contextObject);
     if (_isStaticMemberCallTarget) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("�linkText� cannot be resolved to a type.");
+      _builder.append(linkText);
+      _builder.append(" cannot be resolved to a type.");
       return new DiagnosticMessage(_builder.toString(), Severity.ERROR, Diagnostic.LINKING_DIAGNOSTIC, 
         UnresolvedFeatureCallTypeAwareMessageProvider.TYPE_LITERAL);
     }
@@ -91,7 +92,11 @@ public class UnresolvedFeatureCallTypeAwareMessageProvider extends LinkingDiagno
     }
     EClass referenceType = context.getReference().getEReferenceType();
     StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append("�linkText� cannot be resolved�referenceType.getTypeName(context.reference)�.");
+    _builder_1.append(linkText);
+    _builder_1.append(" cannot be resolved");
+    String _typeName = this.getTypeName(referenceType, context.getReference());
+    _builder_1.append(_typeName);
+    _builder_1.append(".");
     final String msg = _builder_1.toString();
     return new DiagnosticMessage(msg, Severity.ERROR, Diagnostic.LINKING_DIAGNOSTIC, linkText);
   }
@@ -123,13 +128,27 @@ public class UnresolvedFeatureCallTypeAwareMessageProvider extends LinkingDiagno
     boolean _isExplicitOperationCallOrBuilderSyntax = featureCall.isExplicitOperationCallOrBuilderSyntax();
     final boolean orField = (!_isExplicitOperationCallOrBuilderSyntax);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("The method �IF (orField)�or field �linkText��ELSE��linkText�(�args�)�ENDIF� is undefined");
+    _builder.append("The method ");
+    {
+      if (orField) {
+        _builder.append("or field ");
+        _builder.append(linkText);
+      } else {
+        _builder.append(linkText);
+        _builder.append("(");
+        _builder.append(args);
+        _builder.append(")");
+      }
+    }
+    _builder.append(" is undefined");
     String msg = _builder.toString();
     if ((recieverType != null)) {
       String _msg = msg;
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append(" ");
-      _builder_1.append("for the type �recieverType.humanReadableName�");
+      _builder_1.append("for the type ");
+      String _humanReadableName = recieverType.getHumanReadableName();
+      _builder_1.append(_humanReadableName, " ");
       msg = (_msg + _builder_1);
     }
     if (((((featureCall instanceof XFeatureCall) && (linkText.length() > 0)) && Character.isUpperCase(linkText.charAt(0))) && 

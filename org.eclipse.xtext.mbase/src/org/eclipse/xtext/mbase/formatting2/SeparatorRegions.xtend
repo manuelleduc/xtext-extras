@@ -165,7 +165,7 @@ import org.eclipse.xtext.formatting2.regionaccess.internal.TextSegment
 
 	override toString() {
 		val reg = region
-		'''"�reg.text�" at offset=�reg.offset� lenght=�reg.length� (�object.class.simpleName�)'''
+		'''"«reg.text»" at offset=«reg.offset» lenght=«reg.length» («object.class.simpleName»)'''
 	}
 
 }
@@ -193,7 +193,7 @@ import org.eclipse.xtext.formatting2.regionaccess.internal.TextSegment
 	}
 
 	override toString() {
-		'''"�separator.text�" at offset=�separator.offset� lenght=�separator.length�'''
+		'''"«separator.text»" at offset=«separator.offset» lenght=«separator.length»'''
 	}
 
 }

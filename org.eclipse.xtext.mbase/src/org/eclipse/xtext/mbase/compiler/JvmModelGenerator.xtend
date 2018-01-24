@@ -396,7 +396,7 @@ class JvmModelGenerator implements IGenerator {
 	def void generateExtendsClause(JvmDeclaredType it, ITreeAppendable appendable, GeneratorConfig config) {
 		val implicitSuperType = switch it {
 			JvmAnnotationType: 'java.lang.Annotation'
-			JvmEnumerationType: '''java.lang.Enum<�identifier�>'''.toString
+			JvmEnumerationType: '''java.lang.Enum<«identifier»>'''.toString
 			default: 'java.lang.Object'
 		} 
 		if (it instanceof JvmAnnotationType || (it instanceof JvmGenericType && (it as JvmGenericType).isInterface)) {
