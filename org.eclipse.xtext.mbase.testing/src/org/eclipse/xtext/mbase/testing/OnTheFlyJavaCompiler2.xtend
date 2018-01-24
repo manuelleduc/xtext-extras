@@ -108,7 +108,7 @@ class OnTheFlyJavaCompiler2 {
 
 	@SuppressWarnings("unchecked") def <RT> Functions.Function0<RT> createFunction(String expression, Class<RT> returnType) {
 		val clazz = compileToClass("__Generated", '''
-			public class __Generated implements org.eclipse.xtext.mbase.lib.Functions.Function0<«returnType.name»> {
+			public class __Generated implements org.eclipse.xtext.xbase.lib.Functions.Function0<«returnType.name»> {
 				public «returnType.name» apply() {
 					«expression»
 				}

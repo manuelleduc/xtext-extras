@@ -965,7 +965,7 @@ public abstract class AbstractPendingLinkingCandidate<Expression extends XExpres
 	 * it is not necessary to compute the type of the lamdba expression twice.
 	 * 
 	 * An example for this pattern is {@link IterableExtensions#filter(Iterable, Class)} vs
-	 * {@link IterableExtensions#filter(Iterable, org.eclipse.xtext.mbase.lib.Functions.Function1)}.
+	 * {@link IterableExtensions#filter(Iterable, org.eclipse.xtext.xbase.lib.Functions.Function1)}.
 	 */
 	protected boolean isPossibleFunctionType(int idx) {
 		if (idx < arguments.getArgumentCount()) {

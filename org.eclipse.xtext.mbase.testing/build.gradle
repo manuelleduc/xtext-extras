@@ -1,4 +1,4 @@
-ext.title = 'Xbase Testing Library'
+ext.title = 'Mbase Testing Library'
 description = 'Infrastructure for testing Mbase languages.'
 
 dependencies {

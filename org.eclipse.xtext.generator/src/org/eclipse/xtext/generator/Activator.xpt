@@ -78,7 +78,7 @@ import com.google.inject.Module;
 		}
 	}
 
-	protected Module getRuntimeModule(String grammar) {
+	protected com.google.inject.Module getRuntimeModule(String grammar) {
 		«FOREACH this AS grammar-»
 		if («grammar.name.toUpperCase().replaceAll('\\.', '_')».equals(grammar)) {
 			return new «guiceModuleRt(grammar)»();

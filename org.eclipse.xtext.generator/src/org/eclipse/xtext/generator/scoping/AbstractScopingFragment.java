@@ -20,7 +20,7 @@ import org.eclipse.xtext.generator.BindFactory;
 import org.eclipse.xtext.generator.Binding;
 import org.eclipse.xtext.generator.IStubGenerating;
 import org.eclipse.xtext.generator.Naming;
-import org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment;
+import org.eclipse.xtext.generator.mbase.MbaseGeneratorFragment;
 import org.eclipse.xtext.scoping.IGlobalScopeProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.IgnoreCaseLinking;
@@ -73,11 +73,11 @@ public abstract class AbstractScopingFragment extends AbstractInheritingGenerato
 	 */
 	public boolean isGenerateStub(Grammar grammar) {
 		if(isGenerateStub()) {
-			if (XbaseGeneratorFragment.doesUseXbase(grammar)) {
+			if (MbaseGeneratorFragment.doesUseMbase(grammar)) {
 				if (!logged) {
 					logged = true;
 					// TODO Does this really deserve a warning?
-					Logger.getLogger(this.getClass()).warn("Skipping stub generation as Xbase is used");
+					Logger.getLogger(this.getClass()).warn("Skipping stub generation as Mbase is used");
 				}
 				return false;
 			}
@@ -103,7 +103,7 @@ public abstract class AbstractScopingFragment extends AbstractInheritingGenerato
 	@Override
 	public Set<Binding> getGuiceBindingsRt(Grammar grammar) {
 		BindFactory factory = new BindFactory();
-		if (!XbaseGeneratorFragment.doesUseXbase(grammar)) {
+		if (!MbaseGeneratorFragment.doesUseMbase(grammar)) {
 			if(isGenerateStub) {
 				factory.addTypeToType(IScopeProvider.class.getName(), getScopeProviderName(grammar, getNaming()));
 			} else {

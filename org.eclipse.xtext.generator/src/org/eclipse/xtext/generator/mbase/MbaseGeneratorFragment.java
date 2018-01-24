@@ -240,7 +240,7 @@ public class MbaseGeneratorFragment extends AbstractGeneratorFragment implements
 	public String[] getRequiredBundlesRt(Grammar grammar) {
 		if (!usesMbaseGrammar(grammar))
 			return new String[0];
-		return new String[] { "org.eclipse.xtext.mbase", "org.eclipse.xtext.mbase.lib" };
+		return new String[] { "org.eclipse.xtext.mbase", "org.eclipse.xtext.xbase.lib" };
 	}
 
 	@Override

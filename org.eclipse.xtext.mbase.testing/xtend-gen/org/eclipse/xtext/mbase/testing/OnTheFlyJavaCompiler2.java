@@ -193,7 +193,7 @@ public class OnTheFlyJavaCompiler2 {
   public <RT extends Object> Function0<RT> createFunction(final String expression, final Class<RT> returnType) {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("public class __Generated implements org.eclipse.xtext.mbase.lib.Functions.Function0<");
+      _builder.append("public class __Generated implements org.eclipse.xtext.xbase.lib.Functions.Function0<");
       String _name = returnType.getName();
       _builder.append(_name);
       _builder.append("> {");

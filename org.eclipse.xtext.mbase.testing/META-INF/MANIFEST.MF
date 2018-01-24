@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Xbase Testing Infrastructure
+Bundle-Name: Mbase Testing Infrastructure
 Bundle-SymbolicName: org.eclipse.xtext.mbase.testing;singleton:=true
 Bundle-Version: 2.15.0.qualifier
 Bundle-ClassPath: .

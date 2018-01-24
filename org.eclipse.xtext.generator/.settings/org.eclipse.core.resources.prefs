@@ -1,3 +1,4 @@
-#Tue Aug 18 18:37:57 CEST 2009
 eclipse.preferences.version=1
+encoding//src/org/eclipse/xtext/generator/mbase/MbaseGeneratorFragment.ext=UTF-8
+encoding//src/org/eclipse/xtext/generator/xbase/XbaseGeneratorFragment.ext=UTF-8
 encoding/<project>=ISO-8859-1

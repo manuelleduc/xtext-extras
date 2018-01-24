@@ -27,7 +27,7 @@
             extensions="«modelFileExtensions.toString(",")»"
             id="«name»"
 «IF withXbase-»
-            matchingStrategy="«executableExtensionFactory()»:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
+            matchingStrategy="«executableExtensionFactory()»:org.eclipse.xtext.mbase.ui.editor.JavaEditorInputMatcher"
 «ENDIF-»
             name="«name.toSimpleName()» Editor">
         </editor>

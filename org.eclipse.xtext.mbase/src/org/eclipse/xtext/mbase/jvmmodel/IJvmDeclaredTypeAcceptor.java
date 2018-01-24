@@ -43,7 +43,7 @@ public interface IJvmDeclaredTypeAcceptor {
 	<T extends JvmDeclaredType> void accept(T type, Procedures.Procedure1<? super T> lateInitialization);
 	
 	/**
-	 * @deprecated use {@link #accept(JvmDeclaredType, org.eclipse.xtext.mbase.lib.Procedures.Procedure1)} instead
+	 * @deprecated use {@link #accept(JvmDeclaredType, org.eclipse.xtext.xbase.lib.Procedures.Procedure1)} instead
 	 */
 	@Deprecated
 	interface IPostIndexingInitializing<T extends JvmDeclaredType> {
@@ -51,7 +51,7 @@ public interface IJvmDeclaredTypeAcceptor {
 		 * The passed procedure will be executed only if in post-indexing phase, and it is executed after all {@link JvmDeclaredType} are created
 		 * and attached to the {@link org.eclipse.emf.ecore.resource.Resource}.
 		 * 
-		 * @deprecated use {@link #accept(JvmDeclaredType, org.eclipse.xtext.mbase.lib.Procedures.Procedure1)} instead
+		 * @deprecated use {@link #accept(JvmDeclaredType, org.eclipse.xtext.xbase.lib.Procedures.Procedure1)} instead
 		 */
 		@Deprecated
 		void initializeLater(Procedures.Procedure1<? super T> lateInitialization);

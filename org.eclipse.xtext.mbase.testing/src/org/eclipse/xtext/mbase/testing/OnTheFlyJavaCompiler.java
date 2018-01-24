@@ -301,7 +301,7 @@ public class OnTheFlyJavaCompiler {
 		String className = "_$GeneratedClass";
 		StringBuilder sb = new StringBuilder("public class ").append(className)
 				.append(" implements ")
-				.append("org.eclipse.xtext.mbase.lib.Functions.Function")
+				.append("org.eclipse.xtext.xbase.lib.Functions.Function")
 				.append(params.length).append("<");
 		for (Pair<Type, String> type : params) {
 			sb.append(toString(type.getFirst())).append(",");

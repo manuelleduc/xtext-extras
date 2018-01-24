@@ -27,7 +27,7 @@ import org.eclipse.xtext.generator.IGeneratorFragment;
 import org.eclipse.xtext.generator.IStubGenerating;
 import org.eclipse.xtext.generator.LanguageConfig;
 import org.eclipse.xtext.generator.Naming;
-import org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment;
+import org.eclipse.xtext.generator.mbase.MbaseGeneratorFragment;
 import org.eclipse.xtext.util.Strings;
 
 import com.google.common.collect.Lists;
@@ -76,28 +76,28 @@ public class GeneratorFragment extends AbstractGeneratorFragment implements IStu
 	}
 	
 	public boolean isGenerateStub(Grammar grammar) {
-		if (XbaseGeneratorFragment.doesUseXbase(grammar)) {
+		if (MbaseGeneratorFragment.doesUseMbase(grammar)) {
 			return false;
 		}
 		return isGenerateStub();
 	}
 	
 	public boolean isGenerateJavaMain(Grammar grammar) {
-		if (XbaseGeneratorFragment.doesUseXbase(grammar)) {
+		if (MbaseGeneratorFragment.doesUseMbase(grammar)) {
 			return false;
 		}
 		return generateJavaMain;
 	}
 	
 	public boolean isGenerateXtendMain(Grammar grammar) {
-		if (XbaseGeneratorFragment.doesUseXbase(grammar)) {
+		if (MbaseGeneratorFragment.doesUseMbase(grammar)) {
 			return false;
 		}
 		return generateXtendMain;
 	}
 	
 	public boolean isGenerateMwe(Grammar grammar) {
-		if (XbaseGeneratorFragment.doesUseXbase(grammar)) {
+		if (MbaseGeneratorFragment.doesUseMbase(grammar)) {
 			return false;
 		}
 		return generateMwe;

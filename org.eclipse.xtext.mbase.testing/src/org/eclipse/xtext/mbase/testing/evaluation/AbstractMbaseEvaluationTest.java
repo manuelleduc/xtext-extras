@@ -41,7 +41,7 @@ import com.google.inject.Inject;
  * @author Sebastian Zarnekow - Initial contribution and API
  * @author Sven Efftinge
  */
-public abstract class AbstractXbaseEvaluationTest extends Assert {
+public abstract class AbstractMbaseEvaluationTest extends Assert {
 	
 	@Rule
 	@Inject public TemporaryFolder temporaryFolder = new TemporaryFolder();
@@ -2727,7 +2727,7 @@ public abstract class AbstractXbaseEvaluationTest extends Assert {
 	 */
 	@Test public void testInstanceOf_05() throws Exception {
 		assertEvaluatesTo(Boolean.FALSE, "[|'foo'] instanceof com.google.common.base.Supplier");
-		assertEvaluatesTo(Boolean.TRUE, "[|'foo'] instanceof org.eclipse.xtext.mbase.lib.Functions$Function0");
+		assertEvaluatesTo(Boolean.TRUE, "[|'foo'] instanceof org.eclipse.xtext.xbase.lib.Functions$Function0");
 	}
 	
 	/**
@@ -2743,7 +2743,7 @@ public abstract class AbstractXbaseEvaluationTest extends Assert {
 	 */
 	@Test public void testInstanceOf_07() throws Exception {
 		assertEvaluatesTo(Boolean.FALSE, "[|'foo'] instanceof com.google.common.base.Supplier<?>");
-		assertEvaluatesTo(Boolean.TRUE, "[|'foo'] instanceof org.eclipse.xtext.mbase.lib.Functions$Function0<?>");
+		assertEvaluatesTo(Boolean.TRUE, "[|'foo'] instanceof org.eclipse.xtext.xbase.lib.Functions$Function0<?>");
 	}
 	
 	/**
@@ -2757,14 +2757,14 @@ public abstract class AbstractXbaseEvaluationTest extends Assert {
 	 * @since 2.4
 	 */
 	@Test public void testInstanceOf_09() throws Exception {
-		assertEvaluatesTo(Boolean.TRUE, "[|'foo'] instanceof org.eclipse.xtext.mbase.lib.Functions.Function0");
+		assertEvaluatesTo(Boolean.TRUE, "[|'foo'] instanceof org.eclipse.xtext.xbase.lib.Functions.Function0");
 	}
 	
 	/**
 	 * @since 2.4
 	 */
 	@Test public void testInstanceOf_10() throws Exception {
-		assertEvaluatesTo(Boolean.TRUE, "[|'foo'] instanceof org.eclipse.xtext.mbase.lib.Functions.Function0<?>");
+		assertEvaluatesTo(Boolean.TRUE, "[|'foo'] instanceof org.eclipse.xtext.xbase.lib.Functions.Function0<?>");
 	}
 	
 	/**

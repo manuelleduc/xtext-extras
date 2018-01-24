@@ -93,7 +93,7 @@ public class CompilationTestHelper {
 	
 	private final static Logger LOG = Logger.getLogger(CompilationTestHelper.class);
 	
-	public final static String PROJECT_NAME = "myPAbstractXbaseEvaluationTestroject";
+	public final static String PROJECT_NAME = "myPAbstractMbaseEvaluationTestroject";
 	
 	
 	@Inject private OnTheFlyJavaCompiler2 javaCompiler;

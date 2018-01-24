@@ -137,7 +137,7 @@ public class ImportManager {
 	}
 
 	protected boolean shouldUseQualifiedNestedName(String identifier) {
-		return !identifier.startsWith("org.eclipse.xtext.mbase.lib.");
+		return !identifier.startsWith("org.eclipse.xtext.xbase.lib.");
 	}
 
 	public void appendType(final Class<?> type, StringBuilder builder) {
